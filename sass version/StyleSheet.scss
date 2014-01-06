@@ -1,0 +1,228 @@
+@import "mixins.scss";
+
+/* Colors */
+$primaryColor:#000000;
+$secondaryColor:#fff;
+$useGradient:false;
+
+/* Type*/
+$primaryTextColor:#222;
+$secondaryTextColor:#333;
+
+$sans: Helvetica, Arial, Lucida Grande, sans-serif;
+$serif: Georgia, serif;
+/*$custom:;*/
+
+$font:$sans; /* serif, sans-serif, custom */
+
+/* Logo */
+$logoContainerHeight:100px;
+$logoWidth:180px;
+$logoHeight:71px;
+$logoSize: $logoWidth $logoHeight;
+
+/* Other Options */
+$seperator:false;
+
+#SurveyEngineBody {
+  background-color: #ccc;
+  font-family:$font;
+}
+
+html .Skin #Logo {
+  background-color: transparent;
+  height: $logoContainerHeight;
+}
+
+html .Skin #Logo {
+  background:url(logo.jpg) no-repeat left center;
+  background-size: $logoSize;
+  margin: 0 auto;
+}
+html .CSS3 .Skin #Logo {
+  background: url(logo.jpg) no-repeat left center;
+  background-size: $logoSize;
+  margin: 0 auto;
+}
+
+.Skin {
+  .SkinInner {
+    margin:10 auto;
+  }
+
+  #SkinContent {
+    @include shadow(0,0, 6px, #aaa);
+    color:$primaryTextColor;
+  }
+
+  #LogoBar {
+    background:#fff;
+    margin: 0 auto;
+  }
+
+  #Header {
+    padding:10px;
+    font-size:20px;
+    letter-spacing: 1px;
+    color:$secondaryColor;
+  }
+
+  .SkinInner table {
+    color: $primaryTextColor;
+  }
+
+  .ReadableAlt,
+  .LightBG {
+    background:#f8f8f8;
+  }
+
+  .ProgressBarFillContainer {
+    border-color:$primaryColor;
+  }
+
+  #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
+  .RO .DND .rank,.ProgressBarFill, .ProgressBarFill, #Header  {
+  /* I can't decide if we should set global gradient variables. Normally we only have one or two gradients at most.*/
+    @if $useGradient == true {
+      @include linear-gradient(#000000, #888888)
+    }
+    @else {
+      background: $primaryColor;
+    }
+  }
+
+  .horizontalbar tr.xlabel th:last-child {
+    border-bottom-color: transparent;
+  }
+
+  #Buttons #PreviousButton {
+    float: left;
+  }
+
+  #Buttons #NextButton, #Buttons #PreviousButton {
+    border:none;
+    font-size: 16px;
+    text-decoration: none;
+    color: $secondaryColor;
+    position: relative;
+    padding: 10px 30px;
+    box-shadow: none;
+    cursor: pointer;
+    margin: 0;
+    text-align: center;
+    -webkit-appearance: none;
+    @include rounded(3px);
+    &:active,:hover {
+    box-shadow: none;
+    top:0px;
+    -webkit-appearance: none;
+    }
+      &:hover {
+        @if $primaryColor == #000000 {
+          background:lighten($primaryColor, 20%)
+        }
+        @else {
+          background:darken($primaryColor, 20%)
+        }
+      }
+    }
+
+  .Separator {
+    @if $seperator == true {
+      background-color:#ccc;
+    }
+    @else {
+      background-color:transparent;
+    }
+  }
+
+  .BorderColor {
+    border-color: #aaa;
+  }
+
+  .ProgressBarFill {
+    padding:2px 0px;
+  }
+
+  .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
+  .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
+  .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
+  .PGR .DragAndDrop ul {
+    background-color: #fff;
+    padding:5px;
+    border:1px solid #ccc;
+    @include shadow(0,0, 2px, #bbb);
+  }
+
+  .QuestionText {
+    font-size: 18px;
+    padding:5px;
+    color:$primaryTextColor;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+  #Footer {
+    width:auto;
+    text-align: left;
+    padding:4px 20px 5px 20px;
+    color:$secondaryTextColor;
+  }
+
+  #Plug {
+    color:$secondaryTextColor;
+    padding:12px 20px;
+    a {
+      color:$primaryColor;
+    }
+  }
+
+  .PreviewBanner {
+    color: #4d4d4d;
+  }
+
+  .EndOfSurvey {
+    border-width:1px;
+    padding:15px;
+    line-height:1.5em;
+    text-align:center;
+    color:$secondaryTextColor;
+    margin-bottom:15px;
+  }
+}
+
+  // .SkinInner .QuestionBody {
+  //   -webkit-overflow-scrolling: touch;
+  // }
+
+/* smartphone styles */
+@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+  .Skin {
+    #Header {
+      padding: 10px 16px;
+    }
+    .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+      line-height: 48px;
+      font-size: 15px;
+    }
+
+    #LogoBar {
+      width:100%;
+    }
+  }
+  html .Skin #Logo {
+    background-position:20px center;
+  }
+
+  html .CSS3 .Skin #Logo {
+    background-position:20px center;
+  }
+}
+
+/* tablet styles */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+    line-height: 36px;
+    font-size: 15px;
+  }
+}
