@@ -1,7 +1,7 @@
 @import "mixins.scss";
 
 /* Colors */
-$primaryColor:#000000;
+$primaryColor:#2353e0;
 $secondaryColor:#fff;
 $useGradient:false;
 
@@ -22,7 +22,7 @@ $logoHeight:71px;
 $logoSize: $logoWidth $logoHeight;
 
 /* Other Options */
-$seperator:false;
+$seperator:true;
 
 #SurveyEngineBody {
   background-color: #ccc;

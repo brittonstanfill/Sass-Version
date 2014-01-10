@@ -43,11 +43,11 @@ html .CSS3 .Skin #Logo {
 .Skin .LightBG {
   background: #f8f8f8; }
 .Skin .ProgressBarFillContainer {
-  border-color: black; }
+  border-color: #2353e0; }
 .Skin #Buttons #NextButton, .Skin #Buttons #PreviousButton, .Skin .RO .DND ul.Edited .rank, .Skin .RO .DND ul.NotEdited li:hover .rank,
 .Skin .RO .DND .rank, .Skin .ProgressBarFill, .Skin .ProgressBarFill, .Skin #Header {
   /* I can't decide if we should set global gradient variables. Normally we only have one or two gradients at most.*/
-  background: black; }
+  background: #2353e0; }
 .Skin .horizontalbar tr.xlabel th:last-child {
   border-bottom-color: transparent; }
 .Skin #Buttons #PreviousButton {
@@ -74,9 +74,9 @@ html .CSS3 .Skin #Logo {
     top: 0px;
     -webkit-appearance: none; }
   .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
-    background: #333333; }
+    background: #13318a; }
 .Skin .Separator {
-  background-color: transparent; }
+  background-color: #ccc; }
 .Skin .BorderColor {
   border-color: #aaa; }
 .Skin .ProgressBarFill {
@@ -106,7 +106,7 @@ html .CSS3 .Skin #Logo {
   color: #333333;
   padding: 12px 20px; }
   .Skin #Plug a {
-    color: black; }
+    color: #2353e0; }
 .Skin .PreviewBanner {
   color: #4d4d4d; }
 .Skin .EndOfSurvey {
