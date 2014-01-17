@@ -26,10 +26,15 @@ $logoSize: $logoWidth $logoHeight;
 $seperator:false;
 
 @if $fullBackgroundImage == true {
+  html {
+    min-height:100%;
+  }
+  
   #SurveyEngineBody {
     background-image:url(background.jpg);
     background-size:cover;
     background-repeat: no-repeat;
+    height:100%;
   }
 
 .Skin #SkinContent {
