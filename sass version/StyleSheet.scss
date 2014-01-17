@@ -4,12 +4,13 @@
 $primaryColor:#000000;
 $secondaryColor:#fff;
 $useGradient:false;
+$backgroundColor:#efefef;
 
 /* Type*/
 $primaryTextColor:#222;
 $secondaryTextColor:#333;
 
-$sans: Helvetica, Arial, Lucida Grande, sans-serif;
+$sans: Helvetica, Arial, "Lucida Grande", sans-serif;
 $serif: Georgia, serif;
 /*$custom:;*/
 
@@ -23,6 +24,23 @@ $logoSize: $logoWidth $logoHeight;
 
 /* Other Options */
 $seperator:false;
+
+@if $fullBackgroundImage == true {
+  #SurveyEngineBody {
+    background-image:url(background.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+
+.Skin #SkinContent {
+    background-color:rgba(255,255,255,0.8);
+  }
+}
+@else {
+  #SurveyEngineBody {
+    background-color:$backgroundColor;
+  }
+}
 
 #SurveyEngineBody {
   background-color: #ccc;
