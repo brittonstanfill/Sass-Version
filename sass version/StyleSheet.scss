@@ -1,251 +1,404 @@
-@import "mixins.scss";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* Colors */
-$primaryColor:#000000;
-$secondaryColor:#fff;
-$useGradient:false;
-$backgroundColor:#efefef;
+  // Conditional Options ////////////////////////////////////////////////////////////////////////////////////
 
-/* Type*/
-$primaryTextColor:#222;
-$secondaryTextColor:#333;
+    // Main Container
+    $main-container-on: true; 
+      // If true
+      $main-container-background-color: #FFFFFF;
 
-$sans: Helvetica, Arial, "Lucida Grande", sans-serif;
-$serif: Georgia, serif;
-/*$custom:;*/
+    // Boxed Questions
+    $boxed-questions-on: false;
+      // If true
+      $boxed-questions-background: #FFFFFF;
 
-$font:$sans; /* serif, sans-serif, custom */
+    // Seperator
+    $horizontal-seperator-on: false;
 
-/* Logo */
-$logoContainerHeight:100px;
-$logoWidth:180px;
-$logoHeight:71px;
-$logoSize: $logoWidth $logoHeight;
+    // Background image
+    $full-background-image-on: false;
 
-/* Other Options */
-$seperator:false;
+    // Absolute positioned footer
+    $absolute-position-footer-on: false;
 
-@if $fullBackgroundImage == true {
-  html {
-    min-height:100%;
-  }
-  
-  #SurveyEngineBody {
-    background-image:url(background.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
-    height:100%;
-  }
 
-.Skin #SkinContent {
-    background-color:rgba(255,255,255,0.8);
-  }
-}
-@else {
-  #SurveyEngineBody {
-    background-color:$backgroundColor;
-  }
-}
 
-#SurveyEngineBody {
-  background-color: #ccc;
-  font-family:$font;
-}
+  // Branding ////////////////////////////////////////////////////////////////////////////////////
 
-html .Skin #Logo {
-  background-color: transparent;
-  height: $logoContainerHeight;
-}
+    // Logo
+    $logo-width: 150px;
+    $logo-height: 50px;
+    $logo-horizontal-position: left;
 
-html .Skin #Logo {
-  background:url(logo.jpg) no-repeat left center;
-  background-size: $logoSize;
-  margin: 0 auto;
-}
-html .CSS3 .Skin #Logo {
-  background: url(logo.jpg) no-repeat left center;
-  background-size: $logoSize;
-  margin: 0 auto;
-}
+    // Colors
+    $primary-color: #930B0F;
+    $primary-color-reverse: #FFFFFF;
+    $body-background-color: #EEEEEE;
 
-.Skin {
-  .SkinInner {
-    margin:10 auto;
-  }
+    // Typography
+    $font: Helvetica, Arial, "Lucida Grande", sans-serif;
 
-  #SkinContent {
-    @include shadow(0,0, 6px, #aaa);
-    color:$primaryTextColor;
-  }
 
-  #LogoBar {
-    background:#fff;
-    margin: 0 auto;
-  }
 
-  #Header {
-    padding:10px;
-    font-size:20px;
-    letter-spacing: 1px;
-    color:$secondaryColor;
-  }
+  // Other /////////////////////////////////////////////////////////////////////////////////////
 
-  .SkinInner table {
-    color: $primaryTextColor;
-  }
+    // Container Width
+    $container-max-width: 900px;
 
-  .ReadableAlt,
-  .LightBG {
-    background:#f8f8f8;
-  }
+    // Text
+    $body-text-color: #444444;
+    $footer-text-color: #999999;
+    
+    // Logo Bar
+    $logo-container-margin: 20px auto;
+    $logo-container-padding: 0;
+    $logo-container-background: transparent;
 
-  .ProgressBarFillContainer {
-    border-color:$primaryColor;
-  }
+    // Skin Inner
+    $skin-inner-margin: 0 auto; 
 
-  #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
-  .RO .DND .rank,.ProgressBarFill, .ProgressBarFill, #Header  {
-  /* I can't decide if we should set global gradient variables. Normally we only have one or two gradients at most.*/
-    @if $useGradient == true {
-      @include linear-gradient(#000000, #888888)
+    // Borders
+    $base-seperator-color: #BBBBBB;
+
+    // Spacing
+    $base-margin: 20px;
+    $base-padding: 20px;
+
+    // Rounded corners size
+    $rounded-size: 5px;
+
+    // Transitions
+    $transition-speed: 0.3s;
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// GENERALLY UNCHANGED
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // Mixins & Partials ////////////////////////////////////////////////////////////////////////////////////
+
+    @mixin shadow($x, $y, $blur, $color) {
+    -webkit-box-shadow: $x $y $blur $color;
+       -moz-box-shadow: $x $y $blur $color;
+            box-shadow: $x $y $blur $color;
     }
-    @else {
-      background: $primaryColor;
+
+    @mixin rounded($radius) {
+      -webkit-border-radius: $radius;
+         -moz-border-radius: $radius;
+          -ms-border-radius: $radius;
+           -o-border-radius: $radius;
+              border-radius: $radius;
     }
-  }
 
-  .horizontalbar tr.xlabel th:last-child {
-    border-bottom-color: transparent;
-  }
-
-  #Buttons #PreviousButton {
-    float: left;
-  }
-
-  #Buttons #NextButton, #Buttons #PreviousButton {
-    border:none;
-    font-size: 16px;
-    text-decoration: none;
-    color: $secondaryColor;
-    position: relative;
-    padding: 10px 30px;
-    box-shadow: none;
-    cursor: pointer;
-    margin: 0;
-    text-align: center;
-    -webkit-appearance: none;
-    @include rounded(3px);
-    &:active,:hover {
-    box-shadow: none;
-    top:0px;
-    -webkit-appearance: none;
+    @mixin linear-gradient($top, $bottom) {
+      background: $top;
+      background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+      background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: -o-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
     }
-      &:hover {
-        @if $primaryColor == #000000 {
-          background:lighten($primaryColor, 20%)
-        }
-        @else {
-          background:darken($primaryColor, 20%)
-        }
+
+    @mixin background-transition($speed) {
+      transition: background $speed;
+      -webkit-transition: background $speed;
+    }
+
+
+
+  // Base styles ////////////////////////////////////////////////////////////////////////////////////
+
+    // Body
+    #SurveyEngineBody {
+      background-color: $body-background-color;
+      font-family: $font;
+    }
+
+    // Graphics
+    .Skin #LogoContainer {
+      background: $logo-container-background;
+      margin: 0 auto;
+      padding: $logo-container-padding;
+      max-width: $container-max-width;
+      box-sizing: border-box;
+      margin: $logo-container-margin;
+    }
+    html .Skin #Logo {
+      background-color: transparent;
+      height: $logo-height;
+    }
+    html .Skin #Logo {
+      background: url(logo.png) no-repeat $logo-horizontal-position;
+      background-size: $logo-width $logo-height;
+      margin: 0 auto;
+    }
+    html .CSS3 .Skin #Logo {
+      background: url(logo.png) no-repeat $logo-horizontal-position;
+      background-size: $logo-width $logo-height;
+      margin: 0 auto;
+    }
+
+    // Footer
+    #FooterContainer{
+      max-width: $container-max-width;
+      margin: 0 auto;
+      margin: ($base-margin * 2) auto;
+      box-sizing: border-box;
+    }
+    #Footer {
+      width: auto;
+      text-align: left;
+      padding: 0;
+      color: $footer-text-color;
+    }
+    #Plug {
+      color: $footer-text-color;
+      padding: 20px 0 0 0;
+      a {
+        color: $footer-text-color;
       }
     }
 
-  .Separator {
-    @if $seperator == true {
-      background-color:#ccc;
+    // Everything sub .Skin
+    .Skin {
+      .SkinInner {
+        margin: $skin-inner-margin;
+        width: $container-max-width;
+      }
+
+      #SkinContent {
+        color: $body-text-color;
+        background-color: transparent;
+      }
+
+      #Questions {
+        padding: $base-padding 0;
+        width: 100%;
+      }
+
+      .QuestionOuter{
+        padding: 0;
+      }
+
+      .QuestionOuter .Inner {
+        padding: ($base-padding / 2) 0;
+      }
+
+      #Header {
+        padding: 10px 20px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: $primary-color-reverse;
+      }
+
+      .SkinInner table {
+        color: $body-text-color;
+      }
+
+      .ReadableAlt,
+      .LightBG {
+        background:#f8f8f8;
+      }
+
+      .ProgressBarFillContainer {
+        border-color: $primary-color;
+      }
+
+      #Buttons {
+        padding: $base-padding 0;
+      }
+
+      #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
+      .RO .DND .rank,.ProgressBarFill, .ProgressBarFill, #Header  {
+        background: $primary-color;
+      }
+
+      .horizontalbar tr.xlabel th:last-child {
+        border-bottom-color: transparent;
+      }
+
+      #Buttons #PreviousButton {
+        float: left;
+      }
+
+      #Buttons #NextButton, #Buttons #PreviousButton {
+        border:none;
+        font-size: 16px;
+        text-decoration: none;
+        color: $primary-color-reverse;
+        position: relative;
+        padding: 10px 30px;
+        box-shadow: none;
+        cursor: pointer;
+        margin: 0;
+        text-align: center;
+        -webkit-appearance: none;
+        @include background-transition($transition-speed);
+        @include rounded(3px);
+        &:active,:hover {
+          box-shadow: none;
+          top:0px;
+          -webkit-appearance: none;
+        }
+          &:hover {
+            background:lighten($primary-color, 10%)
+          }
+        }
+
+      .Separator {
+        @if $horizontal-seperator-on == true {
+          background-color: $base-seperator-color;
+        }
+        @else {
+          background-color: transparent;
+        }
+      }
+
+      .BorderColor {
+        border-color: $base-seperator-color;
+      }
+
+      .ProgressBarFillContainer{
+        @include rounded(3px);
+      }
+      .ProgressBarFill {
+        padding: 2px 0px;
+      }
+
+      .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
+      .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
+      .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
+      .PGR .DragAndDrop ul {
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #ccc;
+        @include shadow(0,0, 2px, #bbb);
+      }
+
+      .QuestionText {
+        font-size: 18px;
+        padding: 5px;
+        color: $body-text-color;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .PreviewBanner {
+        color: #4d4d4d;
+      }
+
+      .EndOfSurvey {
+        border-width: 1px;
+        padding: 15px;
+        line-height: 1.5em;
+        text-align: center;
+        color: $body-text-color;
+        margin-bottom: 15px;
+      }
     }
-    @else {
-      background-color:transparent;
-    }
-  }
 
-  .BorderColor {
-    border-color: #aaa;
-  }
 
-  .ProgressBarFill {
-    padding:2px 0px;
-  }
 
-  .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
-  .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
-  .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
-  .PGR .DragAndDrop ul {
-    background-color: #fff;
-    padding:5px;
-    border:1px solid #ccc;
-    @include shadow(0,0, 2px, #bbb);
-  }
+  // Conditional Options ////////////////////////////////////////////////////////////////////////////////////
 
-  .QuestionText {
-    font-size: 18px;
-    padding:5px;
-    color:$primaryTextColor;
-    margin-top:0;
-    margin-bottom:0;
-  }
-
-  #Footer {
-    width:auto;
-    text-align: left;
-    padding:4px 20px 5px 20px;
-    color:$secondaryTextColor;
-  }
-
-  #Plug {
-    color:$secondaryTextColor;
-    padding:12px 20px;
-    a {
-      color:$primaryColor;
-    }
-  }
-
-  .PreviewBanner {
-    color: #4d4d4d;
-  }
-
-  .EndOfSurvey {
-    border-width:1px;
-    padding:15px;
-    line-height:1.5em;
-    text-align:center;
-    color:$secondaryTextColor;
-    margin-bottom:15px;
-  }
-}
-
-  // .SkinInner .QuestionBody {
-  //   -webkit-overflow-scrolling: touch;
-  // }
-
-/* smartphone styles */
-@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
-  .Skin {
-    #Header {
-      padding: 10px 16px;
-    }
-    .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
-      line-height: 48px;
-      font-size: 15px;
+    // Main Container
+    @if $main-container-on == true{
+      .Skin .SkinInner{
+        background: $main-container-background-color;
+        @include shadow(0,0, 6px, #aaa);
+        @include rounded($rounded-size);
+      }
+      .Skin .QuestionOuter{
+        padding: 0 ($base-padding / 2);
+      }
+      .Skin .QuestionOuter .Inner {
+        padding: ($base-padding / 2);
+      }
+      .Skin #Buttons{
+        padding: $base-padding;
+      }
     }
 
-    #LogoBar {
-      width:100%;
+    // Boxed Questions
+    @if $boxed-questions-on == true{
+      .Skin .QuestionOuter {
+        background: $boxed-questions-background;
+        @include shadow(0,0, 6px, #aaa);
+        @include rounded($rounded-size);
+      }
+      .Skin .QuestionOuter{
+        padding: 0 ($base-padding / 2);
+      }
+      .Skin .QuestionOuter .Inner {
+        padding: ($base-padding / 2);
+      }
     }
-  }
-  html .Skin #Logo {
-    background-position:20px center;
-  }
 
-  html .CSS3 .Skin #Logo {
-    background-position:20px center;
-  }
-}
+    // Full Background Image
+    @if $full-background-image-on == true {
+      #SurveyEngineBody {
+        background-image: url(background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
 
-/* tablet styles */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
-    line-height: 36px;
-    font-size: 15px;
-  }
-}
+    // Absolute positioned footer
+    @if $absolute-position-footer-on == true{
+      html{
+        min-height: 100%;
+        position: relative;
+      }
+      #SurveyEngineBody{
+        height: 100%;
+      }
+      #FooterContainer{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+
+
+
+  // Mobile Devices ////////////////////////////////////////////////////////////////////////////////////
+
+    // All mobile devices
+    @media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+      .Skin {
+        #Header {
+          padding: 10px 16px;
+        }
+        .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+          line-height: 48px;
+          font-size: 15px;
+        }
+
+        #LogoContainer {
+          width: 100%;
+        }
+      }
+      html .Skin #Logo {
+        background-position: 20px center;
+      }
+
+      html .CSS3 .Skin #Logo {
+        background-position: 20px center;
+      }
+    }
+
+    // Tablets
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+        line-height: 36px;
+        font-size: 15px;
+      }
+    }
