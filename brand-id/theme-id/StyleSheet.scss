@@ -1,0 +1,493 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Common Changes
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  /////////////////////////////////
+  // Branding
+  /////////////////////////////////
+    
+    // Logo
+    $logo-width: 150px;
+    $logo-height: 50px;
+
+    // Colors
+    $primary-color: #930B0F;
+    $body-background-color: #FFFFFF;
+    
+    // Font
+    $base-font: Helvetica, Arial, "Lucida Grande", sans-serif;
+
+
+
+  /////////////////////////////////
+  // Layout Options
+  /////////////////////////////////
+
+    // Logo
+    $logo-horizontal-position: left center;
+    $logo-container-margin: 20px auto;
+    $logo-container-padding: 0;
+    $logo-container-background: transparent;
+
+    // Background
+    $background-cover-image-on: false; // NOTE: If true, must add "background.jpg" to folder
+
+    // Main Content
+    $main-container-on: false;
+    $boxed-questions-on: false;
+    $horizontal-seperator-on: false;
+
+    // Footer
+    $absolute-position-footer-on: false; // NOTE: If true, must adjust bottom margin of .Skin to allow enough room
+    $footer-text-align: left;
+    $footer-container-padding: 0;
+    $footer-container-background: transparent;
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Everything Else
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /////////////////////////////////
+  // Base Style Variables
+  /////////////////////////////////
+
+    // Constants
+    $GOLDEN-RATIO: 1.618;
+
+    // Typeography
+    $base-font-size: 15px;
+
+    // Containers
+    $container-max-width: 960px;
+    
+    // Colors
+    $primary-color-reverse: #FFFFFF;
+    $primary-color-hover: lighten($primary-color, 10%);
+    $body-text-color: #555555;
+    $footer-text-color: darken($body-background-color, 30%);
+    $base-border: 1px solid #CCCCCC;
+    $base-seperator-color: #BBBBBB;
+    $horizontal-seperator-color: #BBBBBB;
+    $main-container-background-color: #FFFFFF;
+    $boxed-questions-background: #FFFFFF;
+  
+    // Box Shadows
+    $large-element-box-shadow: 0 1px 4px #999999;
+    $small-element-box-shadow: 0 1px 1px #CCCCCC;
+    $primary-color-box-shadow: 0 0 3px $primary-color;
+
+    // Border Radius
+    $large-element-border-radius-size: 5px;
+    $small-element-border-radius-size: 3px;
+
+    // Margins & Padding
+    $base-margin: 20px;
+    $base-padding: 20px;
+    $skin-inner-margin: $base-margin auto;
+    
+    // Transitions
+    $transition-speed: 0.3s;
+
+    // Mobile
+    $mobile-label-font-size: 15px;
+    $mobile-label-line-height: 48px;
+    $tablet-label-font-size: 15px;
+    $tablet-label-line-height: 36px;
+
+
+
+  /////////////////////////////////
+  // Placeholders & Mixins
+  /////////////////////////////////
+
+    // Static transitions
+    %background-transition {
+      transition: background $transition-speed;
+      -webkit-transition: background $transition-speed;
+    }
+
+    // Static border radius
+    %large-element-border-radius {
+      -webkit-border-radius: $large-element-border-radius-size;
+         -moz-border-radius: $large-element-border-radius-size;
+          -ms-border-radius: $large-element-border-radius-size;
+           -o-border-radius: $large-element-border-radius-size;
+              border-radius: $large-element-border-radius-size;
+    }
+    %small-element-border-radius {
+      -webkit-border-radius: $small-element-border-radius-size;
+         -moz-border-radius: $small-element-border-radius-size;
+          -ms-border-radius: $small-element-border-radius-size;
+           -o-border-radius: $small-element-border-radius-size;
+              border-radius: $small-element-border-radius-size;
+    }
+
+    // Static box shadow
+    %large-element-box-shadow {
+    -webkit-box-shadow: $large-element-box-shadow;
+       -moz-box-shadow: $large-element-box-shadow;
+            box-shadow: $large-element-box-shadow;
+    }
+    %small-element-box-shadow {
+    -webkit-box-shadow: $small-element-box-shadow;
+       -moz-box-shadow: $small-element-box-shadow;
+            box-shadow: $small-element-box-shadow;
+    }
+
+    // Input focus ring
+    %input-focus-primary-color-shadow {
+    -webkit-box-shadow: $primary-color-box-shadow;
+       -moz-box-shadow: $primary-color-box-shadow;
+            box-shadow: $primary-color-box-shadow;
+    } 
+
+    // Variable border radius
+    @mixin border-radius($border-radius-size) {
+      -webkit-border-radius: $border-radius-size;
+         -moz-border-radius: $border-radius-size;
+          -ms-border-radius: $border-radius-size;
+           -o-border-radius: $border-radius-size;
+              border-radius: $border-radius-size;
+    }
+
+    // Variable box shadow
+    @mixin box-shadow($x, $y, $size, $color) {
+    -webkit-box-shadow: $x $y $size $color;
+       -moz-box-shadow: $x $y $size $color;
+            box-shadow: $x $y $size $color;
+    }
+
+    // Variable linear gradient
+    @mixin linear-gradient($top, $bottom) {
+      background: $top;
+      background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+      background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: -o-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
+      background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
+    }
+
+
+
+  /////////////////////////////////
+  // General Selectors
+  /////////////////////////////////
+
+    // Body
+    #SurveyEngineBody {
+      margin: ($base-margin / 2);
+      background-color: $body-background-color;
+      font-family: $base-font;
+    }
+
+    // Logo & Logo Container
+    .Skin #LogoContainer {
+      background: $logo-container-background;
+      padding: $logo-container-padding;
+      margin: $logo-container-margin;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    html .Skin #Logo {
+      height: $logo-height;
+      max-width: $container-max-width;
+      margin: $logo-container-margin;
+      background-color: transparent;
+    }
+    html .Skin #Logo {
+      background: url(logo.png) no-repeat $logo-horizontal-position;
+      background-size: $logo-width $logo-height;
+      margin: 0 auto;
+    }
+    html .CSS3 .Skin #Logo {
+      background: url(logo.png) no-repeat $logo-horizontal-position;
+      background-size: $logo-width $logo-height;
+      margin: 0 auto;
+    }
+
+    .Skin {
+      font-size: $base-font-size;
+
+      // Everything Sub .Skin
+      .SkinInner {
+        margin: $skin-inner-margin;
+        width: $container-max-width;
+      }
+      #SkinContent {
+        color: $body-text-color;
+        background-color: transparent;
+      }
+      #Questions {
+        padding: 0 0 $base-padding 0;
+        width: 100%;
+      }
+      .QuestionOuter {
+        padding: 0;
+      }
+      .QuestionOuter .Inner {
+        padding: ($base-padding / 2) 0;
+      }
+      #Header {
+        @extend %small-element-border-radius;
+        @extend %small-element-box-shadow;
+        max-width: $container-max-width;
+        background: $primary-color;
+        padding: ($base-padding / 2) $base-padding;
+        font-size: $base-font-size;
+        color: $primary-color-reverse;
+        margin: 0 auto;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+      }
+      .SkinInner table {
+        color: $body-text-color;
+      }
+      .ReadableAlt,
+      .LightBG {
+        background: darken($boxed-questions-background, 5%);
+      }
+      .ProgressBarFillContainer {
+        @extend %small-element-border-radius;
+        @extend %small-element-box-shadow;
+        border-color: $primary-color;
+      }
+      #Buttons {
+        padding: $base-padding 0;
+      }
+      #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
+      .RO .DND .rank,.ProgressBarFill, .ProgressBarFill {
+        background: $primary-color;
+      }
+      .RO .DND ul li:hover{
+        background: darken($boxed-questions-background, 20%);
+      }
+      .horizontalbar tr.xlabel th:last-child {
+        border-bottom-color: transparent;
+      }
+      #Buttons #PreviousButton {
+        float: left;
+      }
+      #Buttons #NextButton, #Buttons #PreviousButton {
+        @extend %background-transition;
+        @extend %small-element-border-radius;
+        @extend %small-element-box-shadow;
+        color: $primary-color-reverse;
+        font-size: $base-font-size;
+        border:none;
+        text-decoration: none;
+        position: relative;
+        padding: ($base-padding / 2) $base-padding;
+        cursor: pointer;
+        margin: 0;
+        text-align: center;
+        -webkit-appearance: none;
+        &:active,:hover {
+          box-shadow: none;
+          top: 0px;
+          -webkit-appearance: none;
+        }
+          &:hover, &:active {
+            background: $primary-color-hover;
+          }
+        }
+      .Separator {
+        @if $horizontal-seperator-on == true {
+          background-color: $horizontal-seperator-color;
+        }
+        @else {
+          background-color: transparent;
+        }
+      }
+      .BorderColor {
+        border-color: $base-seperator-color;
+      }
+      .ProgressBarFill {
+        padding: 2px 0px;
+      }
+      .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
+      .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
+      .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
+      .PGR .DragAndDrop ul {
+        @extend %small-element-box-shadow;
+        @extend %small-element-border-radius;
+        background-color: $boxed-questions-background;
+         border: $base-border;
+        font-size: $base-font-size;
+        padding: 5px;
+      }
+      .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,.TE .ESTB textarea:focus, .RO .RankInput:focus,
+      .CS input.SumInput:focus, .CS input.SumTotal:focus, .Matrix .CS input:focus, .Matrix .RO input:focus,
+      .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, .horizontalbar table.sliderGrid tr td.value input:focus,
+      .PGR .DragAndDrop ul:focus, select:focus, input:focus {
+        @extend %input-focus-primary-color-shadow;
+        border: 1px solid $primary-color;
+        outline: none;
+      }
+      select{
+        @extend %small-element-box-shadow;
+        @extend %small-element-border-radius;
+        border: $base-border;
+        font-size: $base-font-size;
+      }
+      .QuestionText {
+        font-size: $base-font-size; // Golden ratio
+        color: $body-text-color;
+        margin-bottom: ($base-margin / 2);
+        padding: 5px;
+        margin-top: 0;
+        font-weight: bold;
+      }
+      .PreviewBanner {
+        color: #4d4d4d;
+      }
+      .EndOfSurvey {
+        @extend %large-element-border-radius;
+        @extend %large-element-box-shadow;
+        color: $body-text-color;
+        border: none;
+        padding: 15px;
+        line-height: 1.5em;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+    }
+
+    // Footer
+    #FooterContainer {
+      padding: $footer-container-padding;
+      background: $footer-container-background;
+      width: 100%;
+      margin: ($base-margin * 2) auto 0 auto;
+      box-sizing: border-box;
+    }
+    #Footer {
+      color: $footer-text-color;
+      font-size: $base-font-size * ($GOLDEN-RATIO / 2);
+      max-width: $container-max-width;
+      margin: 0 auto;
+      width: auto;
+      text-align: $footer-text-align;
+      padding: 0;
+    }
+    #Plug {
+      color: $footer-text-color;
+      max-width: $container-max-width;
+      text-align: $footer-text-align;
+      font-size: $base-font-size * ($GOLDEN-RATIO / 2);
+      margin: 0 auto;
+      padding: 0;
+      a {
+        color: $footer-text-color;
+      }
+    }
+
+
+
+  /////////////////////////////////
+  // Conditional Options
+  /////////////////////////////////
+
+    // Main Container
+    @if $main-container-on == true{
+      .Skin .SkinInner{
+        @extend %large-element-box-shadow;
+        @extend %large-element-border-radius;
+        background: $main-container-background-color;
+      }
+      .Skin #Questions{
+        padding: $base-padding 0;
+      }
+      .Skin .QuestionOuter{
+        padding: 0 ($base-padding / 2);
+      }
+      .Skin .QuestionOuter .Inner {
+        padding: ($base-padding / 2);
+      }
+      .Skin #Buttons{
+        padding: $base-padding;
+      }
+    }
+
+    // Boxed Questions
+    @if $boxed-questions-on == true{
+      .Skin .QuestionOuter {
+        @extend %large-element-box-shadow;
+        @extend %large-element-border-radius;
+        background: $boxed-questions-background;
+      }
+      .Skin .QuestionOuter{
+        padding: 0 ($base-padding / 2);
+      }
+      .Skin .QuestionOuter .Inner {
+        padding: $base-padding;
+      }
+      .Skin .EndOfSurvey{
+        background: $boxed-questions-background;
+      }
+    }
+
+    // Full Background Image
+    @if $background-cover-image-on == true {
+      #SurveyEngineBody {
+        background-image: url(background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+
+    // Absolute positioned footer
+    @if $absolute-position-footer-on == true{
+      html{
+        min-height: 100%;
+        position: relative;
+      }
+      #SurveyEngineBody{
+        height: 100%;
+      }
+      #FooterContainer{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+
+
+
+  ///////////////////////////////////////////////////////////////
+  // Mobile Selectors
+  ///////////////////////////////////////////////////////////////
+
+    // All mobile devices
+    @media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+      #SurveyEngineBody{
+        margin: ($base-margin / 2);
+      }
+      html .Skin #Logo {
+        background: url(logo-mobile.png) no-repeat $logo-horizontal-position;
+        background-size: $logo-width $logo-height;
+      }
+      html .CSS3 .Skin #Logo {
+        background: url(logo-mobile.png) no-repeat $logo-horizontal-position;
+        background-size: $logo-width $logo-height;
+      }
+      .Skin {
+        .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+          line-height: $mobile-label-line-height;
+          font-size: $mobile-label-font-size;
+        }
+      }
+    }
+
+    // Tablets
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+        line-height: $tablet-label-line-height;
+        font-size: $tablet-label-font-size;
+      }
+    }
