@@ -42,6 +42,7 @@
     $footer-text-align: left;
     $footer-container-padding: 0;
     $footer-container-background: transparent;
+    $footer-text-color: darken($body-background-color, 30%);
 
 
 
@@ -68,7 +69,6 @@
     $primary-color-reverse: #FFFFFF;
     $primary-color-hover: lighten($primary-color, 10%);
     $body-text-color: #555555;
-    $footer-text-color: darken($body-background-color, 30%);
     $base-border: 1px solid #CCCCCC;
     $base-seperator-color: #BBBBBB;
     $horizontal-seperator-color: #BBBBBB;
@@ -78,7 +78,7 @@
     // Box Shadows
     $large-element-box-shadow: 0 1px 4px #999999;
     $small-element-box-shadow: 0 1px 1px #CCCCCC;
-    $primary-color-box-shadow: 0 0 3px $primary-color;
+    $primary-color-box-shadow: 0 0 2px $primary-color;
 
     // Border Radius
     $large-element-border-radius-size: 5px;
@@ -180,7 +180,7 @@
 
     // Body
     #SurveyEngineBody {
-      margin: ($base-margin / 2);
+      margin: 0;
       background-color: $body-background-color;
       font-family: $base-font;
     }
@@ -249,11 +249,10 @@
       }
       .ReadableAlt,
       .LightBG {
-        background: darken($boxed-questions-background, 5%);
+        background: darken($body-background-color, 5%);
       }
       .ProgressBarFillContainer {
         @extend %small-element-border-radius;
-        @extend %small-element-box-shadow;
         border-color: $primary-color;
       }
       #Buttons {
@@ -275,7 +274,6 @@
       #Buttons #NextButton, #Buttons #PreviousButton {
         @extend %background-transition;
         @extend %small-element-border-radius;
-        @extend %small-element-box-shadow;
         color: $primary-color-reverse;
         font-size: $base-font-size;
         border:none;
@@ -313,10 +311,9 @@
       .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
       .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
       .PGR .DragAndDrop ul {
-        @extend %small-element-box-shadow;
         @extend %small-element-border-radius;
         background-color: $boxed-questions-background;
-         border: $base-border;
+        border: $base-border;
         font-size: $base-font-size;
         padding: 5px;
       }
@@ -362,7 +359,7 @@
       padding: $footer-container-padding;
       background: $footer-container-background;
       width: 100%;
-      margin: ($base-margin * 2) auto 0 auto;
+      margin: ($base-margin * 2) auto $base-margin auto;
       box-sizing: border-box;
     }
     #Footer {
