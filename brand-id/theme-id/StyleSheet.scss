@@ -321,12 +321,14 @@
       .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
       .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
       .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
-      .PGR .DragAndDrop ul {
-        @extend %small-element-border-radius;
-        background-color: $boxed-questions-background;
-        border: $base-border;
+      .PGR .DragAndDrop ul { 
         font-size: $base-font-size;
         padding: 5px;
+      }
+      input.TextEntryBox, .Skin .TE textarea, input[type="password"], input[type="text"], input[type="search"], select{
+        @extend %small-element-border-radius;
+        border: $base-border;
+        background-color: $boxed-questions-background;
       }
       .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,.TE .ESTB textarea:focus, .RO .RankInput:focus,
       .CS input.SumInput:focus, .CS input.SumTotal:focus, .Matrix .CS input:focus, .Matrix .RO input:focus,
