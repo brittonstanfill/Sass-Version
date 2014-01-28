@@ -28,6 +28,10 @@
     $logo-container-margin: 20px auto;
     $logo-container-padding: 0;
     $logo-container-background: transparent;
+    $header-text-align: left;
+    $header-container-margin: 0 auto;
+    $header-container-padding: 10px 0;
+    $header-container-background: $primary-color;
 
     // Background
     $background-cover-image-on: false; // NOTE: If true, must add "background.jpg" to folder
@@ -193,6 +197,14 @@
       width: 100%;
       box-sizing: border-box;
     }
+    .Skin #HeaderContainer {
+      @extend %small-element-box-shadow;
+      background: $header-container-background;
+      padding: $header-container-padding;
+      margin: $header-container-margin;
+      width: 100%;
+      box-sizing: border-box;
+    }
     html .Skin #Logo {
       height: $logo-height;
       max-width: $container-max-width;
@@ -233,13 +245,12 @@
         padding: ($base-padding / 2) 0;
       }
       #Header {
-        @extend %small-element-border-radius;
-        @extend %small-element-box-shadow;
         max-width: $container-max-width;
-        background: $primary-color;
-        padding: ($base-padding / 2) $base-padding;
         font-size: $base-font-size;
         color: $primary-color-reverse;
+        text-align: $header-text-align;
+        background: transparent;
+        padding: 0;
         margin: 0 auto;
         box-sizing: border-box;
         letter-spacing: 1px;
