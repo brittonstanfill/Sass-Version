@@ -78,11 +78,6 @@
     $horizontal-seperator-color: #BBBBBB;
     $main-container-background-color: #FFFFFF;
     $boxed-questions-background: #FFFFFF;
-  
-    // Box Shadows
-    $large-element-box-shadow: 0 1px 4px #999999;
-    $small-element-box-shadow: 0 1px 1px #CCCCCC;
-    $primary-color-box-shadow: 0 0 2px $primary-color;
 
     // Border Radius
     $large-element-border-radius-size: 5px;
@@ -129,13 +124,6 @@
            -o-border-radius: $small-element-border-radius-size;
               border-radius: $small-element-border-radius-size;
     }
-
-    // Input focus ring
-    %input-focus-primary-color-shadow {
-    -webkit-box-shadow: $primary-color-box-shadow;
-       -moz-box-shadow: $primary-color-box-shadow;
-            box-shadow: $primary-color-box-shadow;
-    } 
 
     // Variable border radius
     @mixin border-radius($border-radius-size) {
@@ -322,7 +310,6 @@
       .CS input.SumInput:focus, .CS input.SumTotal:focus, .Matrix .CS input:focus, .Matrix .RO input:focus,
       .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, .horizontalbar table.sliderGrid tr td.value input:focus,
       .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-        @extend %input-focus-primary-color-shadow;
         border: 1px solid $primary-color;
         outline: none;
       }
@@ -345,7 +332,7 @@
       .EndOfSurvey {
         @extend %large-element-border-radius;
         color: $body-text-color;
-        border: none;
+        border: $base-border;
         padding: 15px;
         line-height: 1.5em;
         text-align: center;
