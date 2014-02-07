@@ -225,6 +225,7 @@
           margin: 0 auto;
           box-sizing: border-box;
           letter-spacing: 1px;
+          min-height: $header-font-size;
         }
         .SkinInner {
           margin: $skin-inner-margin;
