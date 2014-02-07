@@ -1,52 +1,78 @@
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Common Changes
+// To Do List for Every Theme
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-  /////////////////////////////////
-  // Branding
-  /////////////////////////////////
-    
-    // Logo
+
+  ///////////////////////////////////////////////////////////////
+  // 1: Replace graphics & set the logo background image dimensions
+  ///////////////////////////////////////////////////////////////
+
+    // A. Replace "PageLogo.png" in "branding" folder
+    // B. Replace "logo-mobile.png"
+    // C. Replace "logo.png"
     $logo-width: 150px;
     $logo-height: 50px;
 
-    // Colors
-    $primary-color: #930B0F;
-    $body-background-color: #FFFFFF;
+
+
+  ///////////////////////////////////////////////////////////////
+  // 2: Change branding & layout options
+  ///////////////////////////////////////////////////////////////
     
-    // Font
-    $base-font: Helvetica, Arial, "Lucida Grande", sans-serif;
-
-
-
-  /////////////////////////////////
-  // Layout Options
-  /////////////////////////////////
-
-    // Logo
-    $logo-position: left center;
-    $logo-container-margin: 20px auto;
-    $logo-container-padding: 0;
-    $logo-container-background: transparent;
-    $header-text-align: left;
-    $header-container-margin: 0 auto;
-    $header-container-padding: 10px 10px;
-    $header-container-background: $primary-color;
+    // Color Scheme
+    $primary-color: #930B0F; 
 
     // Background
+    $body-background-color: #FFFFFF;
     $background-cover-image-on: false; // NOTE: If true, must add "background.jpg" to folder
 
+    // Logo & LogoContainer
+    $logo-container-background: #FFFFFF;
+    $logo-position: left center;
+    $logo-container-margin: 0px auto;
+    $logo-container-padding: 20px;
+
+    // Header
+    $header-container-background: $primary-color;
+    $header-text-align: left;
+    $header-container-margin: 0 auto;
+    $header-container-padding: 10px 20px;
+    $header-color: #FFFFFF;
+
+    // Font families
+    $base-font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    
     // Main Content
+    $border-radius-on: true;
+    $box-shadow-on: false;
+    $horizontal-seperator-on: false;
     $main-container-on: false;
     $boxed-questions-on: false;
-    $horizontal-seperator-on: false;
-
+    
     // Footer
-    $absolute-position-footer-on: false; // NOTE: If true, must adjust bottom margin of .Skin to allow enough room
-    $footer-text-align: left;
-    $footer-container-padding: 0;
-    $footer-container-background: transparent;
-    $footer-text-color: darken($body-background-color, 30%);
+    $footer-container-background: $body-background-color;
+    $absolute-position-footer-on: false;
+    $footer-text-align: center;
+    $footer-container-padding: 20px;
+    $footer-text-color: darken($footer-container-background, 30%);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,37 +82,41 @@
 // Everything Else
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
   // Base Style Variables
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
 
     // Constants
     $GOLDEN-RATIO: 1.618;
 
     // Typeography
-    $base-font-size: 15px;
+    $header-font-size: 20px;
+    $question-text-font-size: 17px;
+    $base-font-size: 14px;
+    $base-line-height: 1.3;
 
     // Containers
-    $container-max-width: 960px;
+    $container-max-width: 770px;
     
     // Colors
     $primary-color-reverse: #FFFFFF;
     $primary-color-hover: lighten($primary-color, 10%);
-    $body-text-color: #555555;
+    $base-text-color: #555555;
+    $question-text-color: $base-text-color;
     $base-border: 1px solid #CCCCCC;
     $base-seperator-color: #BBBBBB;
     $horizontal-seperator-color: #BBBBBB;
     $main-container-background-color: #FFFFFF;
     $boxed-questions-background: #FFFFFF;
 
-    // Border Radius
+    // Border radius
     $large-element-border-radius-size: 5px;
     $small-element-border-radius-size: 3px;
 
-    // Margins & Padding
+    // Margins & padding
     $base-margin: 20px;
     $base-padding: 20px;
-    $skin-inner-margin: $base-margin auto;
+    $skin-inner-margin: $base-margin auto ($base-margin * 5) auto;
     
     // Transitions
     $transition-speed: 0.3s;
@@ -99,30 +129,14 @@
 
 
 
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
   // Placeholders & Mixins
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
 
     // Static transitions
     %background-transition {
       transition: background $transition-speed;
       -webkit-transition: background $transition-speed;
-    }
-
-    // Static border radius
-    %large-element-border-radius {
-      -webkit-border-radius: $large-element-border-radius-size;
-         -moz-border-radius: $large-element-border-radius-size;
-          -ms-border-radius: $large-element-border-radius-size;
-           -o-border-radius: $large-element-border-radius-size;
-              border-radius: $large-element-border-radius-size;
-    }
-    %small-element-border-radius {
-      -webkit-border-radius: $small-element-border-radius-size;
-         -moz-border-radius: $small-element-border-radius-size;
-          -ms-border-radius: $small-element-border-radius-size;
-           -o-border-radius: $small-element-border-radius-size;
-              border-radius: $small-element-border-radius-size;
     }
 
     // Variable border radius
@@ -154,33 +168,18 @@
 
 
 
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
   // General Selectors
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
 
     // Body
     #SurveyEngineBody {
-      margin: 0;
       background-color: $body-background-color;
-      font-family: $base-font;
+      font-family: $base-font-family;
+      margin: 0;
     }
 
-    // Logo & Logo Container
-    .Skin #LogoContainer {
-      background: $logo-container-background;
-      padding: $logo-container-padding;
-      margin: $logo-container-margin;
-      width: 100%;
-      box-sizing: border-box;
-      display: inline-block;
-    }
-    .Skin #HeaderContainer {
-      background: $header-container-background;
-      padding: $header-container-padding;
-      margin: $header-container-margin;
-      width: 100%;
-      box-sizing: border-box;
-    }
+    // Logo
     html .Skin #Logo {
       height: $logo-height;
       max-width: $container-max-width;
@@ -190,174 +189,219 @@
     html .Skin #Logo {
       background: url(logo.png) no-repeat $logo-position;
       background-size: $logo-width $logo-height;
-      margin: 0 auto;
     }
     html .CSS3 .Skin #Logo {
       background: url(logo.png) no-repeat $logo-position;
       background-size: $logo-width $logo-height;
-      margin: 0 auto;
+      margin: $logo-container-margin;
     }
 
+    // .Skin
     .Skin {
       font-size: $base-font-size;
 
-      // Everything Sub .Skin
-      .SkinInner {
-        margin: $skin-inner-margin;
-        width: $container-max-width;
-      }
-      #SkinContent {
-        color: $body-text-color;
-        background-color: transparent;
-      }
-      #Questions {
-        padding: 0 0 $base-padding 0;
-        width: 100%;
-      }
-      .QuestionOuter {
-        padding: 0;
-      }
-      .QuestionOuter .Inner {
-        padding: ($base-padding / 2) 0;
-      }
-      #Header {
-        max-width: $container-max-width;
-        font-size: $base-font-size;
-        color: $primary-color-reverse;
-        text-align: $header-text-align;
-        background: transparent;
-        padding: 0;
-        margin: 0 auto;
-        box-sizing: border-box;
-        letter-spacing: 1px;
-      }
-      .SkinInner table {
-        color: $body-text-color;
-      }
-      .ReadableAlt,
-      .LightBG {
-        background: darken($body-background-color, 5%);
-      }
-      .ProgressBarFillContainer {
-        @extend %small-element-border-radius;
-        border-color: $primary-color;
-      }
-      #Buttons {
-        padding: $base-padding 0;
-      }
-      #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
-      .RO .DND .rank,.ProgressBarFill, .ProgressBarFill {
-        background: $primary-color;
-      }
-      .RO .DND ul li:hover{
-        background: darken($boxed-questions-background, 20%);
-      }
-      .horizontalbar tr.xlabel th:last-child {
-        border-bottom-color: transparent;
-      }
-      #Buttons #PreviousButton {
-        float: left;
-      }
-      #Buttons #NextButton, #Buttons #PreviousButton {
-        @extend %background-transition;
-        @extend %small-element-border-radius;
-        color: $primary-color-reverse;
-        font-size: $base-font-size;
-        border:none;
-        text-decoration: none;
-        position: relative;
-        padding: ($base-padding / 2) $base-padding;
-        cursor: pointer;
-        margin: 0;
-        text-align: center;
-        -webkit-appearance: none;
-        &:active,:hover {
-          box-shadow: none;
-          top: 0px;
-          -webkit-appearance: none;
+        // Everything Sub .Skin
+        #LogoContainer {
+          background: $logo-container-background;
+          padding: $logo-container-padding;
+          margin: $logo-container-margin;
+          width: 100%;
+          box-sizing: border-box;
+          display: inline-block;
         }
-          &:hover, &:active {
-            background: $primary-color-hover;
-          }
+        #HeaderContainer {
+          background: $header-container-background;
+          padding: $header-container-padding;
+          margin: $header-container-margin;
+          width: 100%;
+          box-sizing: border-box;
         }
-      .Separator {
-        @if $horizontal-seperator-on == true {
-          background-color: $horizontal-seperator-color;
+        #Header {
+          max-width: $container-max-width;
+          font-size: $header-font-size;
+          color: $header-color;
+          text-align: $header-text-align;
+          background: transparent;
+          padding: 0;
+          margin: 0 auto;
+          box-sizing: border-box;
+          letter-spacing: 1px;
         }
-        @else {
+        .SkinInner {
+          margin: $skin-inner-margin;
+          max-width: $container-max-width;
+          width: 100%;
+        }
+        #SkinContent {
+          color: $base-text-color;
           background-color: transparent;
         }
-      }
-      .BorderColor {
-        border-color: $base-seperator-color;
-      }
-      .ProgressBarFill {
-        padding: 2px 0px;
-      }
-      .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
-      .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
-      .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
-      .PGR .DragAndDrop ul { 
-        font-size: $base-font-size;
-        padding: 5px;
-      }
-      input.TextEntryBox, .Skin .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], select{
-        @extend %small-element-border-radius;
-        border: $base-border;
-        background-color: $boxed-questions-background;
-      }
-      .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,.TE .ESTB textarea:focus, .RO .RankInput:focus,
-      .CS input.SumInput:focus, .CS input.SumTotal:focus, .Matrix .CS input:focus, .Matrix .RO input:focus,
-      .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, .horizontalbar table.sliderGrid tr td.value input:focus,
-      .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-        border: 1px solid $primary-color;
-        outline: none;
-      }
-      select{
-        @extend %small-element-border-radius;
-        border: $base-border;
-        font-size: $base-font-size;
-      }
-      .QuestionText {
-        font-size: $base-font-size; // Golden ratio
-        color: $body-text-color;
-        margin-bottom: ($base-margin / 2);
-        padding: 5px;
-        margin-top: 0;
-        font-weight: bold;
-      }
-      .PreviewBanner {
-        color: #4d4d4d;
-      }
-      .EndOfSurvey {
-        @extend %large-element-border-radius;
-        color: $body-text-color;
-        border: $base-border;
-        padding: 15px;
-        line-height: 1.5em;
-        text-align: center;
-        margin-bottom: 15px;
-      }
+        #Questions {
+          padding: 0 0 $base-padding 0;
+          width: 100%;
+        }
+        .QuestionOuter {
+          padding: 0;
+        }
+        .QuestionOuter .Inner {
+          padding: ($base-padding / 2) 0;
+        }
+        .Seperator{
+          background: transparent;
+        }
+        .SkinInner table {
+          color: $base-text-color;
+        }
+        .ReadableAlt,
+        .LightBG {
+          background: darken($body-background-color, 5%);
+        }
+        .ProgressBarFillContainer {
+          @if $border-radius-on == true{
+            @include border-radius($small-element-border-radius-size);
+          }
+          @else{
+            @include border-radius(0); 
+          }
+          @if $box-shadow-on == true{
+            @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
+          }
+          border-color: $primary-color;
+        }
+        #Buttons {
+          padding: $base-padding 0;
+        }
+        #Buttons #NextButton, #Buttons #PreviousButton, .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, 
+        .RO .DND .rank,.ProgressBarFill, .ProgressBarFill {
+          background: $primary-color;
+        }
+        .RO .DND ul li:hover{
+          background: darken($boxed-questions-background, 20%);
+        }
+        .horizontalbar tr.xlabel th:last-child {
+          border-bottom-color: transparent;
+        }
+        #Buttons #PreviousButton {
+          float: left;
+        }
+        #Buttons #NextButton, #Buttons #PreviousButton {
+          @extend %background-transition;
+          @if $border-radius-on == true{
+            @include border-radius($small-element-border-radius-size);
+          }
+          @else{
+            @include border-radius(0); 
+          }
+          @if $box-shadow-on == true{
+            @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
+          }
+          color: $primary-color-reverse;
+          font-size: $base-font-size;
+          padding: ($base-padding / 2) $base-padding;
+          border:none;
+          text-decoration: none;
+          position: relative;
+          cursor: pointer;
+          margin: 0;
+          text-align: center;
+          -webkit-appearance: none;
+            &:active,&:hover {
+              background: $primary-color-hover;
+              box-shadow: none;
+              top: 0px;
+              -webkit-appearance: none;
+            }
+          }
+        .BorderColor {
+          border-color: $base-seperator-color;
+        }
+        .ProgressBarFill {
+          padding: ($base-padding / 10) 0px;
+        }
+        .QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
+        .CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
+        .SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
+        .PGR .DragAndDrop ul { 
+          font-size: $base-font-size;
+          padding: ($base-padding / 4);
+        }
+        input.TextEntryBox, .Skin .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], select{
+          @if $border-radius-on == true{
+            @include border-radius($small-element-border-radius-size);
+          }
+          @else{
+            @include border-radius(0); 
+          }
+          @if $box-shadow-on == true{
+            @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
+          }
+          border: $base-border;
+          background-color: $boxed-questions-background;
+        }
+        .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,.TE .ESTB textarea:focus, .RO .RankInput:focus,
+        .CS input.SumInput:focus, .CS input.SumTotal:focus, .Matrix .CS input:focus, .Matrix .RO input:focus,
+        .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, .horizontalbar table.sliderGrid tr td.value input:focus,
+        .PGR .DragAndDrop ul:focus, select:focus, input:focus {
+          border: 1px solid $primary-color;
+          outline: none;
+        }
+        select{
+          @if $border-radius-on == true{
+            @include border-radius($small-element-border-radius-size);
+          }
+          @else{
+            @include border-radius(0); 
+          }
+          @if $box-shadow-on == true{
+            @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
+          }
+          border: $base-border;
+          font-size: $base-font-size;
+        }
+        .QuestionText, label.QuestionText.BorderColor {
+          font-size: $question-text-font-size;
+          color: $question-text-color;
+          margin-bottom: ($base-margin / 2);
+          padding: ($base-padding / 4);
+          margin-top: 0;
+        }
+        .EndOfSurvey {
+          @if $border-radius-on == true{
+            @include border-radius($large-element-border-radius-size);
+          }
+          @else{
+            @include border-radius(0); 
+          }
+          @if $box-shadow-on == true{
+            @include box-shadow(1px, 1px, 5px, darken($body-background-color, 20%));
+          }
+          color: $base-text-color;
+          border: $base-border;
+          padding: $base-padding;
+          line-height: $base-line-height;
+          margin-bottom: ($base-margin);
+          text-align: $footer-text-align;
+        }
     }
 
     // Footer
-    #FooterContainer {
+    #FooterContainer, .Skin #FooterContainer {
       padding: $footer-container-padding;
       background: $footer-container-background;
+      margin: 0 auto;
       width: 100%;
-      margin: ($base-margin * 2) auto $base-margin auto;
       box-sizing: border-box;
     }
-    #Footer {
+    #Footer, .Skin #Footer {
       color: $footer-text-color;
       font-size: $base-font-size * ($GOLDEN-RATIO / 2);
       max-width: $container-max-width;
+      text-align: $footer-text-align;
       margin: 0 auto;
       width: auto;
-      text-align: $footer-text-align;
       padding: 0;
     }
-    #Plug {
+    #Plug, .Skin #Plug {
       color: $footer-text-color;
       max-width: $container-max-width;
       text-align: $footer-text-align;
@@ -371,14 +415,22 @@
 
 
 
-  /////////////////////////////////
-  // Conditional Options
-  /////////////////////////////////
+  ///////////////////////////////////////////////////////////////
+  // Other Conditional Options
+  ///////////////////////////////////////////////////////////////
 
     // Main Container
     @if $main-container-on == true{
       .Skin .SkinInner{
-        @extend %large-element-border-radius;
+        @if $border-radius-on == true{
+          @include border-radius($large-element-border-radius-size);
+        }
+        @else{
+          @include border-radius(0); 
+        }
+        @if $box-shadow-on == true{
+          @include box-shadow(1px, 1px, 5px, darken($body-background-color, 20%));
+        }
         background: $main-container-background-color;
       }
       .Skin #Questions{
@@ -398,7 +450,15 @@
     // Boxed Questions
     @if $boxed-questions-on == true{
       .Skin .QuestionOuter {
-        @extend %large-element-border-radius;
+        @if $border-radius-on == true{
+          @include border-radius($large-element-border-radius-size);
+        }
+        @else{
+          @include border-radius(0); 
+        }
+        @if $box-shadow-on == true{
+          @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
+        }
         background: $boxed-questions-background;
       }
       .Skin .QuestionOuter{
@@ -418,6 +478,13 @@
         background: url(background.jpg) center fixed;
         background-size: auto 100%;
         background-repeat: no-repeat;
+      }
+    }
+
+    // Horizontal Seperator
+    @if $horizontal-seperator-on == true {
+      .Skin .Separator {  
+        background-color: $horizontal-seperator-color;
       }
     }
 
@@ -445,29 +512,52 @@
   ///////////////////////////////////////////////////////////////
 
     // All mobile devices
-    @media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
-      #SurveyEngineBody{
-        margin: ($base-margin / 2);
-      }
+    @media only screen 
+    and (min-device-width: 300px)
+    and (max-device-width: $container-max-width) {
       html .Skin #Logo {
-        background: url(logo-mobile.png) no-repeat $logo-position;
+        background: url(logo-mobile.png) no-repeat center center;
         background-size: $logo-width $logo-height;
       }
       html .CSS3 .Skin #Logo {
-        background: url(logo-mobile.png) no-repeat $logo-position;
+        background: url(logo-mobile.png) no-repeat center center;
         background-size: $logo-width $logo-height;
       }
       .Skin {
+        
+        // Everything sub .Skin
+        #Header{
+          text-align: center;
+        }
         .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
           line-height: $mobile-label-line-height;
           font-size: $mobile-label-font-size;
+        }
+        .SkinInner {
+          margin: $base-margin auto ($base-margin * 3) auto !important;
+          max-width: $container-max-width;
+          width: 100%;
+        }
+        #Questions{
+          padding: $base-padding 0;
+        }
+        .QuestionOuter{
+          padding: 0 ($base-padding / 2);
+        }
+        .QuestionOuter .Inner {
+          padding: ($base-padding / 2);
+        }
+        #Buttons{
+          padding: $base-padding;
         }
       }
     }
 
     // Tablets
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-      .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+    @media only screen 
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px) {
+      .Skin .MC .MAVR .QuestionBody label,.Skin .MC .SAVR .QuestionBody label {
         line-height: $tablet-label-line-height;
         font-size: $tablet-label-font-size;
       }
