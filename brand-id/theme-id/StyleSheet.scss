@@ -51,7 +51,7 @@
     
     // Footer
     $footer-container-background: $body-background-color;
-    $absolute-position-footer-on: false;
+    $absolute-position-footer-on: true;
     $footer-text-align: center;
     $footer-container-padding: 20px;
     $footer-text-color: darken($footer-container-background, 30%);
