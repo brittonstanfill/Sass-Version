@@ -123,7 +123,7 @@
 
     // Mobile
     $mobile-label-font-size: 15px;
-    $mobile-label-line-height: 48px;
+    $mobile-label-line-height: 36px;
     $tablet-label-font-size: 15px;
     $tablet-label-line-height: 36px;
 
@@ -245,6 +245,9 @@
         }
         .QuestionOuter .Inner {
           padding: ($base-padding / 2) 0;
+        }
+        .Matrix input{
+          margin: 0 auto;
         }
         .Seperator{
           background: transparent;
