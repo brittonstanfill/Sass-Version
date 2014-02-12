@@ -229,12 +229,13 @@
         }
         .SkinInner {
           margin: $skin-inner-margin;
-          max-width: $container-max-width;
+          max-width: ($container-max-width + ($base-margin * 2));
           width: 100%;
         }
         #SkinContent {
           color: $base-text-color;
           background-color: transparent;
+          margin:0 $base-margin;
         }
         #Questions {
           padding: 0 0 $base-padding 0;
@@ -528,7 +529,7 @@
         background-size: $logo-width $logo-height;
       }
       .Skin {
-        
+
         // Everything sub .Skin
         #Header{
           text-align: center;
@@ -541,6 +542,9 @@
           margin: $base-margin auto ($base-margin * 3) auto !important;
           max-width: $container-max-width;
           width: 100%;
+        }
+        #SkinContent {
+          margin:0;
         }
         #Questions{
           padding: $base-padding 0;
