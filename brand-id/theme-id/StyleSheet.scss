@@ -358,6 +358,7 @@
           @if $box-shadow-on == true{
             @include box-shadow(1px, 1px, 3px, darken($body-background-color, 20%));
           }
+          color: $base-text-color;
           border: $base-border;
           font-size: $base-font-size;
         }
