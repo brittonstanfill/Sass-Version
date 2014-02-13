@@ -51,7 +51,7 @@
     
     // Footer
     $footer-container-background: $body-background-color;
-    $absolute-position-footer-on: true;
+    $absolute-position-footer-on: false;
     $footer-text-align: center;
     $footer-container-padding: 20px;
     $footer-text-color: darken($footer-container-background, 30%);
@@ -539,7 +539,7 @@
           font-size: $mobile-label-font-size;
         }
         .SkinInner {
-          margin: $base-margin auto ($base-margin * 3) auto !important;
+          margin: $skin-inner-margin;
           max-width: $container-max-width;
           width: 100%;
         }
