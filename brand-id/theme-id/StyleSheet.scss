@@ -230,7 +230,12 @@
         }
         .SkinInner {
           margin: $skin-inner-margin;
-          max-width: ($container-max-width + ($base-padding * 2));
+          @if $main-container-on == false{
+            max-width: ($container-max-width + ($base-padding * 2));
+          }
+          @if $main-container-on == true{
+            max-width: $container-max-width;
+          }
           width: 100%;
         }
         #SkinContent {
