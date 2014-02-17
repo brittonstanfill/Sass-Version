@@ -12,7 +12,8 @@
     // C. Replace "logo.png"
     $logo-width: 150px;
     $logo-height: 50px;
-
+    $logo-mobile-width: $logo-width;
+    $logo-mobile-height: $logo-height;
 
 
   ///////////////////////////////////////////////////////////////
@@ -522,11 +523,13 @@
     and (max-device-width: $container-max-width) {
       html .Skin #Logo {
         background: url(logo-mobile.png) no-repeat center center;
-        background-size: $logo-width $logo-height;
+        background-size: $logo-mobile-width $logo-mobile-height;
+        height:$logo-mobile-height;
       }
       html .CSS3 .Skin #Logo {
-        background: url(logo-mobile.png) no-repeat center center;
-        background-size: $logo-width $logo-height;
+        background: url(logo-mobile-mobile.png) no-repeat center center;
+        background-size: $logo-mobile-width $logo-mobile-height;
+        height:$logo-mobile-height;
       }
       .Skin {
 
