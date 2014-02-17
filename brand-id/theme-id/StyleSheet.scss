@@ -107,8 +107,8 @@
     $base-border: 1px solid #CCCCCC;
     $base-seperator-color: #BBBBBB;
     $horizontal-seperator-color: #BBBBBB;
-    $main-container-background-color: #FFFFFF;
-    $boxed-questions-background: #FFFFFF;
+    $main-container-background-color: #f1f1f1;
+    $boxed-questions-background: #F1F1F1;
 
     // Border radius
     $large-element-border-radius-size: 5px;
@@ -230,13 +230,15 @@
         }
         .SkinInner {
           margin: $skin-inner-margin;
-          max-width: $container-max-width;
+          max-width: ($container-max-width + ($base-padding * 2));
           width: 100%;
         }
         #SkinContent {
           color: $base-text-color;
           background-color: transparent;
-          margin:0;
+          @if $main-container-on == false{
+            margin:0 $base-padding;
+          }
         }
         #Questions {
           padding: 0 0 $base-padding 0;

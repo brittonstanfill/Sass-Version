@@ -49,12 +49,12 @@ html .CSS3 .Skin #Logo {
     min-height: 20px; }
   .Skin .SkinInner {
     margin: 20px auto 100px auto;
-    max-width: 770px;
+    max-width: 810px;
     width: 100%; }
   .Skin #SkinContent {
     color: #555555;
     background-color: transparent;
-    margin: 0; }
+    margin: 0 20px; }
   .Skin #Questions {
     padding: 0 0 20px 0;
     width: 100%; }
@@ -84,7 +84,7 @@ html .CSS3 .Skin #Logo {
   .Skin .RO .DND .rank, .Skin .ProgressBarFill, .Skin .ProgressBarFill {
     background: #930b0f; }
   .Skin .RO .DND ul li:hover {
-    background: #cccccc; }
+    background: #bebebe; }
   .Skin .horizontalbar tr.xlabel th:last-child {
     border-bottom-color: transparent; }
   .Skin #Buttons #PreviousButton {
@@ -127,7 +127,7 @@ html .CSS3 .Skin #Logo {
     -o-border-radius: 3px;
     border-radius: 3px;
     border: 1px solid #cccccc;
-    background-color: white; }
+    background-color: #f1f1f1; }
   .Skin .QuestionBody .TextEntryBox:focus, .Skin .TE textarea:focus, .Skin .TE input:focus, .Skin .TE .ML textarea:focus, .Skin .TE .ESTB textarea:focus, .Skin .RO .RankInput:focus,
   .Skin .CS input.SumInput:focus, .Skin .CS input.SumTotal:focus, .Skin .Matrix .CS input:focus, .Skin .Matrix .RO input:focus,
   .Skin .SBS .Long:focus, .Skin .horizontalbar tr.Stars td.value input:focus, .Skin .horizontalbar table.sliderGrid tr td.value input:focus,
