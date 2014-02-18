@@ -125,6 +125,7 @@
     // Mobile
     $mobile-label-font-size: 15px;
     $mobile-label-line-height: 48px;
+    $mobile-label-MAVR-line-height: 36px;
     $tablet-label-font-size: 15px;
     $tablet-label-line-height: 36px;
 
@@ -544,9 +545,13 @@
         #Header{
           text-align: center;
         }
-        .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+        .MC .SAVR .QuestionBody label {
           line-height: $mobile-label-line-height;
           font-size: $mobile-label-font-size;
+        }
+        .MC .MAVR .QuestionBody label {
+           line-height:  $mobile-label-MAVR-line-height;
+           font-size: $mobile-label-font-size;
         }
         .SkinInner {
           margin: $skin-inner-margin;
