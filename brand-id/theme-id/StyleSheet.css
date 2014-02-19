@@ -48,7 +48,7 @@ html .CSS3 .Skin #Logo {
     letter-spacing: 1px;
     min-height: 20px; }
   .Skin .SkinInner {
-    margin: 20px auto 100px auto;
+    margin: 20px auto 100px auto !important;
     max-width: 810px;
     width: 100%; }
   .Skin #SkinContent {
@@ -208,7 +208,7 @@ html .CSS3 .Skin #Logo {
     line-height: 36px;
     font-size: 15px; }
   .Skin .SkinInner {
-    margin: 20px auto 100px auto;
+    margin: 20px auto 100px auto !important;
     max-width: 770px;
     width: 100%; }
   .Skin #SkinContent {
