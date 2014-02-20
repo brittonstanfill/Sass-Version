@@ -21,7 +21,7 @@
   ///////////////////////////////////////////////////////////////
     
     // Color Scheme
-    $primary-color: #AEAEAE; 
+    $primary-color: #9E0B0F; 
 
     // Background
     $body-background-color: #FFFFFF;
@@ -140,6 +140,11 @@
       transition: background $transition-speed;
       -webkit-transition: background $transition-speed;
     }
+    %border-box{
+      -webkit-box-sizing: border-box; // Safari/Chrome, other WebKit
+      -moz-box-sizing: border-box;    // Firefox, other Gecko
+      box-sizing: border-box;         // Opera/IE 8+ */
+    }
 
     // Variable border radius
     @mixin border-radius($border-radius-size) {
@@ -208,14 +213,14 @@
           padding: $logo-container-padding;
           margin: $logo-container-margin;
           width: 100%;
-          box-sizing: border-box;
+          @extend %border-box;
           display: inline-block;
         }
         #HeaderContainer {
           background: $header-container-background;
           padding: $header-container-padding;
           margin: $header-container-margin;
-          box-sizing: border-box;
+          @extend %border-box;
         }
         #Header {
           max-width: $container-max-width;
@@ -225,7 +230,7 @@
           background: transparent;
           padding: 0;
           margin: 0 auto;
-          box-sizing: border-box;
+          @extend %border-box;
           letter-spacing: 1px;
           min-height: $header-font-size;
         }
@@ -404,7 +409,7 @@
       background: $footer-container-background;
       margin: 0 auto;
       width: 100%;
-      box-sizing: border-box;
+      @extend %border-box;
     }
     #Footer, .Skin #Footer {
       color: $footer-text-color;
