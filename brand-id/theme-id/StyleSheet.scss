@@ -21,7 +21,7 @@
   ///////////////////////////////////////////////////////////////
     
     // Color Scheme
-    $primary-color: #930B0F; 
+    $primary-color: #9E0B0F; 
 
     // Background
     $body-background-color: #FFFFFF;
@@ -125,6 +125,7 @@
     // Mobile
     $mobile-label-font-size: 15px;
     $mobile-label-line-height: 48px;
+    $mobile-label-MAVR-line-height: 36px;
     $tablet-label-font-size: 15px;
     $tablet-label-line-height: 36px;
 
@@ -138,6 +139,11 @@
     %background-transition {
       transition: background $transition-speed;
       -webkit-transition: background $transition-speed;
+    }
+    %border-box{
+      -webkit-box-sizing: border-box; // Safari/Chrome, other WebKit
+      -moz-box-sizing: border-box;    // Firefox, other Gecko
+      box-sizing: border-box;         // Opera/IE 8+ */
     }
 
     // Variable border radius
@@ -207,14 +213,14 @@
           padding: $logo-container-padding;
           margin: $logo-container-margin;
           width: 100%;
-          box-sizing: border-box;
+          @extend %border-box;
           display: inline-block;
         }
         #HeaderContainer {
           background: $header-container-background;
           padding: $header-container-padding;
           margin: $header-container-margin;
-          box-sizing: border-box;
+          @extend %border-box;
         }
         #Header {
           max-width: $container-max-width;
@@ -224,7 +230,7 @@
           background: transparent;
           padding: 0;
           margin: 0 auto;
-          box-sizing: border-box;
+          @extend %border-box;
           letter-spacing: 1px;
           min-height: $header-font-size;
         }
@@ -403,7 +409,7 @@
       background: $footer-container-background;
       margin: 0 auto;
       width: 100%;
-      box-sizing: border-box;
+      @extend %border-box;
     }
     #Footer, .Skin #Footer {
       color: $footer-text-color;
@@ -544,9 +550,13 @@
         #Header{
           text-align: center;
         }
-        .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+        .MC .SAVR .QuestionBody label {
           line-height: $mobile-label-line-height;
           font-size: $mobile-label-font-size;
+        }
+        .MC .MAVR .QuestionBody label {
+           line-height:  $mobile-label-MAVR-line-height;
+           font-size: $mobile-label-font-size;
         }
         .SkinInner {
           margin: $skin-inner-margin;
