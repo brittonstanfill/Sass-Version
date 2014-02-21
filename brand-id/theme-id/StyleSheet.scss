@@ -26,6 +26,7 @@
     // Background
     $body-background-color: #FFFFFF;
     $background-cover-image-on: false; // NOTE: If true, must add "background.jpg" to folder
+    $background-repeat-image-on: false; // NOTE: If true, must add "background.jpg" to folder
 
     // Logo & LogoContainer
     $logo-container-background: #FFFFFF;
@@ -497,6 +498,13 @@
         background: url(background.jpg) center fixed;
         background-size: auto 100%;
         background-repeat: no-repeat;
+      }
+    }
+
+    // Repeating background image
+    @if $background-repeat-image-on == true {
+      #SurveyEngineBody {
+        background: url(background.jpg) repeat;
       }
     }
 
