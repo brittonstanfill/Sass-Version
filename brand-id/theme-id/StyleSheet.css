@@ -222,6 +222,15 @@ html .CSS3 .Skin #Logo {
     padding: 0 10px; }
   .Skin .QuestionOuter .Inner {
     padding: 10px; }
+  .Skin .TE input,
+  .Skin input.TextEntryBox,
+  .Skin .TE textarea,
+  .Skin .TE .ESTB textarea,
+  .Skin textarea,
+  .Skin input[type="password"],
+  .Skin input[type="text"],
+  .Skin input[type="search"] {
+    width: 100% !important; }
   .Skin #Buttons {
     padding: 20px; } }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {

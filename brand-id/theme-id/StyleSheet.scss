@@ -587,6 +587,17 @@
         .QuestionOuter .Inner {
           padding: ($base-padding / 2);
         }
+        .TE input,
+        input.TextEntryBox, 
+        .TE textarea, 
+        .TE .ESTB textarea, 
+        textarea,
+        input[type="password"],
+        input[type="text"],
+        input[type="search"] {
+          width:100% !important;
+        }
+
         #Buttons{
           padding: $base-padding;
         }
