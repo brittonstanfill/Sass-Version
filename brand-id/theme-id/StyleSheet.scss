@@ -498,7 +498,7 @@
 
     // Full Background Image
     @if $background-cover-image-on == true {
-      #SurveyEngineBody {
+      .Skin {
         background: url(background.jpg) center fixed;
         background-size: auto 100%;
         background-repeat: no-repeat;
@@ -507,7 +507,7 @@
 
     // Repeating background image
     @if $background-repeat-image-on == true {
-      #SurveyEngineBody {
+      .Skin {
         background: url(background.jpg) repeat;
       }
     }
