@@ -535,8 +535,11 @@
         left: 0;
       }
     }
-
-
+    
+// Fix for Table of Contents
+body.TocMargin div.Skin {
+margin-left: 0px;
+}
 
   ///////////////////////////////////////////////////////////////
   // Mobile Selectors
@@ -546,6 +549,12 @@
     @media only screen 
     and (min-device-width: 300px)
     and (max-device-width: $container-max-width) {
+      
+      // Fix for Table of Contents
+      #TocSidebarContainer.reduced {
+        left: 10px;
+      }
+
       html .Skin #Logo {
         background: url(logo-mobile.png) no-repeat center center;
         background-size: $logo-mobile-width $logo-mobile-height;
