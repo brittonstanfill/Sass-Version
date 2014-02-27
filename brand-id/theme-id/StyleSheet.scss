@@ -536,10 +536,14 @@
       }
     }
     
-// Fix for Table of Contents
-body.TocMargin div.Skin {
-margin-left: 0px;
-}
+    // Fix for Table of Contents
+    body.TocMargin div.Skin {
+    margin-left: 0px;
+    }
+
+    #TocSidebarContainer.reduced {
+      left: 10px;
+    }
 
   ///////////////////////////////////////////////////////////////
   // Mobile Selectors
@@ -549,11 +553,6 @@ margin-left: 0px;
     @media only screen 
     and (min-device-width: 300px)
     and (max-device-width: $container-max-width) {
-      
-      // Fix for Table of Contents
-      #TocSidebarContainer.reduced {
-        left: 10px;
-      }
 
       html .Skin #Logo {
         background: url(logo-mobile.png) no-repeat center center;
