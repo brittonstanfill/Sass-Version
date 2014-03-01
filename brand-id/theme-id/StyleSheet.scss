@@ -273,7 +273,7 @@
         }
         .ReadableAlt,
         .LightBG {
-          background: darken($body-background-color, 5%);
+          background: darken($main-container-background-color, 5%);
         }
         .ProgressBarFillContainer {
           @if $border-radius-on == true{
