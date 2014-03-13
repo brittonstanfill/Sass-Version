@@ -344,11 +344,12 @@
           font-size: $base-font-size;
           padding: ($base-padding / 4);
         }
-        input.TextEntryBox, .Skin .TE textarea, .TE .ESTB textarea, textarea, input[type="password"], input[type="text"], input[type="search"]{
+        input.TextEntryBox, .TE textarea, .TE .ESTB textarea, textarea, input[type="password"], input[type="text"], input[type="search"]{
           @extend %border-box;
           max-width:100%;
+          width:100%;
         }
-        input.TextEntryBox, .Skin .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], select{
+        input.TextEntryBox, .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], select{
           @if $border-radius-on == true{
             @include border-radius($small-element-border-radius-size);
           }
