@@ -621,4 +621,8 @@
         line-height: $tablet-label-line-height;
         font-size: $tablet-label-font-size;
       }
+
+      #SurveyEngineBody.iOS .Skin .SkinInner, #SurveyEngineBody.Android .Skin .SkinInner {
+        max-width: $container-max-width !important;
+      }
     }
