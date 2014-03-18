@@ -588,10 +588,20 @@
           margin:0;
         }
         #Questions{
-          padding: $base-padding 0;
+          @if $boxed-questions-on == true{
+          padding: 0;
+          }
+          @else{
+          padding: $base-padding 0; 
+          }
         }
         .QuestionOuter{
-          padding: 0 ($base-padding / 2);
+          @if $boxed-questions-on == true{
+          padding: ($base-padding / 2);
+          }
+          @else{
+          padding: 0 ($base-padding / 2); 
+          }
         }
         .QuestionOuter .Inner {
           padding: ($base-padding / 2);
