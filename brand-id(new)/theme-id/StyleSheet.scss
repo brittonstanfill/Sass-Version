@@ -296,6 +296,7 @@ html {
 		background-color: $button-background-color;
 		border: $button-border;
 		@if $button-border-radius-on == true {@include border-radius($button-border-radius)}
+		@else if $button-border-radius-on == false {@include border-radius(0px)}
 		color: $button-text-color;
 		cursor: pointer;
 		font-size: $default-font-size;
@@ -303,15 +304,19 @@ html {
 		padding: $button-padding;
 		text-align: center;
 		text-decoration: none;
+		-webkit-appearance: none;
 
-		&:active {
-			border-color: darken($button-background-color, 10%);
-			color: darken($button-background-color, 10%);
-		}
+		@media only screen and (min-device-width: 1024px) {
 
-		&:hover {
-			background-color: $button-text-color;
-			color: $button-background-color;
+			&:active {
+				border-color: darken($button-background-color, 10%);
+				color: darken($button-background-color, 10%);
+			}
+
+			&:hover {
+				background-color: $button-text-color;
+				color: $button-background-color;
+			}
 		}
 	}
 
