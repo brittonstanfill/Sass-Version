@@ -98,7 +98,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 
 	//PLUG
 	$plug-font-size: $footer-font-size;
-	$plug-padding: 30px 0px;
+	$plug-padding: 30px $default-container-padding;
 	$plug-link-color: $primary-color;
 	$plug-text-color: $footer-text-color;
 
@@ -256,6 +256,10 @@ html {
 	}
 
 	.Matrix input {margin: 2px auto;}
+
+	.Skin .Matrix .TE .Long td input,.Skin .Matrix .TE .Medium td input, .Skin .Matrix .TE .Short td input {
+		margin: 0 auto;
+	}
 
 	.Seperator {background: transparent;}
 
