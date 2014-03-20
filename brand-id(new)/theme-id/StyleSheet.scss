@@ -41,7 +41,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$logo-mobile-height: auto;
 	$logo-mobile-width: 90%;
 	$logo-margin: 0px auto;
-	$logo-padding: 30px $default-container-padding;
+	$logo-padding: 25px $default-container-padding;
 	$logo-max-width: $container-max-width;
 	$logo-image: url("logo.png");
 	$logo-mobile-image: url("logo-mobile.png");
@@ -60,24 +60,24 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$header-text-color: lighten($primary-color, 100%);
 
 	//SKIN INNER
-	$skin-inner-margin: 0px auto;
+	$skin-inner-margin: 30px auto;
 	$skin-inner-max-width: $container-max-width;
 
 	//SKIN CONTENT
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
 	$skin-content-border-radius: $default-border-radius;
-	$skin-content-padding: 0px $default-container-padding;
 
 	//QUESTIONS
 	$question-body-font-size: $default-font-size;
 	$question-body-text-color: $default-text-color;
+	$question-outer-padding: 0px $default-container-padding;
 	$question-text-font-size: ($default-font-size + 2);
 	$question-text-color: $default-text-color;
-	$questions-padding: 0px;
 
 	//PROGRESS BAR
 	$progress-bar-background-color: $secondary-color;
 	$progress-bar-border-radius: $default-border-radius;
+	$progress-bar-padding: 20px $default-container-padding;
 
 	//BUTTONS
 	$button-background-color: $primary-color;
@@ -85,6 +85,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$button-border-radius: $default-border-radius;
 	$button-text-color: #FFFFFF;
 	$button-padding: 10px 20px;
+	$buttons-padding: 20px $default-container-padding;
 
 	//FOOTER CONTAINER
 	$footer-container-background-color: $body-background-color;
@@ -172,15 +173,9 @@ html {
 
 .Skin {
 
-	#LogoContainer {
-		background: $logo-container-background-color;
-		display: block;
-	}
+	#LogoContainer {background: $logo-container-background-color;}
 
-	#HeaderContainer {
-		background: $header-container-background-color;
-		display: block;
-	}
+	#HeaderContainer {background: $header-container-background-color;}
 
 	#Header {
 		background: $header-background-color;
@@ -202,12 +197,12 @@ html {
 	#SkinContent {
 		border: $skin-content-border;
 		@if $skin-content-border-radius-on == true {@include border-radius($skin-content-border-radius)}
-		padding: $skin-content-padding;
+		padding: 0px;
 	}
 
-	#Questions {padding: $questions-padding;}
+	#Questions {padding: 0px;}
 
-	.QuestionOuter {padding: 0px;}
+	.QuestionOuter {padding: $question-outer-padding;}
 
 	.QuestionOuter .Inner {padding: 10px 0px;}
 
@@ -270,7 +265,7 @@ html {
 
 	#ProgressBar {
 		font-size: $default-font-size;
-		padding: 20px 0px;
+		padding: $progress-bar-padding;
 	}
 
 	.ProgressBarFillContainer {
@@ -283,7 +278,7 @@ html {
 		padding: 5px 0px;
 	}
 
-	#Buttons {padding: 20px 0px;}
+	#Buttons {padding: $buttons-padding;}
 
 	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {background: $primary-color;}
 
@@ -331,7 +326,6 @@ html {
 
 #FooterContainer, .Skin #FooterContainer {
 	background: $footer-container-background-color;
-	display: block;
 	margin: 0px auto;
 }
 
@@ -380,6 +374,8 @@ MOBILE
 			margin: $skin-inner-margin;
 			max-width: $container-max-width;
 		}
+
+		#SkinContent {border: none;}
 
 		.MC .SAVR .QuestionBody label {
 			line-height: $mobile-label-line-height;
