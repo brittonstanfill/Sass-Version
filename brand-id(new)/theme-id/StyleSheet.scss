@@ -44,6 +44,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$logo-padding: 30px $default-container-padding;
 	$logo-max-width: $container-max-width;
 	$logo-image: url("logo.png");
+	$logo-mobile-image: url("logo-mobile.png");
 	$logo-position: $default-container-padding center;
 	$logo: $logo-background-color $logo-image no-repeat $logo-position;
 	
@@ -365,7 +366,7 @@ MOBILE
 	html  {
 
 		.Skin #Logo, .CSS3 .Skin #Logo {
-			background: url(logo-mobile.png) no-repeat center center;
+			background: $logo-mobile-image no-repeat center center;
 			background-size: $logo-mobile-width $logo-mobile-height;
 			height: ($logo-height / 1.5);
 		}
