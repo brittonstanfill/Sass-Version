@@ -72,6 +72,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$question-body-text-color: $default-text-color;
 	$question-text-font-size: ($default-font-size + 2);
 	$question-text-color: $default-text-color;
+	$questions-padding: 0px;
 
 	//PROGRESS BAR
 	$progress-bar-background-color: $secondary-color;
@@ -202,6 +203,8 @@ html {
 		@if $skin-content-border-radius-on == true {@include border-radius($skin-content-border-radius)}
 		padding: $skin-content-padding;
 	}
+
+	#Questions {padding: $questions-padding;}
 
 	.QuestionOuter {padding: 0px;}
 
