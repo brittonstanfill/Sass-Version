@@ -67,6 +67,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$skin-inner-max-width: $container-max-width;
 
 	//SKIN CONTENT
+	$skin-content-background-color: #FFFFFF;
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
 	$skin-content-border-radius: $default-border-radius;
 
@@ -80,6 +81,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	//PROGRESS BAR
 	$progress-bar-background-color: $secondary-color;
 	$progress-bar-border-radius: $default-border-radius;
+	$progress-bar-fill-padding: 5px 0px;
 	$progress-bar-padding: 20px $default-container-padding;
 
 	//BUTTONS
@@ -97,7 +99,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$footer-font-size: ($default-font-size / 1.25);
 	$footer-text-align: center;
 	$footer-padding: 0px;
-	$footer-text-color: darken($body-background-color, 50%);
+	$footer-text-color: $default-text-color;
 
 	//PLUG
 	$plug-font-size: $footer-font-size;
@@ -158,6 +160,8 @@ VARIABLES, CONDITIONALS, & MIXINS
 STYLES
 ***********************************************************************************************************************/
 html {
+	min-height: 100%;
+	position: relative;
 
 	.Skin #Logo, .CSS3 .Skin #Logo  {
 		background: $logo;
@@ -169,17 +173,27 @@ html {
 	}
 }
 
+#Page {
+	height: 100%;
+}
+
 #SurveyEngineBody {
 	background: $body-background;
 	background-size: $body-background-size;
 	font-family: $font-stack;
+	height: 100%;
+	position: static;
 }
 
 .Skin {
 
-	#LogoContainer {background: $logo-container-background-color;}
+	#LogoContainer {
+		background: $logo-container-background-color;
+	}
 
-	#HeaderContainer {background: $header-container-background-color;}
+	#HeaderContainer {
+		background: $header-container-background-color;
+	}
 
 	#Header {
 		background: $header-background-color;
@@ -199,16 +213,23 @@ html {
 	}
 
 	#SkinContent {
+		background-color: $skin-content-background-color;
 		border: $skin-content-border;
 		@if $skin-content-border-radius-on == true {@include border-radius($skin-content-border-radius)}
 		padding: 0px;
 	}
 
-	#Questions {padding: 0px;}
+	#Questions {
+		padding: 0px;
+	}
 
-	.QuestionOuter {padding: $question-outer-padding;}
+	.QuestionOuter {
+		padding: $question-outer-padding;
+	}
 
-	.QuestionOuter .Inner {padding: 10px 0px;}
+	.QuestionOuter .Inner {
+		padding: 10px 0px;
+	}
 
 	.QuestionText {
 		font-size: $question-text-font-size;
@@ -220,9 +241,17 @@ html {
 		font-size: $question-body-font-size;
 	}
 
-	body.ToCMargin div.Skin {margin-left: 0px;}
+	#PreviewBanner {
+		margin-top: 0px;
+	}
 
-	#TocSidebarContainer.reduced {left: 10px;}
+	body.ToCMargin div.Skin {
+		margin-left: 0px;
+	}
+
+	#TocSidebarContainer.reduced {
+		left: 10px;
+	}
 
 	.QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
 	.CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
@@ -242,7 +271,6 @@ html {
 	input.TextEntryBox, .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], 
 	select {
 		border: $default-border;
-		padding: 10px;
 	}
 
 	.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
@@ -253,11 +281,7 @@ html {
 		outline: none;
 	}
 
-	select {
-		color: $default-text-color;
-		border: $default-border;
-		font-size: $default-font-size;
-	}
+	select {font-size: $default-font-size;}
 
 	.Matrix input {margin: 2px auto;}
 
@@ -265,9 +289,13 @@ html {
 		margin: 0 auto;
 	}
 
-	.Seperator {background: transparent;}
+	.Seperator {
+		background: transparent;
+	}
 
-	.ReadableAlt, .LightBG {background: darken(#FFFFFF, 4%);}
+	.ReadableAlt, .LightBG {
+		background: darken($skin-content-background-color, 4%);
+	}
 
 	#ProgressBar {
 		font-size: $default-font-size;
@@ -281,18 +309,28 @@ html {
 
 	.ProgressBarFill {
 		background-color: $progress-bar-background-color;
-		padding: 5px 0px;
+		padding: $progress-bar-fill-padding;
 	}
 
-	#Buttons {padding: $buttons-padding;}
+	#Buttons {
+		padding: $buttons-padding;
+	}
 
-	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {background: $primary-color;}
+	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
+		background: $primary-color;
+	}
 
-	.RO .DND ul li:hover{background: darken(#FFFFFF, 10%);}
+	.RO .DND ul li:hover{
+		background: darken(#FFFFFF, 10%);
+	}
 
-	.horizontalbar tr.xlabel th:last-child {border-bottom-color: transparent;}
+	.horizontalbar tr.xlabel th:last-child {
+		border-bottom-color: transparent;
+	}
 
-	#Buttons #PreviousButton {float: left;}
+	#Buttons #PreviousButton {
+		float: left;
+	}
 
 	#Buttons #NextButton, #Buttons #PreviousButton {
 		background-color: $button-background-color;
@@ -333,6 +371,8 @@ html {
 #FooterContainer, .Skin #FooterContainer {
 	background: $footer-container-background-color;
 	margin: 0px auto;
+	position: absolute;
+	width: 100%;
 }
 
 #Footer, .Skin #Footer {
@@ -374,14 +414,18 @@ MOBILE
 
 	.Skin {
 
-		#Header{text-align: center;}
+		#Header{
+			text-align: center;
+		}
 
 		.SkinInner {
 			margin: $skin-inner-margin;
 			max-width: $container-max-width;
 		}
 
-		#SkinContent {border: none;}
+		#SkinContent {
+			border: none;
+		}
 
 		.MC .SAVR .QuestionBody label {
 			line-height: $mobile-label-line-height;
