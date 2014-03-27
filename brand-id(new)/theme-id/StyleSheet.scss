@@ -39,7 +39,7 @@ VARIABLES, CONDITIONALS, & MIXINS
 	$logo-background-color: transparent;
 	$logo-height: 50px;
 	$logo-width: 150px;
-	$logo-mobile-height: 90%;
+	$logo-mobile-height: ($logo-height / 1.5);
 	$logo-mobile-width: auto;
 	$logo-margin: 0px auto;
 	$logo-padding: 25px $default-container-padding;
@@ -408,7 +408,7 @@ MOBILE
 		.Skin #Logo, .CSS3 .Skin #Logo {
 			background: $logo-mobile;
 			background-size: $logo-mobile-width $logo-mobile-height;
-			height: ($logo-height / 1.5);
+			height: $logo-mobile-height;
 		}
 	}
 
