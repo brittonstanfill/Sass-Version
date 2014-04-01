@@ -160,8 +160,6 @@ VARIABLES, CONDITIONALS, & MIXINS
 STYLES
 ***********************************************************************************************************************/
 html {
-	min-height: 100%;
-	position: relative;
 
 	.Skin #Logo, .CSS3 .Skin #Logo  {
 		background: $logo;
@@ -173,16 +171,10 @@ html {
 	}
 }
 
-#Page {
-	height: 100%;
-}
-
 #SurveyEngineBody {
 	background: $body-background;
 	background-size: $body-background-size;
 	font-family: $font-stack;
-	height: 100%;
-	position: static;
 }
 
 .Skin {
@@ -239,10 +231,6 @@ html {
 	.QuestionBody {
 		color: $question-body-text-color;
 		font-size: $question-body-font-size;
-	}
-
-	#PreviewBanner {
-		margin-top: 0px;
 	}
 
 	body.ToCMargin div.Skin {
@@ -370,9 +358,6 @@ html {
 
 #FooterContainer, .Skin #FooterContainer {
 	background: $footer-container-background-color;
-	margin: 0px auto;
-	position: absolute;
-	width: 100%;
 }
 
 #Footer, .Skin #Footer {
