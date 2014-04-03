@@ -121,8 +121,7 @@
          <input type="hidden" id="SM~AppName" name="SM~AppName" value="SurveyEngine">
          <input type="hidden" id="SM~AppVersion" name="SM~AppVersion" value="50075">
          <script>
-            var SurveyMetaDataOnLoad = function()
-            {
+            var SurveyMetaDataOnLoad = function() {
             	var browserInfo = QualtricsTools.BrowserInfo.getBrowserInfo();
             	document.getElementById('SM~BrowserName').value = browserInfo.browser;
             	document.getElementById('SM~BrowserVersion').value = browserInfo.version;
@@ -132,7 +131,6 @@
             	document.getElementById('SM~JavaSupport').value = browserInfo.java;
             	document.getElementById('SM~UserAgent').value = browserInfo.ua;
             };
-            
             Event.observe(window, 'load', SurveyMetaDataOnLoad);
          </script>
       </form>

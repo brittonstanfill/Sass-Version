@@ -68,8 +68,8 @@
 	                                {"RecodeValue":"8","VariableName":"8","Text":"8","Exclusive":false},
 	                                {"RecodeValue":"9","VariableName":"9","Text":"9","Exclusive":false},
 	                                {"RecodeValue":"10","VariableName":"10","Text":"10","Exclusive":false}
-	            									],
-                                "Validation":{
+	            						],
+                                 "Validation":{
                                 	"Settings":{
                                 	"ForceResponse":"OFF",
                                 	"ForceResponseType":"ON",
@@ -7356,13 +7356,11 @@
          </div>
          <script>
             Event.observe(window, "load", function() {
-              Event.stopObserving(document, "mousedown", QualtricsSETools.highlightHandler);
-              
-              QualtricsSETools.highlightOn = false;
-              
-              QualtricsSETools.killHighlighter();
-            }
-                         );
+                  Event.stopObserving(document, "mousedown", QualtricsSETools.highlightHandler);
+                  QualtricsSETools.highlightOn = false;
+                  QualtricsSETools.killHighlighter();
+               }
+            );
          </script>
          <input type="hidden" id="SM~BrowserName" name="SM~BrowserName" value="Chrome">
          <input type="hidden" id="SM~BrowserVersion" name="SM~BrowserVersion" value="30.0.1599.101">
@@ -7383,8 +7381,7 @@
               document.getElementById('SM~FlashVersion').value = browserInfo.flashVersion;
               document.getElementById('SM~JavaSupport').value = browserInfo.java;
               document.getElementById('SM~UserAgent').value = browserInfo.ua;
-            }
-                ;
+            };
             Event.observe(window, 'load', SurveyMetaDataOnLoad);
          </script>
       </form>
