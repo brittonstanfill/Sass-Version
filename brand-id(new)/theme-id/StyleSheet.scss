@@ -303,6 +303,7 @@ html {
 	.ProgressBarFill {
 		background-color: $progress-bar-background-color;
 		padding: $progress-bar-fill-padding;
+		@if $progress-bar-border-radius-on == true {@include border-radius($progress-bar-border-radius 0 0 $progress-bar-border-radius)}
 	}
 
 	#Buttons {
