@@ -253,7 +253,7 @@ html {
 	}
 
 	.QuestionBody .TextEntryBox, .TE textarea, .TE input, .TE .ML textarea,.TE .ESTB textarea, .RO .RankInput,
-	.CS input.SumInput, .CS input.SumTotal, .Matrix .CS input, .Matrix .RO input,
+	.Matrix .CS input, .Matrix .RO input,
 	.SBS .Long, .horizontalbar tr.Stars td.value input, .horizontalbar table.sliderGrid tr td.value input,
 	.PGR .DragAndDrop ul { 
 		font-size: $default-font-size;
