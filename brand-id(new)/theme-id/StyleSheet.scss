@@ -37,8 +37,8 @@
 
 	//LOGO
 	$logo-background-color: transparent;
-	$logo-height: 50px;
 	$logo-width: 150px;
+	$logo-height: 50px;
 	$logo-mobile-height: ($logo-height / 1.5);
 	$logo-mobile-width: auto;
 	$logo-margin: 0px auto;
@@ -77,6 +77,8 @@
 	$question-outer-padding: 0px $default-container-padding;
 	$question-text-font-size: ($default-font-size + 2);
 	$question-text-color: $default-text-color;
+	$question-background-boxed: #f1f1f1;
+	$questionouter-padding-boxed: $default-container-padding;
 
 	//PROGRESS BAR
 	$progress-bar-background-color: $secondary-color;
@@ -119,6 +121,7 @@
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//TURNS ON THE MAIN CONTAINER
 	$main-container: false;
+	$boxed-questions: false;
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
 	$border-radius-on: false;
@@ -221,10 +224,14 @@ html {
 
 	.QuestionOuter {
 		padding: $question-outer-padding;
+		@if $boxed-questions == true {
+			background: $question-background-boxed;
+			margin:0 $questionouter-padding-boxed;
+		}
 	}
 
 	.QuestionOuter .Inner {
-		padding: 10px 0px;
+		padding: 0px;
 	}
 
 	.QuestionText {
@@ -257,7 +264,6 @@ html {
 	input[type="search"] {
 		max-width:100%;
 		padding: 5px;
-		width:100%;
 	}
 
 	input.TextEntryBox, .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], 
@@ -439,6 +445,12 @@ MOBILE
 			border: none;
 		}
 
+		@if $boxed-questions == true {
+			.QuestionOuter {
+			margin:0;
+		}
+		}
+
 		.MC .SAVR .QuestionBody label {
 			line-height: $mobile-label-line-height;
 			font-size: $mobile-label-font-size;
@@ -446,11 +458,6 @@ MOBILE
 		.MC .MAVR .QuestionBody label {
 			line-height:  $mobile-label-MAVR-line-height;
 			 font-size: $mobile-label-font-size;
-		}
-
-		.TE input, input.TextEntryBox, .TE textarea, .TE .ESTB textarea, textarea,input[type="password"],
-		input[type="text"], input[type="search"] {
-			width:100% !important;
 		}
 	}
 }
