@@ -27,7 +27,7 @@
 	$default-font-size: 16px;
 
 	//SURVEY ENGINE BODY
-	$body-background-color: #FFFFFF;
+	$body-background-color: #F1F1F1;
 	$body-background-image: none;
 	$body-background: $body-background-color $body-background-image no-repeat center fixed;
 	$body-background-size: cover;
@@ -67,7 +67,7 @@
 	$skin-inner-max-width: $container-max-width;
 
 	//SKIN CONTENT
-	$skin-content-background-color: #FFFFFF;
+	$skin-content-background-color: $body-background-color;
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
 	$skin-content-border-radius: $default-border-radius;
 
@@ -77,7 +77,7 @@
 	$question-outer-padding: 0px $default-container-padding;
 	$question-text-font-size: ($default-font-size + 2);
 	$question-text-color: $default-text-color;
-	$question-background-boxed: #f1f1f1;
+	$question-background-boxed: #F1F1F1;
 	$questionouter-padding-boxed: $default-container-padding;
 
 	//PROGRESS BAR
@@ -85,6 +85,7 @@
 	$progress-bar-border-radius: $default-border-radius;
 	$progress-bar-fill-padding: 5px 0px;
 	$progress-bar-padding: 20px $default-container-padding;
+	$bottom-progessbar-background-color: #DDD;
 
 	//BUTTONS
 	$button-background-color: $primary-color;
@@ -93,6 +94,7 @@
 	$button-text-color: #FFFFFF;
 	$button-padding: 10px 20px;
 	$buttons-padding: 20px $default-container-padding;
+	$fixed-to-bottom-buttons-background: rgba(0,0,0,.73);
 
 	//FOOTER CONTAINER
 	$footer-container-background-color: $body-background-color;
@@ -119,9 +121,14 @@
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//CONDITIONALS
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//TURNS ON THE MAIN CONTAINER
-	$main-container: false;
-	$boxed-questions: false;
+
+	//LAYOUTS - Default is old school container
+	$full-width-header: true;
+	$boxed-main-container: false;
+	$boxed-questions: false; 
+	$fixed-to-bottom-buttons: true; //alpha testing
+	$fixed-to-bottom-progress-bar: $fixed-to-bottom-buttons; //alpha testing
+
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
 	$border-radius-on: false;
@@ -188,10 +195,19 @@ html {
 
 	#LogoContainer {
 		background: $logo-container-background-color;
+		@if $full-width-header == false {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+		}
 	}
 
 	#HeaderContainer {
 		background: $header-container-background-color;
+		@if $full-width-header == false {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+		}
+
 	}
 
 	#Header {
@@ -205,9 +221,13 @@ html {
 	}
 
 	.SkinInner {
-		margin: $skin-inner-margin;
-		@if $main-container == false {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
-		@else if $main-container == true {max-width: $skin-inner-max-width;}
+		@if $full-width-header == true {margin: 30px auto;}
+		@else if $full-width-header == false {
+			margin: 0 auto 30px; 
+			background-color: $skin-content-background-color;
+		}
+		@if $boxed-main-container == false {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
+		@else if $boxed-main-container == true {max-width: $skin-inner-max-width;}
 		width: 100%;
 	}
 
@@ -298,12 +318,38 @@ html {
 	#ProgressBar {
 		font-size: $default-font-size;
 		padding: $progress-bar-padding;
+		@if $fixed-to-bottom-progress-bar == true {
+			position:fixed;
+			bottom: 82px;
+			left:0;
+			right:0;
+		}
+	}
+	@if $fixed-to-bottom-progress-bar == true {
+		.ProgressBarContainer{
+			width:100%;
+			border-collapse:collapse;
+		}
+		#ProgressBar tr td:nth-child(1),#ProgressBar tr td:nth-child(3) {
+			display:none;
+		}
 	}
 
 	.ProgressBarFillContainer {
-		background: darken($skin-content-background-color, 10%);
+		@if $fixed-to-bottom-progress-bar == true {
+			background:$bottom-progessbar-background-color;
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			width:100%;
+			z-index: 3;
+		}
+		@else if $fixed-to-bottom-progress-bar == false {
+			background: darken($skin-content-background-color, 10%);
+			@if $progress-bar-border-radius-on == true {@include border-radius($progress-bar-border-radius)}
+		}
 		border: none;
-		@if $progress-bar-border-radius-on == true {@include border-radius($progress-bar-border-radius)}
 	}
 
 	.ProgressBarFill {
@@ -314,6 +360,13 @@ html {
 
 	#Buttons {
 		padding: $buttons-padding;
+		@if $fixed-to-bottom-buttons == true {
+			position:fixed;
+			bottom:0;
+			right:0;
+			left:0;
+			background: $fixed-to-bottom-buttons-background;
+			}
 	}
 
 	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
@@ -431,6 +484,11 @@ MOBILE
 	}
 
 	.Skin {
+		@if $full-width-header == false{ 
+			#LogoContainer{
+			margin-top:0;
+			}
+		}
 
 		#Header{
 			text-align: center;
