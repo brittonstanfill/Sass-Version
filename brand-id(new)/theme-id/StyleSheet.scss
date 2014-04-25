@@ -101,7 +101,6 @@
 
 	//FOOTER
 	$footer-font-size: ($default-font-size / 1.25);
-	$footer-text-align: center;
 	$footer-padding: 0px;
 	$footer-text-color: $default-text-color;
 
@@ -110,6 +109,7 @@
 	$plug-padding: 30px $default-container-padding;
 	$plug-link-color: $primary-color;
 	$plug-text-color: $footer-text-color;
+	$plug-text-align:center;
 
 	//MOBILE
 	$mobile-label-font-size: 15px;
@@ -126,7 +126,7 @@
 	$full-width-header: true;
 	$boxed-main-container: false;
 	$boxed-questions: false; 
-	$fixed-to-bottom-buttons: true; //alpha testing
+	$fixed-to-bottom-buttons: false; //alpha testing
 	$fixed-to-bottom-progress-bar: $fixed-to-bottom-buttons; //alpha testing
 
 
@@ -221,11 +221,8 @@ html {
 	}
 
 	.SkinInner {
-		@if $full-width-header == true {margin: 30px auto;}
-		@else if $full-width-header == false {
-			margin: 0 auto 30px; 
-			background-color: $skin-content-background-color;
-		}
+		margin: $skin-inner-margin;
+		background-color: $skin-content-background-color;
 		@if $boxed-main-container == false {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
 		@else if $boxed-main-container == true {max-width: $skin-inner-max-width;}
 		width: 100%;
@@ -438,7 +435,6 @@ html {
 		border: $default-border;
 		color: $default-text-color;
 		padding: 30px;
-		text-align: $footer-text-align;
 	}
 }
 
@@ -450,7 +446,6 @@ html {
 	color: $footer-text-color;
 	font-size: $footer-font-size;
 	max-width: $container-max-width;
-	text-align: $footer-text-align;
 	margin: 0px auto;
 	padding: $footer-padding;
 }
@@ -461,7 +456,7 @@ html {
 	max-width: $container-max-width;
 	margin: 0px auto;
 	padding: $plug-padding;
-	text-align: $footer-text-align;
+	text-align: $plug-text-align;
 
 	a {
 		color: $plug-link-color;
@@ -495,7 +490,7 @@ MOBILE
 		}
 
 		.SkinInner {
-			margin: $skin-inner-margin;
+			margin: $skin-inner-margin !important;
 			max-width: $container-max-width;
 		}
 
