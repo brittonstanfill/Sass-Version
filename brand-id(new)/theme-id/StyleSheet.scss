@@ -222,7 +222,6 @@ html {
 
 	.SkinInner {
 		margin: $skin-inner-margin;
-		background-color: $skin-content-background-color;
 		@if $boxed-main-container == false {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
 		@else if $boxed-main-container == true {max-width: $skin-inner-max-width;}
 		width: 100%;
