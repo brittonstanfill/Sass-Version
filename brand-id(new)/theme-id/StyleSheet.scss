@@ -81,11 +81,11 @@
 	$questionouter-padding-boxed: $default-container-padding;
 
 	//PROGRESS BAR
-	$progress-bar-background-color: $secondary-color;
+	$progress-bar-fill-color: $secondary-color;
 	$progress-bar-border-radius: $default-border-radius;
 	$progress-bar-fill-padding: 5px 0px;
 	$progress-bar-padding: 20px $default-container-padding;
-	$bottom-progessbar-background-color: #DDD;
+	$progess-bar-background-color: darken($skin-content-background-color, 10%);
 
 	//BUTTONS
 	$button-background-color: $primary-color;
@@ -332,8 +332,10 @@ html {
 	}
 
 	.ProgressBarFillContainer {
+		border: none;
+		overflow:hidden;
+		background:$progess-bar-background-color;
 		@if $fixed-to-bottom-progress-bar == true {
-			background:$bottom-progessbar-background-color;
 			position:absolute;
 			bottom:0;
 			left:0;
@@ -342,15 +344,12 @@ html {
 			z-index: 3;
 		}
 		@else if $fixed-to-bottom-progress-bar == false {
-			background: darken($skin-content-background-color, 10%);
 			@if $progress-bar-border-radius-on == true {@include border-radius($progress-bar-border-radius)}
 		}
-		border: none;
-		overflow:hidden;
 	}
 
 	.ProgressBarFill {
-		background-color: $progress-bar-background-color;
+		background-color: $progress-bar-fill-color;
 		padding: $progress-bar-fill-padding;
 	}
 
@@ -495,6 +494,9 @@ MOBILE
 
 		#SkinContent {
 			border: none;
+			@if $skin-content-border-radius-on == true {
+			@include border-radius(0);
+			}
 		}
 
 		@if $boxed-questions == true {
