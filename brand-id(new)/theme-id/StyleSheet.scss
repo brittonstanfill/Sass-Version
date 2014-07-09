@@ -516,6 +516,14 @@ MOBILE
 	}
 }
 
+// Added to allow text to wrap on mobile for these questions
+@media only screen and (max-device-width: 480px) {
+	.Skin .Inner.CS,
+	.Skin .Inner.HBAR {
+		min-width: 0px;
+	}
+}
+
 /***********************************************************************************************************************
 TABLET
 ***********************************************************************************************************************/
