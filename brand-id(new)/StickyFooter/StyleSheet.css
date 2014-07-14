@@ -1,0 +1,221 @@
+/***********************************************************************************************************************
+STYLES
+***********************************************************************************************************************/
+html, body, #Page, .Skin {
+  height: 100%; }
+
+html .Skin #Logo, html .CSS3 .Skin #Logo {
+  background: transparent url("logo.png") no-repeat 20px center;
+  background-size: 150px 50px;
+  height: 50px;
+  margin: 0px auto;
+  max-width: 900px;
+  padding: 20px; }
+
+#SurveyEngineBody {
+  background: dodgerblue none no-repeat center fixed;
+  background-size: cover;
+  font-family: "Avenir", "Helvetica Neue", "Helvetica", arial, sans-serif; }
+
+.Skin #Wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -58px; }
+.Skin .SkinInner {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  background: transparent; }
+.Skin #ProgressBar {
+  font-size: 16px;
+  padding: 0;
+  position: relative;
+  min-height: 1px; }
+.Skin .ProgressBarContainer {
+  width: 100%;
+  border-collapse: collapse; }
+.Skin #ProgressBar tr td:nth-child(1) {
+  position: absolute;
+  left: 0;
+  color: #fff;
+  line-height: 15px;
+  border-left: 3px solid #0077ea; }
+.Skin #ProgressBar tr td:nth-child(2) {
+  width: 100%; }
+.Skin #ProgressBar tr td:nth-child(3) {
+  position: absolute;
+  right: 0;
+  line-height: 15px;
+  color: #0077ea;
+  border-right: 3px solid #dddddd; }
+.Skin .ProgressBarFillContainer {
+  border: none;
+  overflow: hidden;
+  background: #dddddd;
+  width: 100%; }
+.Skin .ProgressBarFill {
+  background-color: #0077ea;
+  padding: 0px;
+  height: 15px; }
+.Skin #LogoContainer {
+  background: white; }
+.Skin #HeaderContainer {
+  background: #0077ea; }
+.Skin #Header {
+  background: transparent;
+  font-size: 20px;
+  color: white;
+  margin: 0px auto;
+  max-width: 900px;
+  min-height: 20px;
+  padding: 10px 20px; }
+.Skin #SkinContent {
+  background-color: dodgerblue;
+  border: 0px solid #e6e6e6;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0px; }
+.Skin #Questions {
+  padding: 0px; }
+.Skin .QuestionOuter {
+  padding: 0px 20px; }
+.Skin .QuestionOuter .Inner {
+  padding: 0px; }
+.Skin .QuestionText {
+  font-size: 18px;
+  color: #555555; }
+.Skin .QuestionBody {
+  color: #555555;
+  font-size: 16px; }
+.Skin body.ToCMargin div.Skin {
+  margin-left: 0px; }
+.Skin #TocSidebarContainer.reduced {
+  left: 10px; }
+.Skin .QuestionBody .TextEntryBox, .Skin .TE textarea, .Skin .TE input, .Skin .TE .ML textarea, .Skin .TE .ESTB textarea, .Skin .RO .RankInput,
+.Skin .Matrix .CS input, .Skin .Matrix .RO input,
+.Skin .SBS .Long, .Skin .horizontalbar tr.Stars td.value input, .Skin .horizontalbar table.sliderGrid tr td.value input,
+.Skin .PGR .DragAndDrop ul {
+  font-size: 16px;
+  padding: 5px; }
+.Skin input.TextEntryBox, .Skin .TE textarea, .Skin .TE .ESTB textarea, .Skin textarea, .Skin input[type="password"], .Skin input[type="text"],
+.Skin input[type="search"] {
+  max-width: 100%;
+  padding: 5px; }
+.Skin input.TextEntryBox, .Skin .TE textarea, .Skin textarea, .Skin input[type="password"], .Skin input[type="text"], .Skin input[type="search"],
+.Skin select {
+  border: 1px solid #cccccc; }
+.Skin .QuestionBody .TextEntryBox:focus, .Skin .TE textarea:focus, .Skin .TE input:focus, .Skin .TE .ML textarea:focus,
+.Skin .TE .ESTB textarea:focus, .Skin .RO .RankInput:focus, .Skin .CS input.SumInput:focus, .Skin .CS input.SumTotal:focus,
+.Skin .Matrix .CS input:focus, .Skin .Matrix .RO input:focus, .Skin .SBS .Long:focus, .Skin .horizontalbar tr.Stars td.value input:focus,
+.Skin .horizontalbar table.sliderGrid tr td.value input:focus, .Skin .PGR .DragAndDrop ul:focus, .Skin select:focus, .Skin input:focus {
+  border: 1px solid dodgerblue;
+  outline: none; }
+.Skin select {
+  font-size: 16px; }
+.Skin .Matrix input {
+  margin: 2px auto; }
+.Skin .Skin .Matrix .TE .Long td input, .Skin .Skin .Matrix .TE .Medium td input, .Skin .Skin .Matrix .TE .Short td input {
+  margin: 0 auto; }
+.Skin .ReadableAlt, .Skin .LightBG {
+  background: #0a86ff; }
+.Skin .RO .DND ul.Edited .rank, .Skin .RO .DND ul.NotEdited li:hover .rank, .Skin .RO .DND .rank {
+  background: dodgerblue; }
+.Skin .RO .DND ul li:hover {
+  background: #e6e6e6; }
+.Skin .horizontalbar tr.xlabel th:last-child {
+  border-bottom-color: transparent; }
+.Skin .EndOfSurvey {
+  border: 1px solid #cccccc;
+  color: #555555;
+  padding: 30px; }
+.Skin #Buttons {
+  padding: 20px;
+  text-align: right; }
+.Skin #Buttons #PreviousButton {
+  float: left; }
+.Skin #Buttons #NextButton, .Skin #Buttons #PreviousButton {
+  background-color: dodgerblue;
+  border: 2px solid white;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-appearance: none; }
+  @media only screen and (min-device-width: 1024px) {
+    .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
+      background-color: white;
+      color: dodgerblue; }
+    .Skin #Buttons #NextButton:active, .Skin #Buttons #PreviousButton:active {
+      background-color: transparent;
+      border-color: #0077ea;
+      color: #0077ea; } }
+.Skin #Footer {
+  color: #555555;
+  font-size: 12.8px;
+  max-width: 900px;
+  margin: 0px auto;
+  padding: 0px; }
+.Skin #PushStickyFooter {
+  height: 58px; }
+.Skin #Plug {
+  color: #555555;
+  font-size: 12.8px;
+  float: right;
+  margin: 20px 0 0;
+  text-align: center; }
+  .Skin #Plug a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #0077ea;
+    margin: 0 auto; }
+
+/***********************************************************************************************************************
+MOBILE
+***********************************************************************************************************************/
+@media only screen and (min-device-width: 300px) and (max-device-width: 767px) {
+  html .Skin #Logo, html .CSS3 .Skin #Logo {
+    background: transparent url("logo-mobile.png") no-repeat center center;
+    background-size: auto 33.33333px;
+    height: 33.33333px; }
+
+  .Skin #Header {
+    text-align: center; }
+  .Skin .SkinInner {
+    margin: 0 auto !important;
+    max-width: 900px; }
+  .Skin #SkinContent {
+    border: none; }
+  .Skin #Plug {
+    float: none; }
+    .Skin #Plug a {
+      width: 100%; }
+  .Skin .MC .SAVR .QuestionBody label {
+    line-height: 50px;
+    font-size: 15px; }
+  .Skin .MC .MAVR .QuestionBody label {
+    line-height: 36px;
+    font-size: 15px; } }
+@media only screen and (max-device-width: 480px) {
+  .Skin .Inner.CS,
+  .Skin .Inner.HBAR {
+    min-width: 0px; } }
+/***********************************************************************************************************************
+TABLET
+***********************************************************************************************************************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  #SurveyEngineBody.iOS .Skin .SkinInner, #SurveyEngineBody.Android .Skin .SkinInner {
+    max-width: 900px !important; }
+
+  .Skin .MC .MAVR .QuestionBody label, .Skin .MC .SAVR .QuestionBody label {
+    line-height: 36px;
+    font-size: 15px; } }

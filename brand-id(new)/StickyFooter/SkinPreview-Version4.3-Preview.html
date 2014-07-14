@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)https://corymcarthur.qualtrics.com/SE/?SID=SV_3l9odHbWrpSkoCN# -->
+<html lang="EN"><!-- *** WEB SITE INFORMATION AND COPYRIGHT ***************************************************************************************
+
+    Qualtrics Control Panel
+    COPYRIGHT:  This page, its design, and content (photographic, written, etc.) are copyrighted by, Qualtrics, Inc.
+   	** For more information, see: www.Qualtrics.com **
+
+ ************************************************************************************************************************************ --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=10, chrome=1">
+	<link rel="stylesheet" type="text/css" href="https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/DefaultStyleSheets/BaseStylesV3.42543.css">
+<link rel="stylesheet" type="text/css" href="StyleSheet.css">
+
+	<title>Design Preview - Preview</title>
+
+	<script type="text/javascript" src="https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/JavaScript/javascriptRequired.50138.js"></script>
+	<script type="text/javascript" src="https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/JavaScript/javascriptSE.50075.js"></script>
+
+		</head>
+
+<body id="SurveyEngineBody" class="SkinV2 webkit CSS3 webkit mobilewebkit CSS3 iOS" cz-shortcut-listen="true">
+
+	<noscript>
+		<img src="?action=log&type=noScript"></img>
+	</noscript>
+
+
+
+
+	<form id="Page" name="Page" method="POST" enctype="multipart/form-data">
+				<input id="SurveyID" type="HIDDEN" name="SurveyID" value="SV_3l9odHbWrpSkoCN">
+					<input id="SessionID" type="HIDDEN" name="SessionID" value="DummySessionID">
+				<input id="PageDisplayTime" type="HIDDEN" name="PageDisplayTime" value="">
+
+		<input type="HIDDEN" name="TransactionID" value="0">
+
+					<noscript>
+	<h2 style="background-color: #c00; color: #FFF; margin: 10px; padding: 10px;">
+		<center>
+			Please enable Javascript on your browser to take this survey.
+		</center>
+	</h2>
+	</noscript>
+
+
+<INPUT TYPE='HIDDEN' NAME='T' VALUE='4DKoHx'>
+				<input type='hidden' id='LoadSnapshot' name='LoadSnapshot' value='0' />
+		<script>
+			function restartSurvey()
+			{
+				var location = window.location.href;
+				var index = location.lastIndexOf('#');
+				if(index != -1)
+					location = location.substring(0,index);
+
+				//console.log('location:', location);
+
+				//chop off the &SaveButton and everything after that
+				var index = location.lastIndexOf('&SaveButton');
+				if(index != -1)
+					location = location.substring(0,index);
+
+				//console.log('location:', location, index);
+
+				//window.location.href = '';
+				window.location.href = location;
+			}
+			function takeSnapshot()
+			{
+				if(!$('Restore').visible())
+				{
+					$('Restore').setStyle({'left':'1000px'});
+					new Effect.Parallel([
+						new Effect.Appear('Restore', {sync:true}),
+						new Effect.Move('Restore', {sync:true, x:-1000, mode:'relative'})
+					], {
+						duration: .7
+					});
+				}
+				else
+				{
+					$('Restore').setStyle({'opacity':'0'});
+					new Effect.Appear('Restore', {duration: .7});
+				}
+				_takeSnapshot();
+			}
+			function _takeSnapshot()
+			{
+				new Ajax.Request('Ajax.php?action=TakeSnapshot', {
+					parameters:{
+						SurveyID:$F('SurveyID'),
+						SessionID:$F('SessionID'),
+						Preview:$('Preview') ? $F('Preview') : null
+					}
+				});
+			}
+			function clearSnapshot()
+			{
+				new Effect.Fade('Restore',
+				{
+					duration:.3,
+					afterFinish:_clearSnapshot
+				});
+			}
+			function _clearSnapshot()
+			{
+				new Ajax.Request('Ajax.php?action=ClearSnapshot', {
+					parameters:{
+						SurveyID:$F('SurveyID'),
+						SessionID:$F('SessionID'),
+						Preview:$('Preview') ? $F('Preview') : null
+					}
+				});
+			}
+			function loadSnapshot()
+			{
+				new Ajax.Request('Ajax.php?action=LoadSnapshot', {
+					parameters:{
+						SurveyID:$F('SurveyID'),
+						SessionID:$F('SessionID'),
+						Preview:$('Preview') ? $F('Preview') : null
+					},
+					onComplete:function(){
+						window.noSEAutoSave = true; // Turns off the autoSave
+						$('LoadSnapshot').value = true;
+						submitForm('Page');
+					}
+
+				});
+			}
+			function saveTemplateResponse()
+			{
+				
+				new Ajax.Request('Ajax.php?action=SaveTemplateResponse', {
+					parameters:{
+						SurveyID:$F('SurveyID'),
+						ResponseID:$F('ResponseID'),
+						Preview:$('Preview') ? $F('Preview') : null
+					},
+					onComplete:function(){
+						window.noSEAutoSave = true; // Turns off the autoSave
+						submitForm('Page');
+					}
+				});
+			}
+			function clearTemplateResponse()
+			{
+				new Ajax.Request('Ajax.php?action=ClearTemplateResponse', {
+					parameters:{
+						SurveyID:$F('SurveyID'),
+						SessionID:$F('SessionID'),
+						Preview:$('Preview') ? $F('Preview') : null
+					}
+				});
+				new Effect.Fade('SaveAnswersBib',{duration:.3});
+			}
+			function toggleHiddenQuestions(checked)
+			{
+				var qHidden = $('SurveyEngineBody').select('.HiddenQuestion');
+				if (qHidden)
+				{
+					qHidden.each(function(node) {
+						if (checked)
+							node.style.display = 'none';
+						else
+							node.style.display = 'block';
+					});
+				}
+			}
+			function toggleValidation(checked)
+			{
+				var input = $('IgnoreValidation');
+				if (!checked)
+					input && input.remove();
+				else
+					!input && $('SurveyID').parentNode.appendChild(QBuilder('input',{type:'hidden',value:'Preview',id:'IgnoreValidation',name:'IgnoreValidation'}));
+			}
+					</script>
+		
+					<style>
+				body{
+					position:relative;
+					top:107px;
+				}
+				.PreviewBanner {
+					font-family: arial;
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/previewsprites.png');
+					font-size: 12px;
+					height:115px;
+					margin-top:-107px;
+					margin-bottom: -8px;
+					position: relative;
+					z-index: 5;
+				}
+				body.IE{
+					/* IE9 really dislikes having the body positioned relatively*/
+					position:static;
+					top:0;
+				}
+				.IE .PreviewBanner{
+					position:static;
+					margin-top:0;
+				}
+				.PreviewBanner .PreviewTable{
+					height:107px;
+					padding:0;
+					border-collapse:seperate;
+				}
+				.PreviewBanner .PreviewIconContainer{
+					border-right:1px solid #aaa;
+					width:190px;
+					text-align:center;
+					font-size:15px;
+					font-weight:bold;
+					color:#333;
+				}
+				.PreviewBanner .PreviewIconContainerDiv{
+					width:200px;
+				}
+				.PreviewBanner .PreviewIconContainer #PreviewIcon{
+					width:47px;
+					height:45px;
+					margin:0 auto 5px;
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/previewsprites.png') -3px -124px;
+				}
+				.PreviewBanner .OptionContainer{
+					border-left:1px solid #fff;
+					border-right:1px solid #BFBFBF;
+					padding-left:30px;
+				}
+				.PreviewBanner .OptionContainerDiv{
+					width:600px;
+				}
+				.PreviewBanner .Restore{
+					margin-left:25px;
+				}
+				
+				.PreviewBanner .Bookmark{
+					height: 105px;
+					position:relative;
+					z-index:999;
+					background: #ddd;
+					
+				}
+				.PreviewBanner .Bookmark .BookmarkButton{
+					margin: -1px 10px 0 10px;
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/previewsprites.png') 0px -176px;
+					width: 48px;
+					height: 45px;
+					display:block;
+				}
+				.PreviewBanner .InsetButton{
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/insetbuttons.png');
+					text-decoration:none;
+					font-weight:bold;
+					color:white;
+					position:relative;
+					float:left;
+					height:34px;
+					line-height:36px;
+					padding:0 12px;
+					margin:0 3px;
+					text-shadow:0 -1px 0 #418219;
+				}
+				
+				.PreviewBanner .DeleteButton {
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/previewsprites.png') 0px -225px;
+					position: absolute;
+					width: 16px;
+					height: 16px;
+					right: 8px;
+					top: 10px;
+				}
+				.PreviewBanner .Restore.HiddenButton .InsetButton{
+					left: 1000px;
+					opacity: 0;
+				}
+				.PreviewBanner .Restore .InsetButton{
+					padding-right:30px;
+				}
+				.PreviewBanner .InsetButton .L,
+				.PreviewBanner .InsetButton .R{
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/insetbuttons.png');
+					position:absolute;
+					top:0;
+					height:34px;
+					width:4px;
+				}
+				
+				.PreviewBanner .InsetButton .L{
+					left:-3px;
+					background-position:-13px -37px;
+				}
+				.PreviewBanner .InsetButton .R{
+					right:-3px;
+					background-position:-5px -37px;
+				}
+				
+				.PreviewBanner .InsetButton:active{
+					background-position:-0px -74px;
+					line-height:38px;
+				}
+				.PreviewBanner .InsetButton:active .L{
+					background-position:-13px -111px;
+				}
+				.PreviewBanner .InsetButton:active .R{
+					background-position:-5px -111px;
+				}
+				.PreviewBanner .Options{
+					margin-right:30px;
+				}
+				.PreviewBanner .Warning {
+					padding:10px;
+					text-align:center;
+					background: #cc0000;
+					color:white;
+					font-weight: bold;
+					font-size: 15px;
+				}
+				.PreviewBanner .Left{
+					float:left
+				}
+				.BookmarkTD{
+					padding:0px;
+					border-left:1px solid white;
+					background:#ddd;
+				}
+				.SaveAnswersBib {
+					padding-bottom: 5px;
+					background:url('https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/Graphics/previewsprites.png') 0 -63px;
+					height: 44px;
+					margin-top: -7px;
+					border-top:1px solid #aaa;
+				}
+				.SaveAnswersBib .Background {
+					background-color: #EBE3B8;
+					position:relative;
+					padding: 5px 0;
+					height: 34px;
+				}
+				.SaveAnswersBib .Wrapper {
+					margin: auto;
+					width: 230px;
+				}
+				.SaveAnswersBib .Wrapper.ClearTemplateAnswers {
+					width: 155px;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton{
+					background-position: 0 -148px;
+					display:block;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton .L{
+					background-position:-13px -186px;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton .R{
+					background-position:-5px -186px;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton:active{
+					background-position:-0px -224px;
+					line-height:38px;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton:active .L{
+					background-position:-13px -262px;
+				}
+				.PreviewBanner.SaveAnswersBib .InsetButton:active .R{
+					background-position:-5px -262px;
+				}
+				.SaveAnswersBib p {
+					float: left;
+					line-height: 19px;
+					margin: 0 19px 0 0;
+					color: #333;
+					width: 335px;
+					padding: 0px;
+				}
+				.PreviewBanner .OptionsLink{
+					margin-left:22px;
+				}
+			</style>
+
+			<div class='PreviewBanner' id='PreviewBanner'>
+				<table width=100% class="PreviewTable" cellspacing="0" border="0">
+					<tr>
+						<td align=left class="PreviewIconContainer">
+							<div class="PreviewIconContainerDiv">
+							<div id="PreviewIcon"></div>
+							<!--<img alt="logo" src="../WRQualtricsShared/Brands/Qualtrics/PageLogo.png"/>-->
+							<span>Previewing Survey</span>
+							</div>
+						</td>
+						<td class='OptionContainer'>
+							<div class='OptionContainerDiv'>
+								<div class='Options Left'>
+									<div class='IgnoreValidation'>
+										<label><input type=checkbox id='IgnoreValidationToggle' name='IgnoreValidationToggle' value='Preview' onclick='toggleValidation(this.checked);' > Ignore Validation</label>
+									</div>
+									<!--<div id='MoreButton'>
+										<a href='#more' onclick="$('MoreButton').hide(); $('MoreOptions').style.display='Block'; return false;">-more options-</a>
+									</div>-->
+									<div id='HiddenQuestions'>
+										<label><input type=checkbox name='HideHiddenQuestions' value='Preview' onclick='toggleHiddenQuestions(this.checked);' > Do Not Show Hidden Questions</label>
+									</div>
+								</div>
+								<div class='Restart Left'>
+									<a class="InsetButton" href='javascript:restartSurvey();'>
+										<span class="L"></span>
+																					Click Here to Start Over
+																				<span class="R"></span>
+									</a>
+								</div>
+								<div class='Restore Left'  style='display:none' id='Restore'>
+									<a class="InsetButton" href='javascript:loadSnapshot();'>
+										<span class="L"></span>
+										Start From Bookmark
+										<span class='DeleteButton' onclick="Event.stop(event); clearSnapshot(); return false;"></span>
+										<span class="R"></span>
+									</a>
+								</div>
+							</div>
+						</td>
+						<td width=65 align=right class='BookmarkTD'>
+														<div class='Bookmark Left'>
+								<a class="BookmarkButton" href='javascript:takeSnapshot();' title='Place Bookmark'></a>
+							</div>
+													</td>
+					</tr>
+									</table>
+			</div>
+					
+
+	
+
+
+			<a href="./Survey_Qualtrics Survey Software_files/Survey   Qualtrics Survey Software.html" onclick="javascript:Qualtrics.SurveyEngine.setAccessibleSkin();" class="offScreen">Activate an optimized version of the page designed specifically for Jaws version 11 and greater.</a>
+
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="user-scalable = no, maximum-scale=1, minimum-scale=1, initial-scale = 1, width = device-width">
+<link rel="stylesheet" type="text/css" href="https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/DefaultStyleSheets/BaseStylesV3Mobile.css">
+
+<div class="Skin">
+            <div class="SkinInner">
+            <div id="LogoContainer">
+               <div id="Logo"></div>
+            </div>
+            <div id="HeaderContainer">
+               <div id="Header">Survey Title (Optional)</div>
+            </div>
+            
+               <div id="SkinContent">
+                  <div id="Questions">
+
+	<!-- ** SURVEY QUESTION ID: QID4 ** OUTPUT TAG: QID4 ** -->
+	<div class='QuestionOuter MC BorderColor' id='QID4' QuestionID='QID4' PostTag="QID4">
+		<div class='Inner SB BorderColor'>
+			<div class='InnerInner  BorderColor'>
+				<!-- Debugging stuff -->
+
+
+				<INPUT TYPE="HIDDEN" ID="QR~QID4~QuestionID" NAME="QR~QID4~QuestionID" value="QID4">
+				<INPUT TYPE="HIDDEN" ID="QR~QID4~DisplayOrder" NAME="QR~QID4~DisplayOrder" value="0|1|2|3|4|5|6|7">
+								<INPUT TYPE="HIDDEN" ID="QR~QID4~QuestionType" NAME="QR~QID4~QuestionType" value="MC">
+				<INPUT TYPE="HIDDEN" ID="QR~QID4~Selector" NAME="QR~QID4~Selector" value="SB">
+				<INPUT TYPE="HIDDEN" ID="QR~QID4~SubSelector" NAME="QR~QID4~SubSelector" value="">
+
+				<div class='ValidationError'></div>
+<div class='QuestionText BorderColor'>
+	What is your favorite color?
+</div>
+<div class='QuestionBody'>
+						<select size="10" class="ChoiceStructure Selection LargeSelection" name="QR~QID4" id='Select~QID4'>
+
+
+
+				<option class='Selection' value="QR~QID4~0"  >Red</option>
+
+
+
+				<option class='Selection' value="QR~QID4~1"  >Blue</option>
+
+
+
+				<option class='Selection' value="QR~QID4~2"  >Green</option>
+
+
+
+				<option class='Selection' value="QR~QID4~3"  >Orange</option>
+
+
+
+				<option class='Selection' value="QR~QID4~4"  >Purple</option>
+
+
+
+				<option class='Selection' value="QR~QID4~5"  >Yellow</option>
+
+
+
+				<option class='Selection' value="QR~QID4~6"  >Brown</option>
+
+
+
+				<option class='Selection' value="QR~QID4~7"  >Black</option>
+
+
+		</select>
+		<input type=hidden name='Transformation~QID4' value='YToxOntzOjc6IlFSflFJRDQiO3M6MTY6Int2YWx1ZX09U2VsZWN0ZWQiO30=' id=''>
+
+	</div>
+
+			</div>
+		</div>
+	</div>
+
+<!-- ^^^^^^^^^^^^^^^^^^^^^^ SKIN QUESTION #1 ^^^^^^^^^^^^^^^^^ -->
+
+<div class='Separator'></div>
+
+
+
+<!-- *************** HTML ************************** -->
+
+</div>
+                  
+                  
+               </div>
+               <div id="ProgressBar">
+                  <table class='ProgressBarContainer'>
+                     <tr>
+                        <td>
+                           0%
+                        </td>
+                        <td>
+                           <div class='ProgressBarFillContainer'>
+                              <div class='ProgressBarFill' style='width: 30%'>
+                              </div>
+                           </div>
+                        </td>
+                        <td>
+                           100%
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+               <div id="Footer"></div>
+               <div id="Plug" style="display:block !important;"><a style="display:block !important;" href="http://www.qualtrics.com/" target="_blank">Survey Powered by Qualtrics</a></div>
+
+            </div>
+            <div id='PushStickyFooter'></div>
+         </div>
+         
+         <div id="Buttons">
+            <input id="PreviousButton" type='button' value='Back' name=''>
+            <input id="NextButton" type="button" name="Close" Value="Next">
+         </div>
+
+<!--
+<script type='text/javascript'>
+
+	function selectionClick(evt)
+	{
+		var node = evt.target;
+		var input = $(node).down('input');
+		input.click()
+	}
+	function startTouch(evt)
+	{
+		var node = evt.target;
+		$(node).addClassName('Touch');
+		node.touchStart = true;
+	}
+	function moveTouch(evt)
+	{
+		var node = evt.target;
+		$(node).removeClassName('Touch');
+		node.touchStart = false;
+	}
+	function endTouch(evt)
+	{
+		var node = evt.target;
+		$(node).removeClassName('Touch');
+		if(node.touchStart)
+		{
+				var input = $(node).down('input');
+				if(input) input.click()
+		}
+
+	}
+	Event.observe(window, 'load', function() {
+	//	QualtricsSETools.questionHighlighter();
+		var selections = document.getElementsByClassName('Selection');
+		var i=selections.length; while (i--) {
+			selections[i].onclick = selectionClick;
+
+		}
+	});
+
+</script>
+--><script>Event.observe(window, "load", function() {Event.stopObserving(document, "mousedown", QualtricsSETools.highlightHandler); QualtricsSETools.highlightOn = false; QualtricsSETools.killHighlighter();});</script>
+
+<input type="hidden" id="SM~BrowserName" name="SM~BrowserName" value="Chrome">
+<input type="hidden" id="SM~BrowserVersion" name="SM~BrowserVersion" value="30.0.1599.101">
+<input type="hidden" id="SM~OS" name="SM~OS" value="Macintosh">
+<input type="hidden" id="SM~Resolution" name="SM~Resolution" value="2560x1440">
+<input type="hidden" id="SM~FlashVersion" name="SM~FlashVersion" value="11.9.900">
+<input type="hidden" id="SM~JavaSupport" name="SM~JavaSupport" value="1">
+<input type="hidden" id="SM~UserAgent" name="SM~UserAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36">
+
+<input type="hidden" id="SM~AppName" name="SM~AppName" value="SurveyEngine">
+<input type="hidden" id="SM~AppVersion" name="SM~AppVersion" value="50075">
+
+<script>
+	var SurveyMetaDataOnLoad = function()
+	{
+		var browserInfo = QualtricsTools.BrowserInfo.getBrowserInfo();
+		document.getElementById('SM~BrowserName').value = browserInfo.browser;
+		document.getElementById('SM~BrowserVersion').value = browserInfo.version;
+		document.getElementById('SM~OS').value = browserInfo.os;
+		document.getElementById('SM~Resolution').value = browserInfo.resolution.x+"x"+browserInfo.resolution.y;
+		document.getElementById('SM~FlashVersion').value = browserInfo.flashVersion;
+		document.getElementById('SM~JavaSupport').value = browserInfo.java;
+		document.getElementById('SM~UserAgent').value = browserInfo.ua;
+	};
+
+	Event.observe(window, 'load', SurveyMetaDataOnLoad);
+</script>
+</form>
+
+
+
+<script type="text/javascript">
+
+window.canCheckParent = '';
+
+<!--
+Qualtrics.SurveyEngine.onPageLoad();
+	Event.observe(window, 'beforeunload', Qualtrics.SurveyEngine.savePageBeforeUnload);
+-->
+</script>
+
+
+
+
+
+</body></html>
