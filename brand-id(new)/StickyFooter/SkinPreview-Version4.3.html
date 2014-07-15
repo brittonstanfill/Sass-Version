@@ -34,17 +34,35 @@
          <meta name="HandheldFriendly" content="true">
          <meta name="viewport" content="user-scalable = no, maximum-scale=1, minimum-scale=1, initial-scale = 1, width = device-width">
          <link rel="stylesheet" type="text/css" href="https://a248.e.akamai.net/img.qualtrics.com/WRQualtricsShared/DefaultStyleSheets/BaseStylesV3Mobile.css">
-         <div class="Skin">
-            <div id="LogoContainer">
-               <div id="Logo">
+<div class="Skin">
+            <div id="Wrapper">
+               <div id="ProgressBar">
+                  <table class='ProgressBarContainer'>
+                     <tr>
+                        <td>
+                           0%
+                        </td>
+                        <td>
+                           <div class='ProgressBarFillContainer'>
+                              <div class='ProgressBarFill' style='width: 30%'>
+                              </div>
+                           </div>
+                        </td>
+                        <td>
+                           100%
+                        </td>
+                     </tr>
+                  </table>
                </div>
+            <div class="SkinInner">
+
+            <div id="LogoContainer">
+               <div id="Logo"></div>
             </div>
             <div id="HeaderContainer">
-               <div id="Header">
-                  Survey Title (Optional)
-               </div>
+               <div id="Header">Survey Title (Optional)</div>
             </div>
-            <div class="SkinInner">
+            
                <div id="SkinContent">
                   <div id="Questions">
                      <!-- *************** SKIN QUESTION #0 ************************** -->
@@ -7316,40 +7334,21 @@
                         We thank you for your time spent taking this survey on behalf of our company. Your data has been recorded.
                      </div>
                   </div>
-                  <div id="ProgressBar">
-                     <table class='ProgressBarContainer'>
-                        <tr>
-                           <td>
-                              0%
-                           </td>
-                           <td>
-                              <div class='ProgressBarFillContainer'>
-                                 <div class='ProgressBarFill' style='width: 30%'>
-                                 </div>
-                              </div>
-                           </td>
-                           <td>
-                              100%
-                           </td>
-                        </tr>
-                     </table>
-                  </div>
+                  
                   <div id="Buttons">
-                     <input id="PreviousButton" type='button' value='<<' name=''>
-                     <input id="NextButton" type="button" name="Close" Value=">>">
+                     <input id="PreviousButton" type='button' value='Previous' name=''>
+                     <input id="NextButton" type="button" name="Close" Value="Next">
                   </div>
                </div>
+            <div id="Footer"></div>
+
+               
             </div>
-         </div>
-         <div id="FooterContainer" style="display:block !important;">
-            <div id="Footer">
+
+            <div id='PushStickyFooter'></div>
             </div>
-            <div id="Plug" style="display:block !important;">
-               Survey Powered By
-               <a href="http://www.qualtrics.com/" target="_blank">
-               Qualtrics
-               </a>
-            </div>
+            <div id="Plug" style="display:block !important;"><a style="display:block !important;" href="http://www.qualtrics.com/" target="_blank">Survey Powered by Qualtrics</a></div>
+
          </div>
          <script>
             Event.observe(window, "load", function() {
