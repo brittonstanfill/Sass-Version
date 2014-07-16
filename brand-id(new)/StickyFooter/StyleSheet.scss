@@ -1,3 +1,4 @@
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES, CONDITIONALS, & MIXINS
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5,7 +6,7 @@
 	//VARIABLES
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//COLOR PALETTE
-	$primary-color: dodgerblue;
+-->	$primary-color: #0081cd;
 	$secondary-color: darken($primary-color, 10%);
 	$tertiary-color: $secondary-color;
 
@@ -16,44 +17,55 @@
 	$font-stack: $primary-font, $secondary-font, $tertiary-font, arial, sans-serif;
 
 	//DEFAULT
+	$body-background-color: $primary-color;
 	$container-max-width: 900px;
-	$default-border-color: #CCCCCC;
+	$default-border-color: darken($body-background-color, 30%);
 	$default-border-radius: 3px;
 	$default-border-style: solid;
 	$default-border-width: 1px;
 	$default-border: $default-border-width $default-border-style $default-border-color;
 	$default-container-padding: 20px;
-	$default-text-color: #555555;
+	$default-text-color: #333;
 	$default-font-size: 16px;
 
+	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
+-->	$question-container-background-color: #FFF;
+	$question-container-box-shadow-on: T;
+		$container-box-shadow-x: 0;
+		$container-box-shadow-y: 0;
+		$container-box-shadow-spread: 10px;
+		$container-box-shadow-color: darken($body-background-color, 50%);
+
 	//SURVEY ENGINE BODY
-	$body-background-color: $primary-color;
+	
 	$body-background-image: none;
 	$body-background: $body-background-color $body-background-image no-repeat center fixed;
 	$body-background-size: cover;
 
+
 	//SKIN INNER
 	$skin-inner-max-width: $container-max-width;
-	$skin-inner-background: transparent;
 
 	//LOGO CONTAINER
 	$logo-container-background: #FFFFFF;
 
 	//LOGO
 	$logo-background-color: transparent;
-	$logo-width: 150px;
-	$logo-height: 50px;
-	$logo-mobile-height: ($logo-height / 1.5);
-	$logo-mobile-width: auto;
+-->	$logo-width: 163px;
+-->	$logo-height: 50px;
+	$logo-mobile-scale: .66;
+	$logo-mobile-width: ($logo-width * $logo-mobile-scale);
+	$logo-mobile-height: ($logo-height * $logo-mobile-scale);
 	$logo-margin: 0px auto;
 	$logo-padding: $default-container-padding;
 	$logo-max-width: $container-max-width;
 	$logo-image: url("logo.png");
-	$logo-mobile-image: url("logo-mobile.png");
+	$logo-mobile-image: url("logo.png");
 	$logo-position: $default-container-padding center;
 	$logo-mobile-position: center center;
 	$logo: $logo-background-color $logo-image no-repeat $logo-position;
 	$logo-mobile: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
+	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
 	
 	//HEADER CONTAINER
 	$header-container-background: darken($body-background-color, 10%);
@@ -64,21 +76,19 @@
 	$header-margin: 0px auto;
 	$header-max-width: $container-max-width;
 	$header-padding: 10px $default-container-padding;
-	$header-text-color: lighten($primary-color, 100%);
+	$header-text-color: $default-text-color;
 
 	//SKIN CONTENT
-	$skin-content-background-color: $body-background-color;
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
 	$skin-content-border-radius: $default-border-radius;
 
 	//QUESTIONS
+	$question-text-font-size: ($default-font-size + 2);
+	$question-text-color: #333;
 	$question-body-font-size: $default-font-size;
 	$question-body-text-color: $default-text-color;
 	$question-outer-padding: 0px $default-container-padding;
-	$question-text-font-size: ($default-font-size + 2);
-	$question-text-color: $default-text-color;
-	$question-background-boxed: #F1F1F1;
-	$questionouter-padding-boxed: $default-container-padding;
+	
 
 	//PROGRESS BAR
 	$progress-bar-fill-color: $secondary-color;
@@ -100,7 +110,7 @@
 	$footer-container-background: $body-background-color;
 
 	//FOOTER
-	$footer-font-size: ($default-font-size / 1.25);
+	$footer-font-size: ($default-font-size - 3);
 	$footer-padding: 0px;
 	$footer-text-color: $default-text-color;
 
@@ -112,7 +122,7 @@
 	$plug-text-align:center;
 	$plug-background: darken($body-background-color, 10%);
 
-	$calculated-sticky-footer-height: $default-font-size + 10*2 +22;
+	$calculated-sticky-footer-height: $footer-font-size + 10*2 +5;
 
 	//MOBILE
 	$mobile-label-font-size: 15px;
@@ -125,20 +135,20 @@
 	//CONDITIONALS
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//LAYOUTS - Default is old school container
-	$full-width-header: T;
-	 
-	$pushed-to-bottom-plug: T; //alpha testing get rid of this
+	//INTERCHANGABLE LOGO
+	$interchangeable-logo: F;
 
-	$boxed-skincontent: F;
-	$boxed-questions: F;
-
+	//LAYOUTS
+-->	$full-width-header: T; //F is survey container
+		$boxed-skincontent: T; // Works for full width header
+		$boxed-questions: F;
+	$pushed-to-bottom-plug: T; //sticky footer plug
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
-	$border-radius-on: F;
+-->	$border-radius-on: T;
 	$button-border-radius-on: $border-radius-on;
 	$progress-bar-border-radius-on: $border-radius-on;
-	$skin-content-border-radius-on: $border-radius-on;
+	$question-container-border-radius-on: $border-radius-on;
 
 	//BUTTON STYLE
 	$button-outline: T;
@@ -173,28 +183,36 @@
 		background: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
 		background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
 	}
-
 /***********************************************************************************************************************
 STYLES
 ***********************************************************************************************************************/
 
 @if $pushed-to-bottom-plug == T{
-	html, body, #Page, .Skin {
-	height: 100%;
+	@media only screen and (min-device-width: 400px) {
+		html, body, #Page, .Skin {
+		height: 100%;
+		}
+	}
+}
+img{
+	max-width:100%;
+	height: auto !important;
+}
+
+@if $interchangeable-logo == F{
+	html {
+
+		.Skin #Logo, .CSS3 .Skin #Logo  {
+			background: $logo;
+			background-size: $logo-width $logo-height;
+			height: $logo-height;
+			margin: $logo-margin;
+			max-width: $logo-max-width;
+			padding: $logo-padding;
+		}
 	}
 }
 
-html {
-
-	.Skin #Logo, .CSS3 .Skin #Logo  {
-		background: $logo;
-		background-size: $logo-width $logo-height;
-		height: $logo-height;
-		margin: $logo-margin;
-		max-width: $logo-max-width;
-		padding: $logo-padding;
-	}
-}
 
 #SurveyEngineBody {
 	background: $body-background;
@@ -219,14 +237,17 @@ html {
 		@if $full-width-header == T {
 			max-width: 100%;
 			margin:0 auto;
+
 		}
 		@else if $full-width-header == F {
 			max-width: $skin-inner-max-width;
 			margin: $default-container-padding auto;
+			background: $question-container-background-color;
+			@if $question-container-box-shadow-on == T{
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
 		}
 		width: 100%;
-		background:$skin-inner-background;
-		//box-shadow: 0 0 10px #333;
 	}
 
 	#ProgressBar {
@@ -281,6 +302,9 @@ html {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
 			margin:0 auto;
 		}
+		@if $interchangeable-logo == T{
+			display:none;
+		}
 	}
 
 	#HeaderContainer {
@@ -303,18 +327,29 @@ html {
 	}
 
 	#SkinContent {
-		background-color: $skin-content-background-color;
 		border: $skin-content-border;
-		@if $full-width-header == T{
+		@if $full-width-header == T and $boxed-questions == F{
 			@if $boxed-skincontent == T{
 				max-width: $skin-inner-max-width;
 				margin: $default-container-padding auto;
+				background: $question-container-background-color;
+				@if $question-container-box-shadow-on == T{
+					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+				}
 			}
 			@elseif $boxed-skincontent == F{
 				max-width: $skin-inner-max-width + ($default-container-padding * 2);
-				margin:0 auto;			}
+				margin:0 auto;
+				background: transparent;
 			}
-		@if $skin-content-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+		}
+		@if $full-width-header == T and $boxed-questions == T{
+			max-width: $skin-inner-max-width + ($default-container-padding * 2);
+			margin:$default-container-padding auto;
+			background: transparent;
+		}
+
+		@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
 		padding: 0px;
 	}
 
@@ -323,27 +358,65 @@ html {
 	}
 
 	.QuestionOuter {
-		padding: $question-outer-padding;
+		padding: 0;
 		@if $boxed-questions == T {
-			background: $question-background-boxed;
-			margin:0 $questionouter-padding-boxed;
+			background: $question-container-background-color;
+			margin:0 $default-container-padding;
+			@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+			@if $question-container-box-shadow-on == T{
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
 		}
+
 	}
 
 	.QuestionOuter .Inner {
 		padding: 0px;
+		overflow-x:hidden; //testing question scrolling
 	}
 
 	.QuestionText {
 		font-size: $question-text-font-size;
 		color: $question-text-color;
+		margin:0;
+		padding: 15px;
+		@if $boxed-questions == T {
+			padding: 15px;
+			background-color: $secondary-color;
+		}
 	}
 
 	.QuestionBody {
 		color: $question-body-text-color;
 		font-size: $question-body-font-size;
+		margin:0;
+		padding: $default-container-padding;
+		// @if $boxed-questions == T {
+		// 	padding:$default-container-padding;
+		// 	margin:0;
+		// }
+		overflow-x:auto; //testing question scrolling
+		overflow-y:hidden;  //testing question scrolling
 	}
+	@if $boxed-questions == T {
+		.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
+			padding:0;
+			li, tr, th{
+				padding-left:$default-container-padding !important;
+			}
+		}
+		.RO .RB .QuestionBody{
+				padding:0;
+			}
+		.Skin .Timing .QuestionText{
+			margin:0;
+		}
+		/////general styles I'm overriding maybe do for all Q types
+		.Skin .MC input.radio, .Skin .MC input.checkbox{
+			margin-left:0;
+		}
 
+	}
 	body.ToCMargin div.Skin {
 		margin-left: 0px;
 	}
@@ -369,6 +442,9 @@ html {
 	input.TextEntryBox, .TE textarea, textarea, input[type="password"], input[type="text"], input[type="search"], 
 	select {
 		border: $default-border;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
 	.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
@@ -388,7 +464,13 @@ html {
 	}
 
 	.ReadableAlt, .LightBG {
-		background: darken($skin-content-background-color, 4%);
+		@if $full-width-header == true{
+			background: darken($body-background-color, 4%);
+		}
+		@if $full-width-header == false or $boxed-questions == true or $boxed-skincontent == true{
+			background: darken($question-container-background-color, 4%);
+		}
+
 	}
 
 	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
@@ -396,7 +478,12 @@ html {
 	}
 
 	.RO .DND ul li:hover{
-		background: darken(#FFFFFF, 10%);
+		@if $full-width-header == true{
+			background: darken($body-background-color, 10%);
+		}
+		@if $full-width-header == false or $boxed-questions == true or $boxed-skincontent == true{
+			background: darken($question-container-background-color, 10%);
+		}
 	}
 
 	.horizontalbar tr.xlabel th:last-child {
@@ -405,9 +492,12 @@ html {
 
 
 	.EndOfSurvey {
-		border: $default-border;
+		border: none;
 		color: $default-text-color;
 		padding: 30px;
+		@if $full-width-header == T and $boxed-questions == T{
+			background: $question-container-background-color;
+		}
 	}
 
 	#Buttons {
@@ -484,7 +574,7 @@ html {
 		color: $plug-text-color;
 		font-size: $plug-font-size;
 		float:right;
-		margin:20px 0 0;
+		margin: 0;
 		text-align: $plug-text-align;
 
 		a {
@@ -492,7 +582,6 @@ html {
 			text-decoration: none;
 			padding: $plug-padding;
 			background: $plug-background;
-			margin:0 auto;
 		}
 	}
 }
@@ -510,6 +599,7 @@ MOBILE
 			background: $logo-mobile;
 			background-size: $logo-mobile-width $logo-mobile-height;
 			height: $logo-mobile-height;
+			padding: $logo-mobile-padding;
 		}
 	}
 
@@ -531,7 +621,7 @@ MOBILE
 
 		#SkinContent {
 			border: none;
-			@if $skin-content-border-radius-on == T {
+			@if $question-container-border-radius-on == T {
 			@include border-radius(0);
 			}
 		}
