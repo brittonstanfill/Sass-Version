@@ -63,8 +63,6 @@
 	$logo-mobile-image: url("logo.png");
 	$logo-position: $default-container-padding center;
 	$logo-mobile-position: center center;
-	$logo: $logo-background-color $logo-image no-repeat $logo-position;
-	$logo-mobile: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
 	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
 	
 	//HEADER CONTAINER
@@ -203,7 +201,7 @@ img{
 	html {
 
 		.Skin #Logo, .CSS3 .Skin #Logo  {
-			background: $logo;
+			background: $logo-background-color $logo-image no-repeat $logo-position;
 			background-size: $logo-width $logo-height;
 			height: $logo-height;
 			margin: $logo-margin;
@@ -596,7 +594,7 @@ MOBILE
 	html  {
 
 		.Skin #Logo, .CSS3 .Skin #Logo {
-			background: $logo-mobile;
+			background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
 			background-size: $logo-mobile-width $logo-mobile-height;
 			height: $logo-mobile-height;
 			padding: $logo-mobile-padding;
@@ -654,6 +652,9 @@ MOBILE
 	.Skin .Inner.CS,
 	.Skin .Inner.HBAR {
 		min-width: 0px;
+	}
+	.Skin .MC .NPS .QuestionBody {
+	padding-right: 0px; //basestyles has padding-left:0 already added
 	}
 }
 
