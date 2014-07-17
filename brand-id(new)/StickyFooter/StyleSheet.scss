@@ -2,11 +2,27 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES, CONDITIONALS, & MIXINS
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//CONDITIONALS
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//INTERCHANGABLE LOGO
+	$interchangeable-logo: F;
+
+	//LAYOUTS
+-->	$full-width-header: T; //F is survey container
+		$boxed-skincontent: F; // Works for full width header
+		$boxed-questions: F;
+	$pushed-to-bottom-plug: T; //sticky footer plug
+
+	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
+-->	$border-radius-on: T;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//VARIABLES
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//COLOR PALETTE
--->	$primary-color: #0081cd;
+-->	$primary-color: dodgerblue;
 	$secondary-color: darken($primary-color, 10%);
 	$tertiary-color: $secondary-color;
 
@@ -17,7 +33,7 @@
 	$font-stack: $primary-font, $secondary-font, $tertiary-font, arial, sans-serif;
 
 	//DEFAULT
-	$body-background-color: $primary-color;
+-->	$body-background-color: $primary-color;
 	$container-max-width: 900px;
 	$default-border-color: darken($body-background-color, 30%);
 	$default-border-radius: 3px;
@@ -25,12 +41,13 @@
 	$default-border-width: 1px;
 	$default-border: $default-border-width $default-border-style $default-border-color;
 	$default-container-padding: 20px;
-	$default-text-color: #333;
+-->	$default-text-color: #333;
 	$default-font-size: 16px;
 
 	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
 -->	$question-container-background-color: #FFF;
-	$question-container-box-shadow-on: T;
+	$question-container-border-radius-on: $border-radius-on;
+	$question-container-box-shadow-on: F;
 		$container-box-shadow-x: 0;
 		$container-box-shadow-y: 0;
 		$container-box-shadow-spread: 10px;
@@ -47,7 +64,7 @@
 	$skin-inner-max-width: $container-max-width;
 
 	//LOGO CONTAINER
-	$logo-container-background: #FFFFFF;
+-->	$logo-container-background: #FFFFFF;
 
 	//LOGO
 	$logo-background-color: transparent;
@@ -66,7 +83,7 @@
 	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
 	
 	//HEADER CONTAINER
-	$header-container-background: darken($body-background-color, 10%);
+-->	$header-container-background: darken($body-background-color, 10%);
 
 	//HEADER
 	$header-background-color: transparent;
@@ -74,7 +91,7 @@
 	$header-margin: 0px auto;
 	$header-max-width: $container-max-width;
 	$header-padding: 10px $default-container-padding;
-	$header-text-color: $default-text-color;
+-->	$header-text-color: #FFF;
 
 	//SKIN CONTENT
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
@@ -82,27 +99,35 @@
 
 	//QUESTIONS
 	$question-text-font-size: ($default-font-size + 2);
-	$question-text-color: #333;
+-->	$question-text-color: #333;
 	$question-body-font-size: $default-font-size;
-	$question-body-text-color: $default-text-color;
+-->	$question-body-text-color: $default-text-color;
 	$question-outer-padding: 0px $default-container-padding;
 	
 
 	//PROGRESS BAR
 	$progress-bar-fill-color: $secondary-color;
-	$progress-bar-border-radius: $default-border-radius;
 	$progress-bar-fill-height: 15px;
 	$progress-bar-fill-padding: 0px;
 	$progress-bar-padding: 0;
-	$progress-bar-background-color: #DDD;
+-->	$progress-bar-background-color: #DDD;
+	$progress-bar-border-radius-on: $border-radius-on;
+		$progress-bar-border-radius: $default-border-radius;
 
 	//BUTTONS
-	$button-background-color: $primary-color;
-	$button-border: 2px  $default-border-style #FFF;
-	$button-border-radius: $default-border-radius;
-	$button-text-color: #FFFFFF;
+-->	$button-primary-color: #FFF;
+	$button-secondary-color: $body-background-color;
 	$button-padding: 10px 20px;
 	$buttons-padding: $default-container-padding;
+	//CONDITIONALS
+		$button-outline: T; //false will do solid button
+			$button-border-color: $button-primary-color;
+			$button-border: 2px  $default-border-style $button-border-color;
+		
+		$button-border-radius-on: $border-radius-on; //T or F
+			$button-border-radius: $default-border-radius;
+
+
 
 	//FOOTER CONTAINER
 	$footer-container-background: $body-background-color;
@@ -110,12 +135,12 @@
 	//FOOTER
 	$footer-font-size: ($default-font-size - 3);
 	$footer-padding: 0px;
-	$footer-text-color: $default-text-color;
+-->	$footer-text-color: $default-text-color;
 
 	//PLUG
 	$plug-font-size: $footer-font-size;
 	$plug-padding: 10px 20px;
-	$plug-link-color: #FFF;
+-->	$plug-link-color: #FFF;
 	$plug-text-color: $footer-text-color;
 	$plug-text-align:center;
 	$plug-background: darken($body-background-color, 10%);
@@ -129,28 +154,7 @@
 	$tablet-label-font-size: 15px;
 	$tablet-label-line-height: 36px;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//CONDITIONALS
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//INTERCHANGABLE LOGO
-	$interchangeable-logo: F;
-
-	//LAYOUTS
--->	$full-width-header: T; //F is survey container
-		$boxed-skincontent: T; // Works for full width header
-		$boxed-questions: F;
-	$pushed-to-bottom-plug: T; //sticky footer plug
-
-	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
--->	$border-radius-on: T;
-	$button-border-radius-on: $border-radius-on;
-	$progress-bar-border-radius-on: $border-radius-on;
-	$question-container-border-radius-on: $border-radius-on;
-
-	//BUTTON STYLE
-	$button-outline: T;
-	$button-solid: F;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//MIXINS
@@ -508,11 +512,20 @@ img{
 	}
 
 	#Buttons #NextButton, #Buttons #PreviousButton {
-		background-color: $button-background-color;
-		border: $button-border;
+
+		@if $button-outline == T {
+			border: $button-border;
+			background-color: $button-secondary-color;
+			color: $button-primary-color;
+		}
+		@else if $button-outline == F {
+			border: none;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
+		}
+		
 		@if $button-border-radius-on == T {@include border-radius($button-border-radius)}
 		@else if $button-border-radius-on == F {@include border-radius(0px)}
-		color: $button-text-color;
 		cursor: pointer;
 		font-size: $default-font-size;
 		margin: 0px;
@@ -524,16 +537,17 @@ img{
 		@media only screen and (min-device-width: 1024px) {
 
 
-			@if $button-solid == T {
+			@if $button-outline == F {
 
 				&:hover {
-					background-color: darken($button-background-color, 10%);
-					border-color: darken($button-background-color, 10%);
+
+					background-color: darken($button-primary-color, 10%);
+					transition: all .1s ease-in-out;
 				}
 
 				&:active {
-					background-color: darken($button-background-color, 20%);
-					border-color: darken($button-background-color, 20%);
+					background-color: darken($button-primary-color, 20%);
+					border-color: darken($button-primary-color, 20%);
 				}
 		
 			}
@@ -541,14 +555,17 @@ img{
 			@if $button-outline == T {
 
 				&:hover {
-					background-color: $button-text-color;
-					color: $button-background-color;
+					//background-color: rgba(0,0,0,.1);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-secondary-color, 15%);
+					color: darken($button-secondary-color, 15%);
 				}
 
 				&:active {
-					background-color: transparent;
-					border-color: darken($button-background-color, 10%);
-					color: darken($button-background-color, 10%);
+					//background-color: rgba(0,0,0,.2);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-secondary-color, 20%);
+					color: darken($button-secondary-color, 20%);
 				}
 		
 			}

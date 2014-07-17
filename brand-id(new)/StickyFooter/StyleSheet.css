@@ -17,7 +17,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 20px; }
 
 #SurveyEngineBody {
-  background: #0081cd none no-repeat center fixed;
+  background: dodgerblue none no-repeat center fixed;
   background-size: cover;
   font-family: "Avenir", "Helvetica Neue", "Helvetica", arial, sans-serif; }
 
@@ -43,14 +43,14 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   left: 0;
   color: #fff;
   line-height: 15px;
-  border-left: 3px solid #00619a; }
+  border-left: 3px solid #0077ea; }
 .Skin #ProgressBar tr td:nth-child(2) {
   width: 100%; }
 .Skin #ProgressBar tr td:nth-child(3) {
   position: absolute;
   right: 0;
   line-height: 15px;
-  color: #00619a;
+  color: #0077ea;
   border-right: 3px solid #dddddd; }
 .Skin .ProgressBarFillContainer {
   border: none;
@@ -58,29 +58,26 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   background: #dddddd;
   width: 100%; }
 .Skin .ProgressBarFill {
-  background-color: #00619a;
+  background-color: #0077ea;
   padding: 0px;
   height: 15px; }
 .Skin #LogoContainer {
   background: white; }
 .Skin #HeaderContainer {
-  background: #00619a; }
+  background: #0077ea; }
 .Skin #Header {
   background: transparent;
   font-size: 20px;
-  color: #333333;
+  color: white;
   margin: 0px auto;
   max-width: 900px;
   min-height: 20px;
   padding: 10px 20px; }
 .Skin #SkinContent {
   border: 0px solid #e6e6e6;
-  max-width: 900px;
-  margin: 20px auto;
-  background: white;
-  -webkit-box-shadow: 0 0 10px black;
-  -moz-box-shadow: 0 0 10px black;
-  box-shadow: 0 0 10px black;
+  max-width: 940px;
+  margin: 0 auto;
+  background: transparent;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -122,7 +119,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 5px; }
 .Skin input.TextEntryBox, .Skin .TE textarea, .Skin textarea, .Skin input[type="password"], .Skin input[type="text"], .Skin input[type="search"],
 .Skin select {
-  border: 1px solid #002134;
+  border: 1px solid #004384;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -130,7 +127,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .TE .ESTB textarea:focus, .Skin .RO .RankInput:focus, .Skin .CS input.SumInput:focus, .Skin .CS input.SumTotal:focus,
 .Skin .Matrix .CS input:focus, .Skin .Matrix .RO input:focus, .Skin .SBS .Long:focus, .Skin .horizontalbar tr.Stars td.value input:focus,
 .Skin .horizontalbar table.sliderGrid tr td.value input:focus, .Skin .PGR .DragAndDrop ul:focus, .Skin select:focus, .Skin input:focus {
-  border: 1px solid #0081cd;
+  border: 1px solid dodgerblue;
   outline: none; }
 .Skin select {
   font-size: 16px; }
@@ -139,7 +136,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .Skin .Matrix .TE .Long td input, .Skin .Skin .Matrix .TE .Medium td input, .Skin .Skin .Matrix .TE .Short td input {
   margin: 0 auto; }
 .Skin .RO .DND ul.Edited .rank, .Skin .RO .DND ul.NotEdited li:hover .rank, .Skin .RO .DND .rank {
-  background: #0081cd; }
+  background: dodgerblue; }
 .Skin .horizontalbar tr.xlabel th:last-child {
   border-bottom-color: transparent; }
 .Skin .EndOfSurvey {
@@ -152,14 +149,14 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin #Buttons #PreviousButton {
   float: left; }
 .Skin #Buttons #NextButton, .Skin #Buttons #PreviousButton {
-  background-color: #0081cd;
   border: 2px solid white;
+  background-color: dodgerblue;
+  color: white;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  color: white;
   cursor: pointer;
   font-size: 16px;
   margin: 0px;
@@ -169,12 +166,13 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   -webkit-appearance: none; }
   @media only screen and (min-device-width: 1024px) {
     .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
-      background-color: white;
-      color: #0081cd; }
+      transition: all .1s ease-in-out;
+      border-color: #006ad1;
+      color: #006ad1; }
     .Skin #Buttons #NextButton:active, .Skin #Buttons #PreviousButton:active {
-      background-color: transparent;
-      border-color: #00619a;
-      color: #00619a; } }
+      transition: all .1s ease-in-out;
+      border-color: #005db7;
+      color: #005db7; } }
 .Skin #Footer {
   color: #333333;
   font-size: 13px;
@@ -193,7 +191,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
-    background: #00619a; }
+    background: #0077ea; }
 
 /***********************************************************************************************************************
 MOBILE
