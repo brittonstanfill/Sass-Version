@@ -2,7 +2,10 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES, CONDITIONALS, & MIXINS
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//_variables.scss
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//CONDITIONALS
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -11,12 +14,12 @@
 
 	//LAYOUTS
 -->	$full-width-header: T; //F is survey container
-		$boxed-skincontent: F; // Works for full width header
+		$boxed-skincontent: F;
 		$boxed-questions: F;
 	$pushed-to-bottom-plug: T; //sticky footer plug
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
--->	$border-radius-on: T;
+-->	$border-radius-on: F;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//VARIABLES
@@ -34,15 +37,16 @@
 
 	//DEFAULT
 -->	$body-background-color: $primary-color;
+-->	$default-text-color: #fff;
+	$default-font-size: 16px;
 	$container-max-width: 900px;
-	$default-border-color: darken($body-background-color, 30%);
+	$default-border-color: lighten($body-background-color, 40%);
 	$default-border-radius: 3px;
 	$default-border-style: solid;
 	$default-border-width: 1px;
 	$default-border: $default-border-width $default-border-style $default-border-color;
 	$default-container-padding: 20px;
--->	$default-text-color: #333;
-	$default-font-size: 16px;
+
 
 	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
 -->	$question-container-background-color: #FFF;
@@ -99,7 +103,7 @@
 
 	//QUESTIONS
 	$question-text-font-size: ($default-font-size + 2);
--->	$question-text-color: #333;
+-->	$question-text-color: $default-text-color;
 	$question-body-font-size: $default-font-size;
 -->	$question-body-text-color: $default-text-color;
 	$question-outer-padding: 0px $default-container-padding;
@@ -115,17 +119,17 @@
 		$progress-bar-border-radius: $default-border-radius;
 
 	//BUTTONS
--->	$button-primary-color: #FFF;
-	$button-secondary-color: $body-background-color;
+-->	$button-primary-color: $primary-color;
+	$button-secondary-color: #FFF;
 	$button-padding: 10px 20px;
 	$buttons-padding: $default-container-padding;
 	//CONDITIONALS
 		$button-outline: T; //false will do solid button
-			$button-border-color: $button-primary-color;
+			$button-border-color: $button-secondary-color;
 			$button-border: 2px  $default-border-style $button-border-color;
 		
 		$button-border-radius-on: $border-radius-on; //T or F
-			$button-border-radius: $default-border-radius;
+			$button-border-radius: $default-border-radius +2;
 
 
 
@@ -392,33 +396,33 @@ img{
 		color: $question-body-text-color;
 		font-size: $question-body-font-size;
 		margin:0;
-		padding: $default-container-padding;
+		padding: $default-container-padding !important;
 		// @if $boxed-questions == T {
 		// 	padding:$default-container-padding;
 		// 	margin:0;
 		// }
-		overflow-x:auto; //testing question scrolling
+		overflow-x:auto !important; //testing question scrolling
 		overflow-y:hidden;  //testing question scrolling
 	}
-	@if $boxed-questions == T {
-		.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
-			padding:0;
-			li, tr, th{
-				padding-left:$default-container-padding !important;
-			}
-		}
-		.RO .RB .QuestionBody{
-				padding:0;
-			}
-		.Skin .Timing .QuestionText{
-			margin:0;
-		}
-		/////general styles I'm overriding maybe do for all Q types
-		.Skin .MC input.radio, .Skin .MC input.checkbox{
-			margin-left:0;
-		}
+	// @if $boxed-questions == T {
+	// 	.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
+	// 		padding:0;
+	// 		li, tr, th{
+	// 			padding-left:$default-container-padding !important;
+	// 		}
+	// 	}
+	// 	.RO .RB .QuestionBody{
+	// 			padding:0;
+	// 		}
+	// 	.Skin .Timing .QuestionText{
+	// 		margin:0;
+	// 	}
+	// 	/////general styles I'm overriding maybe do for all Q types
+	// 	.Skin .MC input.radio, .Skin .MC input.checkbox{
+	// 		margin-left:0;
+	// 	}
 
-	}
+	// }
 	body.ToCMargin div.Skin {
 		margin-left: 0px;
 	}
@@ -515,8 +519,8 @@ img{
 
 		@if $button-outline == T {
 			border: $button-border;
-			background-color: $button-secondary-color;
-			color: $button-primary-color;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
 		}
 		@else if $button-outline == F {
 			border: none;
@@ -557,15 +561,15 @@ img{
 				&:hover {
 					//background-color: rgba(0,0,0,.1);
 					transition: all .1s ease-in-out;
-					border-color: darken($button-secondary-color, 15%);
-					color: darken($button-secondary-color, 15%);
+					border-color: darken($button-primary-color, 15%);
+					color: darken($button-primary-color, 15%);
 				}
 
 				&:active {
 					//background-color: rgba(0,0,0,.2);
 					transition: all .1s ease-in-out;
-					border-color: darken($button-secondary-color, 20%);
-					color: darken($button-secondary-color, 20%);
+					border-color: darken($button-primary-color, 20%);
+					color: darken($button-primary-color, 20%);
 				}
 		
 			}
@@ -592,11 +596,19 @@ img{
 		margin: 0;
 		text-align: $plug-text-align;
 
+
 		a {
 			color: $plug-link-color;
 			text-decoration: none;
 			padding: $plug-padding;
 			background: $plug-background;
+				@if $border-radius-on == T{
+					-webkit-border-radius: 5px 0 0 0;
+					-moz-border-radius: 5px 0 0 0;
+					-ms-border-radius: 5px 0 0 0;
+					-o-border-radius: 5px 0 0 0;
+					border-radius: 5px 0 0 0;
+				}
 		}
 	}
 }

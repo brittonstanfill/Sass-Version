@@ -78,11 +78,6 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   max-width: 940px;
   margin: 0 auto;
   background: transparent;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
   padding: 0px; }
 .Skin #Questions {
   padding: 0px; }
@@ -93,15 +88,15 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   overflow-x: hidden; }
 .Skin .QuestionText {
   font-size: 18px;
-  color: #333333;
+  color: white;
   margin: 0;
   padding: 15px; }
 .Skin .QuestionBody {
-  color: #333333;
+  color: white;
   font-size: 16px;
   margin: 0;
-  padding: 20px;
-  overflow-x: auto;
+  padding: 20px !important;
+  overflow-x: auto !important;
   overflow-y: hidden; }
 .Skin body.ToCMargin div.Skin {
   margin-left: 0px; }
@@ -119,7 +114,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 5px; }
 .Skin input.TextEntryBox, .Skin .TE textarea, .Skin textarea, .Skin input[type="password"], .Skin input[type="text"], .Skin input[type="search"],
 .Skin select {
-  border: 1px solid #004384;
+  border: 1px solid #eaf5ff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -141,7 +136,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   border-bottom-color: transparent; }
 .Skin .EndOfSurvey {
   border: none;
-  color: #333333;
+  color: white;
   padding: 30px; }
 .Skin #Buttons {
   padding: 20px;
@@ -152,11 +147,11 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   border: 2px solid white;
   background-color: dodgerblue;
   color: white;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
   cursor: pointer;
   font-size: 16px;
   margin: 0px;
@@ -174,7 +169,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
       border-color: #005db7;
       color: #005db7; } }
 .Skin #Footer {
-  color: #333333;
+  color: white;
   font-size: 13px;
   max-width: 900px;
   margin: 0px auto;
@@ -182,7 +177,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin #PushStickyFooter {
   height: 38px; }
 .Skin #Plug {
-  color: #333333;
+  color: white;
   font-size: 13px;
   float: right;
   margin: 0;
@@ -209,12 +204,7 @@ MOBILE
     margin: 0 auto !important;
     max-width: 900px; }
   .Skin #SkinContent {
-    border: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0; }
+    border: none; }
   .Skin #Plug {
     float: none; }
     .Skin #Plug a {
