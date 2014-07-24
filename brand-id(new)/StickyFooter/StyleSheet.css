@@ -3,285 +3,226 @@ ul, li {
   list-style-position: outside;
   list-style-type: none;
   margin: 0pt;
-  padding: 0pt;
-}
+  padding: 0pt; }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, textarea, p, blockquote, th, td {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 legend {
-  font-size: 100%;
-}
+  font-size: 100%; }
 
 .clear {
-  clear: both;
-}
+  clear: both; }
 
 .zero {
   font-size: 0;
-  height: 0;
-}
+  height: 0; }
 
 th {
   font-style: normal;
   font-weight: normal;
-  text-align: left;
-}
+  text-align: left; }
 
 caption {
-  display: none;
-}
+  display: none; }
 
 a img {
-  border: none;
-}
+  border: none; }
 
 img {
   max-width: 100%;
-  height: auto !important;
-}
+  height: auto !important; }
 
 fieldset {
-  border: none;
-}
+  border: none; }
 
 h2.noStyle {
   font-style: normal;
   font-weight: normal;
-  font-size: 1em;
-}
+  font-size: 1em; }
 
 * {
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .Skin .QuestionBody {
   -webkit-user-select: none;
-  cursor: default;
-}
+  cursor: default; }
 
 .Skin label.QuestionText {
-  display: block;
-}
+  display: block; }
 
 .Skin .QuestionOuter {
   -ms-overflow-style: none;
-  overflow-y: hidden;
-}
+  overflow-y: hidden; }
 
 .Skin .QuestionBody table.ChoiceStructure {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .QuestionBody ul.ChoiceStructure {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .QuestionText {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .LanguageSelectorContainer {
-  text-align: right;
-}
+  text-align: right; }
 
 .LanguageSelectorContainer a {
-  color: black;
-}
+  color: black; }
 
 .Skin .HeaderValidationError li {
-  clear: both;
-}
+  clear: both; }
 
 .Skin .HeaderValidationError li a {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .Skin .MC li.reg {
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 .Skin .MC .QuestionBody label {
   /* IE puts the label 1px higher 
   http://stackoverflow.com/questions/8557367/css-label-vertical-alignment-with-input-fields */
-  vertical-align: 1px;
-}
+  vertical-align: 1px; }
 
 .Skin .MC .SAVR li,
 .Skin .MC .MAVR li {
-  clear: left;
-}
+  clear: left; }
 
 .Skin .MC .SAVR input,
 .Skin .MC .SAVR span.LabelWrapper,
 .Skin .MC .MAVR input,
 .Skin .MC .MAVR span.LabelWrapper {
-  float: left;
-}
+  float: left; }
 
 .Skin .MC .MAVR input.TextEntryBox,
 .Skin .MC .SAVR input.TextEntryBox {
   float: none !important;
   display: block;
-  clear: both;
-}
+  clear: both; }
 
 .Skin .MC .SAHR table td,
 .Skin .MC .MAHR table td,
 .Skin .NPS table td {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .MC .SAHR .QuestionBody table td label,
 .Skin .MC .MAHR .QuestionBody table td label {
-  margin-right: 0px;
-}
+  margin-right: 0px; }
 
 .Skin .NPS table .ColumnLabels .First {
-  text-align: left;
-}
+  text-align: left; }
 
 .Skin .NPS table .ColumnLabels .Center {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .NPS table .ColumnLabels .Last {
-  text-align: right;
-}
+  text-align: right; }
 
 .Skin .Matrix table {
-  border-collapse: separate;
-}
+  border-collapse: separate; }
 
 .Skin .Matrix table td,
 .Skin .Matrix table th {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Matrix .TE td input {
-  display: inline-block;
-}
+  display: inline-block; }
 
 .Skin .Matrix .TE .Short td input {
   width: 30px;
-  width: 3em;
-}
+  width: 3em; }
 
 .Skin .Matrix .TE .Medium td input {
   width: 60px;
-  width: 6em;
-}
+  width: 6em; }
 
 .Skin .Matrix .TE .Long td input {
   width: 90px;
-  width: 9em;
-}
+  width: 9em; }
 
 .Skin .Matrix table th.c1 {
-  text-align: left;
-}
+  text-align: left; }
 
 .Skin .Matrix .Bipolar td.AnswerLeft,
 .Skin .Matrix .Bipolar th.AnswerLeft {
   text-align: left;
-  width: 50%;
-}
+  width: 50%; }
 
 .Skin .Matrix .Bipolar td.AnswerRight,
 .Skin .Matrix .Bipolar th.AnswerRight {
   text-align: right;
-  width: 50%;
-}
+  width: 50%; }
 
 #SurveyEngineBody .Skin .Matrix .Bipolar td.AnswerRight,
 #SurveyEngineBody .Skin .Matrix .Bipolar th.AnswerRight {
   text-align: right !important;
-  width: 50%;
-}
+  width: 50%; }
 
 .Skin .Matrix .Bipolar .QuestionBody td.AnswerRight label,
 .Skin .Matrix .Bipolar .QuestionBody th.AnswerRight label {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .TE .FORM span.LabelWrapper {
-  padding-right: 2em;
-}
+  padding-right: 2em; }
 
 .Skin .TE .ChoiceStructure .Short {
   width: 30px;
-  width: 3em;
-}
+  width: 3em; }
 
 .Skin .TE .ChoiceStructure .Medium {
   width: 60px;
-  width: 6em;
-}
+  width: 6em; }
 
 .Skin .TE .ChoiceStructure .Long {
   width: 90px;
-  width: 9em;
-}
+  width: 9em; }
 
 .Skin .TE .ML textarea {
-  height: 4em;
-}
+  height: 4em; }
 
 .Skin .TE .ESTB textarea {
-  height: 8em;
-}
+  height: 8em; }
 
 .Skin .TE .ChoiceStructure .Essay {
   width: 100%;
-  height: 4em;
-}
+  height: 4em; }
 
 .Skin .horizontalbar tr.xlabel th {
-  position: relative;
-}
+  position: relative; }
 
 .Skin .LabelDescriptionsContainer {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .LabelDescriptions {
   position: relative;
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .horizontalbar thead table.LabelDescriptions tr td,
 .Skin .horizontalbar thead tr td.NotApplicable {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .horizontalbar table.LabelDescriptions .LabelCount3 td.First,
 .Skin .horizontalbar table.LabelDescriptions .LabelCount2 td.First {
-  text-align: left;
-}
+  text-align: left; }
 
 .Skin .horizontalbar table.LabelDescriptions .LabelCount3 td.Last,
 .Skin .horizontalbar table.LabelDescriptions .LabelCount2 td.Last {
-  text-align: right;
-}
+  text-align: right; }
 
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels td.LightText {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount3 td.First label,
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.First label {
   position: relative;
-  left: -50%;
-}
+  left: -50%; }
 
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount3 td.Last label,
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.Last label {
   position: relative;
-  left: 50%;
-}
+  left: 50%; }
 
 .Skin .horizontalbar thead th span.TickContainer,
 .Skin .horizontalbar thead td span.TickContainer {
@@ -289,8 +230,7 @@ h2.noStyle {
   display: block;
   height: 15px;
   margin-bottom: 1px;
-  white-space: nowrap;
-}
+  white-space: nowrap; }
 
 .Skin .horizontalbar tr.xlabel th span.TickContainer span,
 .Skin .horizontalbar tr.xlabel td span.TickContainer span {
@@ -298,60 +238,49 @@ h2.noStyle {
   bottom: 0px;
   width: 100%;
   left: 50%;
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .horizontalbar tr.xlabel th span.TickContainer span.MinValue,
 .Skin .horizontalbar tr.xlabel td span.TickContainer span.MinValue {
-  left: -50%;
-}
+  left: -50%; }
 
 .Skin .horizontalbar .LeftBorder {
   width: 1px;
-  font-size: 0px;
-}
+  font-size: 0px; }
 
 .Skin .horizontalbar .RightBorder {
   width: 1px;
-  font-size: 0px;
-}
+  font-size: 0px; }
 
 .Skin .horizontalbar .BarOuter {
   width: 1px;
-  font-size: 0px;
-}
+  font-size: 0px; }
 
 .Skin .horizontalbar td.BarOuter {
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 .Skin .horizontalbar .BarContainer {
   position: relative;
-  top: -10px;
-}
+  top: -10px; }
 
 .Skin .horizontalbar {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .horizontalbar .bar,
 .Skin .horizontalbar .handle,
 .Skin .horizontalbar .track {
   height: 20px;
-  -ms-touch-action: none;
-}
+  -ms-touch-action: none; }
 
 .Skin .horizontalbar .track {
   position: absolute;
   width: 3000px;
   top: 0px;
-  z-index: 1000;
-}
+  z-index: 1000; }
 
 .Skin .horizontalbar .bar,
 .Skin .horizontalbar .handle {
-  top: 0px;
-}
+  top: 0px; }
 
 .Skin .horizontalbar .bar {
   position: absolute;
@@ -361,67 +290,55 @@ h2.noStyle {
   z-index: 500;
   font-size: 0;
   opacity: 0.7;
-  filter: alpha(opacity=70);
-}
+  filter: alpha(opacity=70); }
 
 .Skin .horizontalbar .activated .bar,
 .Skin .horizontalbar .BarContainer:hover .bar {
-  background-color: #cccccc;
-}
+  background-color: #cccccc; }
 
 .Skin .horizontalbar .handle {
   position: absolute;
   width: 1px;
   height: 1px;
   cursor: move;
-  z-index: 500;
-}
+  z-index: 500; }
 
 .Skin .horizontalbar table.sliderGrid {
   empty-cells: show;
   overflow: visible;
-  border-collapse: collapse;
-}
+  border-collapse: collapse; }
 
 .Skin .horizontalbar table.sliderGrid tr td.value {
   width: 1px;
   text-align: center;
-  padding-left: 10px;
-}
+  padding-left: 10px; }
 
 .Skin .horizontalbar tr.Stars td.value input,
 .Skin .horizontalbar table.sliderGrid tr td.value input {
   background-color: transparent;
-  border: none;
-}
+  border: none; }
 
 .Skin .horizontalbar th.ylabel {
-  text-align: right;
-}
+  text-align: right; }
 
 .Skin .horizontalbar thead .NotApplicable {
-  overflow: visible;
-}
+  overflow: visible; }
 
 .Skin .horizontalbar tbody .NotApplicable {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .horizontalbar .trackHolderRel {
   position: relative;
   left: 0px;
   top: 0px;
   margin: 0px;
-  background: red;
-}
+  background: red; }
 
 .Skin .horizontalbar .Slider .BarContainer {
-  top: -15px;
-}
+  top: -15px; }
 
 .Skin .horizontalbar .Slider tbody th.ylabel {
-  padding: 15px;
-}
+  padding: 15px; }
 
 .Skin .SS .horizontalbar .SSTrack,
 .Skin .horizontalbar .Slider .track {
@@ -430,12 +347,10 @@ h2.noStyle {
   opacity: 0.5;
   filter: alpha(opacity=50);
   top: 10px;
-  border-radius: 40px;
-}
+  border-radius: 40px; }
 
 .Skin .horizontalbar .Slider .bar {
-  display: none;
-}
+  display: none; }
 
 .Skin .SS .horizontalbar .handle,
 .Skin .horizontalbar .Slider .handle {
@@ -443,128 +358,104 @@ h2.noStyle {
   height: 20px;
   background: #cccccc;
   top: -6px;
-  border-radius: 100%;
-}
+  border-radius: 100%; }
 
 .Skin .SS .SSTrack:hover,
 .Skin .horizontalbar .Slider .activated .track,
 .Skin .horizontalbar .Slider .BarContainer:hover .track {
   opacity: 1;
-  filter: alpha(opacity=100);
-}
+  filter: alpha(opacity=100); }
 
 .Skin .horizontalbar .Slider .track div {
-  filter: none;
-}
+  filter: none; }
 
 .Skin .STAR .horizontalbar table.sliderGrid {
-  table-layout: auto;
-}
+  table-layout: auto; }
 
 .Skin .STAR .horizontalbar table.sliderGrid tr td.value {
   width: auto;
-  text-align: left;
-}
+  text-align: left; }
 
 .Skin .STAR .Stars tbody tr {
-  height: 46px;
-}
+  height: 46px; }
 
 .Skin .STAR .BarContainer {
-  top: 0px;
-}
+  top: 0px; }
 
 .Skin .STAR .StarsContainer,
 .Skin .STAR .StarsEventWatcher,
 .Skin .STAR .StarsContainer .Filled {
   height: 26px;
-  background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars.png") 0px 0px;
-}
+  background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars.png") 0px 0px; }
 
 .Skin .STAR .StarsOuterContainer {
-  margin: 10px;
-}
+  margin: 10px; }
 
 .Skin .STAR .StarsContainer {
   background-position: 0px -27px;
-  position: relative;
-}
+  position: relative; }
 
 .Skin .STAR .StarsEventWatcher {
   top: 0px;
   left: 0px;
   position: absolute;
-  background-image: none;
-}
+  background-image: none; }
 
 .Skin .STAR .StarsContainer .Filled {
   background-position: 0px 0px;
   position: absolute;
   top: 0px;
-  left: 0px;
-}
+  left: 0px; }
 
 .Skin .RO .RankInput {
-  width: 2em;
-}
+  width: 2em; }
 
 .Skin .RO .RB .ChoiceStructure thead th,
 .Skin .RO .RB .ChoiceStructure tbody td {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .RO .SB .ChoiceStructure,
 .Skin .RO .SB .ChoiceStructure select,
 .Skin .RO .SB .ChoiceStructure .Center {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .RO .HR li {
-  float: left;
-}
+  float: left; }
 
 .Skin .SBS thead th,
 .Skin .SBS td {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .SBS .Short {
   width: 30px;
-  width: 3em;
-}
+  width: 3em; }
 
 .Skin .SBS .Medium {
   width: 60px;
-  width: 6em;
-}
+  width: 6em; }
 
 .Skin .SBS .Long {
   width: 90px;
-  width: 9em;
-}
+  width: 9em; }
 
 .Skin .SBS .Essay {
   width: 100%;
-  height: 4em;
-}
+  height: 4em; }
 
 .SBS table.ChoiceStructure {
-  border-collapse: collapse;
-}
+  border-collapse: collapse; }
 
 .Skin .CS .SumInput,
 .Skin .CS .SumTotal {
   white-space: nowrap;
   width: 100%;
   max-width: 3em;
-  display: inline-block;
-}
+  display: inline-block; }
 
 .Skin .CS .SumInput input,
 .Skin .CS .SumTotal input {
   width: 100%;
-  max-width: 3em;
-}
+  max-width: 3em; }
 
 .Skin .CS .VRTL li {
   position: relative;
@@ -572,320 +463,256 @@ h2.noStyle {
   min-height: 26px;
   zoom: 1;
   padding-right: 150px;
-  /* Gives space at right, so text doesn't overlap into text entry box */
-}
+  /* Gives space at right, so text doesn't overlap into text entry box */ }
 
 .Skin .CS .VRTL .SumInput,
 .Skin .CS .VRTL .SumTotal {
   position: absolute;
   right: 4px;
-  top: 0px;
-}
+  top: 0px; }
 
 .Skin .CS .HR li {
-  float: left;
-}
+  float: left; }
 
 .Skin #SkinContent .RO .DND .QuestionBody {
-  overflow: visible;
-}
+  overflow: visible; }
 
 .Skin .RO .DND ul {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .RO .DND ul li {
   cursor: move;
   position: relative;
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .RO .DND ul.NotEdited .rank {
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 .Skin .RO .DND ul.Edited .rank,
 .Skin .RO .DND ul.NotEdited li:hover .rank {
-  visibility: visible;
-}
+  visibility: visible; }
 
 .Skin .PGR td.itemsContainerTd {
-  vertical-align: top;
-}
+  vertical-align: top; }
 
 .Skin .PGR td.groupsContainerTd {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .PGR .DragAndDrop td.itemsContainerTd {
-  height: 100%;
-}
+  height: 100%; }
 
 .Skin .PGR .DragAndDrop td.groupsContainerTd {
-  vertical-align: top;
-}
+  vertical-align: top; }
 
 .Skin .PGR .DragAndDrop td.groupsContainerTd div > div {
   border: 1px solid #BBB;
   border-collapse: collapse;
-  min-height: 150px;
-}
+  min-height: 150px; }
 
 .Skin .PGR .DragAndDrop ul {
   list-style: none;
   height: 150px;
   width: 150px;
-  border-collapse: collapse;
-}
+  border-collapse: collapse; }
 
 html > body .Skin .PGR .DragAndDrop ul {
   height: auto;
-  min-height: 150px;
-}
+  min-height: 150px; }
 
 html > body .Skin .PGR .DragAndDrop .stack ul.stack {
   margin: 25px 25px 0 0;
-  /* This is to give space for the stacked items, if hanging over the top and right */
-}
+  /* This is to give space for the stacked items, if hanging over the top and right */ }
 
 html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack {
-  margin-left: 20px;
-}
+  margin-left: 20px; }
 
 .Skin .PGR .DragAndDrop ul li.stack {
-  position: absolute;
-}
+  position: absolute; }
 
 .Skin .PGR .DragAndDrop div ul li span label img {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label {
-  width: 187px;
-}
+  width: 187px; }
 
 /*********************************************
 Rank images --- TEST THIS OUT with an image
 *********************************************************/
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label img {
   width: 187px;
-  visibility: visible;
-}
+  visibility: visible; }
 
 .Skin .PGR .DragAndDrop .stack .Group li.stack span.rank {
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 /*********************************************
 Rank images --- TEST THIS OUT with an image
 *********************************************************/
 .Skin .PGR .DragAndDrop .stack div.Group ul li span img {
-  width: 117px;
-}
+  width: 117px; }
 
 .Skin .PGR .DragAndDrop .stack ul li.stack {
   background-color: white;
-  border: 1px solid #ddd;
-}
+  border: 1px solid #ddd; }
 
 .Skin .PGR .DragAndDrop .stack ul li.stack.penultimate {
   margin-top: -5px;
-  margin-left: 5px;
-}
+  margin-left: 5px; }
 
 .Skin .PGR .DragAndDrop .stack ul li.stack.antepenultimate {
   margin-top: -10px;
-  margin-left: 10px;
-}
+  margin-left: 10px; }
 
 .Skin .PGR .DragAndDrop .ProgressCounter {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .PGR .DragAndDrop .Group h2,
 .Skin .PGR .DragAndDrop .Items h2 {
   text-align: center;
-  display: block;
-}
+  display: block; }
 
 .Skin .PGR .DragAndDrop .Items {
-  height: 100%;
-}
+  height: 100%; }
 
 .Skin .PGR .DragAndDrop .Group {
-  float: left;
-}
+  float: left; }
 
 .Skin .PGR .DragAndDrop .Items ul {
   border: none;
-  height: 150px;
-}
+  height: 150px; }
 
 html > body .Skin .PGR .DragAndDrop .Items ul {
   min-height: 150px;
-  height: auto;
-}
+  height: auto; }
 
 .Skin .PGR .DragAndDrop .Group ul,
 .Skin .PGR .DragAndDrop .Group h2,
 .Skin .PGR .DragAndDrop .Items ul,
 .Skin .PGR .DragAndDrop .Items h2 {
-  width: 187px;
-}
+  width: 187px; }
 
 .Skin .PGR .DragAndDrop .Items ul li .rank {
-  display: none;
-}
+  display: none; }
 
 .Skin .PGR .DragAndDrop .QuestionBody label {
   display: block;
   zoom: 1;
-  cursor: move;
-}
+  cursor: move; }
 
 .Skin .PGR .DragAndDrop .clear {
   clear: both;
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div {
-  float: none;
-}
+  float: none; }
 
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div ul,
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div h2 {
-  width: 337px;
-}
+  width: 337px; }
 
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
   width: 337px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .PGR .DragAndDrop .rank {
   position: absolute;
   right: 0;
   top: 0;
   background-color: #ed3e3e;
-  color: white;
-}
+  color: white; }
 
 .Skin .PGR .DragAndDrop ul li {
   position: relative;
-  cursor: move;
-}
+  cursor: move; }
 
 .Skin .PGR .ItemsNoDnd select {
-  width: 185px;
-}
+  width: 185px; }
 
 .Skin .PGR .ItemsNoDnd h2,
 .Skin .PGR .GroupNoDnd h2 {
   text-align: center;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
 .Skin .PGR .GroupNoDnd h2 {
   border-width: 0 0 1px 0;
   border-style: solid;
-  padding: 5px;
-}
+  padding: 5px; }
 
 .Skin .PGR .groupsContainerTd .inner td.groupContainer {
-  padding: 10px 0 0 10px;
-}
+  padding: 10px 0 0 10px; }
 
 .Skin .PGR .GroupNoDnd {
-  width: 185px;
-}
+  width: 185px; }
 
 .Skin .PGR .GroupNoDnd {
   border-width: 1px;
-  border-style: solid;
-}
+  border-style: solid; }
 
 .Skin .PGR .GroupNoDnd .inner {
-  padding: 5px;
-}
+  padding: 5px; }
 
 .Skin .PGR .GroupNoDnd .GroupItems,
 .Skin .PGR .GroupNoDnd .GroupItems th,
 .Skin .PGR .GroupNoDnd .GroupItems th select {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .PGR .GroupNoDnd .GroupItems td {
-  width: 30px;
-}
+  width: 30px; }
 
 .Skin .PGR .GroupNoDnd h2 .GetItems,
 .Skin .PGR .GroupNoDnd .GroupItems td input {
   white-space: nowrap;
-  width: 25px;
-}
+  width: 25px; }
 
 .Skin .PGR .NumGroups {
-  margin-top: 5px;
-}
+  margin-top: 5px; }
 
 .Skin .PGR .QuestionBody .ChoiceStructure .LabelWrapper ul {
-  min-height: 0;
-}
+  min-height: 0; }
 
 .Skin .HotSpot .QuestionBody {
-  position: relative;
-}
+  position: relative; }
 
 .Skin .HotSpot .HotSpotContainer {
   position: relative;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .HotSpot .HotSpotContainer img {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .Skin .HotSpot .HotSpotRegions {
   position: absolute;
   top: 0;
-  left: 0;
-}
+  left: 0; }
 
 .Skin .HotSpot .Region {
   display: block;
   position: absolute;
-  outline: 0;
-}
+  outline: 0; }
 
 .Skin .HotSpot .Region:hover {
-  border: 1px solid #666666;
-}
+  border: 1px solid #666666; }
 
 .Skin .HotSpot .Region:hover .RegionInner {
-  border: 1px solid #FFFFFF;
-}
+  border: 1px solid #FFFFFF; }
 
 .Skin .HotSpot .RegionInnerInner {
   background-color: #FFFFFF;
   filter: alpha(opacity=0);
-  opacity: 0.0;
-}
+  opacity: 0.0; }
 
 .Skin .HotSpot .Like .RegionInner .RegionInnerInner {
   background-color: #0F0;
   filter: alpha(opacity=30);
-  opacity: 0.3;
-}
+  opacity: 0.3; }
 
 .Skin .HotSpot .Dislike .RegionInner .RegionInnerInner {
   background-color: #F00;
   filter: alpha(opacity=30);
-  opacity: 0.3;
-}
+  opacity: 0.3; }
 
 .Skin .HotSpot a.Region {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 .Skin .HotSpot .Region span {
   position: absolute;
@@ -893,48 +720,40 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   right: 0;
   display: block;
   filter: alpha(opacity=50);
-  opacity: 0.5;
-}
+  opacity: 0.5; }
 
 .Skin .HotSpot .Region:hover span {
   bottom: 3px;
-  right: 3px;
-}
+  right: 3px; }
 
 .Skin .HotSpot .Like span {
   background: transparent url("../Graphics/qicons.gif") -20px -5px no-repeat;
   width: 16px;
-  height: 13px;
-}
+  height: 13px; }
 
 .Skin .HotSpot .Dislike span {
   background: transparent url("../Graphics/qicons.gif") -3px -3px no-repeat;
   width: 15px;
-  height: 15px;
-}
+  height: 15px; }
 
 .Skin .SS .SSImage img {
-  margin: 0px auto;
-}
+  margin: 0px auto; }
 
 .Skin .SS .SSDisplay,
 .Skin .SS .ChoiceStructure table.SSDisplay {
   width: 200px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .SS .SSDisplay .SSTrack,
 .Skin .SS .SSDisplay .handle {
   position: absolute;
-  display: block;
-}
+  display: block; }
 
 .Skin .SS .verticalbar,
 .Skin .SS .horizontalbar .SSTrack {
   position: relative;
   width: 200px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .SS .verticalbar .SSTrack {
   position: relative;
@@ -944,14 +763,12 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   float: left;
   opacity: .5;
   filter: alpha(opacity=50);
-  border-radius: 20px;
-}
+  border-radius: 20px; }
 
 .Skin .SS .SSTrack.activated,
 .Skin .SS .verticalbar .SSTrack:hover {
   opacity: 1;
-  filter: alpha(opacity=100);
-}
+  filter: alpha(opacity=100); }
 
 .Skin .verticalbar .SSTrack .handle {
   height: 20px;
@@ -960,76 +777,60 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   cursor: move;
   overflow: hidden;
   border-radius: 100%;
-  left: -6px;
-}
+  left: -6px; }
 
 .Skin .SS .Container {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .SS .QuestionBody {
-  width: 40%;
-}
+  width: 40%; }
 
 .Skin .SS .ChoiceStructure table {
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .GAP .ChoiceStructure {
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .GAP .ChoiceStructure .WhyText,
 .Skin .GAP .Why,
 .Skin .GAP .Scale {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .GAP .GAPArrow {
   width: 16px;
   height: 16px;
   margin: auto;
   margin-top: 2px;
-  background-image: url("../Graphics/GAPRightArrow.gif");
-}
+  background-image: url("../Graphics/GAPRightArrow.gif"); }
 
 .Skin .GAP .TextEntryBox {
-  display: block;
-}
+  display: block; }
 
 .Skin .GAP .LightBG {
-  background: #cccccc;
-}
+  background: #cccccc; }
 
 .Skin .GAP .bottom .c5 {
-  border-bottom-left-radius: 10px;
-}
+  border-bottom-left-radius: 10px; }
 
 .Skin .GAP .ChoiceStructure thead .c5 {
-  border-top-left-radius: 10px;
-}
+  border-top-left-radius: 10px; }
 
 .Skin .GAP .ChoiceStructure thead .c6 {
-  border-top-right-radius: 10px;
-}
+  border-top-right-radius: 10px; }
 
 /* Display the clock on a timer question to see all this
 */
 .Skin .Timing .QuestionText {
-  margin-top: 6pt;
-}
+  margin-top: 6pt; }
 
 .Skin .Timing input {
-  width: 4em;
-}
+  width: 4em; }
 
 .Skin .Timing li {
-  padding: 3px;
-}
+  padding: 3px; }
 
 .Skin .Timing .QuestionBody li label {
-  width: 20em;
-}
+  width: 20em; }
 
 .FlipClock {
   background-color: #333;
@@ -1037,8 +838,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   border-radius: 2px;
   margin: 10px auto;
   float: left;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
 .FlipClock:after {
   content: ".";
@@ -1046,8 +846,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   clear: both;
   visibility: hidden;
   line-height: 0;
-  height: 0;
-}
+  height: 0; }
 
 .FlipClock > span {
   background-color: #000;
@@ -1058,16 +857,13 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   position: relative;
   perspective: 40px;
   -moz-perspective: 40px;
-  -webkit-perspective: 40px;
-}
+  -webkit-perspective: 40px; }
 
 .FlipClock > span.T1 {
-  margin-right: 0;
-}
+  margin-right: 0; }
 
 .FlipClock > span.T2 {
-  margin-left: 0;
-}
+  margin-left: 0; }
 
 .FlipClock span span {
   color: #333;
@@ -1078,14 +874,12 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   height: 40px;
   width: 30px;
   line-height: 40px;
-  text-align: center;
-}
+  text-align: center; }
 
 .FlipClock span span.Number {
   border-radius: 1px;
   border-top: 1px solid #FFF;
-  border-bottom: 1px solid #AAA;
-}
+  border-bottom: 1px solid #AAA; }
 
 .FlipClock span b {
   display: block;
@@ -1098,8 +892,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   border-bottom: 1px solid #FFF;
   opacity: .3;
   filter: alpha(opacity=30);
-  z-index: 5;
-}
+  z-index: 5; }
 
 .FlipClock span .Change {
   position: absolute;
@@ -1118,8 +911,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   -webkit-transition: all .2s ease-in;
   backface-visibility: hidden;
   -moz-backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+  -webkit-backface-visibility: hidden; }
 
 .FlipClock span .Change.TB {
   line-height: 0;
@@ -1133,46 +925,38 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   -webkit-transition-delay: .15s;
   transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-}
+  -webkit-transition-timing-function: ease-out; }
 
 .FlipClock span fieldset.Flip .Change.TF {
   transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   -webkit-transform: rotateX(-90deg);
-  top: 12px;
-}
+  top: 12px; }
 
 .FlipClock span fieldset.Flip .Change.TB {
   transform: rotateX(0);
   -moz-transform: rotateX(0);
   -webkit-transform: rotateX(0);
-  top: 22px;
-}
+  top: 22px; }
 
 /*
 Captcha: makes the ugly white box containing the captcha image transparent.
 */
 .recaptchatable .recaptcha_image_cell, #recaptcha_table {
   background-color: transparent !important;
-  border: none !important;
-}
+  border: none !important; }
 
 .Skin .recaptchatable {
-  border: none;
-}
+  border: none; }
 
 .Skin .Captcha label.QuestionText {
-  width: 300px;
-}
+  width: 300px; }
 
 .Skin .recaptchatable tbody tr td {
-  padding: 0px !important;
-}
+  padding: 0px !important; }
 
 .Skin .Conjoint .Table {
-  width: 100%;
-}
+  width: 100%; }
 
 /* Mixed */
 .Skin .Conjoint .LeastMostTable tbody th,
@@ -1180,134 +964,111 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 .Skin .Conjoint .MPUTable tbody th,
 .Skin .Conjoint .CSTable tbody th,
 .Skin .Conjoint .EliminationTable tbody th {
-  padding: 3px 0 3px 0;
-}
+  padding: 3px 0 3px 0; }
 
 /** EliminationTable **/
 .Skin .Conjoint .EliminationTable {
-  margin-top: 20pt;
-}
+  margin-top: 20pt; }
 
 .Skin .Conjoint .EliminationTable thead td {
   font-weight: bold;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  padding-bottom: 2px;
-}
+  padding-bottom: 2px; }
 
 .Skin .Conjoint .EliminationTable tbody td {
   width: 15px;
-  padding: 3px;
-}
+  padding: 3px; }
 
 /** LeastMostTable */
 .Skin .Conjoint .LeastMostTable {
-  margin-top: 24pt;
-}
+  margin-top: 24pt; }
 
 .Skin .Conjoint .LeastMostTable thead td {
   font-weight: bold;
   border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
+  border-bottom-style: solid; }
 
 .Skin .Conjoint .LeastMostTable tbody th {
-  width: 70%;
-}
+  width: 70%; }
 
 .Skin .Conjoint .LeastMostTable tbody td {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Conjoint .LeastMostTable .PreferredTextCell {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Conjoint .LeastMostTable td,
 .Skin .Conjoint .LeastMostTable th {
   border-right-width: 1px;
-  border-right-style: solid;
-}
+  border-right-style: solid; }
 
 .Skin .Conjoint .LeastMostTable td.Last,
 .Skin .Conjoint .LeastMostTable th.Last {
-  border-right-width: 0px;
-}
+  border-right-width: 0px; }
 
 /** LOPTable **/
 .Skin .Conjoint .LOPTable {
-  margin-top: 20pt;
-}
+  margin-top: 20pt; }
 
 .Skin .Conjoint .LOPTable tbody td {
   width: 20px;
   text-align: center;
   border-left-width: 1px;
-  border-left-style: solid;
-}
+  border-left-style: solid; }
 
 .Skin .Conjoint .LOPTable thead th {
   font-weight: bold;
   border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
+  border-bottom-style: solid; }
 
 .Skin .Conjoint .LOPTable thead td {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-left-width: 1px;
   border-left-style: solid;
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Conjoint .LOPTable thead.Small td {
   border-top-width: 1px;
-  border-top-style: solid;
-}
+  border-top-style: solid; }
 
 .Skin .Conjoint .LOPTable thead td.Last,
 .Skin .Conjoint .LOPTable tbody td.Last {
   border-right-width: 1px;
-  border-right-style: solid;
-}
+  border-right-style: solid; }
 
 .Skin .Conjoint .LOPTable tbody .Bottom td {
   border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
+  border-bottom-style: solid; }
 
 /** ULOPTable **/
 .Skin .Conjoint .MPUTable thead th {
   font-weight: bold;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  padding-bottom: 2px;
-}
+  padding-bottom: 2px; }
 
 /** CSTable **/
 .Skin .Conjoint .CSTable thead td {
   font-weight: bold;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  padding-bottom: 2px;
-}
+  padding-bottom: 2px; }
 
 .Skin .Conjoint .CSTable tfoot td {
   font-weight: bold;
   border-top-width: 1px;
-  border-top-style: solid;
-}
+  border-top-style: solid; }
 
 .Skin .Conjoint .CSTable tfoot input,
 .Skin .Conjoint .CSTable tbody input {
-  width: 30px;
-}
+  width: 30px; }
 
 .Skin .Conjoint .CSTable tfoot .Last,
 .Skin .Conjoint .CSTable tbody .Last {
   text-align: center;
-  padding: 3px;
-}
+  padding: 3px; }
 
 /* Carried Forward choice */
 .Skin .CarryForwardSymbol {
@@ -1315,92 +1076,73 @@ Captcha: makes the ugly white box containing the captcha image transparent.
   /* dark green */
   font-weight: bold;
   font-size: 130%;
-  line-height: 70%;
-}
+  line-height: 70%; }
 
 /** Drill Down */
 .Skin .DD .QuestionBody table.ChoiceStructure {
-  width: auto;
-}
+  width: auto; }
 
 .Skin .DD .QuestionBody th {
-  padding: 4px 10px 4px 0;
-}
+  padding: 4px 10px 4px 0; }
 
 .Skin .DD .QuestionBody .drillDownSelectDropDown {
-  margin: 3px 0 3px 7px;
-}
+  margin: 3px 0 3px 7px; }
 
 .Skin .Grading .Inner {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .Skin .Grading {
-  padding: 0 10px;
-}
+  padding: 0 10px; }
 
 .Skin .Grading .Inner {
   background: #FFFFC7;
   border: 1px solid #FFDC81;
   padding: 15px;
-  color: black;
-}
+  color: black; }
 
 .Skin .Grading .Score {
   float: right;
   font-size: 35px;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .Skin .Grading .ChoiceStructure .Selected .Correct,
 .Skin .Grading .Correct {
-  color: #00A804;
-}
+  color: #00A804; }
 
 .Skin .Grading .ChoiceStructure .Selected .Incorrect,
 .Skin .Grading .Incorrect {
-  color: #C00;
-}
+  color: #C00; }
 
 .Skin .Grading .GradingQuestionText {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .Skin .Grading .ChoiceStructure {
-  padding-top: 5px;
-}
+  padding-top: 5px; }
 
 .Skin .Grading .ChoiceStructure li {
   padding: 5px;
-  margin-left: 10px;
-}
+  margin-left: 10px; }
 
 .Skin .Grading .ChoiceStructure .Icon {
   width: 18px;
   height: 17px;
   float: left;
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 .Skin .Grading .ChoiceStructure .Incorrect {
-  color: #BF8D8D;
-}
+  color: #BF8D8D; }
 
 .Skin .Grading .ChoiceStructure .Correct {
-  color: #8EC292;
-}
+  color: #8EC292; }
 
 .Skin .Grading .ChoiceStructure .Selected .Correct .Icon {
-  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingCheck.png);
-}
+  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingCheck.png); }
 
 .Skin .Grading .ChoiceStructure .Selected .Incorrect .Icon {
-  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingX.png);
-}
+  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingX.png); }
 
 .Skin .Grading .ChoiceStructure .Selected {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /* grading table */
 .Skin .Grading table.ChoiceStructure .Icon {
@@ -1408,79 +1150,63 @@ Captcha: makes the ugly white box containing the captcha image transparent.
   height: 17px;
   display: block;
   margin: 0 auto;
-  float: none;
-}
+  float: none; }
 
 .Skin .Grading table.ChoiceStructure th {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .Skin .Grading table.ChoiceStructure td,
 .Skin .Grading table.ChoiceStructure th {
-  padding: 5px;
-}
+  padding: 5px; }
 
 .Skin .Grading table.ChoiceStructure tbody td {
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Grading table.ChoiceStructure thead th,
 .Skin .Grading table.ChoiceStructure thead td {
   border-bottom: 1px solid #FFDC81;
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .Grading table.ChoiceStructure tbody th,
 .Skin .Grading table.ChoiceStructure thead td {
   border-right: 1px solid #FFDC81;
-  padding-left: 7px;
-}
+  padding-left: 7px; }
 
 .Skin .Grading table.ChoiceStructure .Correct .Icon {
-  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingFadedCheck.png);
-}
+  background-image: url(../../WRQualtricsSurveyEngine/SEGraphics/gradingFadedCheck.png); }
 
 .Skin .Grading table.ChoiceStructure th.LeftBorder,
 .Skin .Grading table.ChoiceStructure td.LeftBorder {
-  border-left: 1px solid #FFDC81;
-}
+  border-left: 1px solid #FFDC81; }
 
 .Skin .Grading table.ChoiceStructure .NoRightBorder {
-  border-right: none;
-}
+  border-right: none; }
 
 /** total score **/
 .Skin .Grading .TotalScore .Correct,
 .Skin .Grading .TotalScore .Incorrect {
-  color: #262626;
-}
+  color: #262626; }
 
 .Skin .Grading .TotalScore .GradingQuestionText {
-  line-height: 40px;
-}
+  line-height: 40px; }
 
 .Skin .Grading .TotalScore .QuestionBody {
-  display: none;
-}
+  display: none; }
 
 .Skin .Grading .TotalScore .GradingQuestionText .Score {
   float: none;
   font-size: 14pt;
-  color: #AD8416;
-}
+  color: #AD8416; }
 
 .Skin .Grading .TotalScore .GradingQuestionText span {
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 .Skin .HeatMapContainer {
   position: relative;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .Skin .HeatMap .QuestionBody {
-  position: relative;
-}
+  position: relative; }
 
 /* 
 This is the POINT in the middle of where you click
@@ -1494,8 +1220,7 @@ What's something interesting that could go here?  A color? Circle? */
   z-index: 5;
   font-size: 0px;
   line-height: 0px;
-  cursor: crosshair;
-}
+  cursor: crosshair; }
 
 /* 
 This is the HORIZONTAL line where you click
@@ -1508,8 +1233,7 @@ Maybe we could customize/color the dark line? */
   border-top: 1px solid #FFFFFF;
   font-size: 0px;
   line-height: 0px;
-  cursor: crosshair;
-}
+  cursor: crosshair; }
 
 /* 
 This is the VERTICAL line where you click
@@ -1523,39 +1247,33 @@ Maybe we could customize/color the dark line?*/
   font-size: 0px;
   line-height: 0px;
   zoom: 1;
-  cursor: crosshair;
-}
+  cursor: crosshair; }
 
 .Skin .HeatMapContainer img {
   cursor: crosshair;
-  border: none !important;
-}
+  border: none !important; }
 
 .Skin .FileUpload iframe {
   width: 100%;
   height: 56px;
   border: none;
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 .Skin .FileUpload .loadingError {
   background-color: #CC0000;
   font-weight: bold;
   margin: 5px auto;
   padding: 4px;
-  width: 26em;
-}
+  width: 26em; }
 
 .Skin .FileUpload .loadingImage {
   background: transparent url("../WRQualtricsShared/Graphics/ajax-loading.gif") no-repeat;
   width: 220px;
   height: 19px;
-  margin: 40px auto;
-}
+  margin: 40px auto; }
 
 .Skin .FileUpload table {
-  text-align: center;
-}
+  text-align: center; }
 
 /*
  * Be careful about editing this class
@@ -1566,15 +1284,13 @@ Maybe we could customize/color the dark line?*/
   position: absolute;
   visibility: hidden;
   height: 0px;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* IE7 has a bug where table borders show when visibility is set to hidden
  * Also, using transparent instead of none since it messes up the slider position
  */
 .Skin .IPDLHidden td, .Skin .IPDLHidden th {
-  border-color: transparent !important;
-}
+  border-color: transparent !important; }
 
 .offScreen {
   position: fixed;
@@ -1582,55 +1298,45 @@ Maybe we could customize/color the dark line?*/
   left: -9999px;
   height: 1px;
   width: 1px;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 #TocHeaderContainer {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100%;
-}
+  width: 100%; }
 
 #TocHeader {
-  position: relative;
-}
+  position: relative; }
 
 #TocHeader table {
-  width: 100%;
-}
+  width: 100%; }
 
 #TocHeader a {
-  text-align: center;
-}
+  text-align: center; }
 
 #TocSidebarContainer {
   position: absolute;
   left: -20px;
   top: 0px;
-  z-index: -1;
-}
+  z-index: -1; }
 
 .IE7 #TocSidebarContainer {
-  z-index: 1;
-}
+  z-index: 1; }
 
 #TocSidebarContainer.reduced {
   left: -70px;
   top: 0px;
-  z-index: 0;
-}
+  z-index: 0; }
 
 #TocSidebar {
   left: -100%;
   z-index: 1;
   position: relative;
-  max-width: 300px;
-}
+  max-width: 300px; }
 
 .reduced #TocSidebar {
-  left: 0;
-}
+  left: 0; }
 
 #TocSidebarIcons {
   padding: 20px;
@@ -1641,24 +1347,20 @@ Maybe we could customize/color the dark line?*/
   width: 30px;
   padding: 2px 5px;
   float: right;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 .reduced #TocSidebarIcons {
-  float: left;
-}
+  float: left; }
 
 .IE #TocSidebarIcons {
-  float: left;
-}
+  float: left; }
 
 #TocIcon {
   background-image: url(../../WRQualtricsControlPanel/CPGraphics/flowicons.png);
   background-position: -246px -1px;
   width: 16px;
   height: 16px;
-  float: left;
-}
+  float: left; }
 
 #TocArrow {
   background-image: url(../../WRQualtricsControlPanel/CPGraphics/editwidgets.png);
@@ -1666,83 +1368,66 @@ Maybe we could customize/color the dark line?*/
   width: 10px;
   height: 10px;
   float: right;
-  margin-top: 5px;
-}
+  margin-top: 5px; }
 
 .closed #TocArrow {
-  background-position: -11px -60px;
-}
+  background-position: -11px -60px; }
 
 .closed #TocSidebarContent {
-  display: none;
-}
+  display: none; }
 
 #TocSidebarContent {
   background-color: white;
   border: medium none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
 
 #Toc {
   padding: 10px 0;
   background-color: white;
   position: relative;
-  z-index: 1;
-}
+  z-index: 1; }
 
 #TocSidebar .Header, #TocSidebar .Footer {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 #TocSidebar .Header {
   padding-bottom: 5px;
-  min-height: 5px;
-}
+  min-height: 5px; }
 
 #TocSidebar .Footer {
   padding-top: 5px;
-  min-height: 5px;
-}
+  min-height: 5px; }
 
 #Toc ul li {
   margin: 2px 0 !important;
-  list-style-type: none !important;
-}
+  list-style-type: none !important; }
 
 #Toc a, #Toc strong, #TocHeader a {
   padding: 4px 20px 4px 20px;
   color: #666;
   display: block;
-  font-size: 14px;
-}
+  font-size: 14px; }
 
 #TocSidebar a {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 #Toc ul a, #Toc ul strong {
-  padding-left: 20px;
-}
+  padding-left: 20px; }
 
 #Toc ul ul a, #Toc ul ul strong {
-  padding-left: 36px;
-}
+  padding-left: 36px; }
 
 #Toc ul ul ul a, #Toc ul ul ul strong {
-  padding-left: 62px;
-}
+  padding-left: 62px; }
 
 #Toc ul ul ul ul a, #Toc ul ul ul ul strong {
-  padding-left: 78px;
-}
+  padding-left: 78px; }
 
 #Toc li.Alert a {
-  color: red;
-}
+  color: red; }
 
 #Toc li.Complete a {
-  color: #666;
-}
+  color: #666; }
 
 #Toc li span.TocIcon {
   height: 16px;
@@ -1750,41 +1435,32 @@ Maybe we could customize/color the dark line?*/
   display: block;
   float: left;
   font-size: 10px;
-  line-height: 16px;
-}
+  line-height: 16px; }
 
 #Toc li span.TocText {
   display: block;
-  margin-left: 21px;
-}
+  margin-left: 21px; }
 
 #Toc li.Complete span.TocIcon, #TocHeader td.Complete span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -224px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -224px transparent; }
 
 #Toc li.Complete.Current span.TocIcon, #TocHeader td.Complete.Current span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -240px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -240px transparent; }
 
 #Toc li.Authenticator span.TocIcon, #TocHeader td.Authenticator span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -225px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -225px transparent; }
 
 #Toc li.Authenticator.Current span.TocIcon, #TocHeader td.Authenticator.Current span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -241px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -241px transparent; }
 
 #Toc li.Alert span.TocIcon, #TocHeader td.Alert span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -224px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -224px transparent; }
 
 #Toc li.Alert.Current span.TocIcon, #TocHeader td.Alert.Current span.TocIcon {
-  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -240px transparent;
-}
+  background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -240px transparent; }
 
 #Toc li.Disabled {
-  display: none;
-}
+  display: none; }
 
 #TocHeader td span.TocIcon {
   height: 16px;
@@ -1792,237 +1468,189 @@ Maybe we could customize/color the dark line?*/
   display: inline-block;
   font-size: 10px;
   line-height: 16px;
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 #TocHeader td.Current a {
   color: #FFF;
-  background-color: #666;
-}
+  background-color: #666; }
 
 #Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
   background-color: #366CCC;
-  color: #FFF;
-}
+  color: #FFF; }
 
 #Toc li.Incomplete a {
-  color: #aaa;
-}
+  color: #aaa; }
 
 .Hidden {
-  display: none;
-}
+  display: none; }
 
 body.TocMargin div.Skin {
-  margin-left: 70px;
-}
+  margin-left: 70px; }
 
 @media print {
   .Skin .ReadableAlt {
     /* this fixes a problem with pdfs on windows having uneven borders in the alt rows */
-    background: none;
-  }
-}
+    background: none; } }
 @media print {
   #Buttons button,
   .PreviewBanner,
   #Plug,
   #ProgressBar,
   #LogoBar {
-    display: none;
-  }
+    display: none; }
 
   #SkinContent {
-    border: none;
-  }
-}
+    border: none; } }
 .ResponseSummary {
   border: 1px solid #aaa;
   border-width: 1px 0;
   background: #eee;
-  padding: 20px;
-}
+  padding: 20px; }
 
 .ResponseSummary p {
   float: left;
-  color: #333;
-}
+  color: #333; }
 
 .ResponseSummary .DownloadResponsesPDF {
-  float: right;
-}
+  float: right; }
 
 .Skin #SkinContent {
   zoom: 1;
   z-index: 0;
-  position: relative;
-}
+  position: relative; }
 
 .Skin legend {
   white-space: normal;
-  width: 100%;
-}
+  width: 100%; }
 
 .Skin .Invisible {
-  display: none;
-}
+  display: none; }
 
 .Skin #Buttons #SaveButton {
-  display: none;
-}
+  display: none; }
 
 .Skin .ProgressBarContainer label {
   display: block;
-  text-align: center;
-}
+  text-align: center; }
 
 .Skin .ProgressBarFill {
   background: #ed3e3e;
-  height: 10px;
-}
+  height: 10px; }
 
 .Skin .ProgressBarFillContainer {
   width: 150px;
-  background: #cccccc;
-}
+  background: #cccccc; }
 
 .Skin .Redirect a {
-  padding-top: 6pt;
-}
+  padding-top: 6pt; }
 
 .Skin .EndOfSurvey .LoadingImage {
-  padding-top: 10pt;
-}
+  padding-top: 10pt; }
 
 .Skin .SystemEndOfSurvey {
-  text-align: center;
-}
+  text-align: center; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .Skin .STAR .Stars th.ylabel,
   .Skin .STAR .Stars td,
   .Skin .Slider .STAR .horizontalbar table.sliderGrid tr td.value,
   .Skin .STAR .Stars table td.BarOuter {
-    border: none;
-  }
+    border: none; }
 
   .Skin .STAR .horizontalbar table.sliderGrid {
-    table-layout: auto;
-  }
+    table-layout: auto; }
 
   .Skin .STAR .horizontalbar table.sliderGrid tr td.value {
     width: auto;
-    text-align: left;
-  }
+    text-align: left; }
 
   .Skin .STAR .Stars tbody tr {
-    height: 46px;
-  }
+    height: 46px; }
 
   .Skin .STAR tr.HideValue td.BarOuter {
-    width: auto;
-  }
+    width: auto; }
 
   .Skin .STAR .BarContainer {
-    top: 0px;
-  }
+    top: 0px; }
 
   .Skin .STAR .StarsStrut {
-    white-space: nowrap;
-  }
+    white-space: nowrap; }
 
   .Skin .STAR .StarsContainer,
   .Skin .STAR .StarsEventWatcher,
   .Skin .STAR .StarsContainer .Filled {
     height: 26px;
     background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
-    background-size: 30px 53px;
-  }
+    background-size: 30px 53px; }
 
   .Skin .STAR .StarsOuterContainer {
-    margin: 10px;
-  }
+    margin: 10px; }
 
   .Skin .STAR .StarsContainer {
     background-position: 0px -27px;
-    position: relative;
-  }
+    position: relative; }
 
   .Skin .STAR .StarsEventWatcher {
     top: 0px;
     left: 0px;
     position: absolute;
-    background-image: none;
-  }
+    background-image: none; }
 
   .Skin .STAR .StarsContainer .Filled {
     background-position: 0px 0px;
     position: absolute;
     top: 0px;
-    left: 0px;
-  }
+    left: 0px; }
 
   .Skin .STAR .StarsContainer .StarsOverlay {
     position: absolute;
     top: 0px;
-    left: 0px;
-  }
+    left: 0px; }
 
   .Skin .STAR .StarsContainer .Star {
     width: 36px;
     height: 30px;
     background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
-    float: left;
-  }
-}
+    float: left; } }
 #SurveyEngineBody.iOS,
 #SurveyEngineBody.Android {
   overflow-x: hidden;
   max-width: 100%;
-  display: block;
-}
+  display: block; }
 
 #SurveyEngineBody.iOS .Skin,
 #SurveyEngineBody.Android .Skin {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 #SurveyEngineBody.iOS .Skin #Questions,
 #SurveyEngineBody.Android .Skin #Questions {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 #SurveyEngineBody .Skin .QuestionOuter {
-  border-radius: 0px;
-}
+  border-radius: 0px; }
 
 #SurveyEngineBody.iOS #Page,
 #SurveyEngineBody.Android #Page {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter,
 #SurveyEngineBody.Android .Skin #Questions .QuestionOuter {
   overflow-x: scroll;
-  -webkit-overflow-scrolling: auto;
-}
+  -webkit-overflow-scrolling: auto; }
 
 #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset,
 #SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset .QuestionBody,
 #SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset .QuestionBody {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 #SurveyEngineBody.iOS .SkinInner,
 #SurveyEngineBody.Android .SkinInner {
   margin: 0px;
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .Skin .ScrollIndicator {
   background: url(../Graphics/arrow.png) no-repeat center center;
@@ -2037,176 +1665,141 @@ body.TocMargin div.Skin {
   opacity: 1.0;
   border: 1px solid #666;
   border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
+  border-bottom-left-radius: 5px; }
 
 .Android *::-webkit-scrollbar {
-  display: none;
-}
+  display: none; }
 
 .Android .Skin #Questions .QuestionOuter fieldset {
   overflow-x: auto;
   -webkit-overflow-scrolling: auto;
-  -webkit-transform: rotateZ(0);
-}
+  -webkit-transform: rotateZ(0); }
 
 .Android .QuestionOuter {
   overflow-x: scroll;
-  -webkit-overflow-scrolling: auto;
-}
+  -webkit-overflow-scrolling: auto; }
 
 @media only screen and (max-width: 480px) {
   body {
-    top: 0px !important;
-  }
+    top: 0px !important; }
 
   body.TocMargin div.Skin {
-    margin-left: 0px;
-  }
+    margin-left: 0px; }
 
   #TocSidebarContainer {
     position: absolute;
-    right: -192px;
-  }
+    right: -192px; }
 
   .Skin #TocSidebarContainer.reduced {
     right: 10px;
     top: 10px;
-    left: auto;
-  }
+    left: auto; }
 
   .reduced #TocSidebarIcons {
-    float: right;
-  }
+    float: right; }
 
   .Skin #JumpButton {
-    display: none;
-  }
+    display: none; }
 
   .ScrollIndicator {
-    -webkit-animation: fadeInRight 1s;
-  }
+    -webkit-animation: fadeInRight 1s; }
 
   @-webkit-keyframes fadeInRight {
     0% {
       opacity: 0;
-      -webkit-transform: translateX(20px);
-    }
+      -webkit-transform: translateX(20px); }
 
     100% {
       opacity: 1;
-      -webkit-transform: translateX(0);
-    }
-}
+      -webkit-transform: translateX(0); } }
 
   /*
     * Percentage width for lead generator.
     */
   .Skin .LeadGenerator {
     width: 90%;
-    margin: 0 auto;
-  }
+    margin: 0 auto; }
 
   .Skin .LeadGenerator .imageHolder {
-    width: 100%;
-  }
+    width: 100%; }
 
   .Skin .LeadGenerator .imageHolderOuter {
-    width: 100%;
-  }
+    width: 100%; }
 
   .Skin .LeadGenerator .imageHolder div {
-    padding-top: 15px;
-  }
+    padding-top: 15px; }
 
   .Skin .LeadGenerator a {
-    width: 100%;
-  }
-}
+    width: 100%; } }
 /*End of media query*/
 /**
  * END MOBILE STYLES
  */
 @media only screen and (min-device-width: 400px) {
   html, body, #Page, .Skin {
-    height: 100%;
-  }
-}
+    height: 100%; } }
 html .Skin #Logo, html .CSS3 .Skin #Logo {
   background: transparent url("logo.png") no-repeat 15px center;
   background-size: 163px 50px;
   height: 50px;
   margin: 0px auto;
   max-width: 900px;
-  padding: 15px;
-}
+  padding: 15px; }
 
 #SurveyEngineBody {
   background: #cccccc none no-repeat center fixed;
   background-size: cover;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-}
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif; }
 
 .Skin #Wrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -38px;
-}
+  margin: 0 auto -38px; }
 .Skin .SkinInner {
   max-width: 900px;
   margin: 15px auto;
   background: white;
-  width: 100%;
-}
+  width: 100%; }
 .Skin #ProgressBar {
   font-size: 16px;
   padding: 0;
   position: relative;
-  min-height: 1px;
-}
+  min-height: 1px; }
 .Skin .ProgressBarContainer {
   width: 100%;
-  border-collapse: collapse;
-}
+  border-collapse: collapse; }
 .Skin #ProgressBar tr td:nth-child(1) {
   position: absolute;
   left: 0;
   color: #fff;
   line-height: 15px;
-  border-left: 3px solid #b3b3b3;
-}
+  border-left: 3px solid #b3b3b3; }
 .Skin #ProgressBar tr td:nth-child(2) {
-  width: 100%;
-}
+  width: 100%; }
 .Skin #ProgressBar tr td:nth-child(3) {
   position: absolute;
   right: 0;
   line-height: 15px;
   color: #b3b3b3;
-  border-right: 3px solid #dddddd;
-}
+  border-right: 3px solid #dddddd; }
 .Skin .ProgressBarFillContainer {
   border: none;
   overflow: hidden;
   background: #dddddd;
-  width: 100%;
-}
+  width: 100%; }
 .Skin .ProgressBarFill {
   background-color: #b3b3b3;
   padding: 0px;
-  height: 15px;
-}
+  height: 15px; }
 .Skin #LogoContainer {
   background: white;
   max-width: 930px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 .Skin #HeaderContainer {
   background: transparent;
   max-width: 930px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 .Skin #Header {
   background: transparent;
   font-size: 18px;
@@ -2214,32 +1807,25 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   margin: 0px auto;
   max-width: 900px;
   min-height: 18px;
-  padding: 10px 15px;
-}
+  padding: 10px 15px; }
 .Skin #SkinContent {
-  border: 0px solid #e6e6e6;
-}
+  border: 0px solid #e6e6e6; }
 .Skin .QuestionOuter {
-  padding: 15px;
-}
+  padding: 15px; }
 .Skin .QuestionText {
   font-size: 18px;
   color: #444444;
-  padding-bottom: 15px;
-}
+  padding-bottom: 15px; }
 .Skin .QuestionBody {
   color: #444444;
   font-size: 16px;
   overflow-x: auto !important;
-  overflow-y: hidden;
-}
+  overflow-y: hidden; }
 .Skin #Buttons {
   padding: 15px;
-  text-align: right;
-}
+  text-align: right; }
 .Skin #Buttons #PreviousButton {
-  float: left;
-}
+  float: left; }
 .Skin #Buttons #NextButton, .Skin #Buttons #PreviousButton {
   border: 2px solid white;
   background-color: #cccccc;
@@ -2255,43 +1841,35 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  -webkit-appearance: none;
-}
-@media only screen and (min-device-width: 1024px) {
-  .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
-    transition: all .1s ease-in-out;
-    border-color: #a6a6a6;
-    color: #a6a6a6;
-  }
-  .Skin #Buttons #NextButton:active, .Skin #Buttons #PreviousButton:active {
-    transition: all .1s ease-in-out;
-    border-color: #999999;
-    color: #999999;
-  }
-}
+  -webkit-appearance: none; }
+  @media only screen and (min-device-width: 1024px) {
+    .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
+      transition: all .1s ease-in-out;
+      border-color: #a6a6a6;
+      color: #a6a6a6; }
+    .Skin #Buttons #NextButton:active, .Skin #Buttons #PreviousButton:active {
+      transition: all .1s ease-in-out;
+      border-color: #999999;
+      color: #999999; } }
 .Skin #Footer {
   color: #444444;
   font-size: 13px;
   max-width: 900px;
   margin: 0px auto;
-  padding: 0px;
-}
+  padding: 0px; }
 .Skin #PushStickyFooter {
-  height: 38px;
-}
+  height: 38px; }
 .Skin #Plug {
   color: #444444;
   font-size: 13px;
   float: right;
   margin: 0;
-  text-align: center;
-}
-.Skin #Plug a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  background: #b3b3b3;
-}
+  text-align: center; }
+  .Skin #Plug a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #b3b3b3; }
 
 .Skin .HeaderValidationError {
   background-color: #ffefef;
@@ -2299,57 +1877,44 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   border: 1px solid #ffbcbc;
   margin: 15px;
   padding: 15px;
-  border-radius: 4px;
-}
+  border-radius: 4px; }
 .Skin .ValidationError {
   font-size: 120%;
   color: #ff2323;
-  text-align: center;
-}
+  text-align: center; }
 .Skin .HeaderValidationError h1 {
-  font-size: 120%;
-}
+  font-size: 120%; }
 .Skin .HeaderValidationError li a {
-  color: #ff2323;
-}
+  color: #ff2323; }
 .Skin .Separator {
   height: 1px;
   background: #ccc;
-  margin: 15px;
-}
+  margin: 15px; }
 .Skin .Skin .LightText {
-  color: #777777;
-}
+  color: #777777; }
 .Skin .Skin .QuestionOuter.Highlight .Inner,
 .Skin .Skin .QuestionOuter.Highlight .Inner .reg,
 .Skin .Skin .QuestionOuter.Highlight .Inner .alt,
 .Skin .Skin .QuestionOuter.Highlight .Inner .ReadableAlt {
-  background-color: #fffbc0;
-}
+  background-color: #fffbc0; }
 .Skin .Skin .QuestionOuter.Highlight .Inner .ReadableAlt,
 .Skin .Skin .QuestionOuter.Highlight .Inner .LightBG {
-  background-color: #fff88d;
-}
+  background-color: #fff88d; }
 .Skin .RO .DND ul.Edited .rank, .Skin .RO .DND ul.NotEdited li:hover .rank, .Skin .RO .DND .rank {
-  background: #ed3e3e;
-}
+  background: #ed3e3e; }
 .Skin .RO .DND ul li:hover {
-  background: #e6e6e6;
-}
+  background: #e6e6e6; }
 .Skin .EndOfSurvey {
   color: #444444;
-  padding: 30px;
-}
+  padding: 30px; }
 
 .Skin .Matrix .DL table td.last {
-  text-align: right;
-}
+  text-align: right; }
 
 .Skin .RO .DND ul.Edited .rank,
 .Skin .RO .DND ul.NotEdited li:hover .rank {
   background: #ed3e3e;
-  color: white;
-}
+  color: white; }
 
 .Skin .SB input {
   background: #cccccc;
@@ -2358,14 +1923,12 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 4px 12px;
   border: none;
   border: 1px solid #aaaaaa;
-  border-color: #cccccc;
-}
+  border-color: #cccccc; }
 
 button, input, select, textarea {
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 16px;
-  color: #444444;
-}
+  color: #444444; }
 
 input.TextEntryBox,
 .TE textarea,
@@ -2374,37 +1937,31 @@ input[type="password"],
 input[type="text"],
 input[type="search"],
 select {
-  border: 1px solid #aaaaaa;
-}
+  border: 1px solid #aaaaaa; }
 
 .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
 .TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus,
 .Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus,
 .horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
   border: 1px solid #ed3e3e;
-  outline: none;
-}
+  outline: none; }
 
 .Skin .Inner.CS,
 .Skin .Inner.HBAR {
-  min-width: 0px;
-}
+  min-width: 0px; }
 
 .Skin .ChoiceStructure {
   border-spacing: 4px;
   border-collapse: separate;
-  width: 100%;
-}
+  width: 100%; }
 .Skin *:focus {
-  outline: none;
-}
+  outline: none; }
 .Skin .MC input[type="checkbox"], .Skin .MC input[type="radio"] {
   height: 0px;
   margin: 0px;
   padding: 0px;
   opacity: 0;
-  width: 0px;
-}
+  width: 0px; }
 .Skin .MC .LabelContatiner, .Skin .MC li {
   border: 1px solid #AAA;
   border-radius: 3px;
@@ -2412,57 +1969,43 @@ select {
   margin: 0px 0px 2px 0px;
   position: relative;
   text-align: center;
-  transition: all 0.5s linear;
-}
-.Skin .MC .LabelContatiner:hover, .Skin .MC li:hover {
-  background: #F0F0F0;
-}
-.Skin .MC .LabelContatiner label, .Skin .MC .LabelContatiner .LabelWrapper label, .Skin .MC li label, .Skin .MC li .LabelWrapper label {
-  cursor: pointer;
-  display: block;
-  padding: 20px 5px;
-}
+  transition: all 0.5s linear; }
+  .Skin .MC .LabelContatiner:hover, .Skin .MC li:hover {
+    background: #F0F0F0; }
+  .Skin .MC .LabelContatiner label, .Skin .MC .LabelContatiner .LabelWrapper label, .Skin .MC li label, .Skin .MC li .LabelWrapper label {
+    cursor: pointer;
+    display: block;
+    padding: 20px 5px; }
 .Skin .MC .selected {
   background-color: #f69b9b !important;
   border-color: #e31515;
-  color: #FFFFFF !important;
-}
-.Skin .MC .selected:hover {
-  background-color: #f48484 !important;
-}
+  color: #FFFFFF !important; }
+  .Skin .MC .selected:hover {
+    background-color: #f48484 !important; }
 .Skin .MC .DL select {
   background-color: transparent;
   border: 1px solid #AAA;
-  color: #555;
-}
+  color: #555; }
 .Skin .MC .MACOL .ControlContainer, .Skin .MC .SACOL .ControlContainer {
-  display: none;
-}
+  display: none; }
 @media all and (max-width: 768px) {
   .Skin .MC .MAHR td, .Skin .MC .SAHR td {
     display: block;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 .Skin .MC .NPS .ColumnLabel {
-  padding: 0px 0px 20px 0px;
-}
+  padding: 0px 0px 20px 0px; }
 .Skin .MC .NPS .First, .Skin .MC .NPS .ColumnLabel {
-  text-align: left;
-}
+  text-align: left; }
 .Skin .MC .NPS .Center {
-  text-align: center;
-}
+  text-align: center; }
 .Skin .MC .NPS .Last {
-  text-align: right;
-}
+  text-align: right; }
 .Skin .MC .SB select, .Skin .MC .MSB select {
   background-color: transparent;
   border: 1px solid #AAA;
   border-radius: 3px;
   color: #555;
-  text-align: center;
-}
+  text-align: center; }
 .Skin .MC .TextEntryBox {
   background-color: #F1F1F1;
   border: 1px solid #d7d7d7;
@@ -2472,34 +2015,25 @@ select {
   text-align: center;
   width: 95%;
   margin: 12px 5px;
-  z-index: 1;
-}
+  z-index: 1; }
 
 @media only screen and (max-width: 767px) {
   html .Skin #Logo, html .CSS3 .Skin #Logo {
     background: transparent url("logo.png") no-repeat center center;
     background-size: 107.58px 33px;
     height: 33px;
-    padding: 9.9px;
-  }
+    padding: 9.9px; }
 
   .Skin #LogoContainer {
-    margin-top: 0;
-  }
+    margin-top: 0; }
   .Skin #Header {
-    text-align: center;
-  }
+    text-align: center; }
   .Skin .SkinInner {
     margin: 0 auto !important;
-    max-width: 900px;
-  }
+    max-width: 900px; }
   .Skin #SkinContent {
-    border: none;
-  }
+    border: none; }
   .Skin #Plug {
-    float: none;
-  }
-  .Skin #Plug a {
-    width: 100%;
-  }
-}
+    float: none; }
+    .Skin #Plug a {
+      width: 100%; } }
