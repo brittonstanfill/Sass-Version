@@ -478,7 +478,7 @@ h2.noStyle {
 .Skin .STAR .StarsEventWatcher,
 .Skin .STAR .StarsContainer .Filled {
   height: 26px;
-  background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars.png") 0px 0px;
+  background: transparent url("../Graphics/stars.png") 0px 0px;
 }
 
 .Skin .STAR .StarsOuterContainer {
@@ -1935,7 +1935,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsEventWatcher,
   .Skin .STAR .StarsContainer .Filled {
     height: 26px;
-    background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
   }
 
@@ -1971,7 +1971,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsContainer .Star {
     width: 36px;
     height: 30px;
-    background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
     float: left;
   }
@@ -2313,12 +2313,15 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   color: #ff2323;
 }
 .Skin .Separator {
-  height: 1px;
-  background: #ccc;
+  height: 2px;
+  background: #c4c4c4;
   margin: 15px;
 }
 .Skin .Skin .LightText {
   color: #777777;
+}
+.Skin .ReadableAlt, .Skin .LightBG {
+  background: #c2c2c2;
 }
 .Skin .Skin .QuestionOuter.Highlight .Inner,
 .Skin .Skin .QuestionOuter.Highlight .Inner .reg,
@@ -2357,7 +2360,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   border-radius: 4px;
   padding: 4px 12px;
   border: none;
-  border: 1px solid #aaaaaa;
+  border: 2px solid #aaaaaa;
   border-color: #cccccc;
 }
 
@@ -2374,14 +2377,14 @@ input[type="password"],
 input[type="text"],
 input[type="search"],
 select {
-  border: 1px solid #aaaaaa;
+  border: 2px solid #aaaaaa;
 }
 
 .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
 .TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus,
 .Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus,
 .horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-  border: 1px solid #ed3e3e;
+  border-color: #ed3e3e;
   outline: none;
 }
 
@@ -2390,89 +2393,11 @@ select {
   min-width: 0px;
 }
 
-.Skin .ChoiceStructure {
-  border-spacing: 4px;
-  border-collapse: separate;
-  width: 100%;
-}
-.Skin *:focus {
-  outline: none;
-}
-.Skin .MC input[type="checkbox"], .Skin .MC input[type="radio"] {
-  height: 0px;
-  margin: 0px;
-  padding: 0px;
-  opacity: 0;
-  width: 0px;
-}
-.Skin .MC .LabelContatiner, .Skin .MC li {
-  border: 1px solid #AAA;
-  border-radius: 3px;
-  color: #555;
-  margin: 0px 0px 2px 0px;
-  position: relative;
-  text-align: center;
-  transition: all 0.5s linear;
-}
-.Skin .MC .LabelContatiner:hover, .Skin .MC li:hover {
-  background: #F0F0F0;
-}
-.Skin .MC .LabelContatiner label, .Skin .MC .LabelContatiner .LabelWrapper label, .Skin .MC li label, .Skin .MC li .LabelWrapper label {
-  cursor: pointer;
-  display: block;
-  padding: 20px 5px;
-}
-.Skin .MC .selected {
-  background-color: #f69b9b !important;
-  border-color: #e31515;
-  color: #FFFFFF !important;
-}
-.Skin .MC .selected:hover {
-  background-color: #f48484 !important;
-}
-.Skin .MC .DL select {
-  background-color: transparent;
-  border: 1px solid #AAA;
-  color: #555;
-}
-.Skin .MC .MACOL .ControlContainer, .Skin .MC .SACOL .ControlContainer {
-  display: none;
-}
 @media all and (max-width: 768px) {
   .Skin .MC .MAHR td, .Skin .MC .SAHR td {
     display: block;
     width: 100%;
   }
-}
-.Skin .MC .NPS .ColumnLabel {
-  padding: 0px 0px 20px 0px;
-}
-.Skin .MC .NPS .First, .Skin .MC .NPS .ColumnLabel {
-  text-align: left;
-}
-.Skin .MC .NPS .Center {
-  text-align: center;
-}
-.Skin .MC .NPS .Last {
-  text-align: right;
-}
-.Skin .MC .SB select, .Skin .MC .MSB select {
-  background-color: transparent;
-  border: 1px solid #AAA;
-  border-radius: 3px;
-  color: #555;
-  text-align: center;
-}
-.Skin .MC .TextEntryBox {
-  background-color: #F1F1F1;
-  border: 1px solid #d7d7d7;
-  color: #ed3e3e;
-  padding: 5px;
-  position: relative;
-  text-align: center;
-  width: 95%;
-  margin: 12px 5px;
-  z-index: 1;
 }
 
 @media only screen and (max-width: 767px) {

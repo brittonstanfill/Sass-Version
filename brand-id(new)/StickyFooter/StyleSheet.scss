@@ -34,7 +34,7 @@
 	$default-border-color: lighten($default-text-color, 40%);
 	$default-border-radius: 3px;
 	$default-border-style: solid;
-	$default-border-width: 1px;
+	$default-border-width: 2px;
 	$default-border: $default-border-width $default-border-style $default-border-color;
 // Should we include a $mobile-default-container-padding?
 // This seems harmless on desktop, and then eats up a lot of space on mobile.
@@ -99,6 +99,9 @@
 	$error-blue:#E8F8FF;
 	$error-orange:#FDF7E0;
 	$error-gray:#EEEEEE;
+
+	//HIGHLIGHT COLOR
+	$highlight-color: #FFFBC0;
 
 	-->	$error-background: $error-red;
 	// Can we desaturate too, not just darken?
@@ -527,12 +530,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-///// from basestyles
-
 .Skin {
 
-	//Validation Error
-	//
+	//Validation Error Message
 	.HeaderValidationError {
 	    background-color:$error-background;
 		color:$error-color;
@@ -547,30 +547,26 @@
 		text-align: center;
 	}
 	.HeaderValidationError h1 {
-		font-size:120%;
+		font-size: 120%;
 	}
 	.HeaderValidationError li a{
 		color:$error-color;
 	}
 
-	// // What's this about?
-	// .Matrix .TE .Long td input, .Matrix .TE .Medium td input, .Matrix .TE .Short td input {
-	// 	margin: 0 auto;
-	// 	background: red;
-	// }
-
+	// Question Separator
 	.Separator {
-		height: 1px;
-		background:#ccc;
+		height: $default-border-width;
+		background: lighten($default-border-color, 10%);
 		margin: $default-container-padding;
 	}
-
-	//Highlights, Readable, etc.
-	// Color of the labels above sliders. (Anywhere else?)
+	//Readable, LightText, Highlight
 	.Skin .LightText{
 		color:lighten($default-text-color, 20%);
 	}
-	$highlight-color: #FFFBC0;
+	//Do we want this anymore?
+	.ReadableAlt, .LightBG {
+		background: darken($body-background-color, 4%);
+	}
 	//Some background color needed for this class to show up at all (which is its function)
 	.Skin .QuestionOuter.Highlight .Inner,
 	.Skin .QuestionOuter.Highlight .Inner .reg,
@@ -585,7 +581,6 @@
 	}
 
 	//Rank Order
-	//
 	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
 		background: $primary-color;
 	}
@@ -653,7 +648,7 @@
 					border: $default-border;
 				}
 
-// /end basestyles
+// /end stuff from basestyles
 
 
 // determining focus class for text entry boxes... do we need to be this specific?
@@ -661,7 +656,7 @@
 .TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, 
 .Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
 .horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-	border: 1px solid $primary-color;
+	border-color: $primary-color;
 	outline: none;
 }
 
@@ -679,72 +674,8 @@
 	
 	.Skin {
 
-		.ChoiceStructure {
-			border-spacing: 4px;
-			border-collapse: separate;
-			width: 100%;
-		}
-
-		*:focus {
-			outline: none;
-		}
-
 		//MC (MULTIPLE CHOICE) CLASS 
 		.MC {
-
-			input[type="checkbox"], input[type="radio"] {
-				height: 0px;
-				margin: 0px;
-				padding: 0px;
-				opacity: 0;
-				width: 0px;
-			}
-
-			.LabelContatiner, li {
-				border: 1px solid #AAA;
-				border-radius: 3px;
-				color: #555;
-				margin: 0px 0px 2px 0px;
-				position: relative;
-				text-align: center;
-				transition: all 0.5s linear;
-
-				&:hover {
-					background: #F0F0F0;
-				}
-
-				label, .LabelWrapper label {
-					cursor: pointer;
-					display: block;
-					padding: 20px 5px;
-				}
-			}
-
-			.selected {
-				background-color: lighten($primary-color, 20%) !important;
-				border-color: darken($primary-color, 10%);
-				color: #FFFFFF !important;
-
-				&:hover {
-					background-color: lighten($primary-color, 15%) !important;
-				}
-			}
-
-			.DL {
-
-				select {
-					background-color: transparent;
-					border: 1px solid #AAA;
-					color: #555;
-				}
-			}
-
-			.MACOL, .SACOL {
-
-				.ControlContainer {
-					display: none;
-				}
-			}
 
 			.MAHR, .SAHR {
 
@@ -757,47 +688,6 @@
 				}
 			}
 
-			.NPS {
-
-				.ColumnLabel {
-					padding: 0px 0px 20px 0px;
-				}
-
-				.First, .ColumnLabel {
-					text-align: left;
-				}
-
-				.Center {
-					text-align: center;
-				}
-
-				.Last {
-					text-align: right;
-				}
-			}
-
-			.SB, .MSB {
-
-				select {
-					background-color: transparent;
-					border: 1px solid #AAA;
-					border-radius: 3px;
-					color: #555;
-					text-align: center;
-				}
-			}
-
-			.TextEntryBox {
-				background-color: #F1F1F1;
-				border: 1px solid darken(#F1F1F1, 10%);
-				color: $primary-color;
-				padding: 5px;
-				position: relative;
-				text-align: center;
-				width: 95%;
-				margin: 12px 5px;
-				z-index: 1;
-			}
 		}
 	}
 

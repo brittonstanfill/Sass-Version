@@ -545,7 +545,7 @@ $slider-handle-color: $primary-color;
 	//Do we want a new sprite? 
 	//Or a way to make these stars any color?
 	height: 26px;
-	background: transparent url('https://s.qualtrics.com/WRQualtricsShared/Graphics/stars.png') 0px 0px;
+	background: transparent url('../Graphics/stars.png') 0px 0px;
 }
 // Not sure if we need this or not
 .Skin .STAR .StarsOuterContainer {
@@ -2078,7 +2078,7 @@ body.TocMargin div.Skin{
 	.Skin .STAR .StarsEventWatcher,
 	.Skin .STAR .StarsContainer .Filled {
 		height: 26px;
-		background: transparent url('https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 	}
 	.Skin .STAR .StarsOuterContainer {
@@ -2109,7 +2109,7 @@ body.TocMargin div.Skin{
 	.Skin .STAR .StarsContainer .Star {
 		width: 36px;
 		height: 30px;
-		background: transparent url('https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 		float: left;
 	}
