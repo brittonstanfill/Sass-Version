@@ -2142,7 +2142,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 
 #SurveyEngineBody {
-  background: #cccccc none no-repeat center fixed;
+  background: #cccccc url(data:image/svg+xml;base64,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) no-repeat center fixed;
   background-size: cover;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
 }
@@ -2420,35 +2420,18 @@ select {
 .Skin .MC .MACOL td .LabelWrapper,
 .Skin .MC .SACOL td .LabelWrapper {
   overflow-y: hidden;
-  border: 2px solid blue;
-}
-
-.Skin .LabelWrapper {
-  text-align: center;
-  width: 100%;
-}
-
-.Skin .MC li .LabelWrapper {
-  margin: 8px inherit;
-}
-
-.Skin .MC .ChoiceStructure {
-  border-spacing: 8px;
-}
-
-.Skin .MACOL .ControlContainer, .Skin .SACOL .ControlContainer {
-  display: none;
+  border: 2px solid #f7f7f7;
 }
 
 .Skin .QuestionBody label.SingleAnswer,
 .Skin .QuestionBody label.MultipleAnswer {
-  background: #dddddd;
+  background: transparent;
   color: #444;
   border: none;
   padding: 20px 4%;
   /* display: block; */
   border-radius: 4px;
-  text-align: center;
+  text-align: left;
   /* Make labels full-height ... */
   height: 100%;
   box-sizing: border-box;
@@ -2486,8 +2469,7 @@ select {
 
 /* "Selected" .q-checked class */
 .Skin .Matrix .QuestionBody label.MultipleAnswer.q-checked,
-.Skin .Matrix .QuestionBody label.SingleAnswer.q-checked,
-.Skin .QuestionBody label.q-checked {
+.Skin .Matrix .QuestionBody label.SingleAnswer.q-checked {
   color: #fff;
   background: #FD5D5D;
   border-color: #D41E1E;
@@ -2532,4 +2514,97 @@ select {
   .Skin #Plug a {
     width: 100%;
   }
+}
+.Skin .MC .NPS .QuestionBody td.ControlContainer label,
+.Skin .MC .SAHR .QuestionBody td.ControlContainer label,
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label {
+  border: 2px solid blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label {
+  border-radius: 0;
+}
+
+.Skin .MC .NPS .QuestionBody td.ControlContainer label.q-checked,
+.Skin .MC .SAHR .QuestionBody td.ControlContainer label.q-checked,
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label.q-checked {
+  background: blue;
+}
+
+.Skin .MC .SAVR .QuestionBody label:nth-child(2),
+.Skin .MC .MAVR .QuestionBody label:nth-child(2) {
+  border: 2px solid blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  margin-right: 10px;
+  float: left;
+}
+
+.Skin .MC .MAVR .QuestionBody label:nth-child(2) {
+  border-radius: 0;
+}
+
+.Skin .MC .SAVR .QuestionBody label:nth-child(2).q-checked,
+.Skin .MC .MAVR .QuestionBody label:nth-child(2).q-checked {
+  background: blue;
+}
+
+.Skin .MC .SACOL .QuestionBody label:nth-child(2),
+.Skin .MC .MACOL .QuestionBody label:nth-child(2) {
+  border: 2px solid blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+.Skin .MC .MACOL .QuestionBody label:nth-child(2) {
+  border-radius: 0;
+}
+
+.Skin .MC .SACOL .QuestionBody label:nth-child(2).q-checked,
+.Skin .MC .MACOL .QuestionBody label:nth-child(2).q-checked {
+  background: blue;
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2),
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
+  border: 2px solid red;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
+  border-radius: 0;
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked {
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyODkuOSAzNzkuOSAzMi4zIDMyLjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjg5LjkgMzc5LjkgMzIuMyAzMi4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxjaXJjbGUgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjMwNiIgY3k9IjM5NiIgcj0iOC41Ii8+DQo8L3N2Zz4NCg==);
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+  display: block;
+  width: 100%;
 }
