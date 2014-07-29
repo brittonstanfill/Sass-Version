@@ -51,6 +51,45 @@
       <INPUT id='PageDisplayTime' TYPE='HIDDEN' NAME='PageDisplayTime' VALUE='2014-07-24 12:31:02'>
       <INPUT TYPE='HIDDEN' NAME='TransactionID' VALUE='0'>
       <INPUT TYPE='HIDDEN' NAME='Referer' VALUE='https://az1.qualtrics.com/ControlPanel/?ClientAction=ChangePage&amp;s=DistributeSection&amp;ss=SurveyLink&amp;sss='>
+
+ <!-- WELCOME BACK MESSAGE -->
+          <style>
+  body{
+    position:relative;
+    top:35px;
+  }
+  #RestoredResponseBar{
+    height:35px;
+    background:#FFFFD2;
+    margin-top:-35px;
+    line-height:36px;
+    text-align:center;
+    color:#666;
+  }
+  #RestoredResponseBar a{
+    font-weight:bold;
+    color:#3D72D6;
+    margin:0 5px;
+  }
+  .BottomShadow{
+    height:8px;
+    background:url('https://qaz1.az1.qualtrics.com//WRQualtricsShared/Graphics/previewsprites.png') repeat-x 0 -109px;
+    position:relative;
+    z-index:1;
+  }
+</style>
+<div id='RestoredResponseBar'>
+  Welcome Back!
+      
+      You began on <strong>May 20 2014</strong>.
+      
+          <a href='javascript:Qualtrics.SurveyEngine.restartResponse()'>Restart</a>
+        
+  <div class='BottomShadow'></div>
+</div>    
+    <INPUT TYPE='HIDDEN' NAME='TransactionID' VALUE='4'>
+      <!-- WELCOME BACK MESSAGE END -->
+
       <noscript>
         <h2 style="background-color: #c00; color: #FFF; margin: 10px; padding: 10px;">
           <center>
@@ -91,6 +130,9 @@
             </div>
             <div id="SkinContent">
               <div id="Questions">
+                <input type="hidden" name="SE~Context" value="Response">
+        <div class='HeaderValidationError'><h1>Sorry, you cannot continue until you correct the following:</h1><ul><li><a href='#error' onclick="QualtricsSETools.scrollToDiv('validationError_1');">Issue 1</a> <ul><li>Please answer this question.</li></ul></li></ul><div class="clear"></div>
+      </div>
                 <input type=hidden name='SE~Context' value="Response">
                 <!-- *************** SKIN QUESTION #0 ************************** -->
                 <!-- ** SURVEY QUESTION ID: QID85 ** OUTPUT TAG: QID85 ** -->
@@ -136,6 +178,7 @@
                     				
                     		
                   </script>
+                  <div class="ValidationError">Please Answer this question.</div>
                   <!-- Debugging stuff -->
                   <div class='Inner GRB BorderColor'>
                     <div class='InnerInner WTXBURL BorderColor'>
@@ -8385,6 +8428,152 @@
             </div>
           </div>
           <!-- ^^^^^^^^^^^^^^^^^^^^^^ SKIN QUESTION #91 ^^^^^^^^^^^^^^^^^ -->
+        <!-- ** SURVEY QUESTION ID: QID56 ** OUTPUT TAG: QID56 ** -->
+          <div class='QuestionOuter Timing BorderColor' id='QID56' QuestionID='QID56' PostTag="QID56">
+              <div class='Inner PageTimer BorderColor'>
+                 <div class='InnerInner  BorderColor'>
+                    <!-- Debugging stuff -->
+                    <INPUT TYPE="HIDDEN" ID="QR~QID56~QuestionID" NAME="QR~QID56~QuestionID" value="QID56">
+                    <INPUT TYPE="HIDDEN" ID="QR~QID56~DisplayOrder" NAME="QR~QID56~DisplayOrder" value="1|2|3|4">
+                    <INPUT TYPE="HIDDEN" ID="QR~QID56~QuestionType" NAME="QR~QID56~QuestionType" value="Timing">
+                    <INPUT TYPE="HIDDEN" ID="QR~QID56~Selector" NAME="QR~QID56~Selector" value="PageTimer">
+                    <INPUT TYPE="HIDDEN" ID="QR~QID56~SubSelector" NAME="QR~QID56~SubSelector" value="">
+                    <div class='ValidationError'>
+                    </div>
+                    <div class='QuestionText'>
+                       Camera Comprehension Timer
+                    </div>
+                    <div class='QuestionBody'>
+                       <input TYPE='hidden' id='QR~QID56~1' name='QR~QID56~1'>
+                       <input TYPE='hidden' id='QR~QID56~2' name='QR~QID56~2'>
+                       <input TYPE='hidden' id='QR~QID56~3' name='QR~QID56~3'>
+                       <input TYPE='hidden' id='QR~QID56~4' name='QR~QID56~4'>
+                       <ul class='ChoiceStructure'>
+                          <li>
+                             <strong>
+                             This page timer will not be displayed to the recipient.
+                             </strong>
+                          </li>
+                          <li class='reg'>
+                             <label for='QR~QID56~1'>
+                             First Click
+                             </label>
+                             :
+                             <em>
+                             <span id='QR~QID56~1~Display'>
+                             0
+                             </span>
+                             seconds.
+                             </em>
+                          </li>
+                          <li class='alt'>
+                             <label for='QR~QID56~2'>
+                             Last Click
+                             </label>
+                             :
+                             <em>
+                             <span id='QR~QID56~2~Display'>
+                             0
+                             </span>
+                             seconds.
+                             </em>
+                          </li>
+                          <li class='reg'>
+                             <label for='QR~QID56~3'>
+                             Page Submit
+                             </label>
+                             :
+                             <em>
+                             <span id='QR~QID56~3~Display'>
+                             0
+                             </span>
+                             seconds.
+                             </em>
+                          </li>
+                          <li class='alt'>
+                             <label for='QR~QID56~4'>
+                             Click Count
+                             </label>
+                             :
+                             <em>
+                             <span id='QR~QID56~4~Display'>
+                             0
+                             </span>
+                             clicks.
+                             </em>
+                          </li>
+                       </ul>
+                       <script>
+                          <!--
+                             var QID56LoadTime = '';
+                             var QID56OnLoad = function()   {
+                             QID56LoadTime = new Date();
+                             document.getElementById('QR~QID56~1').value = 0;
+                             document.getElementById('QR~QID56~2').value = 0;
+                             document.getElementById('QR~QID56~3').value = 0;
+                             document.getElementById('QR~QID56~4').value = 0;
+                             }
+                               SEonLoad.add(QID56OnLoad);
+                             var QID56OnClick = function(event) {
+                             var element = Event.element(event);
+                             if (element.name != 'NextButton') {
+                               timingClickTime = new Date();
+                               timingElapsed = (timingClickTime - QID56LoadTime) / 1000;
+                               if (document.getElementById('QR~QID56~1').value == 0) {
+                                 document.getElementById('QR~QID56~1').value = timingElapsed;
+                               }
+                               document.getElementById('QR~QID56~2').value = timingElapsed;
+                               document.getElementById('QR~QID56~4').value = Number(document.getElementById('QR~QID56~4').value) + 1;
+                             }
+                             document.getElementById('QR~QID56~1~Display').innerHTML = document.getElementById('QR~QID56~1').value;
+                             document.getElementById('QR~QID56~2~Display').innerHTML = document.getElementById('QR~QID56~2').value;
+                             document.getElementById('QR~QID56~3~Display').innerHTML = document.getElementById('QR~QID56~3').value;
+                             document.getElementById('QR~QID56~4~Display').innerHTML = document.getElementById('QR~QID56~4').value;
+                             }
+                               SEonClick.add(QID56OnClick);
+                             var QID56OnSubmit = function() {
+                             timingSubmitTime = new Date();
+                             timingElapsed = (timingSubmitTime - QID56LoadTime) / 1000;
+                             document.getElementById('QR~QID56~3').value = timingElapsed;
+                             document.getElementById('QR~QID56~1~Display').innerHTML = document.getElementById('QR~QID56~1').value;
+                             document.getElementById('QR~QID56~2~Display').innerHTML = document.getElementById('QR~QID56~2').value;
+                             document.getElementById('QR~QID56~3~Display').innerHTML = document.getElementById('QR~QID56~3').value;
+                             document.getElementById('QR~QID56~4~Display').innerHTML = document.getElementById('QR~QID56~4').value;
+                             }
+                               SEonSubmit.add(QID56OnSubmit);
+                             -->
+                       </script>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <!-- ^^^^^^^^^^^^^^^^^^^^^^ SKIN QUESTION #73 ^^^^^^^^^^^^^^^^^ -->
+           <div class='Separator'>
+           </div>
+           <div id='messageContainer'>
+              <div id='message' class='END_OF_SURVEY EndOfSurvey BorderColor SystemEndOfSurvey'>
+                 Your response has been recieved and will be recorded.
+                 <br>
+                 Please wait while we finish processing your response.
+                 <div class='LoadingImage'>
+                    <img src='http://new.qualtrics.com/WRQualtricsShared/Graphics/ajax-loading.gif'>
+                 </div>
+              </div>
+           </div>
+           <div class='Separator'>
+           </div>
+           <div class='END_OF_SURVEY EndOfSurvey BorderColor SystemEndOfSurvey'>
+              We thank you for your time spent taking this survey.
+              <br>
+              Your data has been recorded.
+           </div>
+           <div class='Separator'>
+           </div>
+           <div class='END_OF_SURVEY BorderColor EndOfSurvey'>
+              Custom end of survey message.
+              <br>
+              We thank you for your time spent taking this survey on behalf of our company. Your data has been recorded.
+           </div>
         </div>
         <div id="Buttons">
           <input id="PreviousButton" type='button' value='<<' name=''>
