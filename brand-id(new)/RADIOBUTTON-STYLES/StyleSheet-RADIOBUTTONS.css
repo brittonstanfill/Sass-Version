@@ -2055,6 +2055,27 @@ body.TocMargin div.Skin {
   -webkit-overflow-scrolling: auto;
 }
 
+.Skin .Inner.HSLIDER {
+  min-width: 500px;
+  max-width: 500px;
+}
+
+.Skin .Inner.HBAR {
+  min-width: 500px;
+  max-width: 500px;
+}
+
+.Skin .Inner.CS {
+  min-width: 500px;
+  max-width: 500px;
+}
+
+.Skin .HSLIDER .horizontalbar,
+.Skin .HBAR .horizontalbar {
+  min-width: 500px;
+  max-width: 500px;
+}
+
 @media only screen and (max-width: 480px) {
   body {
     top: 0px !important;
@@ -2395,7 +2416,7 @@ select {
 
 @media all and (max-width: 768px) {
   .Skin .MC .MAHR td, .Skin .MC .SAHR td {
-    display: block;
+    display: table;
     width: 100%;
   }
 }
@@ -2406,85 +2427,19 @@ select {
   left: -9999px;
 }
 
-.Skin .MC .MAHR .TextEntryBox,
-.Skin .MC .SAHR .TextEntryBox,
-.Skin .MC .MACOL .TextEntryBox,
-.Skin .MC .SACOL .TextEntryBox {
-  background: red;
-  position: relative;
-  top: -44px;
-}
-
-.Skin .MC .MAHR td .LabelWrapper,
-.Skin .MC .SAHR td .LabelWrapper,
-.Skin .MC .MACOL td .LabelWrapper,
-.Skin .MC .SACOL td .LabelWrapper {
-  overflow-y: hidden;
-  border: 2px solid #f7f7f7;
-}
-
 .Skin .QuestionBody label.SingleAnswer,
 .Skin .QuestionBody label.MultipleAnswer {
   background: transparent;
   color: #444;
   border: none;
-  padding: 20px 4%;
-  /* display: block; */
+  padding: 10px 0;
+  display: block;
   border-radius: 4px;
-  text-align: left;
+  text-align: center;
   /* Make labels full-height ... */
   height: 100%;
   box-sizing: border-box;
   margin: 0;
-  /* Vertically centers text in td ... */
-  display: table;
-  width: 100%;
-}
-
-/* ... Vertically centers text in td (continued) */
-.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-/* ... Make labels full-height of span of td (continued) */
-.Skin td .LabelWrapper {
-  display: block;
-  overflow: auto;
-  height: 100%;
-}
-
-/* Matrix table labels (turn into radio buttons/checkboxes) */
-.Skin .Matrix .QuestionBody label.MultipleAnswer,
-.Skin .Matrix .QuestionBody label.SingleAnswer {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin: auto;
-  border: 2px solid #fd5d50;
-  padding: 0;
-  background: #FFF;
-}
-
-/* "Selected" .q-checked class */
-.Skin .Matrix .QuestionBody label.MultipleAnswer.q-checked,
-.Skin .Matrix .QuestionBody label.SingleAnswer.q-checked {
-  color: #fff;
-  background: #FD5D5D;
-  border-color: #D41E1E;
-}
-
-.Skin .Matrix .QuestionBody label.SingleAnswer {
-  border-radius: 100%;
-}
-
-.Skin .Matrix .QuestionBody label.MultipleAnswer {
-  border-radius: 2px;
-}
-
-.Skin .Matrix .QuestionBody label.q-checked {
-  background: #FFA8A8;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2528,6 +2483,22 @@ select {
   background: transparent;
 }
 
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+  vertical-align: bottom;
+}
+
+@media only screen and (max-width: 768px) {
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+    border-bottom: 2px solid #eee;
+  }
+
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+    border-bottom: none;
+  }
+}
 .Skin .MC .MAHR .QuestionBody td.ControlContainer label {
   border-radius: 0;
 }
@@ -2545,7 +2516,7 @@ select {
   height: 20px;
   border-radius: 100%;
   display: inline-block;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 0;
   background: transparent;
   margin-right: 10px;
@@ -2561,6 +2532,16 @@ select {
   background: blue;
 }
 
+.Skin .MC .MACOL .QuestionBody label,
+.Skin .MC .SACOL .QuestionBody label {
+  text-align: left;
+}
+
+.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+  padding: 10px;
+}
+
 .Skin .MC .SACOL .QuestionBody label:nth-child(2),
 .Skin .MC .MACOL .QuestionBody label:nth-child(2) {
   border: 2px solid blue;
@@ -2568,7 +2549,7 @@ select {
   height: 20px;
   border-radius: 100%;
   display: inline-block;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 0;
   background: transparent;
 }
@@ -2589,9 +2570,10 @@ select {
   height: 20px;
   border-radius: 100%;
   display: inline-block;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 0;
   background: transparent;
+  margin: 10px 0;
 }
 
 .Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
@@ -2600,11 +2582,32 @@ select {
 
 .Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked,
 .Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked {
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyODkuOSAzNzkuOSAzMi4zIDMyLjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjg5LjkgMzc5LjkgMzIuMyAzMi4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxjaXJjbGUgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjMwNiIgY3k9IjM5NiIgcj0iOC41Ii8+DQo8L3N2Zz4NCg==);
+  background: red url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyODkuOSAzNzkuOSAzMi4zIDMyLjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjg5LjkgMzc5LjkgMzIuMyAzMi4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxjaXJjbGUgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjMwNiIgY3k9IjM5NiIgcj0iOC41Ii8+DQo8L3N2Zz4NCg==);
 }
 
 .Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
 .Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
   display: block;
   width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner,
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner {
+    text-align: center;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .Skin .MC .SAHR .QuestionBody label,
+  .Skin .MC .MAHR .QuestionBody label {
+    text-align: center;
+  }
+}
+.Skin .NPS .QuestionBody label {
+  text-align: center;
+}
+
+.q-checked {
+  background: red !important;
 }

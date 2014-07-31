@@ -2192,27 +2192,27 @@ body.TocMargin div.Skin{
 	-webkit-overflow-scrolling: auto;
 }
 
-// // REMOVE all this...?
-// // Do need some kind of width for the slider questions... maybe not?
-// // BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
-// .Skin .Inner.HSLIDER {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-// .Skin .Inner.HBAR {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-// .Skin .Inner.CS {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
+// REMOVE all this...?
+// Do need some kind of width for the slider questions... maybe not?
+// BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
+.Skin .Inner.HSLIDER {
+	min-width: 500px;
+	max-width: 500px;
+}
+.Skin .Inner.HBAR {
+	min-width: 500px;
+	max-width: 500px;
+}
+.Skin .Inner.CS {
+	min-width: 500px;
+	max-width: 500px;
+}
 // /* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
-// .Skin .HSLIDER .horizontalbar,
-// .Skin .HBAR .horizontalbar {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
+.Skin .HSLIDER .horizontalbar,
+.Skin .HBAR .horizontalbar {
+	min-width: 500px;
+	max-width: 500px;
+}
 
 //Changed from max-device-width to max-width
 @media only screen and (max-width: 480px) {

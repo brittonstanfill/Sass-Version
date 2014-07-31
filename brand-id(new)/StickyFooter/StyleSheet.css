@@ -2533,3 +2533,30 @@ select {
     width: 100%;
   }
 }
+@media only screen and (max-width: 767px) {
+  .Skin .HSLIDER .xlabel span.TickContainer span,
+  .Skin .HBAR .xlabel span.TickContainer span {
+    display: none;
+  }
+
+  .Skin .HSLIDER .xlabel span.TickContainer span.MinValue,
+  .Skin .HBAR .xlabel span.TickContainer span.MinValue,
+  .Skin .HSLIDER .xlabel th:nth-last-child(3) span.TickContainer span,
+  .Skin .HBAR .xlabel th:nth-last-child(3) span.TickContainer span,
+  .Skin .HBAR .xlabel th:nth-last-child(4) span.TickContainer span {
+    display: block;
+    background: red;
+  }
+}
+.Skin .HSLIDER th.ylabel {
+  position: absolute;
+  padding-bottom: 40px;
+}
+
+.Skin .HSLIDER td {
+  min-height: 40px;
+}
+
+.Skin .horizontalbar tr.Stars td.value input, .Skin .horizontalbar table.sliderGrid tr td.value input {
+  width: 4em;
+}
