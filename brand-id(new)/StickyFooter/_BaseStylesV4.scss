@@ -401,22 +401,17 @@ h2.noStyle {
 .Skin .horizontalbar .handle{
 	top:0px; //to give the bars some middle positioning within the track
 }
-//This is the actual draggable bar (and the hover and activated state)
-$slider-bar-color: #ccc;
+//This is the "draggable" part of the draggable bar element
 .Skin .horizontalbar .bar{
 	position:absolute;
 	left:0px;
 	width: 100px;
-	background-color: $slider-bar-color;
 	z-index:500;
 	font-size:0;
-	opacity: 0.7;
-	filter:alpha(opacity=70);
-}
-$slider-handle-color: $primary-color;
-.Skin .horizontalbar .activated .bar,
-.Skin .horizontalbar .BarContainer:hover .bar{
-	background-color: $slider-handle-color;
+	// needs a background color
+	// doesn't need opacity, I don't think.
+	// 	opacity: 0.7;
+	// filter:alpha(opacity=70);
 }
 //This is the handle, but I don't understand what it's for.  It's just up in the top left corner.
 .Skin .horizontalbar .handle{
@@ -488,7 +483,7 @@ $slider-handle-color: $primary-color;
 .Skin .SS .horizontalbar .SSTrack,
 .Skin .horizontalbar .Slider .track{
 	height:8px;
-	background: $slider-bar-color;
+	//needs a background color
 	opacity:0.5;
 	filter:alpha(opacity=50);
 
@@ -503,8 +498,7 @@ $slider-handle-color: $primary-color;
 .Skin .horizontalbar .Slider .handle{
 	width: 20px;
 	height: 20px;
-	background: $primary-color;
-
+	// needs a background color or image
 	top: -6px; // centers the handle on the bar
 	border-radius: 100%;
 }
@@ -712,7 +706,6 @@ $primary-color: #ed3e3e;
 }
 //Group Containers - where items are dragged 
 .Skin .PGR .DragAndDrop td.groupsContainerTd div > div {
-	border: 1px solid #BBB;
 	border-collapse: collapse;
 	min-height:150px; // Needs a min-height or it collapses.  Or does it?  The ul inside also has a min-height.
 }
@@ -764,7 +757,7 @@ Rank images --- TEST THIS OUT with an image
 .Skin .PGR .DragAndDrop .stack ul li.stack {
 	// need a background color and border, since they are stacked on top of each other
 	background-color: white;  
-	border: 1px solid #ddd; 
+	// needs a border
 }
 //What if we reversed these, etc.? As in the example below
 .Skin .PGR .DragAndDrop .stack ul li.stack.penultimate {
@@ -850,17 +843,12 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 }
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
 	width: 337px;
-	margin: 0 auto; //Not sure we need this... seems like we want the group boxes close to the items 
 }
 // Do we want these on the right or left?
 // Might make sense to be on the right here, where it's not very wide.. Maybe not
 .Skin .PGR .DragAndDrop .rank{
 	position:absolute;
-	right:0;
 	top:0;
-
-	background-color:$primary-color;
-	color:white;
 }
 .Skin .PGR .DragAndDrop ul li{
 	position:relative; 
@@ -1018,6 +1006,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	width:200px;
 	margin:0 auto;
 }
+$slider-bar-color: blue;
 .Skin .SS .verticalbar .SSTrack {
 	position:relative;
 	width:8px;
@@ -2192,34 +2181,38 @@ body.TocMargin div.Skin{
 	-webkit-overflow-scrolling: auto;
 }
 
-// // REMOVE all this...?
-// // Do need some kind of width for the slider questions... maybe not?
-// // BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
-// .Skin .Inner.HSLIDER {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-// .Skin .Inner.HBAR {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-// .Skin .Inner.CS {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-// /* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
-// .Skin .HSLIDER .horizontalbar,
-// .Skin .HBAR .horizontalbar {
-// 	min-width: 500px;
-// 	max-width: 500px;
-// }
-
 //Changed from max-device-width to max-width
 @media only screen and (max-width: 480px) {
 	// this gets rid of the space at the top for the Preview Banner
 	// But why do we get rid of the preview banner on mobile anyway?
 	body {
 		top: 0px!important;
+	}
+
+	// REMOVE all this...?
+	// Do need some kind of width for the slider questions... maybe not?
+	// IF remove this, the SLIDER questions get squished as narrow widths.
+	// Would need to figure out a solution to remove middle numbers on upper scale labels, and 
+	// be able to put slider labels (on left) above or below the sliders themselves.  
+
+	// BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
+	.Skin .Inner.HSLIDER {
+		min-width: 500px;
+		max-width: 500px;
+	}
+	.Skin .Inner.HBAR {
+		min-width: 500px;
+		max-width: 500px;
+	}
+	.Skin .Inner.CS {
+		min-width: 500px;
+		max-width: 500px;
+	}
+	/* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
+	.Skin .HSLIDER .horizontalbar,
+	.Skin .HBAR .horizontalbar {
+		min-width: 500px;
+		max-width: 500px;
 	}
 
 	//

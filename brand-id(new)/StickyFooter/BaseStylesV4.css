@@ -357,16 +357,8 @@ h2.noStyle {
   position: absolute;
   left: 0px;
   width: 100px;
-  background-color: #cccccc;
   z-index: 500;
   font-size: 0;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-}
-
-.Skin .horizontalbar .activated .bar,
-.Skin .horizontalbar .BarContainer:hover .bar {
-  background-color: #cccccc;
 }
 
 .Skin .horizontalbar .handle {
@@ -426,7 +418,6 @@ h2.noStyle {
 .Skin .SS .horizontalbar .SSTrack,
 .Skin .horizontalbar .Slider .track {
   height: 8px;
-  background: #cccccc;
   opacity: 0.5;
   filter: alpha(opacity=50);
   top: 10px;
@@ -441,7 +432,6 @@ h2.noStyle {
 .Skin .horizontalbar .Slider .handle {
   width: 20px;
   height: 20px;
-  background: #cccccc;
   top: -6px;
   border-radius: 100%;
 }
@@ -478,7 +468,7 @@ h2.noStyle {
 .Skin .STAR .StarsEventWatcher,
 .Skin .STAR .StarsContainer .Filled {
   height: 26px;
-  background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars.png") 0px 0px;
+  background: transparent url("../Graphics/stars.png") 0px 0px;
 }
 
 .Skin .STAR .StarsOuterContainer {
@@ -626,7 +616,6 @@ h2.noStyle {
 }
 
 .Skin .PGR .DragAndDrop td.groupsContainerTd div > div {
-  border: 1px solid #BBB;
   border-collapse: collapse;
   min-height: 150px;
 }
@@ -685,7 +674,6 @@ Rank images --- TEST THIS OUT with an image
 
 .Skin .PGR .DragAndDrop .stack ul li.stack {
   background-color: white;
-  border: 1px solid #ddd;
 }
 
 .Skin .PGR .DragAndDrop .stack ul li.stack.penultimate {
@@ -759,15 +747,11 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
 
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
   width: 337px;
-  margin: 0 auto;
 }
 
 .Skin .PGR .DragAndDrop .rank {
   position: absolute;
-  right: 0;
   top: 0;
-  background-color: #ed3e3e;
-  color: white;
 }
 
 .Skin .PGR .DragAndDrop ul li {
@@ -939,7 +923,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
 .Skin .SS .verticalbar .SSTrack {
   position: relative;
   width: 8px;
-  background: #cccccc;
+  background: blue;
   height: 120px;
   float: left;
   opacity: .5;
@@ -1883,7 +1867,7 @@ body.TocMargin div.Skin {
 
 .Skin .ProgressBarFillContainer {
   width: 150px;
-  background: #cccccc;
+  background: blue;
 }
 
 .Skin .Redirect a {
@@ -1935,7 +1919,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsEventWatcher,
   .Skin .STAR .StarsContainer .Filled {
     height: 26px;
-    background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
   }
 
@@ -1971,7 +1955,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsContainer .Star {
     width: 36px;
     height: 30px;
-    background: transparent url("https://s.qualtrics.com/WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
     float: left;
   }
@@ -2058,6 +2042,28 @@ body.TocMargin div.Skin {
 @media only screen and (max-width: 480px) {
   body {
     top: 0px !important;
+  }
+
+  .Skin .Inner.HSLIDER {
+    min-width: 500px;
+    max-width: 500px;
+  }
+
+  .Skin .Inner.HBAR {
+    min-width: 500px;
+    max-width: 500px;
+  }
+
+  .Skin .Inner.CS {
+    min-width: 500px;
+    max-width: 500px;
+  }
+
+  /* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
+  .Skin .HSLIDER .horizontalbar,
+  .Skin .HBAR .horizontalbar {
+    min-width: 500px;
+    max-width: 500px;
   }
 
   body.TocMargin div.Skin {

@@ -29,7 +29,7 @@
 	//DEFAULT
 	-->	$body-background-color: $primary-color;
 	-->	$default-text-color: #444;
-	$default-font-size: 16px;
+	$default-font-size: 14px;
 	$container-max-width: 900px;
 	$default-border-color: lighten($default-text-color, 40%);
 	$default-border-radius: 3px;
@@ -90,6 +90,7 @@
 	-->	$header-text-color: $default-text-color;
 
 	//SKIN CONTENT
+	$skin-content-background-color: #FFFFFF;
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
 	$skin-content-border-radius: $default-border-radius;
 
@@ -530,9 +531,39 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// Welcome Back! Message at top of screen
+// BOOKMARK: This isn't working...
+// Does this pull the color from the "Hilight Questions" option?
+#RestoredResponseBar {
+	background: #D0E7FF;
+}
+#RestoredResponseBar .BottomShadow {
+	display: none;
+}
+
+
 .Skin {
 
+	// Styles for html elements that don't automatically style
+	button, input, select, textarea {
+		font-family: $font-stack;
+		font-size: $default-font-size;
+		color: $default-text-color;
+	}
+
+	// Put default border on all text inputs
+	input.TextEntryBox, 
+	.TE textarea, 
+	textarea, 
+	input[type="password"], 
+	input[type="text"], 
+	input[type="search"],
+	select {
+		border: $default-border;
+	}
+
 	//Validation Error Message
+	// BOOKMARK: Rework these
 	.HeaderValidationError {
 	    background-color:$error-background;
 		color:$error-color;
@@ -570,7 +601,7 @@
 	}
 	//Do we want this anymore?
 	.ReadableAlt, .LightBG {
-		background: #f7f7f7;;
+		background: darken($skin-content-background-color, 5%);
 	}
 	//Some background color needed for this class to show up at all (which is its function)
 	.QuestionOuter.Highlight .Inner,
@@ -585,13 +616,61 @@
 		background-color: darken($highlight-color, 10%);
 	}
 
-
-
-	//Rank Order
-	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
-		background: $primary-color;
+	//Pick, Group, and Rank
+	// BOOKMARK: Have a "BORDER" option and a non-border option
+	.PGR .DragAndDrop td.groupsContainerTd div > div {
+		border: $default-border;
+		border-radius: 4px;
+		margin: 5px;
+	}
+	.PGR .DragAndDrop h2 {
+		font-size: inherit;
+	}
+	.PGR .DragAndDrop .Group h2 {
+		border-bottom: $default-border;
+		padding: 10px;
+		background: darken($skin-content-background-color, 3%);
+	}
+	.PGR .DragAndDrop .rank{
+		padding: 2px 10px;
+		margin: 7px 0;
+		left: 4px;
+		border-radius: 40px;
+		background-color: lighten($primary-color, 20%);
+		background-color: darken($skin-content-background-color, 25%);
+		color:white;
+	}
+	//Drag and Drop
+	.RO .DND ul.Edited .rank,
+	.RO .DND ul.NotEdited li:hover .rank,
+	.RO .DND .rank {
+		background:$primary-color;
+		color:white;
+	}
+	// makes it so the ul and lis don't spill over
+	.PGR .DragAndDrop .Group div {
+		box-sizing: content-box;
+	}
+	.PGR .DragAndDrop .stack ul li.stack {
+		border: $default-border;
+		border-radius: 4px;
 	}
 
+	.PGR .DragAndDrop ul li{
+		padding: 8px;
+	}
+
+
+
+	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
+		margin: 0 auto 10px auto; //Not sure we need this... seems like we want the group boxes close to the items 
+	}
+
+	//Rank Order
+	// moved to above
+	// .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
+	// 	background: $primary-color;
+	// }
 	.RO .DND ul li:hover{
 		@if $full-width-header == T{
 			background: darken($body-background-color, 10%);
@@ -599,6 +678,29 @@
 		@if $full-width-header == F or $boxed-questions == T or $boxed-skincontent == T{
 			background: darken($question-container-background-color, 10%);
 		}
+	}
+
+	//Slider
+	//Draggable Bar
+	$slider-bar-color: darken($skin-content-background-color, 10%);
+	.horizontalbar .bar{
+		background-color: $slider-bar-color;
+	}
+	$slider-handle-color: $primary-color;
+	.horizontalbar .activated .bar,
+	.horizontalbar .BarContainer:hover .bar{
+		background-color: $slider-handle-color;
+	}
+
+	// Slider
+	// This is the old sprite (the gray track)
+	.SS .horizontalbar .SSTrack,
+	.horizontalbar .Slider .track {
+		background-color: $slider-bar-color;
+	}
+	.SS .horizontalbar .handle,
+	.horizontalbar .Slider .handle {
+		background-color: $primary-color;
 	}
 
 	//End of Survey message
@@ -617,13 +719,6 @@
 		text-align:right;
 	}
 
-	//Drag and Drop
-	$primary-color: #ed3e3e;
-	.RO .DND ul.Edited .rank,
-	.RO .DND ul.NotEdited li:hover .rank{
-		background:$primary-color;
-		color:white;
-	}
 
 	// Select box buttons
 	.SB input {
@@ -640,25 +735,6 @@
 } // /.Skin
 
 
-
-
-				// Styles for html elements that don't automatically style
-
-				button, input, select, textarea {
-					font-family: $font-stack;
-					font-size: $default-font-size;
-					color: $default-text-color;
-				}
-
-				input.TextEntryBox, 
-				.TE textarea, 
-				textarea, 
-				input[type="password"], 
-				input[type="text"], 
-				input[type="search"],
-				select {
-					border: $default-border;
-				}
 
 // /end stuff from basestyles
 
@@ -726,6 +802,17 @@
 	background: red;
 	position: relative;
 	top: - 44px;
+}
+
+@media only screen and (max-width: 767px) {
+
+	text
+	.Skin .MC .MAHR .TextEntryBox,
+	.Skin .MC .SAHR .TextEntryBox,
+	.Skin .MC .MACOL .TextEntryBox,
+	.Skin .MC .SACOL .TextEntryBox	{
+		width: 90% !important;
+	}
 }
 
 //Add this to make label not scroll down to where .TextEntryBox should be
@@ -918,40 +1005,44 @@ $answer-label-border: none;
 	}
 }
 
-//Trying to remove middle scale labels on mobile, so they don't squish over each other.
-@media only screen and (max-width: 767px) {
 
-	.Skin .HSLIDER .xlabel span.TickContainer span,
-	.Skin .HBAR .xlabel span.TickContainer span {
-		display: none;
-	}
+// //////////// 
+// //	TEST
+// ///////////
+//
+// //Trying to remove middle scale labels on mobile, so they don't squish over each other.
+// @media only screen and (max-width: 767px) {
 
-	.Skin .HSLIDER .xlabel span.TickContainer span.MinValue,
-	.Skin .HBAR .xlabel span.TickContainer span.MinValue,
-	.Skin .HSLIDER .xlabel th:nth-last-child(3) span.TickContainer span,
-	.Skin .HBAR .xlabel th:nth-last-child(3) span.TickContainer span,
-	.Skin .HBAR .xlabel th:nth-last-child(4) span.TickContainer span {
-		display: block;
-		background: red;
-	}
+// 	.Skin .HSLIDER .xlabel span.TickContainer span,
+// 	.Skin .HBAR .xlabel span.TickContainer span {
+// 		display: none;
+// 	}
 
-}
+// 	.Skin .HSLIDER .xlabel span.TickContainer span.MinValue,
+// 	.Skin .HBAR .xlabel span.TickContainer span.MinValue,
+// 	.Skin .HSLIDER .xlabel th:nth-last-child(3) span.TickContainer span,
+// 	.Skin .HBAR .xlabel th:nth-last-child(3) span.TickContainer span,
+// 	.Skin .HBAR .xlabel th:nth-last-child(4) span.TickContainer span {
+// 		display: block;
+// 		background: red;
+// 	}
 
-.Skin .HSLIDER th.ylabel {
-	position: absolute;
-	padding-bottom: 40px;
-}
+// }
+// //////////// 
+// //	TEST
+// ///////////
+//
+// //Trying to put the SLIDER labels above the sliders.
 
-.Skin .HSLIDER td {
-	min-height: 40px;
-}
+// .Skin .HSLIDER th.ylabel {
+// 	position: absolute;
+// 	padding-bottom: 40px;
+// }
+
+
 
 .Skin .horizontalbar tr.Stars td.value input, .Skin .horizontalbar table.sliderGrid tr td.value input {
 	width: 4em;
 }
-
-// .Skin .HSLIDER td.BarOuter {
-// 	position: relative;
-// }
 
 
