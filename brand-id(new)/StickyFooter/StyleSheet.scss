@@ -29,7 +29,7 @@
 	//DEFAULT
 	-->	$body-background-color: $primary-color;
 	-->	$default-text-color: #444;
-	$default-font-size: 14px;
+	$default-font-size: 16px;
 	$container-max-width: 900px;
 	$default-border-color: lighten($default-text-color, 40%);
 	$default-border-radius: 3px;
@@ -535,7 +535,8 @@
 // BOOKMARK: This isn't working...
 // Does this pull the color from the "Hilight Questions" option?
 #RestoredResponseBar {
-	background: #D0E7FF;
+	background: #45464b !important;
+	color: #888c8f !important;
 }
 #RestoredResponseBar .BottomShadow {
 	display: none;
@@ -596,9 +597,9 @@
 		color:lighten($default-text-color, 20%);
 	}
 	// I think it makes more sense to do this than to have a .readableAlt color;
-	.ChoiceRow:hover {
-		background: #fea;
-	}
+	// .ChoiceRow:hover {
+	// 	background: #fea;
+	// }
 	//Do we want this anymore?
 	.ReadableAlt, .LightBG {
 		background: darken($skin-content-background-color, 5%);
@@ -631,6 +632,7 @@
 		padding: 10px;
 		background: darken($skin-content-background-color, 3%);
 	}
+	.RO .DND .rank,
 	.PGR .DragAndDrop .rank{
 		padding: 2px 10px;
 		margin: 7px 0;
@@ -640,6 +642,7 @@
 		background-color: darken($skin-content-background-color, 25%);
 		color:white;
 	}
+	//Pick, Group, and Rank
 	//Drag and Drop
 	.RO .DND ul.Edited .rank,
 	.RO .DND ul.NotEdited li:hover .rank,
@@ -655,11 +658,10 @@
 		border: $default-border;
 		border-radius: 4px;
 	}
-
+	.RO .DND ul li,
 	.PGR .DragAndDrop ul li{
 		padding: 8px;
 	}
-
 
 
 	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
@@ -681,6 +683,11 @@
 	}
 
 	//Slider
+	.horizontalbar tr.Stars td.value input,
+	.horizontalbar table.sliderGrid tr td.value input {
+		width: 4em;
+	}
+	//Slider
 	//Draggable Bar
 	$slider-bar-color: darken($skin-content-background-color, 10%);
 	.horizontalbar .bar{
@@ -691,7 +698,6 @@
 	.horizontalbar .BarContainer:hover .bar{
 		background-color: $slider-handle-color;
 	}
-
 	// Slider
 	// This is the old sprite (the gray track)
 	.SS .horizontalbar .SSTrack,
@@ -759,6 +765,8 @@
 
 
 // From Mark's New-Sass-Framework - - make questions break, etc.
+// BOOKMARK: 
+// Perhaps this should be optional, with an explanation?
 	
 				.Skin {
 
@@ -779,11 +787,24 @@
 					}
 				}
 
-
+  /////////////////////////////
  // START LABEL STYLES TEST //
 /////////////////////////////
 
+// Need "No Radio Buttons" and "Styled Radio Buttons option"
 
+
+	// .SingleAnswer & .MultipleAnswer are the actual labels (with text in them)
+	// .q-radio & .q-checkbox are the labels that mimic the input
+
+	// .q-radio/checkbox need to exist in both (just only in Matrix, etc. for the "No Radio Buttons" option)
+
+/////////////////////////////
+/////////////////////////////
+
+// 1. Include this in all themes, no matter what.
+// BOOKMARK: 
+// Except, might need to figure out a different IE8 solution
 // /* Hides radio buttons and checkboxes */
 .Skin input[type="radio"],
 .Skin input[type="checkbox"] {
@@ -791,161 +812,247 @@
 	left: -9999px;
 }
 
-// New Testing text entry box placement
-// plan: 
-// make .TextEntryBox position relative - to move it up and keep the additional space in the label
-// then hide the overflow-y, so you can't scroll down to where the .TextEntryBox should be
-.Skin .MC .MAHR .TextEntryBox,
-.Skin .MC .SAHR .TextEntryBox,
-.Skin .MC .MACOL .TextEntryBox,
-.Skin .MC .SACOL .TextEntryBox {
-	background: red;
-	position: relative;
-	top: - 44px;
-}
+// Radio Buttons Conditional
+// 
+$radio-buttons: T;
 
-@media only screen and (max-width: 767px) {
+@if $radio-buttons == T {
+	// Default is to have "Styled" Radio Buttons
+	// If $no-radio-buttons == T, then remove Radio Buttons for selected questions (mostly MC)
 
-	text
-	.Skin .MC .MAHR .TextEntryBox,
-	.Skin .MC .SAHR .TextEntryBox,
-	.Skin .MC .MACOL .TextEntryBox,
-	.Skin .MC .SACOL .TextEntryBox	{
-		width: 90% !important;
+	.Skin .q-radio,
+	.Skin .q-checkbox {
+		border: 2px solid $primary-color;
+		display: inline-block;
+		// margin: 10px auto;
+		width: 20px;
+		height: 20px;
+		// BOOKMARK:
+		// could do something like this... to make radio button match font size more??
+		@if $default-font-size < 14px {
+			width: 16px;
+			height: 16px;
+		}
 	}
-}
+	//Need to be circles
+	//Also need to figure out what to do with IE8 (no border-radius)
+	.Skin .q-radio {
+		border-radius: 100%
+	}
+	.Skin .q-checkbox {
+		border-radius: 2px;
+	}
+	.Skin .q-radio.q-checked,
+	.Skin .q-checkbox.q-checked {
+		background: lighten($primary-color, 10%);
+	}
+	// Aligns the HR radio buttons vertically with each other
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+		vertical-align: bottom;
+	}
+	// Puts the "input" labels below the answer options on HR questions
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+		display: block;
+		width: 100%;
+	} 
+	// This is to group the answer with the correct associated input on mobile..
+	// Good idea? bad idea?
+	@media only screen and (max-width: 768px) {
 
-//Add this to make label not scroll down to where .TextEntryBox should be
-.Skin .MC .MAHR td .LabelWrapper,
-.Skin .MC .SAHR td .LabelWrapper,
-.Skin .MC .MACOL td .LabelWrapper,
-.Skin .MC .SACOL td .LabelWrapper {
-	overflow-y: hidden;
-	border: 2px solid blue;
-}
+		.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+		.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+			border-bottom: 2px solid #eee;
+		}
 
-// /* Centers text entry boxes in spans*/
-.Skin .LabelWrapper {
-	text-align: center;
-	width: 100%;
-}
+		.Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+		.Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+			border-bottom: none;
+		}
 
-// should maybe have a $mobile-answer-label-spacing ?
-$answer-label-spacing: 8px;
-.Skin .MC li .LabelWrapper {
-	margin: $answer-label-spacing inherit;
-}
+	}
 
-.Skin .MC .ChoiceStructure {
-	border-spacing: $answer-label-spacing;
-}
+	.Skin .ChoiceStructure li {
+		padding: 10px 0;
+	}
+
+	.Skin .MC .SAVR label.q-radio,
+	.Skin .MC .SAVR label.q-checkbox,
+	.Skin .MC .MAVR label.q-radio,
+	.Skin .MC .MAVR label.q-checkbox {
+		float: left;
+		margin-right: 10px;
+		padding: 0;
+	}
+
+	.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+	.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+		// should match the 10px above, for consistency
+		padding: 10px;
+	}
+} // end if $no-radio-buttons == F
 
 
-// This causes problems, if I remember right.  It hides a certain element that has a radio button input, 
-// which makes it unselectable in old IE 
-// PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove then.  
-.Skin .MACOL, .Skin .SACOL {
+// No Radio Buttons styles
+@if $radio-buttons == F {
 
-	.ControlContainer {
+
+	/////////////////////////////
+	/////////////////////////////
+	// Below are the original Label Style Tests: 
+	/////////////////////////////
+	/////////////////////////////
+
+	// should maybe have a $mobile-answer-label-spacing ?
+	$answer-label-spacing: 8px;
+
+	// New Testing text entry box placement
+	// plan: 
+	// make .TextEntryBox position relative - to move it up and keep the additional space in the label
+	// then hide the overflow-y, so you can't scroll down to where the .TextEntryBox should be
+
+	// put this in a media query, and it doesn't hide the text on mobile.
+	// But what's going on that makes it move up... something to do with the display:block or whatever
+	// we're using to make the items break and go vertical 
+	@media only screen and (min-width: 768px) {
+
+		.Skin .MC .MAHR .TextEntryBox,
+		.Skin .MC .SAHR .TextEntryBox,
+		.Skin .MC .MACOL .TextEntryBox,
+		.Skin .MC .SACOL .TextEntryBox {
+			background: red;
+			position: relative;
+			top: - 44px;
+		}
+
+		.Skin .MC .ChoiceStructure {
+			border-spacing: $answer-label-spacing;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+
+		text
+		.Skin .MC .MAHR .TextEntryBox,
+		.Skin .MC .SAHR .TextEntryBox,
+		.Skin .MC .MACOL .TextEntryBox,
+		.Skin .MC .SACOL .TextEntryBox	{
+			width: 90% !important;
+		}
+	}
+
+	//Add this to make label not scroll down to where .TextEntryBox should be
+	.Skin .MC .MAHR td .LabelWrapper,
+	.Skin .MC .SAHR td .LabelWrapper,
+	.Skin .MC .MACOL td .LabelWrapper,
+	.Skin .MC .SACOL td .LabelWrapper {
+		overflow-y: hidden;
+		// border: 2px solid blue;
+	}
+
+	// /* Centers text entry boxes in spans*/
+	.Skin .LabelWrapper {
+		text-align: center;
+		width: 100%;
+	}
+
+	.Skin .MC .SAHR table td,
+	.Skin .MC .MAHR table td,
+	.Skin .MC li .LabelWrapper {
+		margin: 0 auto $answer-label-spacing auto;
+	}
+
+	.Skin .MC .SACOL .ChoiceStructure,
+	.Skin .MC .MACOL .ChoiceStructure {
+		border-spacing: $answer-label-spacing;
+	}
+
+
+
+	// This causes problems, if I remember right.  It hides a certain element that has a radio button input, 
+	// which makes it unselectable in old IE 
+	// PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove then.  
+	.Skin .MACOL, .Skin .SACOL {
+
+		.ControlContainer {
+			display: none;
+		}
+	}
+
+	$answer-label-background: #ddd;
+	$answer-label-select-background: #FD5D50;
+	$answer-label-border: none;
+	// /* General (MA and SA) label styles */
+	.Skin .QuestionBody label.SingleAnswer,
+	.Skin .QuestionBody label.MultipleAnswer {
+		background: $answer-label-background;
+		color: #444;
+		border: $answer-label-border;
+		
+		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
+		padding: 20px 4%;
+		display: block;
+		border-radius: 4px;
+		text-align: center;
+
+		/* Make labels full-height ... */	
+		height: 100%;
+		box-sizing: border-box;
+		margin: 0;
+
+		/* Vertically centers text in td ... */
+		display: table;
+		width: 100%;
+			
+	}
+
+	.Skin label.SingleAnswer.q-checked,
+	.Skin label.MultipleAnswer.q-checked {
+		background: $primary-color;
+		color: #fff;
+	}
+
+	/* ... Vertically centers text in td (continued) */
+	.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
+	.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	/* ... Make labels full-height of span of td (continued) */
+	.Skin td .LabelWrapper {
+		display: block;
+		overflow: auto;
+		height: 100%;
+	}
+
+	// /* Have to remove the below from BaseStyles or labels spill over top and bottom
+	// because of full-height label CSS. */
+	// .Skin .MC .QuestionBody td label {
+	// 	margin-bottom: 0;
+	// 	margin-top: 0;
+	// }
+	// /* Adds space between tds */
+	// .Skin .MC .QuestionBody table.ChoiceStructure {
+	// 	border-spacing: 4px;
+	// }
+
+
+	// BOOKMARK: We're going to need to use some radio buttons, or figure out how we want to style
+	// matrix, etc. questions that need something to click on that's not text.
+
+	.Skin .Matrix .Profile label.q-radio,
+	.Skin .Matrix .Profile label.q-checkbox,
+	.Skin .MC label.q-radio,
+	.Skin .MC label.q-checkbox {
 		display: none;
 	}
-}
-
-$answer-label-background: #ddd;
-$answer-label-select-background: #FD5D50;
-$answer-label-border: none;
-// /* General (MA and SA) label styles */
-.Skin .QuestionBody label.SingleAnswer,
-.Skin .QuestionBody label.MultipleAnswer {
-	background: $answer-label-background;
-	color: #444;
-	border: $answer-label-border;
-	
-	// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
-	padding: 20px 4%;
-	/* display: block; */
-	border-radius: 4px;
-	text-align: center;
-
-	/* Make labels full-height ... */	
-	height: 100%;
-	box-sizing: border-box;
-	margin: 0;
-
-	/* Vertically centers text in td ... */
-	display: table;
-	width: 100%;
-		
-}
-
-/* ... Vertically centers text in td (continued) */
-.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-	display: table-cell;
-	vertical-align: middle;
-}
-/* ... Make labels full-height of span of td (continued) */
-.Skin td .LabelWrapper {
-	display: block;
-	overflow: auto;
-	height: 100%;
-}
-
-// /* Have to remove the below from BaseStyles or labels spill over top and bottom
-// because of full-height label CSS. */
-// .Skin .MC .QuestionBody td label {
-// 	margin-bottom: 0;
-// 	margin-top: 0;
-// }
-// /* Adds space between tds */
-// .Skin .MC .QuestionBody table.ChoiceStructure {
-// 	border-spacing: 4px;
-// }
 
 
 
-/* Matrix table labels (turn into radio buttons/checkboxes) */
-// Have to specify Likert and Bipolar to avoid styling .Profile
-// Or maybe we should overspecify .Profile class.  
-.Skin .Matrix .QuestionBody label.MultipleAnswer,
-.Skin .Matrix .QuestionBody label.SingleAnswer {
-	display: block;
-	width: 20px;
-	height: 20px;
-	margin: auto;
-	border: 2px solid $answer-label-select-background;
-	padding: 0;
-	background: #FFF;
-}
-
-/* "Selected" .q-checked class */
-.Skin .Matrix .QuestionBody label.MultipleAnswer.q-checked,
-.Skin .Matrix .QuestionBody label.SingleAnswer.q-checked,
-.Skin .QuestionBody label.q-checked {
-	color: #fff;
-	background: #FD5D5D;
-	border-color: #D41E1E;
-}
-
-.Skin .Matrix .QuestionBody label.SingleAnswer {
-	border-radius: 100%;
-}
-.Skin .Matrix .QuestionBody label.MultipleAnswer {
-	border-radius: 2px;
-}
-.Skin .Matrix .QuestionBody label.q-checked {
-	background: #FFA8A8;
-}
+} // end if $no-radio-buttons == T
 
 
-// /* Mobile Matrix Table Question test */
-// .Skin .Matrix table th.c1 {
-// 	background: #fff;
-// 	position: absolute;
-// }
-// .Skin .Matrix table td.c2, .Skin .Matrix table th.c2 {
-// 	padding-right: 200px;
-// }
 
 // End LABEL STYLES TEST
 
@@ -1005,7 +1112,6 @@ $answer-label-border: none;
 	}
 }
 
-
 // //////////// 
 // //	TEST
 // ///////////
@@ -1038,11 +1144,5 @@ $answer-label-border: none;
 // 	position: absolute;
 // 	padding-bottom: 40px;
 // }
-
-
-
-.Skin .horizontalbar tr.Stars td.value input, .Skin .horizontalbar table.sliderGrid tr td.value input {
-	width: 4em;
-}
 
 

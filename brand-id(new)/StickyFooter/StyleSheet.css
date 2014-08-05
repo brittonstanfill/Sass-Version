@@ -73,7 +73,7 @@ h2.noStyle {
 }
 
 .Skin .QuestionBody table.ChoiceStructure {
-  width: 100%;
+  width: 100% !important;
 }
 
 .Skin .QuestionBody ul.ChoiceStructure {
@@ -2157,7 +2157,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -36px;
+  margin: 0 auto -38px;
 }
 .Skin .SkinInner {
   max-width: 900px;
@@ -2166,7 +2166,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   width: 100%;
 }
 .Skin #ProgressBar {
-  font-size: 14px;
+  font-size: 16px;
   padding: 0;
   position: relative;
   min-height: 1px;
@@ -2215,11 +2215,11 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin #Header {
   background: transparent;
-  font-size: 16px;
+  font-size: 18px;
   color: #444444;
   margin: 0px auto;
   max-width: 900px;
-  min-height: 16px;
+  min-height: 18px;
   padding: 10px 15px;
 }
 .Skin #SkinContent {
@@ -2229,13 +2229,13 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 15px;
 }
 .Skin .QuestionText {
-  font-size: 16px;
+  font-size: 18px;
   color: #444444;
   padding-bottom: 15px;
 }
 .Skin .QuestionBody {
   color: #444444;
-  font-size: 14px;
+  font-size: 16px;
   overflow-x: auto !important;
   overflow-y: hidden;
 }
@@ -2256,7 +2256,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   -o-border-radius: 0px;
   border-radius: 0px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0px;
   padding: 10px 20px;
   text-align: center;
@@ -2277,17 +2277,17 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin #Footer {
   color: #444444;
-  font-size: 11px;
+  font-size: 13px;
   max-width: 900px;
   margin: 0px auto;
   padding: 0px;
 }
 .Skin #PushStickyFooter {
-  height: 36px;
+  height: 38px;
 }
 .Skin #Plug {
   color: #444444;
-  font-size: 11px;
+  font-size: 13px;
   float: right;
   margin: 0;
   text-align: center;
@@ -2300,7 +2300,8 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 
 #RestoredResponseBar {
-  background: #D0E7FF;
+  background: #45464b !important;
+  color: #888c8f !important;
 }
 
 #RestoredResponseBar .BottomShadow {
@@ -2309,7 +2310,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 
 .Skin button, .Skin input, .Skin select, .Skin textarea {
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #444444;
 }
 .Skin input.TextEntryBox,
@@ -2348,9 +2349,6 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .LightText {
   color: #777777;
 }
-.Skin .ChoiceRow:hover {
-  background: #fea;
-}
 .Skin .ReadableAlt, .Skin .LightBG {
   background: #f2f2f2;
 }
@@ -2377,6 +2375,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 10px;
   background: #f7f7f7;
 }
+.Skin .RO .DND .rank,
 .Skin .PGR .DragAndDrop .rank {
   padding: 2px 10px;
   margin: 7px 0;
@@ -2399,6 +2398,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   border: 2px solid #aaaaaa;
   border-radius: 4px;
 }
+.Skin .RO .DND ul li,
 .Skin .PGR .DragAndDrop ul li {
   padding: 8px;
 }
@@ -2407,6 +2407,10 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .RO .DND ul li:hover {
   background: #e6e6e6;
+}
+.Skin .horizontalbar tr.Stars td.value input,
+.Skin .horizontalbar table.sliderGrid tr td.value input {
+  width: 4em;
 }
 .Skin .horizontalbar .bar {
   background-color: #e6e6e6;
@@ -2466,112 +2470,65 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   left: -9999px;
 }
 
-.Skin .MC .MAHR .TextEntryBox,
-.Skin .MC .SAHR .TextEntryBox,
-.Skin .MC .MACOL .TextEntryBox,
-.Skin .MC .SACOL .TextEntryBox {
-  background: red;
-  position: relative;
-  top: -44px;
-}
-
-@media only screen and (max-width: 767px) {
-  text
-  .Skin .MC .MAHR .TextEntryBox,
-  .Skin .MC .SAHR .TextEntryBox,
-  .Skin .MC .MACOL .TextEntryBox,
-  .Skin .MC .SACOL .TextEntryBox {
-    width: 90% !important;
-  }
-}
-.Skin .MC .MAHR td .LabelWrapper,
-.Skin .MC .SAHR td .LabelWrapper,
-.Skin .MC .MACOL td .LabelWrapper,
-.Skin .MC .SACOL td .LabelWrapper {
-  overflow-y: hidden;
-  border: 2px solid blue;
-}
-
-.Skin .LabelWrapper {
-  text-align: center;
-  width: 100%;
-}
-
-.Skin .MC li .LabelWrapper {
-  margin: 8px inherit;
-}
-
-.Skin .MC .ChoiceStructure {
-  border-spacing: 8px;
-}
-
-.Skin .MACOL .ControlContainer, .Skin .SACOL .ControlContainer {
-  display: none;
-}
-
-.Skin .QuestionBody label.SingleAnswer,
-.Skin .QuestionBody label.MultipleAnswer {
-  background: #dddddd;
-  color: #444;
-  border: none;
-  padding: 20px 4%;
-  /* display: block; */
-  border-radius: 4px;
-  text-align: center;
-  /* Make labels full-height ... */
-  height: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  /* Vertically centers text in td ... */
-  display: table;
-  width: 100%;
-}
-
-/* ... Vertically centers text in td (continued) */
-.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-/* ... Make labels full-height of span of td (continued) */
-.Skin td .LabelWrapper {
-  display: block;
-  overflow: auto;
-  height: 100%;
-}
-
-/* Matrix table labels (turn into radio buttons/checkboxes) */
-.Skin .Matrix .QuestionBody label.MultipleAnswer,
-.Skin .Matrix .QuestionBody label.SingleAnswer {
-  display: block;
+.Skin .q-radio,
+.Skin .q-checkbox {
+  border: 2px solid #ed3e3e;
+  display: inline-block;
   width: 20px;
   height: 20px;
-  margin: auto;
-  border: 2px solid #fd5d50;
-  padding: 0;
-  background: #FFF;
 }
 
-/* "Selected" .q-checked class */
-.Skin .Matrix .QuestionBody label.MultipleAnswer.q-checked,
-.Skin .Matrix .QuestionBody label.SingleAnswer.q-checked,
-.Skin .QuestionBody label.q-checked {
-  color: #fff;
-  background: #FD5D5D;
-  border-color: #D41E1E;
-}
-
-.Skin .Matrix .QuestionBody label.SingleAnswer {
+.Skin .q-radio {
   border-radius: 100%;
 }
 
-.Skin .Matrix .QuestionBody label.MultipleAnswer {
+.Skin .q-checkbox {
   border-radius: 2px;
 }
 
-.Skin .Matrix .QuestionBody label.q-checked {
-  background: #FFA8A8;
+.Skin .q-radio.q-checked,
+.Skin .q-checkbox.q-checked {
+  background: #f16d6d;
+}
+
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+  vertical-align: bottom;
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+  display: block;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+    border-bottom: 2px solid #eee;
+  }
+
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+    border-bottom: none;
+  }
+}
+.Skin .ChoiceStructure li {
+  padding: 10px 0;
+}
+
+.Skin .MC .SAVR label.q-radio,
+.Skin .MC .SAVR label.q-checkbox,
+.Skin .MC .MAVR label.q-radio,
+.Skin .MC .MAVR label.q-checkbox {
+  float: left;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+  padding: 10px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2601,7 +2558,4 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   .Skin #Plug a {
     width: 100%;
   }
-}
-.Skin .horizontalbar tr.Stars td.value input, .Skin .horizontalbar table.sliderGrid tr td.value input {
-  width: 4em;
 }

@@ -81,8 +81,9 @@ h2.noStyle {
 }
 //Makes SA/MAHR question answers 100% of available width
 // -- But some have inline widths. Why?
+// added important tag to override inline widths of some .Matrix questions
 .Skin .QuestionBody table.ChoiceStructure {
-	width: 100%;
+	width: 100% !important;
 }
 // // Why zoom: 1, or hasLayout?
 // // http://stackoverflow.com/questions/6287023/what-bug-does-zoom1-fix-in-css
