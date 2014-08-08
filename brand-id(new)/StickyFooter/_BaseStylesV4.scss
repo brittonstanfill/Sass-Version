@@ -3,7 +3,7 @@
 //		HTML elements		//
 //////////////////////////////
 //////////////////////////////
-
+//BOOKMARK: Note: Need to add in "CannotFind.css", or else find that stuff.  
 ul, li {
 	list-style-image:none;
 	list-style-position:outside;
@@ -62,6 +62,389 @@ h2.noStyle {
 	cursor: default;
 }
 
+//////////////////////////////
+//////////////////////////////
+//		CANNOT FIND			//
+// Classes I could not find //
+// anywhere, but I'm afraid //
+// to remove them. 			//
+//////////////////////////////
+//////////////////////////////
+
+#ServerTime {
+	display: none;
+}
+.Skin .ValidationErrorHighlight .Inner{
+	background:rgba(255,10,10,0.3);
+}
+.Skin legend {
+	white-space: normal;
+	width:100%;
+}
+.Skin .ValidationError.Sub {
+	font-size: 90%;
+	font-weight: normal;
+	padding: 5px;
+	position: relative;
+	top: 5px;
+	white-space: nowrap;
+}
+.Skin .AccessibleQuestionBody{
+	border: none;
+}
+.Skin .AccessibleQuestionBody legend{
+	padding-left: 0;
+	width: 100%;
+    color: inherit;
+}
+.Skin .SkinBody {
+	padding: 6pt 3pt;
+}
+.Skin .focused {
+	background-color: #fff7c0;
+}
+.Skin .QuestionText .UserTable{
+	border:1px solid #333;
+	margin:1px;
+	border-collapse:collapse;
+}
+.Skin .QuestionText .UserTable td,
+.Skin .QuestionText .UserTable th{
+	border:1px solid #333;
+	padding:0.5em 1em;
+	text-align:center;
+}
+.QuestionText .ExportTag {
+	font-style: italic;
+}
+// /* choice groups */
+.Skin .ChoiceGroup{
+	color:#888;
+}
+.Skin .ChoiceGroupStructure{
+	margin-left:10px;
+}
+.Skin .ChoiceGroupStructure.HiddenTitle{
+	margin-left:0px;
+}
+// /* indent levels */
+.Skin .IndentLevel1{
+	margin-left:10px;
+}
+.Skin .IndentLevel2{
+	margin-left:20px;
+}
+.Skin .IndentLevel3{
+	margin-left:30px;
+}
+.Skin .IndentLevel4{
+	margin-left:40px;
+}
+.Skin .IndentLevel5{
+	margin-left:50px;
+}
+.Skin .IndentLevel6{
+	margin-left:60px;
+}
+
+// *
+// DB
+// *
+.Skin .DB .VRP .QuestionBody,
+.Skin .DB .ARP .QuestionBody,
+.Skin .DB .VWM .QuestionBody,
+.Skin .DB .AWM .QuestionBody {
+	text-align: center;
+}
+.Skin .DB .FLB .QuestionBody .NoFileMessage{
+	color: #808080;
+}
+
+// *
+// MC
+// *
+.Skin .MC .SAVR .SkinBody,
+.Skin .MC .MAVR .SkinBody,
+.Skin .MC .SACOL .SkinBody,
+.Skin .MC .MACOL .SkinBody {
+	padding: 6pt 0pt 0pt 0pt;
+}
+
+.Skin .MC td input.radio,
+.Skin .MC td input.checkbox,
+.Skin .MC .QuestionBody td label{
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
+.Skin .MC input.radio,
+.Skin .MC input.checkbox{
+	margin-left:7px;
+	margin-right:7px;
+	background: red;
+}
+
+.Skin .MC .QuestionText li{
+	padding:0px;
+}
+.Skin .MC .QuestionText li {
+	float: none;
+}
+
+.Skin .MC .SB .SkinBody,
+.Skin .MC .MSB .SkinBody {
+	text-align: center;
+}
+
+.Skin .MC .SAHR li,
+.Skin .MC .MAHR li{
+	padding-right: 9pt;
+}
+
+.Skin .Matrix .ColumnLabels table {
+	width: 100%;
+}
+
+.Skin .Matrix table th.FullChoiceRow {
+	text-align: left;
+}
+
+// /* MSE Styles */
+.Skin #SkinContent .Matrix.CombinedQuestion table tbody th {
+	text-align: right;
+}
+.Skin #SkinContent .Matrix table tbody th.SubHeading {
+	font-weight: bold;
+	text-align: left;
+}
+.Skin .Matrix table td.FullChoiceRow{
+	text-align:left;
+}
+.Skin .Matrix td.ColumnLabels tr.SpreadLabels td.First,
+.Skin .Matrix td.ColumnLabels tr.SpreadLabels th.First{
+	text-align:left;
+}
+.Skin .Matrix td.ColumnLabels tr.SpreadLabels td.Last,
+.Skin .Matrix td.ColumnLabels tr.SpreadLabels th.Last{
+	text-align:right;
+}
+.Skin .Matrix table tr th.ColumnLabels,
+.Skin .Matrix table tr.ColumnLabels td,
+.Skin .Matrix table tr.ColumnLabelHeader th,
+.Skin .Matrix table tr.ColumnLabelHeader td{
+	border-style: none;
+}
+.Skin .Matrix .RepeatHeader{
+	vertical-align:bottom;
+}
+.Skin .Matrix .WhiteSpace td{
+	height:25px;
+}
+.Skin .Matrix table td.SymbolCell
+{
+	white-space: nowrap;
+}
+// /* DropDown */
+.Skin .Matrix .DL .Transposed table td.last{
+	text-align:center;
+}
+// /* Profile */
+.Skin .Matrix .Profile tr.LabelRow td{
+	padding-left:0px;
+	padding-right:0px;
+	font-size:80%;
+}
+.Skin .Matrix .CS .transposed tr.CSTotal th {
+	border-top-color:#333;
+	color:#333;
+	text-align: left;
+	font-weight: bold;
+}
+.Skin .Matrix .CS tr.CSTotal td.TextAbove
+{
+	text-align: left;
+}
+// * Dynamic Matrix
+.Skin .DynamicMatrix .TE input{
+	width:auto;
+	background: red;
+}
+.Skin .DynamicMatrix .LogicEditor .ExpressionSet .Expression {
+	border:none;
+	background:none;
+}
+.Skin input.Searching
+{
+	background: white url('../WRQualtricsShared/Graphics/spinner.gif') no-repeat right 2px;
+}
+// ************************
+// * CS Sliding Bars
+// **************************
+.Skin .horizontalbar tr.xlabel th div{
+	position:relative;
+}
+.Skin .horizontalbar table.sliderGrid tr.xlabel th div span{
+	/* to make them shift right and align to the grid lines */
+	position:absolute;
+	left:15px;
+	top:-25px;
+}
+// /* value styles */
+.Skin .horizontalbar table.sliderGrid tr.xlabel th.value div span{
+	/* total th should be aligned right */
+	position:absolute;
+	right:0px;
+	top:-25px;
+	text-align:right;
+}
+.Skin .horizontalbar table.sliderGrid tr td.totalValue{
+	text-align:left;
+	border:none;
+	font-weight:bold;
+
+}
+.Skin .horizontalbar table.sliderGrid tr td.totalValue input{
+	width:80px;
+	background-color:transparent;
+	border:none;
+	text-align:left;
+	font-weight:bold;
+	font-size:1.2em;
+}
+.Skin .horizontalbar table.sliderGrid tr th.total{
+	padding:5px;
+	text-align:right;
+	border:none;
+	font-weight:bold;
+}
+// /* bars */
+.Skin .horizontalbar .barTd,
+.Skin .horizontalbar .yLabelTicksTd{
+	position:relative;
+	vertical-align:top;
+	border-bottom:1px solid #cccccc;
+	/*float:left;  this puts the relative left at the start of the td instead of the screen */
+}
+.Skin .horizontalbar .yLabelTicksTd .labelTicks div{
+	position:absolute;
+	top:.2em;
+	text-align:right;
+	font-size:80%;
+}
+// ****************
+// SS Sliding Scale
+// *****************
+.Skin .SS .QuestionBody table.ChoiceStructure {
+	text-align: center;
+	width:auto;
+}
+// /** Question Overlay **/
+.Skin .QuestionOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	background-color: rgb(255,255,255);
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+// /** Display styles ***/
+.SkinTable #Buttons .ButtonText, .Skin #Buttons .ButtonText {
+	text-align:center;
+}
+#SurveyEngineBody .debug {
+	font-size: 12pt;
+}
+#SurveyEngineBody .debug pre {
+	font-size: 9pt;
+}
+#SurveyEngineBody .HideSelects select {
+	display:none !important; /* For Look and Feel survey preview - hides selects under the Skins menu */
+}
+.Skin .SurveyError {
+	padding: 10px;
+	padding: 10px;
+	width: 60%;
+	margin: 0 auto;
+	/* border-style: solid;
+	border-width: 2px; */
+}
+.Skin .SurveyError h1,
+.Skin .SurveyError h2,
+.Skin .SurveyError h3 {
+	font-size: 100%;
+	font-weight: normal;
+}
+.Skin .SurveyError h1 {
+	/*text-align: center;*/
+}
+.Skin .SurveyError h2,
+.Skin .SurveyError h3 {
+	padding-top: 10px;
+}
+.Skin .SurveyError h2 {
+	font-weight: bold;
+	font-size: 110%;
+}
+.Skin .SurveyError h3 {
+	font-size: 80%;
+}
+.Skin .PreviewResults em {
+	font-weight: normal;
+	font-size: 80%;
+}
+.Skin .PreviewResults ul,
+.Skin .PreviewResults li {
+	padding-top: 5px;
+}
+* html .Skin .LeadGenerator div {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../WRQualtricsShared/Graphics/leadGenerator.png", sizingMethod="crop")
+}
+.Skin .LeadGenerator {
+	text-align: center;
+	padding-top: 10px;
+	font-family:tahoma;
+}
+.Skin .LeadGenerator .imageHolder{
+	border: 0px;
+	width: 532px;
+	height: 176px;
+	background: url(../WRQualtricsShared/Graphics/leadGenerator.png) no-repeat;
+	line-height:24px;
+	margin:auto;
+}
+.Skin .LeadGenerator .imageHolderOuter {
+	width: 534px;
+	height: 178px;
+	margin: auto;
+}
+.Skin .LeadGenerator .imageHolder div{
+	padding-top:68px;
+}
+.Skin .LeadGenerator a{
+	text-decoration:none;
+	display:block;
+	width:528px;
+	margin:auto;
+	cursor:pointer;
+}
+.Skin .LeadGenerator .PoweredBy {
+	font-size:11pt;
+	color:#4d4d4d;
+}
+.Skin .LeadGenerator .Invite {
+	font-size:13pt;
+	color:#4d4d4d;
+}
+.Skin .LeadGenerator .ClickHere {
+	color:#b3131a;
+	font-weight:bold;
+}
+.ValidationConfirm .Q_Window{
+	text-align:center;
+	padding:25px;
+}
 
 
 //////////////////////////////
@@ -200,6 +583,8 @@ h2.noStyle {
 .Skin .Matrix table td,
 .Skin .Matrix table th{
 	text-align:center;
+	padding: 5px 0;
+	// background: orange;
 }
 .Skin .Matrix .TE td input {
 	//Need this to center the text boxes in matrix table cells
@@ -512,9 +897,16 @@ h2.noStyle {
 .Skin .horizontalbar .Slider .track div{
 	filter:none; //fixes strange ie8 bug that causes handle to not update
 }
+
+
+// Stars
 //
-//Stars
-//
+.Skin .STAR .Stars th.ylabel,
+.Skin .STAR .Stars td,
+.Skin .Slider .STAR .horizontalbar table.sliderGrid tr td.value,
+.Skin .STAR .Stars table td.BarOuter {
+	border: none;
+}
 // This is by default.  Do we need it?
 .Skin .STAR .horizontalbar table.sliderGrid {
 	table-layout: auto;
@@ -529,9 +921,15 @@ h2.noStyle {
 .Skin .STAR .Stars tbody tr {
 	height: 46px;
 }
+.Skin .STAR tr.HideValue td.BarOuter {
+	width: auto;
+}
 //This is overriding  //.Skin .horizontalbar .BarContainer { top: -10px; }
 .Skin .STAR .BarContainer {
 	top: 0px;
+}
+.Skin .STAR .StarsStrut {
+	white-space: nowrap;
 }
 .Skin .STAR .StarsContainer,
 .Skin .STAR .StarsEventWatcher,
@@ -567,12 +965,26 @@ h2.noStyle {
 	top: 0px;
 	left: 0px;
 }
+.Skin .STAR .StarsContainer .StarsOverlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.Skin .STAR .StarsContainer .Star {
+	width: 36px;
+	height: 30px;
+	background: transparent url('../Graphics/stars.png') 0px 0px;
+	float: left;
+}
+
+
 
 
 //Rank Order
 
 .Skin .RO .RankInput {
-	width: 2em;
+	width: 3em;
+	margin-left: 20px;
 }
 //RB
 //Centers the options, to better use full width of question
@@ -682,7 +1094,6 @@ h2.noStyle {
 .Skin .RO .DND ul.NotEdited .rank{
 	visibility:hidden;
 }
-$primary-color: #ed3e3e;
 .Skin .RO .DND ul.Edited .rank,
 .Skin .RO .DND ul.NotEdited li:hover .rank{
 	visibility:visible;
@@ -1003,6 +1414,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 }
 .Skin .SS .verticalbar,
 .Skin .SS .horizontalbar .SSTrack {
+	//BOOKMAR: what's going on here? this class is specified above for different reasons.
 	position:relative;
 	width:200px;
 	margin:0 auto;
@@ -1011,7 +1423,8 @@ $slider-bar-color: blue;
 .Skin .SS .verticalbar .SSTrack {
 	position:relative;
 	width:8px;
-	background: $slider-bar-color;
+	//Needs a background color
+	// background: $slider-bar-color;
 	height:120px;
 	float:left;
 	opacity:.5;
@@ -1027,7 +1440,7 @@ $slider-bar-color: blue;
 .Skin .verticalbar .SSTrack .handle{
 	height: 20px;
 	width: 20px;
-	background: $primary-color;
+	background: red;
 	cursor:move;
 	overflow:hidden;
 
@@ -1419,9 +1832,10 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 .Skin .DD .QuestionBody th {
 	padding: 4px 10px 4px 0;
 }
-.Skin .DD .QuestionBody .drillDownSelectDropDown {
-	margin: 3px 0 3px 7px;
-}
+//Don't need this.  
+// .Skin .DD .QuestionBody .drillDownSelectDropDown {
+// 	margin: 3px 0 3px 7px;
+// }
 
 
 //Grading - NOT REVISED
