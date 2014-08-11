@@ -1,0 +1,1112 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONDITIONALS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//INTERCHANGABLE LOGO
+	$interchangeable-logo: F;
+
+	//LAYOUTS
+	-->	$full-width-header: F; //F is survey container
+		$boxed-skincontent: F;
+		$boxed-questions: F;
+	$pushed-to-bottom-plug: T; //sticky footer plug
+
+	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
+	-->	$border-radius-on: F;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//VARIABLES
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//COLOR PALETTE
+	-->	$primary-color: #CCC;
+	$secondary-color: darken($primary-color, 10%);
+	$tertiary-color: $secondary-color;
+
+	//FONTS
+	$font-stack: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+
+	//DEFAULT
+	-->	$body-background-color: $primary-color;
+	-->	$default-text-color: #444;
+	$default-font-size: 16px;
+	$container-max-width: 900px;
+	$default-border-color: lighten($default-text-color, 40%);
+	$default-border-radius: 3px;
+	$default-border-style: solid;
+	$default-border-width: 2px;
+	$default-border: $default-border-width $default-border-style $default-border-color;
+// Should we include a $mobile-default-container-padding?
+// This seems harmless on desktop, and then eats up a lot of space on mobile.
+	$default-container-padding: 15px;
+
+
+	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
+	-->	$question-container-background-color: #FFF;
+	$question-container-border-radius-on: $border-radius-on;
+	$question-container-box-shadow-on: F;
+		$container-box-shadow-x: 0;
+		$container-box-shadow-y: 0;
+		$container-box-shadow-spread: 10px;
+		$container-box-shadow-color: darken($body-background-color, 50%);
+
+	//SURVEY ENGINE BODY
+	$body-background-image: url(data:image/svg+xml;base64,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);
+	$body-background: $body-background-color $body-background-image no-repeat center fixed;
+	$body-background-size: cover;
+
+
+	//SKIN INNER
+	$skin-inner-max-width: $container-max-width;
+
+	//LOGO CONTAINER
+	-->	$logo-container-background: #FFFFFF;
+
+	//LOGO
+	$logo-background-color: transparent;
+	-->	$logo-width: 163px;
+	-->	$logo-height: 50px;
+	$logo-mobile-scale: .66;
+	$logo-mobile-width: ($logo-width * $logo-mobile-scale);
+	$logo-mobile-height: ($logo-height * $logo-mobile-scale);
+	$logo-margin: 0px auto;
+	$logo-padding: $default-container-padding;
+	$logo-max-width: $container-max-width;
+	$logo-image: url("logo.png");
+	$logo-mobile-image: url("logo.png");
+	$logo-position: $default-container-padding center;
+	$logo-mobile-position: center center;
+	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
+
+	//HEADER CONTAINER
+	-->	$header-container-background: transparent;
+
+	//HEADER
+	$header-background-color: transparent;
+	$header-font-size: ($default-font-size + 2);
+	$header-margin: 0px auto;
+	$header-max-width: $container-max-width;
+	$header-padding: 10px $default-container-padding;
+	-->	$header-text-color: $default-text-color;
+
+	//SKIN CONTENT
+	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
+	$skin-content-border-radius: $default-border-radius;
+
+	//VALIDATION ERROR MESSAGE
+	// Can we desaturate too?
+	$error-red:#FFEFEF;
+	$error-blue:#E8F8FF;
+	$error-orange:#FDF7E0;
+	$error-gray:#EEEEEE;
+
+	//HIGHLIGHT COLOR
+	$highlight-color: #FFFBC0;
+
+	-->	$error-background: $error-red;
+	// Can we desaturate too, not just darken?
+	$error-color: darken($error-background, 40%);
+	$error-border: darken($error-background, 15%);
+
+	//QUESTIONS
+	$question-text-font-size: ($default-font-size + 2);
+	-->	$question-text-color: $default-text-color;
+	$question-body-font-size: $default-font-size;
+	-->	$question-body-text-color: $default-text-color;
+
+
+	//PROGRESS BAR
+	$progress-bar-fill-color: $secondary-color;
+	$progress-bar-fill-height: 15px;
+	$progress-bar-fill-padding: 0px;
+	$progress-bar-padding: 0;
+	-->	$progress-bar-background-color: #DDD;
+	$progress-bar-border-radius-on: $border-radius-on;
+		$progress-bar-border-radius: $default-border-radius;
+
+	//BUTTONS
+	-->	$button-primary-color: $primary-color;
+	$button-secondary-color: #FFF;
+	$button-padding: 10px 20px;
+	$buttons-padding: $default-container-padding;
+	//CONDITIONALS
+		$button-outline: T; //F will do solid button
+			$button-border-color: $button-secondary-color;
+			$button-border: 2px  $default-border-style $button-border-color;
+		
+		$button-border-radius-on: $border-radius-on; //T or F
+			$button-border-radius: $default-border-radius +2;
+
+	//FOOTER CONTAINER
+	$footer-container-background: $body-background-color;
+
+	//FOOTER
+	$footer-font-size: ($default-font-size - 3);
+	$footer-padding: 0px;
+	-->	$footer-text-color: $default-text-color;
+
+	//PLUG
+	$plug-font-size: $footer-font-size;
+	$plug-padding: 12px 24px;
+	-->	$plug-link-color: #FFF;
+	$plug-text-color: $footer-text-color;
+	$plug-text-align:center;
+	$plug-background: darken($body-background-color, 10%);
+
+	$calculated-sticky-footer-height: $footer-font-size + 10*2 +5;
+
+	//MOBILE
+	$mobile-label-font-size: 15px;
+	$mobile-label-line-height: 50px;
+	$mobile-label-MAVR-line-height: 36px;
+	$tablet-label-font-size: 15px;
+	$tablet-label-line-height: 36px;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//IMPORT BaseStyles
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// import latest BaseStyles.scss version
+	@import '_BaseStylesV4.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MIXINS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//BORDER RADIUS
+	@mixin border-radius($border-radius-size) {
+		-webkit-border-radius: $border-radius-size;
+		   -moz-border-radius: $border-radius-size;
+			-ms-border-radius: $border-radius-size;
+		     -o-border-radius: $border-radius-size;
+				border-radius: $border-radius-size;
+	}
+
+	//BOX SHADOW
+	@mixin box-shadow($x, $y, $size, $color) {
+		-webkit-box-shadow: $x $y $size $color;
+		   -moz-box-shadow: $x $y $size $color;
+			    box-shadow: $x $y $size $color;
+	}
+
+	//LINEAR GRADIENT
+	@mixin linear-gradient($top, $bottom) {
+		background: $top;
+		background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+		background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: -o-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LAYOUT
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@if $pushed-to-bottom-plug == T{
+	@media only screen and (min-device-width: 400px) {
+		html, body, #Page, .Skin {
+		height: 100%;
+		}
+	}
+}
+
+@if $interchangeable-logo == F{
+	html {
+		.Skin #Logo, .CSS3 .Skin #Logo  {
+			background: $logo-background-color $logo-image no-repeat $logo-position;
+			background-size: $logo-width $logo-height;
+			height: $logo-height;
+			margin: $logo-margin;
+			max-width: $logo-max-width;
+			padding: $logo-padding;
+		}
+	}
+}
+
+#SurveyEngineBody {
+	background: $body-background;
+	background-size: $body-background-size;
+	font-family: $font-stack;
+}
+
+.Skin {
+
+	#Wrapper{
+		@if $pushed-to-bottom-plug == T{
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto (-$calculated-sticky-footer-height);
+		}
+	}
+
+	.SkinInner {
+		@if $full-width-header == T {
+			max-width: 100%;
+			margin:0 auto;
+
+		}
+		@else if $full-width-header == F {
+			max-width: $skin-inner-max-width;
+			margin: $default-container-padding auto;
+			background: $question-container-background-color;
+			@if $question-container-box-shadow-on == T{
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
+		}
+		width: 100%;
+	}
+
+	#ProgressBar {
+		font-size: $default-font-size;
+		padding: $progress-bar-padding;
+		position:relative;
+		min-height: 1px;
+	}
+
+	.ProgressBarContainer{
+		width:100%;
+		border-collapse:collapse;
+	}
+	
+	#ProgressBar tr td:nth-child(1) {
+	  position: absolute;
+	  left: 0;
+	  color: #fff;
+	  line-height: $progress-bar-fill-height;
+	  border-left: 3px solid $progress-bar-fill-color;
+	}
+	
+	#ProgressBar tr td:nth-child(2){
+		width:100%;
+	}
+	
+	#ProgressBar tr td:nth-child(3) {
+	  position: absolute;
+	  right: 0;
+	  line-height: $progress-bar-fill-height;
+	  color: $progress-bar-fill-color;
+	  border-right: 3px solid $progress-bar-background-color;
+	}
+
+	.ProgressBarFillContainer {
+		border: none;
+		overflow:hidden;
+		background:$progress-bar-background-color;
+		width:100%;
+	}
+
+	.ProgressBarFill {
+		background-color: $progress-bar-fill-color;
+		padding: $progress-bar-fill-padding;
+		height: $progress-bar-fill-height;
+	}
+
+
+	#LogoContainer {
+		background: $logo-container-background;
+		@if $full-width-header == F {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+		}
+		@if $interchangeable-logo == T{
+			display:none;
+		}
+	}
+
+	#HeaderContainer {
+		background: $header-container-background;
+		@if $full-width-header == F {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+		}
+
+	}
+
+	#Header {
+		background: $header-background-color;
+		font-size: $header-font-size;
+		color: $header-text-color;
+		margin: $header-margin;
+		max-width: $header-max-width;
+		min-height: $header-font-size;
+		padding: $header-padding;
+	}
+
+	#SkinContent {
+		border: $skin-content-border;
+		@if $full-width-header == T and $boxed-questions == F{
+			@if $boxed-skincontent == T{
+				max-width: $skin-inner-max-width;
+				margin: $default-container-padding auto;
+				background: $question-container-background-color;
+				@if $question-container-box-shadow-on == T{
+					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+				}
+			}
+			@elseif $boxed-skincontent == F{
+				max-width: $skin-inner-max-width + ($default-container-padding * 2);
+				margin:0 auto;
+				background: transparent;
+			}
+		}
+		@if $full-width-header == T and $boxed-questions == T{
+			max-width: $skin-inner-max-width + ($default-container-padding * 2);
+			margin:$default-container-padding auto;
+			background: transparent;
+		}
+
+		@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+	}
+
+	.QuestionOuter {
+		padding: $default-container-padding;
+		@if $boxed-questions == T {
+			background: $question-container-background-color;
+			@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+			@if $question-container-box-shadow-on == T{
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
+		}
+
+	}
+
+	// .QuestionOuter .Inner {
+	// 	overflow-x:hidden; //testing question scrolling
+	// }
+
+	.QuestionText {
+		font-size: $question-text-font-size;
+		color: $question-text-color;
+		padding-bottom: $default-container-padding;
+		@if $boxed-questions == T {
+			padding: 15px;
+			background-color: $secondary-color;
+		}
+	}
+
+	.QuestionBody {
+		color: $question-body-text-color;
+		font-size: $question-body-font-size;
+				// @if $boxed-questions == T {
+				// 	padding:$default-container-padding;
+				// 	margin:0;
+				// }
+		overflow-x:auto !important; //testing question scrolling
+		overflow-y:hidden;  //testing question scrolling
+	}
+				// @if $boxed-questions == T {
+				// 	.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
+				// 		padding:0;
+				// 		li, tr, th{
+				// 			padding-left:$default-container-padding !important;
+				// 		}
+				// 	}
+				// 	.RO .RB .QuestionBody{
+				// 			padding:0;
+				// 		}
+				// 	.Skin .Timing .QuestionText{
+				// 		margin:0;
+				// 	}
+				// 	/////general styles I'm overriding maybe do for all Q types
+				// 	.Skin .MC input.radio, .Skin .MC input.checkbox{
+				// 		margin-left:0;
+				// 	}
+
+				// }
+
+	#Buttons {
+	padding: $buttons-padding;
+	text-align:right;
+	}
+
+	#Buttons #PreviousButton {
+		float: left;
+	}
+
+	#Buttons #NextButton, #Buttons #PreviousButton {
+
+		@if $button-outline == T {
+			border: $button-border;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
+		}
+		@else if $button-outline == F {
+			border: none;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
+		}
+		
+		@if $button-border-radius-on == T {@include border-radius($button-border-radius)}
+		@else if $button-border-radius-on == F {@include border-radius(0px)}
+		cursor: pointer;
+		font-size: $default-font-size;
+		margin: 0px;
+		padding: $button-padding;
+		text-align: center;
+		text-decoration: none;
+		-webkit-appearance: none;
+
+		@media only screen and (min-device-width: 1024px) {
+
+
+			@if $button-outline == F {
+
+				&:hover {
+
+					background-color: darken($button-primary-color, 10%);
+					transition: all .1s ease-in-out;
+				}
+
+				&:active {
+					background-color: darken($button-primary-color, 20%);
+					border-color: darken($button-primary-color, 20%);
+				}
+		
+			}
+
+			@if $button-outline == T {
+
+				&:hover {
+					//background-color: rgba(0,0,0,.1);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-primary-color, 15%);
+					color: darken($button-primary-color, 15%);
+				}
+
+				&:active {
+					//background-color: rgba(0,0,0,.2);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-primary-color, 20%);
+					color: darken($button-primary-color, 20%);
+				}
+		
+			}
+
+		}
+	}
+
+	#Footer {
+		color: $footer-text-color;
+		font-size: $footer-font-size;
+		max-width: $container-max-width;
+		margin: 0px auto;
+		padding: $footer-padding;
+	}
+
+	#PushStickyFooter{
+		height:$calculated-sticky-footer-height;
+	}
+	
+	#Plug {
+		color: $plug-text-color;
+		font-size: $plug-font-size;
+		float:right;
+		margin: 0;
+		text-align: $plug-text-align;
+
+
+		a {
+			color: $plug-link-color;
+			text-decoration: none;
+			padding: $plug-padding;
+			background: $plug-background;
+				@if $border-radius-on == T{
+					-webkit-border-radius: 5px 0 0 0;
+					-moz-border-radius: 5px 0 0 0;
+					-ms-border-radius: 5px 0 0 0;
+					-o-border-radius: 5px 0 0 0;
+					border-radius: 5px 0 0 0;
+				}
+		}
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// QUESTION TYPE, etc. STYLES
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+.Skin {
+
+	//Validation Error Message
+	.HeaderValidationError {
+	    background-color:$error-background;
+		color:$error-color;
+	    border: 1px solid darken($error-background, 10%);
+		margin: $default-container-padding;
+		padding: 15px;
+	    border-radius: 4px;
+	}
+	.ValidationError {
+		font-size: 120%;
+		color: $error-color;
+		text-align: center;
+	}
+	.HeaderValidationError h1 {
+		font-size: 120%;
+	}
+	.HeaderValidationError li a{
+		color:$error-color;
+	}
+
+	// Question Separator
+	.Separator {
+		height: $default-border-width;
+		background: lighten($default-border-color, 10%);
+		margin: $default-container-padding;
+	}
+	
+	//Readable, LightText, Highlight
+	.LightText{
+		color:lighten($default-text-color, 20%);
+	}
+	// I think it makes more sense to do this than to have a .readableAlt color;
+	.ChoiceRow:hover {
+		background: #fea;
+	}
+	//Do we want this anymore?
+	.ReadableAlt, .LightBG {
+		background: #f7f7f7;;
+	}
+	//Some background color needed for this class to show up at all (which is its function)
+	.QuestionOuter.Highlight .Inner,
+	.QuestionOuter.Highlight .Inner .reg,
+	.QuestionOuter.Highlight .Inner .alt,
+	.QuestionOuter.Highlight .Inner .ReadableAlt {
+		background-color: $highlight-color;
+	}
+	//Some background color (different from above) needed for this class to show up at all (which is its function)
+	.QuestionOuter.Highlight .Inner .ReadableAlt,
+	.QuestionOuter.Highlight .Inner .LightBG  {
+		background-color: darken($highlight-color, 10%);
+	}
+
+
+
+	//Rank Order
+	.RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
+		background: $primary-color;
+	}
+
+	.RO .DND ul li:hover{
+		@if $full-width-header == T{
+			background: darken($body-background-color, 10%);
+		}
+		@if $full-width-header == F or $boxed-questions == T or $boxed-skincontent == T{
+			background: darken($question-container-background-color, 10%);
+		}
+	}
+
+	//End of Survey message
+	.EndOfSurvey {
+		color: $default-text-color;
+		padding: 30px;
+		@if $full-width-header == T and $boxed-questions == T{
+			background: $question-container-background-color;
+		}
+	}
+
+
+	//DropDown
+	//Moves text boxes to right, utilizing full width of question.  
+	.Matrix .DL table td.last{
+		text-align:right;
+	}
+
+	//Drag and Drop
+	$primary-color: #ed3e3e;
+	.RO .DND ul.Edited .rank,
+	.RO .DND ul.NotEdited li:hover .rank{
+		background:$primary-color;
+		color:white;
+	}
+
+	// Select box buttons
+	.SB input {
+		background: $button-primary-color;
+		color:$button-secondary-color;
+		border-radius: 4px;
+		padding: 4px 12px;
+		border: none;	
+		border: $default-border;
+		border-color: $button-primary-color;
+	}
+
+
+} // /.Skin
+
+
+
+
+				// Styles for html elements that don't automatically style
+
+				button, input, select, textarea {
+					font-family: $font-stack;
+					font-size: $default-font-size;
+					color: $default-text-color;
+				}
+
+				input.TextEntryBox, 
+				.TE textarea, 
+				textarea, 
+				input[type="password"], 
+				input[type="text"], 
+				input[type="search"],
+				select {
+					border: $default-border;
+				}
+
+// /end stuff from basestyles
+
+
+				// determining focus class for text entry boxes... do we need to be this specific?
+				.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
+				.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, 
+				.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
+				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
+					border-color: $primary-color;
+					outline: none;
+				}
+
+				// Added to allow text to wrap on mobile for these questions
+				// Pulled these out of media query in BaseStyles, but haven't removed compeletely from BaseStyles yet...
+				// @media only screen and (max-device-width: 480px) {
+					.Skin .Inner.CS,
+					.Skin .Inner.HBAR {
+						min-width: 0px;
+					}
+				// }
+
+
+// From Mark's New-Sass-Framework - - make questions break, etc.
+	
+				.Skin {
+
+					//MC (MULTIPLE CHOICE) CLASS 
+					.MC {
+
+						.MAHR, .SAHR {
+
+							@media all and (max-width: 768px) {
+
+								td {
+									//display: block // --> causes problems: img doesn't make td increase in height
+									display: table;
+									width: 100%;
+								}
+							}
+						}
+
+					}
+				}
+
+$answer-label-background: #ddd;
+$answer-label-select-background: #FD5D50;
+$answer-label-border: none;
+$answer-label-spacing: 8px;
+
+//  // START LABEL STYLES TEST //
+// /////////////////////////////
+
+
+// /* Hides radio buttons and checkboxes */
+.Skin input[type="radio"],
+.Skin input[type="checkbox"] {
+	position: absolute;
+	left: -9999px;
+}
+
+// New Testing text entry box placement
+// plan: 
+// make .TextEntryBox position relative - to move it up and keep the additional space in the label
+// then hide the overflow-y, so you can't scroll down to where the .TextEntryBox should be
+
+// DON'T WANT this for the "Styled Radio Buttons" option
+// .Skin .MC .MAHR .TextEntryBox,
+// .Skin .MC .SAHR .TextEntryBox,
+// .Skin .MC .MACOL .TextEntryBox,
+// .Skin .MC .SACOL .TextEntryBox {
+// 	background: red;
+// 	position: relative;
+// 	top: - 44px;
+// }
+
+// //Add this to make label not scroll down to where .TextEntryBox should be
+// .Skin .MC .MAHR td .LabelWrapper,
+// .Skin .MC .SAHR td .LabelWrapper,
+// .Skin .MC .MACOL td .LabelWrapper,
+// .Skin .MC .SACOL td .LabelWrapper {
+// 	overflow-y: hidden;
+// 	border: 2px solid #f7f7f7;
+// }
+
+// // /* Centers text entry boxes in spans*/
+// .Skin .LabelWrapper {
+// 	text-align: center;
+// 	width: 100%;
+// }
+
+// // should maybe have a $mobile-answer-label-spacing ?
+// $answer-label-spacing: 8px;
+// .Skin .MC li .LabelWrapper {
+// 	margin: $answer-label-spacing inherit;
+// }
+
+// .Skin .MC .ChoiceStructure {
+// 	border-spacing: $answer-label-spacing;
+// }
+
+
+// // This causes problems, if I remember right.  It hides a certain element that has a radio button input, 
+// // which makes it unselectable in old IE 
+// // PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove then.  
+// .Skin .MACOL, .Skin .SACOL {
+
+// 	.ControlContainer {
+// 		display: none;
+// 	}
+// }
+
+$answer-label-background: #ddd;
+$answer-label-select-background: #FD5D50;
+$answer-label-border: none;
+// /* General (MA and SA) label styles */
+.Skin .QuestionBody label.SingleAnswer,
+.Skin .QuestionBody label.MultipleAnswer {
+	background: transparent;
+	color: #444;
+	border: $answer-label-border;
+	
+	// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
+//	padding: 10px 4%;
+	padding: 10px 0;
+	display: block;
+	border-radius: 4px;
+// FLOAT OR NOT?
+	// text-align: left;
+	text-align: center;
+
+	/* Make labels full-height ... */	
+	height: 100%;
+	box-sizing: border-box;
+	margin: 0;
+
+	// // /* Vertically centers text in td ... */
+	// display: table;
+	// width: 100%;
+		
+}
+
+
+// DON'T WANT this for the "Styled radio buttons" option
+// /* ... Vertically centers text in td (continued) */
+// .Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
+// .Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
+// 	display: table-cell;
+// 	vertical-align: middle;
+// }
+// /* ... Make labels full-height of span of td (continued) */
+// .Skin td .LabelWrapper {
+// 	display: block;
+// 	overflow: auto;
+// 	height: 100%;
+// }
+
+// // /* Have to remove the below from BaseStyles or labels spill over top and bottom
+// // because of full-height label CSS. */
+// // .Skin .MC .QuestionBody td label {
+// // 	margin-bottom: 0;
+// // 	margin-top: 0;
+// // }
+// // /* Adds space between tds */
+// // .Skin .MC .QuestionBody table.ChoiceStructure {
+// // 	border-spacing: 4px;
+// // }
+
+
+
+// /* Matrix table labels (turn into radio buttons/checkboxes) */
+// // Have to specify Likert and Bipolar to avoid styling .Profile
+// // Or maybe we should overspecify .Profile class.  
+// .Skin .Matrix .QuestionBody label.MultipleAnswer,
+// .Skin .Matrix .QuestionBody label.SingleAnswer {
+// 	display: block;
+// 	width: 20px;
+// 	height: 20px;
+// 	margin: auto;
+// 	border: 2px solid $answer-label-select-background;
+// 	padding: 0;
+// 	background: #FFF;
+// }
+
+// // /* "Selected" .q-checked class */
+// .Skin .Matrix .QuestionBody label.MultipleAnswer.q-checked,
+// .Skin .Matrix .QuestionBody label.SingleAnswer.q-checked //,
+// // .Skin .QuestionBody label.q-checked
+//  {
+// 	color: #fff;
+// 	background: #FD5D5D;
+// 	border-color: #D41E1E;
+// }
+
+// .Skin .Matrix .QuestionBody label.SingleAnswer {
+// 	border-radius: 100%;
+// }
+// .Skin .Matrix .QuestionBody label.MultipleAnswer {
+// 	border-radius: 2px;
+// }
+// .Skin .Matrix .QuestionBody label.q-checked {
+// 	background: #FFA8A8;
+// }
+
+
+// /* Mobile Matrix Table Question test */
+// .Skin .Matrix table th.c1 {
+// 	background: #fff;
+// 	position: absolute;
+// }
+// .Skin .Matrix table td.c2, .Skin .Matrix table th.c2 {
+// 	padding-right: 200px;
+// }
+
+// End LABEL STYLES TEST
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Changed from max-device-width to max-width
+@media only screen and (max-width: 767px) {
+
+	html  {
+
+		.Skin #Logo, .CSS3 .Skin #Logo {
+			background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
+			background-size: $logo-mobile-width $logo-mobile-height;
+			height: $logo-mobile-height;
+			padding: $logo-mobile-padding;
+		}
+	}
+
+	.Skin {
+		@if $full-width-header == F{ 
+			#LogoContainer{
+				margin-top:0;
+			}
+		}
+
+		#Header{
+			text-align: center;
+		}
+
+		.SkinInner {
+			margin: 0 auto !important;
+			max-width: $container-max-width;
+		}
+
+		#SkinContent {
+			border: none;
+			@if $question-container-border-radius-on == T {
+				@include border-radius(0);
+			}
+		}
+
+		@if $boxed-questions == T {
+			.QuestionOuter {
+				margin:0;
+			}
+		}
+		#Plug {
+			float:none;
+			a{
+				width:100%;
+			}
+		}
+
+	}
+}
+
+
+.Skin .MC .NPS .QuestionBody td.ControlContainer label,
+.Skin .MC .SAHR .QuestionBody td.ControlContainer label,
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label {
+
+border: 2px solid blue;
+width: 20px;
+height: 20px;
+border-radius: 100%;
+display: inline-block;
+margin: 0 auto;
+padding: 0;
+background: transparent;
+}
+
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+	vertical-align: bottom;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+		border-bottom: 2px solid #eee;
+	}
+
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+		border-bottom: none;
+	}
+
+}
+
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label {
+	border-radius: 0;
+}
+
+.Skin .MC .NPS .QuestionBody td.ControlContainer label.q-checked,
+.Skin .MC .SAHR .QuestionBody td.ControlContainer label.q-checked,
+.Skin .MC .MAHR .QuestionBody td.ControlContainer label.q-checked {
+	background: blue;
+}
+
+//// 
+
+.Skin .MC .SAVR .QuestionBody label:nth-child(2), 
+.Skin .MC .MAVR .QuestionBody label:nth-child(2) {
+	border: 2px solid blue;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	display: inline-block;
+	margin: 10px auto;
+	padding: 0;
+	background: transparent;
+
+	margin-right: 10px;
+	float: left;
+}
+
+.Skin .MC .MAVR .QuestionBody label:nth-child(2) {
+	border-radius: 0;
+}
+
+.Skin .MC .SAVR .QuestionBody label:nth-child(2).q-checked,
+.Skin .MC .MAVR .QuestionBody label:nth-child(2).q-checked {
+	background: blue;
+}
+
+
+////
+.Skin .MC .MACOL .QuestionBody label,
+.Skin .MC .SACOL .QuestionBody label {
+	text-align: left;
+}
+
+.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+	padding: 10px;
+}
+
+.Skin .MC .SACOL .QuestionBody label:nth-child(2),
+.Skin .MC .MACOL .QuestionBody label:nth-child(2) {
+	border: 2px solid blue;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	display: inline-block;
+	margin: 10px auto;
+	padding: 0;
+	background: transparent;
+}
+
+.Skin .MC .MACOL .QuestionBody label:nth-child(2) {
+	border-radius: 0;
+}
+
+.Skin .MC .SACOL .QuestionBody label:nth-child(2).q-checked,
+.Skin .MC .MACOL .QuestionBody label:nth-child(2).q-checked {
+	background: blue;
+}
+
+
+//
+//RED TEST LABELS
+//
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2),
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
+	border: 2px solid red;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	display: inline-block;
+	margin: 10px auto;
+	padding: 0;
+	background: transparent;
+	margin: 10px 0;
+}
+
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
+	border-radius: 0;
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2).q-checked {
+	background: red url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyODkuOSAzNzkuOSAzMi4zIDMyLjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjg5LjkgMzc5LjkgMzIuMyAzMi4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxjaXJjbGUgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjMwNiIgY3k9IjM5NiIgcj0iOC41Ii8+DQo8L3N2Zz4NCg==);
+
+}
+
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+	display: block;
+	width: 100%;
+} 
+
+@media only screen and (max-width: 767px) {
+	// .Skin .MC .SAHR .QuestionBody td.LabelContatiner label:nth-child(2),
+	// .Skin .MC .MAHR .QuestionBody td.LabelContatiner label:nth-child(2) {
+	// 	float: left;
+	// }
+
+// FLOAT OR NOT?
+	// .Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+	// .Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+	// 	float: right;
+	// 	width: 94%;
+	// } 
+
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner,
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner {
+// FLOAT OR NOT?
+		// text-align: left;
+		text-align: center;
+		padding: 10px;
+	}
+
+}
+
+@media only screen and (min-width: 768px) {
+	.Skin .MC .SAHR .QuestionBody label,
+	.Skin .MC .MAHR .QuestionBody label {
+		text-align: center;
+	}
+}
+
+.Skin .NPS .QuestionBody label {
+	text-align: center;
+}
+
+.q-checked {
+	background: red !important;
+}
+
+
+.Skin .Matrix .Profile th label {
+	
+}

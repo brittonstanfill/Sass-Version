@@ -1,0 +1,1636 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONDITIONALS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//INTERCHANGABLE LOGO
+	$interchangeable-logo: F;
+
+	//LAYOUTS
+	-->	$full-width-header: T;
+	--> $boxed-skincontent: F;
+		// $boxed-questions: F; // BOOKMARK: Let's just ditch this
+		$pushed-to-bottom-plug: T; //sticky footer plug
+
+	//BACKGROUND
+	$body-background-image-on: T;
+	$overlay-dark: T;
+	//BOOKMARK: Abandoned "transparent" skincontent, for background images.
+	// $transparent-skincontent: T;
+	// $transparent-skincontent-light: F; //T is a dark opacity
+
+	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
+	-->	$border-radius-on: T;
+
+	//RADIO BUTTONS OPTION
+	$radio-buttons: F;
+
+	//LABEL STYLE OPTIONS
+	$full-width-labels-on: F;	//BOOKMARK: maybe we just pick one of these, but I can't decide. 
+	//label-style options: 1 - customers4 1px transparent, 2 - MailChimp 2px solid
+	// STYLE 1: 1px, transparent, 2px border radius
+	// STYLE 2: no border, solid color, 4px border radius
+	$label-style: 1; 
+	$Three-D-style: T;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//VARIABLES
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//COLOR PALETTE
+	-->	$primary-color: #007FC2; //007FC2 //39E79B
+	$secondary-color: darken($primary-color, 20%);
+	$tertiary-color: $secondary-color;
+
+	$desaturated-primary-color: desaturate($primary-color, 20%);
+
+	//FONTS
+	$font-stack: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+
+	//DEFAULT
+	-->	$body-background-color: lighten($primary-color, 5);
+	--> $body-background-image-url: url(http://31.media.tumblr.com/e7ac48834604ac8e9aaf4a3c106c4e86/tumblr_n9hxd1c4Y81st5lhmo1_1280.jpg);
+	-->	$default-text-color: #444;
+		@if $boxed-skincontent == T {
+			$default-text-color: #5E5D64;
+		}
+		@if $boxed-skincontent == F and $body-background-image-on == T {
+			@if $overlay-dark == T {
+				$default-text-color: #fff;
+			} @elseif $overlay-dark == F {
+				$default-text-color: #444;
+			}
+		}
+	$default-font-size: 16px;
+	$container-max-width: 900px;
+	//BOOKMARK: this needs to white or gray, or dark gray what determines that? the background color
+	$default-border-color: #ccc;
+		@if $boxed-skincontent == T {
+			$default-border-color: #d1d1d1;
+		}
+	//BOOKMARK: this should be dependent on the $label-style
+	$default-border-radius: 4px;
+	$default-border-style: solid;
+
+	// BOOKMARK: 
+	// Changing this from 1px to 2px makes 2 different question type styles (1px: Customers4 style and 2px: Mailchimp)
+	// This should also change the thickness of the Slider track, and the radio button style. 
+	// STYLE 1: Gray fill > color fill (mailchimp) : 2px : flat radio
+	// STYLE 2: Outline > color fill (Customers4)  : 1px : sleek? radio
+	// It's not so much Border-radius on or off, it's STYLE 1 or STYLE 2 or STYLE 3
+	
+	$default-border-width: 1px;
+	@if $label-style == 2 {
+		$default-border-width: 2px;
+	}
+	$default-border: $default-border-width $default-border-style $default-border-color;
+
+	// BOOKMARK: 
+	// Should we include a $mobile-default-container-padding?
+	// This seems harmless on desktop, and then eats up a lot of space on mobile.
+	$default-container-padding: 30px;
+
+
+	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
+	-->	$question-container-background-color: #FFF;
+	$question-container-border-radius-on: $border-radius-on;
+	$question-container-box-shadow-on: F;
+		$container-box-shadow-x: 0;
+		$container-box-shadow-y: 0;
+		$container-box-shadow-spread: 10px;
+		$container-box-shadow-color: darken($body-background-color, 20%);
+
+	//SURVEY ENGINE BODY
+	$body-background-image: $body-background-image-url;
+	$body-background: #333 $body-background-image no-repeat center fixed;
+	$body-background-size: cover;
+	
+	// WRAPPER
+	$wrapper-background-overlay-dark: rgba(0,0,0,.7);
+	$wrapper-background-overlay-light: rgba(255,255,255,.75);
+
+	//SKIN INNER
+	$skin-inner-max-width: $container-max-width;
+
+	//LOGO CONTAINER
+	-->	$logo-container-background: #FFFFFF;
+
+	//LOGO
+	$logo-background-color: transparent;
+	-->	$logo-image-width: 163px;
+	-->	$logo-image-height: 50px;
+	$logo-padding: $default-container-padding;
+	$logo-width: $logo-image-width;
+	$logo-height: $logo-image-height + ($logo-padding * 2);
+	$logo-mobile-scale: .66;
+	$logo-mobile-width: ($logo-image-width * $logo-mobile-scale);
+	$logo-mobile-height: ($logo-image-height * $logo-mobile-scale);
+	$logo-margin: 0px auto;
+	$logo-max-width: $container-max-width + ($default-container-padding * 2.5);
+	$logo-image: url("logo.png");
+	$logo-mobile-image: url("logo.png");
+	$logo-position: $default-container-padding center;
+	$logo-mobile-position: center center;
+	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
+
+	//HEADER CONTAINER
+	// -->	$header-container-background: transparent;
+
+	//HEADER
+	$header-font-size: ($default-font-size + 2);
+	$header-margin: 0px auto;
+	$header-max-width: $container-max-width + ($default-container-padding * 2);
+	$header-padding: 10px $default-container-padding;
+	-->	$header-text-color: $default-text-color;
+		@if $full-width-header == T {
+			$header-text-color: lighten($body-background-color, 60%);
+		}
+
+	//SKIN CONTENT
+	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
+	$skin-content-border-radius: $default-border-radius;
+
+	//VALIDATION ERROR MESSAGE
+	// == R
+	$error-red-background: #FFD7D7;
+	$error-red-color: #E73F61;
+	// == O
+	$error-orange-background: #FFDAAB;
+	$error-orange-color: #D66D31;
+	// == B
+	$error-blue-background: #C0E1FF;
+	$error-blue-color: #3180D6;
+
+	-->	$error-color: R;
+
+	//HIGHLIGHT COLOR
+	$highlight-color: #FFFBC0;
+
+	//QUESTIONS
+	$question-text-font-size: ($default-font-size + 2);
+	-->	$question-text-color: $default-text-color;
+	$question-body-font-size: $default-font-size;
+	-->	$question-body-text-color: $default-text-color;
+
+	//OPTIONAL LABEL STYLES (Style 1 (customer4) or 2 (MailChimp))
+	// BOOKMARK: body-background-color needs to be dynamic (based on boxed-skincontent or not)
+	$answer-label-background: transparent;
+	$answer-label-background-2: #eee;
+
+	$answer-label-select-background: $primary-color;
+
+	$answer-label-select-color: #FFF;
+
+	$answer-label-border: 1px solid $default-border-color; // Customers4 style
+	$answer-label-border-2: none;
+
+		@if $boxed-skincontent == T {
+			$answer-label-background: #eee;
+			$answer-label-border: none;
+			$answer-label-select-background: $primary-color;
+			$answer-label-select-border: none;
+		}
+
+
+	//PROGRESS BAR
+	$progress-bar-fill-color: darken($desaturated-primary-color, 10%);
+	$progress-bar-fill-height: 15px;
+	$progress-bar-fill-padding: 0px;
+	$progress-bar-padding: 0;
+	--> $progress-bar-background-color: lighten($desaturated-primary-color, 30%);
+	@if $full-width-header == T {
+		$progress-bar-fill-color: lighten($primary-color, 0%);
+		$progress-bar-background-color: #ddd;
+	}
+	$progress-bar-border-radius-on: $border-radius-on;
+		$progress-bar-border-radius: $default-border-radius;
+
+	//BUTTONS
+	-->	$button-primary-color: $primary-color;
+	$button-secondary-color: #FFF;
+	$button-padding: 10px 20px;
+	$buttons-padding: $default-container-padding;
+	//CONDITIONALS
+		$button-outline: F; //F will do solid button
+			$button-border-color: $button-secondary-color;
+			$button-border: 2px  $default-border-style $button-border-color;
+		
+		$button-border-radius-on: $border-radius-on; //T or F
+			$button-border-radius: 2px;
+
+	//FOOTER CONTAINER
+	$footer-container-background: $body-background-color;
+
+	//FOOTER
+	$footer-font-size: ($default-font-size - 5);
+	$footer-padding: $default-container-padding;
+	-->	$footer-text-color: $default-text-color;
+	// Function to change Footer text color based on background color
+	@function set-footer-text-color($color) {
+	  @if (lightness($color) > 50) {
+	    @return $default-text-color; // Lighter backgorund, return dark color
+	  } @else {
+	    @return lighten($body-background-color, 40%); // Darker background, return light color
+	  }
+	}
+
+	//PLUG
+	$plug-font-size: $footer-font-size;
+	$plug-padding: 12px 24px;
+	-->	$plug-link-color: #FFF;
+	$plug-text-color: $footer-text-color;
+	$plug-text-align:center;
+	$plug-background: rgba(0,0,0,.3);
+	//BOOKMARK:
+	$calculated-sticky-footer-height: $footer-font-size + 10*2 +5;
+
+	//MOBILE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//IMPORT BaseStyles
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// import latest BaseStyles.scss version
+	@import '_BaseStylesV4.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MIXINS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//BORDER RADIUS
+	@mixin border-radius($border-radius-size) {
+		-webkit-border-radius: $border-radius-size;
+		   -moz-border-radius: $border-radius-size;
+			-ms-border-radius: $border-radius-size;
+		     -o-border-radius: $border-radius-size;
+				border-radius: $border-radius-size;
+	}
+
+	//BOX SHADOW
+	@mixin box-shadow($x, $y, $size, $color) {
+		-webkit-box-shadow: $x $y $size $color;
+		   -moz-box-shadow: $x $y $size $color;
+			    box-shadow: $x $y $size $color;
+	}
+
+	//LINEAR GRADIENT
+	@mixin linear-gradient($top, $bottom) {
+		background: $top;
+		background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
+		background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: -o-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: -ms-linear-gradient(top,  $top 0%,$bottom 100%);
+		background: linear-gradient(to bottom,  $top 0%,$bottom 100%);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LAYOUT
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@if $pushed-to-bottom-plug == T{
+	@media only screen and (min-device-width: 400px) {
+		html, body, #Page, .Skin {
+		height: 100%;
+		}
+	}
+}
+
+@if $interchangeable-logo == F{
+	html {
+		.Skin #Logo, .CSS3 .Skin #Logo  {
+			background: $logo-background-color $logo-image no-repeat $logo-position;
+			background-size: $logo-image-width $logo-image-height;
+			height: $logo-height;
+			margin: $logo-margin;
+			max-width: $logo-max-width;
+		}
+	}
+}
+
+#SurveyEngineBody {
+	@if $body-background-image-on == T {
+		background: $body-background;
+		background-size: $body-background-size;
+	} @else {
+		background: $body-background-color;
+	} 
+	@if $body-background-image-on == F and $boxed-skincontent == F {
+		//BOOKMARK: This could be white or gray?
+		background: #FFF;
+	}
+	font-family: $font-stack;
+}
+
+.Skin {
+
+	#Wrapper{
+		@if $pushed-to-bottom-plug == T{
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto (-$calculated-sticky-footer-height);
+		}
+		@if $body-background-image-on == T and $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				background: $wrapper-background-overlay-dark;
+			} @elseif $overlay-dark == F {
+				background: $wrapper-background-overlay-light;
+			}
+		}
+	}
+
+	.SkinInner {
+		@if $full-width-header == T {
+			max-width: 100%;
+			margin:0 auto;
+		}
+		@else if $full-width-header == F {
+			max-width: $skin-inner-max-width;
+			margin: ($default-container-padding * 2) auto;
+			background: $question-container-background-color;
+			@if $boxed-skincontent == F {
+				background: transparent;
+				margin: 0 auto;
+			}
+			@elseif $boxed-skincontent == T {
+				@if $question-container-box-shadow-on == T {
+					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+				}
+				@if $border-radius-on == T {
+					border-radius: $skin-content-border-radius;
+				}	
+			}
+		}
+		width: 100%;
+		//BOOKMARK: abandoned - full width overlay or bust
+		// @if $boxed-skincontent == T and $full-width-header == F and $transparent-skincontent == T {
+		// 	background: transparent;
+		// }
+	}
+
+
+
+	#ProgressBar {
+		font-size: $default-font-size - 2;
+		padding: $progress-bar-padding;
+		position:relative;
+		min-height: 1px;
+	}
+
+	.ProgressBarContainer{
+		width:100%;
+		border-collapse:collapse;
+	}
+	
+	#ProgressBar tr td:nth-child(1) {
+	  position: absolute;
+	  left: 0;
+	  color: $progress-bar-fill-color;
+	  line-height: $progress-bar-fill-height;
+	  border-left: 3px solid $progress-bar-fill-color;
+	  width: 100%;
+	}
+	
+	#ProgressBar tr td:nth-child(2){
+		width:100%;
+	}
+	
+	#ProgressBar tr td:nth-child(3) {
+	  position: absolute;
+	  right: 0;
+	  line-height: $progress-bar-fill-height;
+	  color: $progress-bar-fill-color;
+	  border-right: 3px solid $progress-bar-background-color;
+	}
+
+	.ProgressBarFillContainer {
+		border: none;
+		overflow:hidden;
+		background:$progress-bar-background-color;
+		width:100%;
+	}
+
+	.ProgressBarFill {
+		background-color: $progress-bar-fill-color;
+		padding: $progress-bar-fill-padding;
+		height: $progress-bar-fill-height;
+	}
+
+
+	#LogoContainer {
+		background: $logo-container-background;
+		@if $full-width-header == F {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+			background: transparent;
+		}
+		@if $interchangeable-logo == T {
+			display:none;
+		}
+		@if $full-width-header == T and $question-container-box-shadow-on == T {
+			@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+		}
+	}
+
+	#HeaderContainer {
+		@if $full-width-header == F {
+			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
+			margin:0 auto;
+		}
+		@if $full-width-header == T and $interchangeable-logo == T {
+			background: $logo-container-background;
+			margin-bottom: ($default-container-padding * 2)
+		}
+		@if $full-width-header == T and $interchangeable-logo == T and $body-background-image-on == F and $boxed-skincontent == F {
+			margin-bottom: 0;
+		}
+		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
+			background: $primary-color;
+		}
+
+	}
+
+	#Header {
+		font-size: $header-font-size;
+		color: $header-text-color;
+		margin: $header-margin;
+		max-width: $header-max-width;
+		min-height: $header-font-size;
+		padding: $header-padding;
+
+		@if $full-width-header == T and $interchangeable-logo == T {
+			color: $primary-color;
+		}
+		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
+			color: $primary-color;
+		}
+		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
+			color: #FFF;
+			margin-bottom: $default-container-padding + 20px;
+		}
+	}
+
+	#SkinContent {
+		border: $skin-content-border;
+		max-width: $skin-inner-max-width;
+		margin: 0 auto;
+
+		@if $boxed-skincontent == T and $full-width-header == T {
+			background: $question-container-background-color;
+			
+			@if $boxed-skincontent == T and $question-container-box-shadow-on == T{
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
+			@if $border-radius-on == T {
+				border-radius: $skin-content-border-radius;
+			}		
+		}
+		// BOOKMARK: abandoned, full width overlay or bust
+		// @if $boxed-skincontent == T and $full-width-header == F and $transparent-skincontent == T {
+		// 	@if $transparent-skincontent-light == F {
+		// 		background: rgba(0,0,0,.7);
+		// 	} @elseif $transparent-skincontent-light == T {
+		// 		background: rgba(255,255,255,.7);
+		// 	}
+		// } 
+
+	}
+
+	// #SkinContent {
+	// 	border: $skin-content-border;
+
+
+
+
+	// 	@if $full-width-header == T and $boxed-questions == F{
+	// 		@if $boxed-skincontent == T{
+	// 			max-width: $skin-inner-max-width;
+	// 			margin: $default-container-padding auto;
+	// 			background: $question-container-background-color;
+	// 			@if $question-container-box-shadow-on == T{
+	// 				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+	// 			}
+	// 		}
+	// 		@elseif $boxed-skincontent == F{
+	// 			max-width: $skin-inner-max-width + ($default-container-padding * 2);
+	// 			margin:0 auto;
+	// 			background: transparent;
+	// 		}
+	// 	}
+	// 	@if $full-width-header == T and $boxed-questions == T{
+	// 		max-width: $skin-inner-max-width + ($default-container-padding * 2);
+	// 		margin:$default-container-padding auto;
+	// 		background: transparent;
+	// 	}
+
+	// 	@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+	// }
+
+
+	//BOOKMARK: take this off, and the HeaderValidationError moves to top of #Questions
+	#Questions {
+		padding-top: 1px;
+	}
+
+	.QuestionOuter {
+		//BOOKMARK: This is the "Mobile-default-container-padding"
+		padding: 15px;
+	}
+
+	@media all and (min-width: 767px) {
+
+		.QuestionOuter {
+			@if $boxed-skincontent == T {
+				padding: $default-container-padding;
+			} @else {
+				padding: $default-container-padding 0;
+			}
+			// @if $boxed-questions == T {
+			// 	background: $question-container-background-color;
+			// 	@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
+			// 	@if $question-container-box-shadow-on == T{
+			// 		@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			// 	}
+			// }
+
+		}
+	}
+
+	// .QuestionOuter .Inner {
+	// 	overflow-x:hidden; //testing question scrolling
+	// }
+
+	.QuestionText {
+		font-size: $question-text-font-size;
+		color: $question-text-color;
+		padding-bottom: $default-container-padding;
+		// @if $boxed-questions == T {
+		// 	padding: 15px;
+		// 	background-color: $secondary-color;
+		// }
+	}
+
+	.QuestionBody {
+		color: $question-body-text-color;
+		font-size: $question-body-font-size;
+				// @if $boxed-questions == T {
+				// 	padding:$default-container-padding;
+				// 	margin:0;
+				// }
+		overflow-x:auto !important; //testing question scrolling
+		overflow-y:hidden;  //testing question scrolling
+	}
+				// @if $boxed-questions == T {
+				// 	.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
+				// 		padding:0;
+				// 		li, tr, th{
+				// 			padding-left:$default-container-padding !important;
+				// 		}
+				// 	}
+				// 	.RO .RB .QuestionBody{
+				// 			padding:0;
+				// 		}
+				// 	.Skin .Timing .QuestionText{
+				// 		margin:0;
+				// 	}
+				// 	/////general styles I'm overriding maybe do for all Q types
+				// 	.Skin .MC input.radio, .Skin .MC input.checkbox{
+				// 		margin-left:0;
+				// 	}
+
+				// }
+
+	#Buttons {
+		// I think this margin helps make it not look stupid with just one question on the page.
+		// And just looks better in general, maybe.
+		margin-top: 80px;	
+		padding: $buttons-padding;
+		text-align:right;
+	}
+
+	@media only screen and (max-width: 768px) {
+		#Buttons {
+			//Default mobile container padding;
+			padding: 15px;
+		}
+	}
+
+
+	#Buttons #PreviousButton {
+		float: left;
+	}
+
+	#Buttons #NextButton, #Buttons #PreviousButton {
+
+		@if $button-outline == T {
+			border: $button-border;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
+		}
+		@else if $button-outline == F {
+			border: none;
+			background-color: $button-primary-color;
+			color: $button-secondary-color;
+		}
+		
+		@if $button-border-radius-on == T {@include border-radius($button-border-radius)}
+		@else if $button-border-radius-on == F {@include border-radius(0px)}
+		cursor: pointer;
+		font-size: $default-font-size;
+		margin: 0px;
+		padding: $button-padding;
+		text-align: center;
+		text-decoration: none;
+		-webkit-appearance: none;
+
+		@if $Three-D-style == T {
+			//BOOKMARK: 3D effect for labels and buttons??
+			@include linear-gradient($primary-color, darken($primary-color, 10%));
+			border-top: 1px solid lighten($primary-color, 20%);
+			border-bottom: 1px solid darken($primary-color, 20%);
+
+		}
+
+		@media only screen and (min-device-width: 1024px) {
+
+
+			@if $button-outline == F {
+
+				&:hover {
+
+					background-color: darken($button-primary-color, 10%);
+					transition: all .1s ease-in-out;
+				}
+
+				&:active {
+					background-color: darken($button-primary-color, 20%);
+					border-color: darken($button-primary-color, 20%);
+				}
+			}
+
+			@if $button-outline == T {
+
+				&:hover {
+					//background-color: rgba(0,0,0,.1);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-primary-color, 15%);
+					color: darken($button-primary-color, 15%);
+				}
+
+				&:active {
+					//background-color: rgba(0,0,0,.2);
+					transition: all .1s ease-in-out;
+					border-color: darken($button-primary-color, 20%);
+					color: darken($button-primary-color, 20%);
+				}
+		
+			}
+
+		}
+	}
+
+	#Footer {
+		// color: $footer-text-color;
+		font-size: $footer-font-size;
+		max-width: $container-max-width;
+		margin: 0px auto;
+		padding: $footer-padding;
+		color: set-footer-text-color($body-background-color);
+
+	}
+
+	#PushStickyFooter{
+		height:$calculated-sticky-footer-height;
+	}
+	
+	#Plug {
+		color: $plug-text-color;
+		font-size: $plug-font-size;
+		float:right;
+		margin: 0;
+		text-align: $plug-text-align;
+
+
+		a {
+			color: $plug-link-color;
+			text-decoration: none;
+			padding: $plug-padding;
+			background: darken($body-background-color, 10%);
+			background: $plug-background;
+				@if $border-radius-on == T{
+					@media all and (min-width: 767px) {
+						-webkit-border-radius: 5px 0 0 0;
+						-moz-border-radius: 5px 0 0 0;
+						-ms-border-radius: 5px 0 0 0;
+						-o-border-radius: 5px 0 0 0;
+						border-radius: 5px 0 0 0;
+					}
+				}
+		}
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// QUESTION TYPES, etc. STYLES
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Welcome Back! Message at top of screen
+// BOOKMARK: This isn't working...
+// Does this pull the color from the "Hilight Questions" option?
+#RestoredResponseBar {
+	background: #45464b !important;
+	color: #888c8f !important;
+}
+#RestoredResponseBar .BottomShadow {
+	display: none;
+}
+
+
+.Skin {
+
+	// Styles for html elements that don't automatically style
+	button, input, select, textarea {
+		font-family: $font-stack;
+		font-size: $default-font-size;
+		color: $default-text-color;
+	}
+
+	// Put default border on all text inputs
+	input.TextEntryBox, 
+	.TE textarea, 
+	textarea, 
+	input[type="password"], 
+	input[type="text"], 
+	input[type="search"],
+	select {
+		border: $default-border;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+		//BOOKMARK: 
+		// I think maybe we should just set the padding..
+		// because if we add too much, it cuts off the text (with box-sizing: border-box)
+		padding: 4px;
+		max-width: 100%;
+		//Figure out the best way to make text inputs not spill over on mobile.  
+		// Can't just indiscriminately apply 100% !important because some are set to 3em or whatever (on purpose)
+		// @media only screen and (max-width: 768px) {
+		// 	width: 100%;
+		// }
+		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T {
+			background: transparent;
+			//Can't be white, or it won't show up in Native Firefox select menus.
+			// Or will it?  Just checked again and now the background on the select is black, making #FFF visible
+			color: #FFF;
+		}
+	}
+
+	//Validation Error Message
+	// BOOKMARK: How do I make it not touch the top of the #Questions without adding padding to #Questions?
+	.HeaderValidationError {
+		margin: $default-container-padding;
+		padding: 15px;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+		@if $error-color == O {
+			background: $error-orange-background;
+			color: $error-orange-color;
+		} @elseif $error-color == R {
+			background: $error-red-background;
+			color: $error-red-color;
+		} @elseif $error-color == B {
+			background: $error-blue-background;
+			color: $error-blue-color;
+		}
+	}
+	.ValidationError {
+		font-size: 120%;
+		@if $error-color == O {
+			color: $error-orange-color;
+		} @elseif $error-color == R {
+			color: $error-red-color;
+		} @elseif $error-color == B {
+			color: $error-blue-color;
+		}
+		text-align: center;
+	}
+	.HeaderValidationError h1 {
+		font-size: 120%;
+	}
+	.HeaderValidationError li a{
+		color:$error-color;
+		@if $error-color == O {
+			color: $error-orange-color;
+		} @elseif $error-color == R {
+			color: $error-red-color;
+		} @elseif $error-color == B {
+			color: $error-blue-color;
+		}
+	}
+
+	// Question Separator
+	.Separator {
+		height: $default-border-width;
+		background: $default-border-color;
+		@if $boxed-skincontent == T {
+			margin: 10px $default-container-padding;
+		} @else {
+			margin: 10px 0;
+		}
+	}
+	
+	//Readable, LightText, Highlight
+	.LightText{
+		color:lighten($default-text-color, 20%);
+	}
+	// // I think it makes more sense to do this than to have a .readableAlt color;
+	// tr:hover,
+	// .ChoiceRow:hover {
+	// 	background: #fea;
+	// }
+	//Do we want this anymore?
+	// BOOKMARK:
+	// Need if statement.  If the container is on (and the background's white) then go off that.
+	// If it's a dark, light, or colored image, then base on that.
+	// .ReadableAlt, .LightBG {
+	// 	background: darken($question-container-background-color, 2%);
+	// 	@if $boxed-skincontent == F {
+	// 		background: black;
+	// 	}
+	// }
+	// Get rid of color on .Bipolar Qs
+	.ChoiceRow:hover,
+	.Choice:hover,
+	.RO .RB tr:hover {
+		background: $primary-color;
+	}
+	.RO .RB tr.Answers {
+		background: inherit;
+	}
+	//Some background color needed for this class to show up at all (which is its function)
+	.QuestionOuter.Highlight .Inner,
+	.QuestionOuter.Highlight .Inner .reg,
+	.QuestionOuter.Highlight .Inner .alt,
+	.QuestionOuter.Highlight .Inner .ReadableAlt {
+		background-color: $highlight-color;
+	}
+	//Some background color (different from above) needed for this class to show up at all (which is its function)
+	.QuestionOuter.Highlight .Inner .ReadableAlt,
+	.QuestionOuter.Highlight .Inner .LightBG  {
+		background-color: darken($highlight-color, 10%);
+	}
+
+	//Pick, Group, and Rank
+	// BOOKMARK: Have a "BORDER" option and a non-border option
+	.PGR .DragAndDrop td.groupsContainerTd div > div {
+		border: $default-border;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+		margin: 5px;
+	}
+	.PGR .DragAndDrop h2 {
+		font-size: inherit;
+	}
+	.PGR .DragAndDrop .Group h2 {
+		border-bottom: $default-border;
+		padding: 10px;
+		background: darken($question-container-background-color, 3%);
+	}
+	.RO .DND .rank,
+	.PGR .DragAndDrop .rank{
+		padding: 2px 10px;
+		margin: 7px 0;
+		left: 4px;
+		@if $border-radius-on == T {
+			border-radius: 40px;
+		}
+		background-color: lighten($primary-color, 20%);
+		background-color: darken($question-container-background-color, 25%);
+		color:white;
+	}
+	//Pick, Group, and Rank
+	//Drag and Drop
+	.RO .DND ul.Edited .rank,
+	.RO .DND ul.NotEdited li:hover .rank,
+	.RO .DND .rank {
+		background:$primary-color;
+		color:white;
+	}
+	// makes it so the ul and lis don't spill over
+	.PGR .DragAndDrop .Group div {
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+	.PGR .DragAndDrop .stack ul li.stack {
+		border: $default-border;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+	}
+
+	.RO .DND .Items ul li,
+	.PGR .DragAndDrop .Items ul li{
+		padding: 8px 0;
+		text-align: center;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+	}
+
+	.RO .DND .Group ul li,
+	.PGR .DragAndDrop .Group ul li{
+		//BOOKMARK: the 40px makes these too wide for the .Items ul above
+		padding: 8px 40px;
+		text-align: center;
+	}
+
+
+	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
+		margin: 0 auto 10px auto; //Not sure we need this... seems like we want the group boxes close to the items 
+	}
+
+	//Rank Order
+	// Don't want the text entry ones to be on the same line on mobile.
+	// (Constant Sum and Rank Order)
+	@media all and (max-width: 768px) {
+		.CS .HR li,
+		.RO .HR li {
+			float: none;
+		}
+	}
+	@media all and (min-width: 767px) {
+		.CS .HR li,
+		.RO .HR li {
+			margin: $default-container-padding / 2;
+		}
+	}
+	.RO .DND ul li {
+		padding: ($default-container-padding / 2) 0;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+	}
+	.RO .DND ul li .rank {
+		margin: 0 10px;
+	}
+	//Rank Order - Radio Button
+	.RO .RB .ChoiceStructure td {
+		//BOOKMARK: we should maybe have a default-container-padding for within questions? Based on Style 1 or 2?
+		padding: ($default-container-padding / 2) inherit;
+	}
+	// moved to above
+	// .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
+	// 	background: $primary-color;
+	// }
+	.RO .DND ul li:hover{
+		@if $full-width-header == T{
+			background: darken($body-background-color, 10%);
+		}
+		@if $full-width-header == F // or $boxed-questions == T 
+		or $boxed-skincontent == T{
+			background: darken($question-container-background-color, 10%);
+		}
+	}
+	//BOOKMARK:
+	//THESE WERE ADDED SO THE LIs are always visible, but it may break something...?
+	.QuestionOuter.RO {
+		overflow-y: visible;
+	}
+	.QuestionOuter.RO .QuestionBody {
+		overflow-y: visible;
+		overflow-x: visible !important;
+	}
+
+	//Constant Sum
+	.CS li {
+		padding: $default-container-padding / 2;
+	}
+	//BOOKMARK: This has to be calculated based on the li padding above.
+	.CS .SumInput input,
+	.CS .SumTotal input {
+		margin-top: $default-container-padding / 3;
+	}
+
+	//Slider
+	.horizontalbar th.ylabel {
+		padding:($default-container-padding / 2);
+	}
+	.horizontalbar tr.Stars td.value input,
+	.horizontalbar table.sliderGrid tr td.value input {
+		width: 4em;
+	}
+	//Slider
+	//Draggable Bar
+	$slider-bar-color: darken($question-container-background-color, 10%);
+	.horizontalbar .bar{
+		background-color: $slider-bar-color;
+	}
+	$slider-handle-color: $primary-color;
+
+	// Slider
+	// This is the old sprite (the gray track)
+	.horizontalbar .Slider .track {
+		background-color: $slider-bar-color;
+		//BOOKMARK: what's a good way to make the area around the slider selectable, without having to use a sprite
+	}
+	//Graphic Slider
+	.SS .horizontalbar .SSTrack,
+	.SS .verticalbar .SSTrack {
+		margin: 20px !important;
+		background-color: $slider-bar-color;
+	}
+	.horizontalbar .activated .bar,
+	.horizontalbar .BarContainer:hover .bar,
+	.SS .horizontalbar .handle,
+	.horizontalbar .Slider .handle,
+	.SS .verticalbar .SSTrack .handle{
+		background: $slider-handle-color;
+
+		@if $Three-D-style == T {
+			//BOOKMARK: 3D effect for labels and buttons??
+			@include linear-gradient($primary-color, darken($primary-color, 10%));
+			@if $label-style == 1 {
+				border-top-color: lighten($primary-color, 20%);
+				border-bottom-color: darken($primary-color, 20%);
+			}
+		}
+	}
+
+	.SS .horizontalbar .handle:hover,
+	.horizontalbar .Slider .handle:hover {
+		background-color: $primary-color;
+		padding: 10px;
+	}
+
+	//End of Survey message
+	.EndOfSurvey {
+		color: $default-text-color;
+		padding: 30px;
+	}
+
+	//.TE Text Entry
+	.TE .FORM table {
+		width: 100%;
+	}
+	.TE .FORM .LabelWrapper {
+		text-align: left;
+	}
+	@media all and (max-width: 768px) {
+		.TE .FORM input.InputText {
+			width: 100% !important;
+		}
+	}
+
+	//DropDown
+	//Moves text boxes to right, utilizing full width of question.  
+	.Matrix .DL table td.last{
+		text-align:right;
+	}
+
+
+	// Select Box
+	.SB select,
+	.MSB select {
+		width: 100%;
+		@media all and (min-width: 767px) {
+			@if $full-width-labels-on == T {
+				width: 100%;
+			} @else {
+				width: 50%;
+				margin: 0 auto;
+				display: block;
+			}
+		}
+
+	}
+	.SB input {
+		background: $button-primary-color;
+		color:$button-secondary-color;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+		padding: 4px 12px;
+		border: none;	
+		border: $default-border;
+		border-color: $button-primary-color;
+	}
+
+
+	// .Matrix
+	.RO .RB th,
+	.SBSMatrix th,
+	.Matrix th {
+		padding: $default-container-padding / 2;
+		//BOOKMARK: need to figure out where to put all these border radii, if we want to do this. 
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius 0 0 $default-border-radius;
+		}
+	}
+
+
+
+	// // BOOKMARK: 
+	// // TEST STYLES
+	// .Matrix .Profile .MultipleAnswer table th.c1 {
+	// 	background: $primary-color;
+	// 	color: #fff;
+	// 	text-align: right;
+	// }
+	// .Matrix .Profile .MultipleAnswer table th {
+	// 	background: #ddd;
+	// }
+
+	// .Matrix .Profile .MultipleAnswer table tr:first-child th.c1 {
+	// 	border-radius: $default-border-radius 0 0 0;
+	// }
+
+	// .Matrix .Profile .MultipleAnswer table tr:nth-last-child(2) th.c1 {
+	// 	border-radius: 0 0 0 $default-border-radius;
+	// }
+
+
+} // /.Skin
+
+
+
+// /end stuff from basestyles
+
+
+				// determining focus class for text entry boxes... do we need to be this specific?
+				.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
+				.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, 
+				.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
+				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
+					border-color: $primary-color;
+					outline: none;
+				}
+
+				// Added to allow text to wrap on mobile for these questions
+				// Pulled these out of media query in BaseStyles, but haven't removed compeletely from BaseStyles yet...
+				// @media only screen and (max-device-width: 480px) {
+					.Skin .Inner.CS,
+					.Skin .Inner.HBAR {
+						min-width: 0px;
+					}
+				// }
+
+
+// From Mark's New-Sass-Framework - - make questions break, etc.
+// BOOKMARK: 
+// Perhaps this should be optional, with an explanation?
+	
+				.Skin {
+
+					//MC (MULTIPLE CHOICE) CLASS 
+					.MC {
+
+						.MAHR, .SAHR {
+
+							@media all and (max-width: 768px) {
+
+								td {
+									display: block;
+									width: 100%;
+								}
+							}
+						}
+
+					}
+				}
+
+  /////////////////////////////
+ // START LABEL STYLES TEST //
+/////////////////////////////
+
+// Need "No Radio Buttons" and "Styled Radio Buttons option"
+
+
+	// .SingleAnswer & .MultipleAnswer are the actual labels (with text in them)
+	// .q-radio & .q-checkbox are the labels that mimic the input
+
+	// .q-radio/checkbox need to exist in both (just only in Matrix, etc. for the "No Radio Buttons" option)
+
+/////////////////////////////
+/////////////////////////////
+
+// 1. Include this in all themes, no matter what.
+// BOOKMARK: 
+// Except, might need to figure out a different IE8 solution
+// /* Hides radio buttons and checkboxes */
+.Skin input[type="radio"],
+.Skin input[type="checkbox"] {
+	position: absolute;
+	left: -9999px;
+}
+
+// Radio Buttons Conditionals
+
+
+// These q-radio/checkbox classes apply by default
+// Then for "No Radio Buttons" option, the .MC .q-radio/checkbox labels are hidden
+
+	// Default is to have "Styled" Radio Buttons
+	// If $no-radio-buttons == T, then remove Radio Buttons for selected questions (mostly MC)
+
+	.Skin label.q-radio,
+	.Skin .q-checkbox {
+		border: 2px solid $primary-color;
+		display: inline-block;
+		// margin: 10px auto;
+		width: 20px;
+		height: 20px;
+		// BOOKMARK:
+		// could do something like this... to make radio button match font size more??
+		@if $default-font-size < 14px {
+			width: 16px;
+			height: 16px;
+		}
+	}
+	//Need to be circles
+	//Also need to figure out what to do with IE8 (no border-radius)
+	.Skin label.q-radio {
+		border-radius: 100%
+	}
+	.Skin label.q-checkbox {
+		@if $border-radius-on == T {
+			border-radius: 2px;
+		}
+	}
+	.Skin label.q-radio.q-checked,
+	.Skin label.q-checkbox.q-checked {
+		background-color: lighten($primary-color, 8%);
+	}
+	.Skin label.q-checkbox.q-checked {
+		background-image: url(check.png);
+		background-size: 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+
+
+@if $radio-buttons == T {
+
+	// Aligns the HR radio buttons vertically with each other
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+		vertical-align: bottom;
+	}
+	// Puts the "input" labels below the answer options on HR questions
+	.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+	.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+		display: block;
+		width: 100%;
+	} 
+	// This is to group the answer with the correct associated input on mobile..
+	// Good idea? bad idea?
+	@media only screen and (max-width: 768px) {
+
+		.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+		.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+			border-bottom: 2px solid #eee;
+		}
+
+		.Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+		.Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+			border-bottom: none;
+		}
+
+	}
+
+	.Skin .ChoiceStructure li {
+		padding: 10px 0;
+	}
+
+	.Skin .MC .SAVR label.q-radio,
+	.Skin .MC .SAVR label.q-checkbox,
+	.Skin .MC .MAVR label.q-radio,
+	.Skin .MC .MAVR label.q-checkbox {
+		float: left;
+		margin-right: 10px;
+		padding: 0;
+	}
+
+	.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+	.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+		// should match the 10px above, for consistency
+		padding: 10px;
+	}
+} // end if $no-radio-buttons == F
+
+
+@if $radio-buttons == F {
+
+
+	/////////////////////////////
+	/////////////////////////////
+	// Below are the original Label Style Tests: 
+	/////////////////////////////
+	/////////////////////////////
+
+	// should maybe have a $mobile-answer-label-spacing ?
+	$answer-label-spacing: 8px;
+
+	// New Testing text entry box placement
+	// plan: 
+	// make .TextEntryBox position relative - to move it up and keep the additional space in the label
+	// then hide the overflow-y, so you can't scroll down to where the .TextEntryBox should be
+
+	// put this in a media query, and it doesn't hide the text on mobile.
+	// But what's going on that makes it move up... something to do with the display:block or whatever
+	// we're using to make the items break and go vertical 
+	@if $border-radius-on == T {
+		.Skin .MC .TextEntryBox {
+			border-radius: $default-border-radius;
+		}
+	}
+
+	.Skin .MC .TextEntryBox {
+		padding: 4px;
+	}
+
+//BOOKMARK:
+	.Skin .MC .MACOL .TextEntryBox,
+	.Skin .MC .SACOL .TextEntryBox {
+
+		// position: relative;
+		// top: -44px;
+		// width: 90% !important;
+		//The above solution solution screws up in Firefox (and so probably other browsers too)
+		
+		// position: absolute;
+	}
+
+	@media only screen and (min-width: 768px) {
+
+		.Skin .MC .MAHR .TextEntryBox,
+		.Skin .MC .SAHR .TextEntryBox {
+
+			// position: relative;
+			// top: - 44px;
+			//The above solution solution screws up in Firefox (and so probably other browsers too)
+
+			// position: absolute;
+			// This width makes it not spill over.  This can't be the best solution, but all I have now.
+			// width: 11%;
+		}
+
+		.Skin .MC .ChoiceStructure {
+			border-spacing: $answer-label-spacing;
+		}
+
+	//BOOKMARK: Should these be 100% or not?
+		@if $full-width-labels-on == F and $radio-buttons == F {
+			.Skin .MC .SAVR label.SingleAnswer,
+			.Skin .MC .MAVR label.MultipleAnswer,
+			.Skin .MC .SAVR .TextEntryBox,
+			.Skin .MC .MAVR .TextEntryBox {
+				width: 50%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+
+	}
+
+	@media only screen and (max-width: 767px) {
+
+		.Skin .MC .TextEntryBox	{
+			width: 100% !important;
+		}
+
+	}
+
+
+
+
+	//Add this to make label not scroll down to where .TextEntryBox should be
+	.Skin .MC .MAHR td .LabelWrapper,
+	.Skin .MC .SAHR td .LabelWrapper,
+	.Skin .MC .MACOL td .LabelWrapper,
+	.Skin .MC .SACOL td .LabelWrapper {
+		// overflow-y: hidden;
+		// border: 2px solid blue;
+	}
+
+	// /* Centers text entry boxes in spans*/
+	.Skin .LabelWrapper {
+		text-align: center;
+		width: 100%;
+	}
+
+	// BOOKMARK: I just added this to make the labels more easily clickable with Radio Buttons option,
+	// but might cause problems.  
+	.Skin .MC .QuestionBody label {
+		padding: 20px 0;
+	}
+
+	.Skin .MC .SAHR table td,
+	.Skin .MC .MAHR table td,
+	.Skin .MC li .LabelWrapper {
+		margin: 0 auto $answer-label-spacing auto;
+	}
+
+	.Skin .MC .SACOL .ChoiceStructure,
+	.Skin .MC .MACOL .ChoiceStructure {
+		border-spacing: $answer-label-spacing;
+	}
+
+
+
+	// This causes problems, if I remember right.  It hides a certain element that has a radio button input, 
+	// which makes it unselectable in old IE 
+	// PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove then.  
+	.Skin .MACOL, .Skin .SACOL {
+
+		.ControlContainer {
+			display: none;
+		}
+	}
+
+	// /* General (MA and SA) label styles */
+	.Skin .QuestionBody label.SingleAnswer,
+	.Skin .QuestionBody label.MultipleAnswer {
+		@if $label-style == 1 {
+			background: $answer-label-background;
+			border: $answer-label-border;
+		} @elseif $label-style == 2 {
+			background: $answer-label-background-2;
+			border: $answer-label-border-2;
+			@if $body-background-image-on == T and $boxed-skincontent == F {
+				background: rgba(0,0,0,.2);
+			}
+		}
+		
+		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
+		// NOT ANY MORE. 
+		padding: 20px 4%;
+		display: block;
+		@if $border-radius-on == T {
+			border-radius: $default-border-radius;
+		}
+		text-align: center;
+
+		// //BOOKMARK: REMOVING LABEL HEIGHT STYLES (GOING TO ADD WITH LANCE'S JAVASCRIPT MAYBE)
+		// /* Make labels full-height ... */	
+		// height: 100%;
+		// box-sizing: border-box;
+		// margin: 0;
+
+		// /* Vertically centers text in td ... */
+		// display: table;
+		// width: 100%;
+			
+	}
+
+	.Skin label.SingleAnswer.q-checked,
+	.Skin label.MultipleAnswer.q-checked {
+		background: $answer-label-select-background;
+		border-color: $answer-label-select-background;
+		color: $answer-label-select-color;
+
+		@if $Three-D-style == T {
+			//BOOKMARK: 3D effect for labels and buttons??
+			@include linear-gradient($primary-color, darken($primary-color, 10%));
+			@if $label-style == 1 {
+				border-top-color: lighten($primary-color, 20%);
+				border-bottom-color: darken($primary-color, 20%);
+			} 
+		}
+
+	}
+
+	/* ... Vertically centers text in td (continued) */
+	.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
+	.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	/* ... Make labels full-height of span of td (continued) */
+	.Skin td .LabelWrapper {
+		display: block;
+		overflow: auto;
+		height: 100%;
+	}
+
+	// /* Have to remove the below from BaseStyles or labels spill over top and bottom
+	// because of full-height label CSS. */
+	// .Skin .MC .QuestionBody td label {
+	// 	margin-bottom: 0;
+	// 	margin-top: 0;
+	// }
+	// /* Adds space between tds */
+	// .Skin .MC .QuestionBody table.ChoiceStructure {
+	// 	border-spacing: 4px;
+	// }
+
+
+	// BOOKMARK: We're going to need to use some radio buttons, or figure out how we want to style
+	// matrix, etc. questions that need something to click on that's not text.
+
+	.Skin .MC label.q-radio,
+	.Skin .MC label.q-checkbox {
+		display: none;
+	}
+
+
+} // end if $no-radio-buttons == T
+
+
+
+// End LABEL STYLES TEST
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Changed from max-device-width to max-width
+@media only screen and (max-width: 767px) {
+
+	html  {
+
+		.Skin #Logo, .CSS3 .Skin #Logo {
+			background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
+			background-size: $logo-mobile-width $logo-mobile-height;
+			height: $logo-mobile-height + $logo-padding;
+		}
+	}
+
+	.Skin {
+		@if $full-width-header == F{ 
+			#LogoContainer{
+				margin-top:0;
+			}
+		}
+
+		#Header{
+			text-align: center;
+		}
+
+		.SkinInner {
+			margin: 0 auto !important;
+			max-width: $container-max-width;
+		}
+
+		#SkinContent {
+			border: none;
+			@if $question-container-border-radius-on == T {
+				@include border-radius(0);
+			}
+		}
+
+		// @if $boxed-questions == T {
+		// 	.QuestionOuter {
+		// 		margin:0;
+		// 	}
+		// }
+		#Plug {
+			float:none;
+			a{
+				width:100%;
+			}
+		}
+
+	}
+}
+
+// //////////// 
+// //	TEST
+// ///////////
+//
+// //Trying to remove middle scale labels on mobile, so they don't squish over each other.
+// @media only screen and (max-width: 767px) {
+
+// 	.Skin .HSLIDER .xlabel span.TickContainer span,
+// 	.Skin .HBAR .xlabel span.TickContainer span {
+// 		display: none;
+// 	}
+
+// 	.Skin .HSLIDER .xlabel span.TickContainer span.MinValue,
+// 	.Skin .HBAR .xlabel span.TickContainer span.MinValue,
+// 	.Skin .HSLIDER .xlabel th:nth-last-child(3) span.TickContainer span,
+// 	.Skin .HBAR .xlabel th:nth-last-child(3) span.TickContainer span,
+// 	.Skin .HBAR .xlabel th:nth-last-child(4) span.TickContainer span {
+// 		display: block;
+// 		background: red;
+// 	}
+
+// }
+// //////////// 
+// //	TEST
+// ///////////
+//
+// //Trying to put the SLIDER labels above the sliders.
+
+// .Skin .HSLIDER th.ylabel {
+// 	position: absolute;
+// 	padding-bottom: 40px;
+// }
+
+
