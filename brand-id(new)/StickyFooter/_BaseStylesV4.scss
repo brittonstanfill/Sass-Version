@@ -170,12 +170,13 @@ h2.noStyle {
 	padding: 6pt 0pt 0pt 0pt;
 }
 
-.Skin .MC td input.radio,
-.Skin .MC td input.checkbox,
-.Skin .MC .QuestionBody td label{
-	margin-top:4px;
-	margin-bottom:4px;
-}
+// 
+// .Skin .MC td input.radio,
+// .Skin .MC td input.checkbox,
+// .Skin .MC .QuestionBody td label{
+// 	margin-top:4px;
+// 	margin-bottom:4px;
+// }
 
 .Skin .MC input.radio,
 .Skin .MC input.checkbox{
@@ -583,8 +584,6 @@ h2.noStyle {
 .Skin .Matrix table td,
 .Skin .Matrix table th{
 	text-align:center;
-	padding: 5px 0;
-	// background: orange;
 }
 .Skin .Matrix .TE td input {
 	//Need this to center the text boxes in matrix table cells
@@ -853,7 +852,6 @@ h2.noStyle {
 	left:0px;
 	top:0px;
 	margin:0px;
-	background: red;
 }
 //
 //Slider // These are for the non-bar, non-star sliders.  
@@ -984,7 +982,6 @@ h2.noStyle {
 
 .Skin .RO .RankInput {
 	width: 3em;
-	margin-left: 20px;
 }
 //RB
 //Centers the options, to better use full width of question
@@ -1440,7 +1437,6 @@ $slider-bar-color: blue;
 .Skin .verticalbar .SSTrack .handle{
 	height: 20px;
 	width: 20px;
-	background: red;
 	cursor:move;
 	overflow:hidden;
 
