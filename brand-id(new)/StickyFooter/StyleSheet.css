@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 ul, li {
   list-style-image: none;
   list-style-position: outside;
@@ -2287,13 +2288,14 @@ body.TocMargin div.Skin {
   display: none;
 }
 
-.Skin .ProgressBarContainer label {
+.Skin .ProgressBarContainer label,
+.Skin .ProgressBarContainer span {
   display: block;
   text-align: center;
 }
 
 .Skin .ProgressBarFill {
-  background: #007fc2;
+  background: #9b59b6;
   height: 10px;
 }
 
@@ -2566,30 +2568,22 @@ body.TocMargin div.Skin {
  * END MOBILE STYLES
  */
 @media only screen and (min-device-width: 400px) {
+  .JFE, .JFEContent,
   html, body, #Page, .Skin {
     height: 100%;
   }
 }
-html .Skin #Logo, html .CSS3 .Skin #Logo {
-  background: transparent url("logo.png") no-repeat 30px center;
-  background-size: 163px 50px;
-  height: 110px;
-  margin: 0px auto;
-  max-width: 975px;
-}
-
 #SurveyEngineBody {
-  background: #333333 url(http://31.media.tumblr.com/e7ac48834604ac8e9aaf4a3c106c4e86/tumblr_n9hxd1c4Y81st5lhmo1_1280.jpg) no-repeat center fixed;
-  background-size: cover;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  background: #9b59b6;
+  background: #FFF;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 }
 
 .Skin #Wrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -36px;
-  background: rgba(0, 0, 0, 0.7);
+  margin: 0 auto -38px;
 }
 .Skin .SkinInner {
   max-width: 100%;
@@ -2600,18 +2594,19 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   font-size: 14px;
   padding: 0;
   position: relative;
-  min-height: 1px;
 }
 .Skin .ProgressBarContainer {
   width: 100%;
   border-collapse: collapse;
+  border-right: 4px solid #eeeeee;
+  border-left: 2px solid #775983;
 }
 .Skin #ProgressBar tr td:nth-child(1) {
   position: absolute;
   left: 0;
-  color: #007fc2;
-  line-height: 15px;
-  border-left: 3px solid #007fc2;
+  color: #775983;
+  line-height: 16px;
+  border-left: 2px solid #775983;
   width: 100%;
 }
 .Skin #ProgressBar tr td:nth-child(2) {
@@ -2620,31 +2615,38 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin #ProgressBar tr td:nth-child(3) {
   position: absolute;
   right: 0;
-  line-height: 15px;
-  color: #007fc2;
-  border-right: 3px solid #dddddd;
+  line-height: 16px;
+  color: #775983;
 }
 .Skin .ProgressBarFillContainer {
   border: none;
   overflow: hidden;
-  background: #dddddd;
+  background: #eeeeee;
   width: 100%;
 }
 .Skin .ProgressBarFill {
-  background-color: #007fc2;
+  background-color: #775983;
   padding: 0px;
-  height: 15px;
+  height: 16px;
 }
 .Skin #LogoContainer {
   background: white;
+  display: none;
+}
+.Skin #HeaderContainer {
+  background: white;
 }
 .Skin #Header {
-  font-size: 18px;
-  color: white;
+  font-size: 20px;
+  color: #4e525f;
   margin: 0px auto;
-  max-width: 960px;
-  min-height: 18px;
+  max-width: 900px;
   padding: 10px 30px;
+  color: #9b59b6;
+  padding: 30px;
+}
+.Skin #Header:empty {
+  padding: 0;
 }
 .Skin #SkinContent {
   border: 0px solid #e6e6e6;
@@ -2659,17 +2661,17 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 @media all and (min-width: 767px) {
   .Skin .QuestionOuter {
-    padding: 30px 0;
+    padding: 30px;
   }
 }
 .Skin .QuestionText {
-  font-size: 18px;
-  color: white;
+  font-size: 20px;
+  color: #4e525f;
   padding-bottom: 30px;
 }
 .Skin .QuestionBody {
-  color: white;
-  font-size: 16px;
+  color: #4e525f;
+  font-size: 18px;
   overflow-x: auto !important;
   overflow-y: hidden;
 }
@@ -2687,54 +2689,49 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   float: left;
 }
 .Skin #Buttons #NextButton, .Skin #Buttons #PreviousButton {
-  border: none;
-  background-color: #007fc2;
-  color: white;
+  border: 1px solid #cccccc;
+  background-color: transparent;
+  color: #4e525f;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0px;
-  padding: 10px 20px;
+  padding: 8px 24px;
   text-align: center;
   text-decoration: none;
   -webkit-appearance: none;
-  background: #007fc2;
-  background: -moz-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #007fc2), color-stop(100%, #005e8f));
-  background: -webkit-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -o-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -ms-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: linear-gradient(to bottom, #007fc2 0%, #005e8f 100%);
-  border-top: 1px solid #29b5ff;
-  border-bottom: 1px solid #003c5c;
+  transition: background .3s;
+}
+.Skin #Buttons #NextButton:focus, .Skin #Buttons #PreviousButton:focus {
+  outline: none;
 }
 @media only screen and (min-device-width: 1024px) {
   .Skin #Buttons #NextButton:hover, .Skin #Buttons #PreviousButton:hover {
-    background-color: #005e8f;
-    transition: all .1s ease-in-out;
+    background: #fbe5ff;
+    border-color: #ea80ff;
+    color: #9b59b6;
   }
   .Skin #Buttons #NextButton:active, .Skin #Buttons #PreviousButton:active {
-    background-color: #003c5c;
-    border-color: #003c5c;
+    background: #f6ccff;
   }
 }
 .Skin #Footer {
-  font-size: 11px;
+  font-size: 13px;
   max-width: 900px;
   margin: 0px auto;
   padding: 30px;
-  color: #a8e1ff;
+  color: #4e525f;
 }
 .Skin #PushStickyFooter {
-  height: 36px;
+  height: 38px;
 }
 .Skin #Plug {
-  color: white;
-  font-size: 11px;
+  color: #4e525f;
+  font-size: 13px;
   float: right;
   margin: 0;
   text-align: center;
@@ -2743,7 +2740,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   color: white;
   text-decoration: none;
   padding: 12px 24px;
-  background: #006ea9;
+  background: #804399;
   background: rgba(0, 0, 0, 0.3);
 }
 @media all and (min-width: 767px) {
@@ -2766,9 +2763,9 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 
 .Skin button, .Skin input, .Skin select, .Skin textarea {
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 16px;
-  color: white;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-size: 18px;
+  color: #4e525f;
 }
 .Skin input.TextEntryBox,
 .Skin .TE textarea,
@@ -2778,16 +2775,27 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin input[type="search"],
 .Skin select {
   border: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 4px;
   max-width: 100%;
-  background: transparent;
-  color: #FFF;
+}
+.Skin input.TextEntryBox:focus,
+.Skin .TE textarea:focus,
+.Skin textarea:focus,
+.Skin input[type="password"]:focus,
+.Skin input[type="text"]:focus,
+.Skin input[type="search"]:focus,
+.Skin select:focus {
+  border-color: #9b59b6;
+  outline: none;
+}
+.Skin .TE textarea, .Skin textarea {
+  padding: 8px;
 }
 .Skin .HeaderValidationError {
   margin: 30px;
   padding: 15px;
-  border-radius: 4px;
+  border-radius: 2px;
   background: #ffd7d7;
   color: #e73f61;
 }
@@ -2806,18 +2814,25 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .Separator {
   height: 1px;
   background: #cccccc;
-  margin: 10px 0;
+  margin: 10px 30px;
+}
+@media only screen and (max-width: 768px) {
+  .Skin .Separator {
+    margin: 10px 15px;
+  }
 }
 .Skin .LightText {
-  color: white;
+  color: #707689;
 }
-.Skin .ChoiceRow:hover,
-.Skin .Choice:hover,
-.Skin .RO .RB tr:hover {
-  background: #007fc2;
-}
-.Skin .RO .RB tr.Answers {
-  background: inherit;
+@media only screen and (min-width: 767px) {
+  .Skin .ChoiceRow:hover,
+  .Skin .Choice:hover,
+  .Skin .RO .RB tr:hover {
+    background: #f2f2f2;
+  }
+  .Skin .RO .RB tr.Answers {
+    background: inherit;
+  }
 }
 .Skin .QuestionOuter.Highlight .Inner,
 .Skin .QuestionOuter.Highlight .Inner .reg,
@@ -2831,7 +2846,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .PGR .DragAndDrop td.groupsContainerTd div > div {
   border: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 2px;
   margin: 5px;
 }
 .Skin .PGR .DragAndDrop h2 {
@@ -2844,18 +2859,18 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .RO .DND .rank,
 .Skin .PGR .DragAndDrop .rank {
-  padding: 2px 10px;
+  padding: 0px 10px;
   margin: 7px 0;
   left: 4px;
   border-radius: 40px;
-  background-color: #29b5ff;
+  background-color: #c6a0d5;
   background-color: #bfbfbf;
   color: white;
 }
 .Skin .RO .DND ul.Edited .rank,
 .Skin .RO .DND ul.NotEdited li:hover .rank,
 .Skin .RO .DND .rank {
-  background: #007fc2;
+  background: #9b59b6;
   color: white;
 }
 .Skin .PGR .DragAndDrop .Group div {
@@ -2864,13 +2879,13 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .PGR .DragAndDrop .stack ul li.stack {
   border: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .Skin .RO .DND .Items ul li,
 .Skin .PGR .DragAndDrop .Items ul li {
   padding: 8px 0;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .Skin .RO .DND .Group ul li,
 .Skin .PGR .DragAndDrop .Group ul li {
@@ -2894,7 +2909,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .RO .DND ul li {
   padding: 15px 0;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .Skin .RO .DND ul li .rank {
   margin: 0 10px;
@@ -2903,7 +2918,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   padding: 15px inherit;
 }
 .Skin .RO .DND ul li:hover {
-  background: #006ea9;
+  background: #804399;
 }
 .Skin .QuestionOuter.RO {
   overflow-y: visible;
@@ -2915,9 +2930,20 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .CS li {
   padding: 15px;
 }
-.Skin .CS .SumInput input,
-.Skin .CS .SumTotal input {
+.Skin .CS .VRTL .SumInput input,
+.Skin .CS .VRTL .SumTotal input {
   margin-top: 10px;
+}
+.Skin .CS .CSTotal,
+.Skin .CS .Total {
+  color: #8c91a1;
+  background: #f2f2f2;
+}
+.Skin .CS .CSTotal input,
+.Skin .CS .Total input {
+  border-color: #d9d9d9;
+  background: #f7f7f7;
+  color: #8c91a1;
 }
 .Skin .horizontalbar th.ylabel {
   padding: 15px;
@@ -2928,6 +2954,12 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .horizontalbar .bar {
   background-color: #e6e6e6;
+  height: 20px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
 }
 .Skin .horizontalbar .Slider .track {
   background-color: #e6e6e6;
@@ -2942,24 +2974,15 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .SS .horizontalbar .handle,
 .Skin .horizontalbar .Slider .handle,
 .Skin .SS .verticalbar .SSTrack .handle {
-  background: #007fc2;
-  background: #007fc2;
-  background: -moz-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #007fc2), color-stop(100%, #005e8f));
-  background: -webkit-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -o-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -ms-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: linear-gradient(to bottom, #007fc2 0%, #005e8f 100%);
-  border-top-color: #29b5ff;
-  border-bottom-color: #003c5c;
+  background: #9b59b6;
 }
 .Skin .SS .horizontalbar .handle:hover,
 .Skin .horizontalbar .Slider .handle:hover {
-  background-color: #007fc2;
+  background-color: #9b59b6;
   padding: 10px;
 }
 .Skin .EndOfSurvey {
-  color: white;
+  color: #4e525f;
   padding: 30px;
 }
 .Skin .TE .FORM table {
@@ -2968,6 +2991,9 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .TE .FORM .LabelWrapper {
   text-align: left;
 }
+.Skin .TE textarea {
+  width: 100%;
+}
 @media all and (max-width: 768px) {
   .Skin .TE .FORM input.InputText {
     width: 100% !important;
@@ -2975,6 +3001,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 .Skin .Matrix .DL table td.last {
   text-align: right;
+  padding-right: 15px;
 }
 .Skin .SB select,
 .Skin .MSB select {
@@ -2989,27 +3016,21 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
   }
 }
 .Skin .SB input {
-  background: #007fc2;
+  background: #9b59b6;
   color: white;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 4px 12px;
   border: none;
   border: 1px solid #cccccc;
-  border-color: #007fc2;
+  border-color: #9b59b6;
 }
 .Skin .RO .RB th,
 .Skin .SBSMatrix th,
 .Skin .Matrix th {
   padding: 15px;
-  border-radius: 4px 0 0 4px;
 }
-
-.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
-.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus,
-.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus,
-.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-  border-color: #007fc2;
-  outline: none;
+.Skin .Matrix .TE td input {
+  margin: 2px;
 }
 
 .Skin .Inner.CS,
@@ -3032,7 +3053,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 
 .Skin label.q-radio,
 .Skin .q-checkbox {
-  border: 2px solid #007fc2;
+  border: 2px solid #9b59b6;
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -3048,7 +3069,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 
 .Skin label.q-radio.q-checked,
 .Skin label.q-checkbox.q-checked {
-  background-color: #009aeb;
+  background-color: #ac75c2;
 }
 
 .Skin label.q-checkbox.q-checked {
@@ -3059,7 +3080,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 }
 
 .Skin .MC .TextEntryBox {
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .Skin .MC .TextEntryBox {
@@ -3068,7 +3089,7 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 
 @media only screen and (min-width: 768px) {
   .Skin .MC .ChoiceStructure {
-    border-spacing: 8px;
+    border-spacing: 10px;
   }
 
   .Skin .MC .SAVR label.SingleAnswer,
@@ -3097,12 +3118,12 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .MC .SAHR table td,
 .Skin .MC .MAHR table td,
 .Skin .MC li .LabelWrapper {
-  margin: 0 auto 8px auto;
+  margin: 0 auto 10px auto;
 }
 
 .Skin .MC .SACOL .ChoiceStructure,
 .Skin .MC .MACOL .ChoiceStructure {
-  border-spacing: 8px;
+  border-spacing: 10px;
 }
 
 .Skin .MACOL .ControlContainer, .Skin .SACOL .ControlContainer {
@@ -3113,26 +3134,30 @@ html .Skin #Logo, html .CSS3 .Skin #Logo {
 .Skin .QuestionBody label.MultipleAnswer {
   background: transparent;
   border: 1px solid #cccccc;
+  transition: background-color .2s ease-in-out;
   padding: 20px 4%;
   display: block;
-  border-radius: 4px;
+  border-radius: 2px;
   text-align: center;
+}
+.Skin .QuestionBody label.SingleAnswer:hover,
+.Skin .QuestionBody label.MultipleAnswer:hover {
+  background: #fbe5ff;
+  border-color: #ea80ff;
+  color: #9b59b6;
 }
 
 .Skin label.SingleAnswer.q-checked,
 .Skin label.MultipleAnswer.q-checked {
-  background: #007fc2;
-  border-color: #007fc2;
+  background: #9b59b6;
+  border-color: #804399;
   color: white;
-  background: #007fc2;
-  background: -moz-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #007fc2), color-stop(100%, #005e8f));
-  background: -webkit-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -o-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: -ms-linear-gradient(top, #007fc2 0%, #005e8f 100%);
-  background: linear-gradient(to bottom, #007fc2 0%, #005e8f 100%);
-  border-top-color: #29b5ff;
-  border-bottom-color: #003c5c;
+}
+.Skin label.SingleAnswer.q-checked:hover,
+.Skin label.MultipleAnswer.q-checked:hover {
+  background: #9b59b6;
+  border-color: #9b59b6;
+  color: #fff;
 }
 
 /* ... Vertically centers text in td (continued) */

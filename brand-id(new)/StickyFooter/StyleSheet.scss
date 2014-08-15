@@ -1,9 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//INTERCHANGABLE LOGO
-	$interchangeable-logo: F;
+	$interchangeable-logo: T;
 
 	//LAYOUTS
 	-->	$full-width-header: T;
@@ -12,7 +13,7 @@
 		$pushed-to-bottom-plug: T; //sticky footer plug
 
 	//BACKGROUND
-	$body-background-image-on: T;
+	$body-background-image-on: F;
 	$overlay-dark: T;
 	//BOOKMARK: Abandoned "transparent" skincontent, for background images.
 	// $transparent-skincontent: T;
@@ -30,28 +31,30 @@
 	// STYLE 1: 1px, transparent, 2px border radius
 	// STYLE 2: no border, solid color, 4px border radius
 	$label-style: 1; 
-	$Three-D-style: T;
+	$Three-D-style: F;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//COLOR PALETTE
-	-->	$primary-color: #007FC2; //007FC2 //39E79B
+	-->	$primary-color: #9b59b6; //007FC2 //39E79B //F06F6F
+	$primary-hue: 290;
+	--> $primary-hue-color: hsl($primary-hue, 100%, 95%);
 	$secondary-color: darken($primary-color, 20%);
 	$tertiary-color: $secondary-color;
 
 	$desaturated-primary-color: desaturate($primary-color, 20%);
 
 	//FONTS
-	$font-stack: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	$font-stack: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 
 	//DEFAULT
-	-->	$body-background-color: lighten($primary-color, 5);
-	--> $body-background-image-url: url(http://31.media.tumblr.com/e7ac48834604ac8e9aaf4a3c106c4e86/tumblr_n9hxd1c4Y81st5lhmo1_1280.jpg);
-	-->	$default-text-color: #444;
+	-->	$body-background-color: lighten($primary-color, 0%);
+	--> $body-background-image-url: url(http://38.media.tumblr.com/222f39f4520d55100feff7237861b373/tumblr_n8gxs0oWZ21st5lhmo1_1280.jpg);
+	-->	$default-text-color: #4E525F;
 		@if $boxed-skincontent == T {
-			$default-text-color: #5E5D64;
+			$default-text-color: #4E525F;
 		}
 		@if $boxed-skincontent == F and $body-background-image-on == T {
 			@if $overlay-dark == T {
@@ -60,15 +63,21 @@
 				$default-text-color: #444;
 			}
 		}
-	$default-font-size: 16px;
+	$default-font-size: 18px;
 	$container-max-width: 900px;
 	//BOOKMARK: this needs to white or gray, or dark gray what determines that? the background color
 	$default-border-color: #ccc;
 		@if $boxed-skincontent == T {
-			$default-border-color: #d1d1d1;
+			$default-border-color: #ccc;
+		}
+		@if $boxed-skincontent == F and $body-background-image-on == T and $overlay-dark == F {
+			$default-border-color: lighten($default-text-color, 20%);
 		}
 	//BOOKMARK: this should be dependent on the $label-style
-	$default-border-radius: 4px;
+	$default-border-radius: 2px;
+		@if $label-style == 2 {
+			$default-border-radius: 4px;
+		}
 	$default-border-style: solid;
 
 	// BOOKMARK: 
@@ -96,7 +105,7 @@
 	$question-container-box-shadow-on: F;
 		$container-box-shadow-x: 0;
 		$container-box-shadow-y: 0;
-		$container-box-shadow-spread: 10px;
+		$container-box-shadow-spread: 15px;
 		$container-box-shadow-color: darken($body-background-color, 20%);
 
 	//SURVEY ENGINE BODY
@@ -106,7 +115,7 @@
 	
 	// WRAPPER
 	$wrapper-background-overlay-dark: rgba(0,0,0,.7);
-	$wrapper-background-overlay-light: rgba(255,255,255,.75);
+	$wrapper-background-overlay-light: rgba(255,255,255,.7);
 
 	//SKIN INNER
 	$skin-inner-max-width: $container-max-width;
@@ -125,7 +134,10 @@
 	$logo-mobile-width: ($logo-image-width * $logo-mobile-scale);
 	$logo-mobile-height: ($logo-image-height * $logo-mobile-scale);
 	$logo-margin: 0px auto;
-	$logo-max-width: $container-max-width + ($default-container-padding * 2.5);
+	$logo-max-width: $container-max-width + ($default-container-padding * 2.5); //2.5? there's always some padding around the logo in the image file..
+		@if $boxed-skincontent == F and $full-width-header == T {
+			$logo-max-width: $container-max-width;
+		}
 	$logo-image: url("logo.png");
 	$logo-mobile-image: url("logo.png");
 	$logo-position: $default-container-padding center;
@@ -139,11 +151,14 @@
 	$header-font-size: ($default-font-size + 2);
 	$header-margin: 0px auto;
 	$header-max-width: $container-max-width + ($default-container-padding * 2);
-	$header-padding: 10px $default-container-padding;
-	-->	$header-text-color: $default-text-color;
-		@if $full-width-header == T {
-			$header-text-color: lighten($body-background-color, 60%);
+		@if $boxed-skincontent == F and $full-width-header == T {
+			$header-max-width: $container-max-width;
 		}
+	$header-padding: 10px $default-container-padding;
+		@if $full-width-header == T and $interchangeable-logo == F {
+			$header-padding: 0 $default-container-padding 20px $default-container-padding;
+		}
+	-->	$header-text-color: $default-text-color;
 
 	//SKIN CONTENT
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);
@@ -183,7 +198,7 @@
 	$answer-label-border: 1px solid $default-border-color; // Customers4 style
 	$answer-label-border-2: none;
 
-		@if $boxed-skincontent == T {
+		@if $boxed-skincontent == T and $label-style == 2 {
 			$answer-label-background: #eee;
 			$answer-label-border: none;
 			$answer-label-select-background: $primary-color;
@@ -192,30 +207,32 @@
 
 
 	//PROGRESS BAR
-	$progress-bar-fill-color: darken($desaturated-primary-color, 10%);
-	$progress-bar-fill-height: 15px;
+	$progress-bar-fill-color: darken($desaturated-primary-color, 20%);
 	$progress-bar-fill-padding: 0px;
 	$progress-bar-padding: 0;
 	--> $progress-bar-background-color: lighten($desaturated-primary-color, 30%);
 	@if $full-width-header == T {
-		$progress-bar-fill-color: lighten($primary-color, 0%);
-		$progress-bar-background-color: #ddd;
+		$progress-bar-fill-color: darken($desaturated-primary-color, 10%);
+		$progress-bar-background-color: #eee;
 	}
 	$progress-bar-border-radius-on: $border-radius-on;
 		$progress-bar-border-radius: $default-border-radius;
+	$progress-bar-font-size: 14px;
+	$progress-bar-fill-height: $progress-bar-font-size + 2px;
+
 
 	//BUTTONS
 	-->	$button-primary-color: $primary-color;
 	$button-secondary-color: #FFF;
-	$button-padding: 10px 20px;
+	$button-padding: 8px 24px;
 	$buttons-padding: $default-container-padding;
 	//CONDITIONALS
-		$button-outline: F; //F will do solid button
-			$button-border-color: $button-secondary-color;
-			$button-border: 2px  $default-border-style $button-border-color;
+
+		// $button-outline: F; //F will do solid button
+		// 	$button-border-color: $button-secondary-color;
+		// 	$button-border: 2px  $default-border-style $button-border-color;
 		
-		$button-border-radius-on: $border-radius-on; //T or F
-			$button-border-radius: 2px;
+		// 	$button-border-radius: $default-border-radius;
 
 	//FOOTER CONTAINER
 	$footer-container-background: $body-background-color;
@@ -240,7 +257,7 @@
 	$plug-text-color: $footer-text-color;
 	$plug-text-align:center;
 	$plug-background: rgba(0,0,0,.3);
-	//BOOKMARK:
+	//BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
 	$calculated-sticky-footer-height: $footer-font-size + 10*2 +5;
 
 	//MOBILE
@@ -289,6 +306,7 @@
 
 @if $pushed-to-bottom-plug == T{
 	@media only screen and (min-device-width: 400px) {
+		.JFE, .JFEContent,
 		html, body, #Page, .Skin {
 		height: 100%;
 		}
@@ -357,7 +375,7 @@
 					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 				}
 				@if $border-radius-on == T {
-					border-radius: $skin-content-border-radius;
+					border-radius: ($skin-content-border-radius * 2);
 				}	
 			}
 		}
@@ -371,15 +389,17 @@
 
 
 	#ProgressBar {
-		font-size: $default-font-size - 2;
+		font-size: $progress-bar-font-size;
 		padding: $progress-bar-padding;
 		position:relative;
-		min-height: 1px;
 	}
 
 	.ProgressBarContainer{
 		width:100%;
 		border-collapse:collapse;
+		//have to add these or there is a 1px space to right and left when the 0% and 100% tds are gone
+		border-right: 4px solid $progress-bar-background-color;
+		border-left: 2px solid $progress-bar-fill-color;
 	}
 	
 	#ProgressBar tr td:nth-child(1) {
@@ -387,7 +407,7 @@
 	  left: 0;
 	  color: $progress-bar-fill-color;
 	  line-height: $progress-bar-fill-height;
-	  border-left: 3px solid $progress-bar-fill-color;
+	  border-left: 2px solid $progress-bar-fill-color;
 	  width: 100%;
 	}
 	
@@ -400,7 +420,6 @@
 	  right: 0;
 	  line-height: $progress-bar-fill-height;
 	  color: $progress-bar-fill-color;
-	  border-right: 3px solid $progress-bar-background-color;
 	}
 
 	.ProgressBarFillContainer {
@@ -437,15 +456,18 @@
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
 			margin:0 auto;
 		}
-		@if $full-width-header == T and $interchangeable-logo == T {
+		@if $full-width-header == T {
 			background: $logo-container-background;
-			margin-bottom: ($default-container-padding * 2)
+			@if $boxed-skincontent == T {
+				margin-bottom: ($default-container-padding * 2);
+			}
 		}
-		@if $full-width-header == T and $interchangeable-logo == T and $body-background-image-on == F and $boxed-skincontent == F {
-			margin-bottom: 0;
-		}
-		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
-			background: $primary-color;
+		//BOOKMARK: rather than doing this...
+		// Can we put them both in a div (full-width-container) or something? 
+		@if $question-container-box-shadow-on == T {
+			-webkit-box-shadow: 20px 8px 6px -6px darken($body-background-color, 20%), -20px 8px 6px -6px darken($body-background-color, 20%);
+			   -moz-box-shadow: 20px 8px 6px -6px darken($body-background-color, 20%), -20px 8px 6px -6px darken($body-background-color, 20%);
+			        box-shadow: 20px 8px 6px -6px darken($body-background-color, 20%), -20px 8px 6px -6px darken($body-background-color, 20%);
 		}
 
 	}
@@ -455,19 +477,18 @@
 		color: $header-text-color;
 		margin: $header-margin;
 		max-width: $header-max-width;
-		min-height: $header-font-size;
 		padding: $header-padding;
+			@if $full-width-header == T and $boxed-skincontent == F {
+				color: $primary-color;
+			}
+			@if $full-width-header == T and $interchangeable-logo == T {
+				padding: $logo-padding;
+			}
+	}
 
-		@if $full-width-header == T and $interchangeable-logo == T {
-			color: $primary-color;
-		}
-		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
-			color: $primary-color;
-		}
-		@if $full-width-header == T and $body-background-image-on == T and $boxed-skincontent == T {
-			color: #FFF;
-			margin-bottom: $default-container-padding + 20px;
-		}
+	// wahoo!  This makes the padding go away if there's no text.  Not for old browsers, of course.  
+	#Header:empty {
+		padding: 0;
 	}
 
 	#SkinContent {
@@ -482,7 +503,7 @@
 				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 			}
 			@if $border-radius-on == T {
-				border-radius: $skin-content-border-radius;
+				border-radius: ($skin-content-border-radius * 2);
 			}		
 		}
 		// BOOKMARK: abandoned, full width overlay or bust
@@ -540,11 +561,7 @@
 	@media all and (min-width: 767px) {
 
 		.QuestionOuter {
-			@if $boxed-skincontent == T {
-				padding: $default-container-padding;
-			} @else {
-				padding: $default-container-padding 0;
-			}
+			padding: $default-container-padding;
 			// @if $boxed-questions == T {
 			// 	background: $question-container-background-color;
 			// 	@if $question-container-border-radius-on == T {@include border-radius($skin-content-border-radius)}
@@ -622,19 +639,18 @@
 
 	#Buttons #NextButton, #Buttons #PreviousButton {
 
-		@if $button-outline == T {
-			border: $button-border;
-			background-color: $button-primary-color;
-			color: $button-secondary-color;
+		@if $label-style == 1 {
+			border: $default-border;
+			background-color: transparent;
+			color: $default-text-color;
 		}
-		@else if $button-outline == F {
+		@else if $label-style == 2 {
 			border: none;
 			background-color: $button-primary-color;
 			color: $button-secondary-color;
 		}
 		
-		@if $button-border-radius-on == T {@include border-radius($button-border-radius)}
-		@else if $button-border-radius-on == F {@include border-radius(0px)}
+		@include border-radius($default-border-radius);
 		cursor: pointer;
 		font-size: $default-font-size;
 		margin: 0px;
@@ -642,46 +658,46 @@
 		text-align: center;
 		text-decoration: none;
 		-webkit-appearance: none;
+		transition: background .3s;
+
+		&:focus {
+			outline: none;
+		}
 
 		@if $Three-D-style == T {
 			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 10%));
-			border-top: 1px solid lighten($primary-color, 20%);
-			border-bottom: 1px solid darken($primary-color, 20%);
+			@include linear-gradient($primary-color, darken($primary-color, 5%));
+			border-top: 1px solid lighten($primary-color, 10%);
+			border-bottom: 1px solid darken($primary-color, 10%);
 
 		}
 
 		@media only screen and (min-device-width: 1024px) {
 
 
-			@if $button-outline == F {
+			@if $label-style == 1 {
 
 				&:hover {
-
-					background-color: darken($button-primary-color, 10%);
-					transition: all .1s ease-in-out;
+					background: $primary-hue-color;
+					border-color: darken($primary-hue-color, 20%);
+					color: $primary-color;
 				}
 
 				&:active {
-					background-color: darken($button-primary-color, 20%);
-					border-color: darken($button-primary-color, 20%);
+					background: darken($primary-hue-color, 5%);
 				}
+
 			}
 
-			@if $button-outline == T {
+			@if $label-style == 2 {
 
 				&:hover {
-					//background-color: rgba(0,0,0,.1);
-					transition: all .1s ease-in-out;
-					border-color: darken($button-primary-color, 15%);
-					color: darken($button-primary-color, 15%);
+					background: darken($primary-color, 8%);
 				}
 
 				&:active {
 					//background-color: rgba(0,0,0,.2);
-					transition: all .1s ease-in-out;
-					border-color: darken($button-primary-color, 20%);
-					color: darken($button-primary-color, 20%);
+					background: darken($primary-color, 15%);
 				}
 		
 			}
@@ -785,6 +801,15 @@
 			// Or will it?  Just checked again and now the background on the select is black, making #FFF visible
 			color: #FFF;
 		}
+
+		&:focus {
+			border-color: $primary-color;
+			outline: none;
+		}
+	}
+
+	.TE textarea, textarea {
+		padding: 8px;
 	}
 
 	//Validation Error Message
@@ -832,20 +857,24 @@
 	}
 
 	// Question Separator
+
 	.Separator {
 		height: $default-border-width;
 		background: $default-border-color;
-		@if $boxed-skincontent == T {
-			margin: 10px $default-container-padding;
-		} @else {
-			margin: 10px 0;
+		margin: 10px $default-container-padding;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.Separator {
+			margin: 10px 15px //default mobile container padding;
 		}
 	}
 	
 	//Readable, LightText, Highlight
 	.LightText{
-		color:lighten($default-text-color, 20%);
+		color:lighten($default-text-color, 15%);
 	}
+	$readable-hover-color: darken($question-container-background-color, 5%);
 	// // I think it makes more sense to do this than to have a .readableAlt color;
 	// tr:hover,
 	// .ChoiceRow:hover {
@@ -862,13 +891,15 @@
 	// 	}
 	// }
 	// Get rid of color on .Bipolar Qs
-	.ChoiceRow:hover,
-	.Choice:hover,
-	.RO .RB tr:hover {
-		background: $primary-color;
-	}
-	.RO .RB tr.Answers {
-		background: inherit;
+	@media only screen and (min-width: 767px) {
+		.ChoiceRow:hover,
+		.Choice:hover,
+		.RO .RB tr:hover {
+			background: $readable-hover-color;
+		}
+		.RO .RB tr.Answers {
+			background: inherit;
+		}
 	}
 	//Some background color needed for this class to show up at all (which is its function)
 	.QuestionOuter.Highlight .Inner,
@@ -902,7 +933,7 @@
 	}
 	.RO .DND .rank,
 	.PGR .DragAndDrop .rank{
-		padding: 2px 10px;
+		padding: 0px 10px;
 		margin: 7px 0;
 		left: 4px;
 		@if $border-radius-on == T {
@@ -1010,9 +1041,23 @@
 		padding: $default-container-padding / 2;
 	}
 	//BOOKMARK: This has to be calculated based on the li padding above.
-	.CS .SumInput input,
-	.CS .SumTotal input {
+
+	.CS .VRTL .SumInput input,
+	.CS .VRTL .SumTotal input {
 		margin-top: $default-container-padding / 3;
+	}
+	.CS .CSTotal,
+	.CS .Total {
+		color: lighten($default-text-color, 25%);
+		background: darken($question-container-background-color, 5%);
+	}
+
+	.CS .CSTotal input,
+	.CS .Total input {
+		border-color: lighten($default-border-color, 5%);
+		background: #f7f7f7;
+		color: lighten($default-text-color, 25%);
+
 	}
 
 	//Slider
@@ -1028,6 +1073,8 @@
 	$slider-bar-color: darken($question-container-background-color, 10%);
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
+		height: 20px;
+		@include border-radius($default-border-radius);
 	}
 	$slider-handle-color: $primary-color;
 
@@ -1052,11 +1099,7 @@
 
 		@if $Three-D-style == T {
 			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 10%));
-			@if $label-style == 1 {
-				border-top-color: lighten($primary-color, 20%);
-				border-bottom-color: darken($primary-color, 20%);
-			}
+			@include linear-gradient($primary-color, darken($primary-color, 5%));
 		}
 	}
 
@@ -1079,6 +1122,9 @@
 	.TE .FORM .LabelWrapper {
 		text-align: left;
 	}
+	.TE textarea {
+		width: 100%;
+	}
 	@media all and (max-width: 768px) {
 		.TE .FORM input.InputText {
 			width: 100% !important;
@@ -1089,6 +1135,7 @@
 	//Moves text boxes to right, utilizing full width of question.  
 	.Matrix .DL table td.last{
 		text-align:right;
+		padding-right: $default-container-padding / 2;
 	}
 
 
@@ -1125,13 +1172,12 @@
 	.SBSMatrix th,
 	.Matrix th {
 		padding: $default-container-padding / 2;
-		//BOOKMARK: need to figure out where to put all these border radii, if we want to do this. 
-		@if $border-radius-on == T {
-			border-radius: $default-border-radius 0 0 $default-border-radius;
-		}
 	}
 
-
+	// This keeps the long .TE inputs from touching each other.
+	.Matrix .TE td input {
+		margin: 2px;
+	}
 
 	// // BOOKMARK: 
 	// // TEST STYLES
@@ -1160,14 +1206,15 @@
 // /end stuff from basestyles
 
 
-				// determining focus class for text entry boxes... do we need to be this specific?
-				.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
-				.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, 
-				.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
-				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-					border-color: $primary-color;
-					outline: none;
-				}
+				// // determining focus class for text entry boxes... do we need to be this specific?
+				// .QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
+				// .TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, .CS .SumInput input:focus,
+				// .Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
+				// .horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
+				// 	border-color: $primary-color;
+				// 	outline: none;
+				// }
+
 
 				// Added to allow text to wrap on mobile for these questions
 				// Pulled these out of media query in BaseStyles, but haven't removed compeletely from BaseStyles yet...
@@ -1333,7 +1380,7 @@
 	/////////////////////////////
 
 	// should maybe have a $mobile-answer-label-spacing ?
-	$answer-label-spacing: 8px;
+	$answer-label-spacing: 10px;
 
 	// New Testing text entry box placement
 	// plan: 
@@ -1465,6 +1512,13 @@
 			@if $body-background-image-on == T and $boxed-skincontent == F {
 				background: rgba(0,0,0,.2);
 			}
+		} 
+		// cursor: pointer; BOOKMARK: Do we want this or not?
+		transition: background-color .2s ease-in-out;
+		&:hover {
+			background: $primary-hue-color;
+			border-color: darken($primary-hue-color, 20%);
+			color: $primary-color;
 		}
 		
 		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
@@ -1491,16 +1545,32 @@
 	.Skin label.SingleAnswer.q-checked,
 	.Skin label.MultipleAnswer.q-checked {
 		background: $answer-label-select-background;
-		border-color: $answer-label-select-background;
+		border-color: darken($answer-label-select-background, 10%);
 		color: $answer-label-select-color;
+		
+		&:hover {
+			background: $answer-label-select-background;
+			border-color: $answer-label-select-background;
+			color: #fff;
 
 		@if $Three-D-style == T {
 			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 10%));
+			@include linear-gradient($primary-color, darken($primary-color, 5%));
 			@if $label-style == 1 {
-				border-top-color: lighten($primary-color, 20%);
-				border-bottom-color: darken($primary-color, 20%);
-			} 
+				border-top: 1px solid lighten($primary-color, 10%);
+				border-bottom: 1px solid darken($primary-color, 10%);
+			}
+		}
+
+		}
+
+		@if $Three-D-style == T {
+			//BOOKMARK: 3D effect for labels and buttons??
+			@include linear-gradient($primary-color, darken($primary-color, 5%));
+			@if $label-style == 1 {
+				border-top: 1px solid lighten($primary-color, 10%);
+				border-bottom: 1px solid darken($primary-color, 10%);
+			}
 		}
 
 	}

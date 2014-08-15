@@ -2403,8 +2403,10 @@ body.TocMargin div.Skin{
 // * html .Skin #Footer {
 // 	background-image: none;
 // }
-// Survey Completion text
-.Skin .ProgressBarContainer label {
+
+// Centers the Progress Bar "Survey Completion" text
+.Skin .ProgressBarContainer label,
+.Skin .ProgressBarContainer span { // displays as a label in the survey, and as a span in the Look and Feel Preview.  Don't know why.
 	display: block;
 	text-align: center;
 }
