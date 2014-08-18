@@ -1,4 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//IMPORT FONT
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,8 +17,8 @@
 		$pushed-to-bottom-plug: T; //sticky footer plug
 
 	//BACKGROUND
-	$body-background-image-on: F;
-	$overlay-dark: T;
+	$body-background-image-on: T;
+	$overlay-dark: F;
 	//BOOKMARK: Abandoned "transparent" skincontent, for background images.
 	// $transparent-skincontent: T;
 	// $transparent-skincontent-light: F; //T is a dark opacity
@@ -30,16 +34,15 @@
 	//label-style options: 1 - customers4 1px transparent, 2 - MailChimp 2px solid
 	// STYLE 1: 1px, transparent, 2px border radius
 	// STYLE 2: no border, solid color, 4px border radius
-	$label-style: 1; 
-	$Three-D-style: F;
+	$label-style: 2; 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//COLOR PALETTE
-	-->	$primary-color: #9b59b6; //007FC2 //39E79B //F06F6F
-	$primary-hue: 290;
+	-->	$primary-color: #007FC2; //007FC2 //39E79B //F06F6F
+	$primary-hue: 190;
 	--> $primary-hue-color: hsl($primary-hue, 100%, 95%);
 	$secondary-color: darken($primary-color, 20%);
 	$tertiary-color: $secondary-color;
@@ -51,10 +54,10 @@
 
 	//DEFAULT
 	-->	$body-background-color: lighten($primary-color, 0%);
-	--> $body-background-image-url: url(http://38.media.tumblr.com/222f39f4520d55100feff7237861b373/tumblr_n8gxs0oWZ21st5lhmo1_1280.jpg);
-	-->	$default-text-color: #4E525F;
+	--> $body-background-image-url: url(http://33.media.tumblr.com/db092b1795916eb81a0a87f6d5473d0e/tumblr_n7yidlujvS1st5lhmo1_1280.jpg);
+	-->	$default-text-color: #54575F;
 		@if $boxed-skincontent == T {
-			$default-text-color: #4E525F;
+			$default-text-color: #54575F;
 		}
 		@if $boxed-skincontent == F and $body-background-image-on == T {
 			@if $overlay-dark == T {
@@ -664,14 +667,6 @@
 			outline: none;
 		}
 
-		@if $Three-D-style == T {
-			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 5%));
-			border-top: 1px solid lighten($primary-color, 10%);
-			border-bottom: 1px solid darken($primary-color, 10%);
-
-		}
-
 		@media only screen and (min-device-width: 1024px) {
 
 
@@ -1096,11 +1091,6 @@
 	.horizontalbar .Slider .handle,
 	.SS .verticalbar .SSTrack .handle{
 		background: $slider-handle-color;
-
-		@if $Three-D-style == T {
-			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 5%));
-		}
 	}
 
 	.SS .horizontalbar .handle:hover,
@@ -1512,7 +1502,11 @@
 			background: $answer-label-background-2;
 			border: $answer-label-border-2;
 			@if $body-background-image-on == T and $boxed-skincontent == F {
-				background: rgba(0,0,0,.2);
+				@if $overlay-dark == T {
+					background: rgba(255,255,255,.1);
+				} @elseif $overlay-dark == F {
+					background: rgba(255,255,255,.7);
+				}
 			}
 		} 
 		// cursor: pointer; BOOKMARK: Do we want this or not?
@@ -1555,24 +1549,6 @@
 			border-color: $answer-label-select-background;
 			color: #fff;
 
-		@if $Three-D-style == T {
-			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 5%));
-			@if $label-style == 1 {
-				border-top: 1px solid lighten($primary-color, 10%);
-				border-bottom: 1px solid darken($primary-color, 10%);
-			}
-		}
-
-		}
-
-		@if $Three-D-style == T {
-			//BOOKMARK: 3D effect for labels and buttons??
-			@include linear-gradient($primary-color, darken($primary-color, 5%));
-			@if $label-style == 1 {
-				border-top: 1px solid lighten($primary-color, 10%);
-				border-bottom: 1px solid darken($primary-color, 10%);
-			}
 		}
 
 	}
