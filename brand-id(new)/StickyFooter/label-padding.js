@@ -15,8 +15,10 @@ var Lance = {
 				newHeight = parseInt(newHeight/2);
 				var paddingtop = parseInt($(labels[label]).getStyle('padding-top'))+newHeight;
 				var paddingbottom = parseInt($(labels[label]).getStyle('padding-bottom'))+newHeight;
-				labels[label].style.paddingTop = paddingtop +'px';
-				labels[label].style.paddingBottom = paddingbottom +'px';
+					if(labels[label].hasClassName('q-radio') == false && labels[label].hasClassName('q-checkbox') == false){
+					labels[label].style.paddingTop = paddingtop +'px';
+					labels[label].style.paddingBottom = paddingbottom +'px';
+					}
 			}
 		}
 
@@ -44,9 +46,13 @@ var Lance = {
 window.onload = function(){
 	
 	$$('.QuestionOuter').each(function(el) {
-		if($(el).hasClassName('RO')) return;
-		if($(el).hasClassName('PGR')) return;
-		if($(el).down('.DL')) return;
-		Lance.uniformButton(el.id);
+		//if($(el).hasClassName('RO')) return;
+		//if($(el).hasClassName('PGR')) return;
+		//if($(el).hasClassName('TE')) return;
+		//if($(el).down('.DL')) return;
+		if($(el).hasClassName('MC')){
+			Lance.uniformButton(el.id);
+
+		}
 	});
 };
