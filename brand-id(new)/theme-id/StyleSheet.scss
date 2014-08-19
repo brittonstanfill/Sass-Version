@@ -18,7 +18,7 @@
 	//DEFAULT
 	$container-max-width: 900px;
 	$default-border-color: #CCCCCC;
-	$default-border-radius: 3px;
+	$default-border-radius: 5px;
 	$default-border-style: solid;
 	$default-border-width: 1px;
 	$default-border: $default-border-width $default-border-style $default-border-color;
@@ -131,7 +131,7 @@
 
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
-	$border-radius-on: false;
+	$border-radius-on: true;
 	$button-border-radius-on: $border-radius-on;
 	$progress-bar-border-radius-on: $border-radius-on;
 	$skin-content-border-radius-on: $border-radius-on;
