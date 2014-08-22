@@ -13,13 +13,15 @@
 	--> $interchangeable-logo: F;
 
 	//LAYOUTS
-	-->	$full-width-header: F;
+	-->	$full-width-header: T;
 	--> $boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- Don't want to change, probably.
 
+	--> $boxed-questions-new: F;
+
 	//BACKGROUND
 	--> $body-background-image-on: T;
-	--> $overlay-dark: T;
+	--> $overlay-dark: F;
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
 	-->	$border-radius-on: T;
@@ -38,11 +40,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//COLOR PALETTE
-	-->	$primary-color: #007FC2; //007FC2 //39E79B //F06F6F
-	--> $primary-hue: 200; // Convert HEXT to HSL, insert hue here
+	-->	$primary-color: #007FC2; //007FC2 //39E79B //F06F6F //4b86ee
+	$primary-hue: hue($primary-color);
 	$primary-hue-color: hsl($primary-hue, 100%, 95%);
 	$secondary-color: $primary-color;
 	$desaturated-primary-color: desaturate($primary-color, 20%);
+	// This is white for dark primary colors, and black for light ones.  
+	$reverse-primary-text-color: #FFF;
 
 	//FONTS
 	$font-stack: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
@@ -50,8 +54,8 @@
 	--> $default-text-color: #54575F;
 
 	//SURVEY ENGINE BODY
-	$body-background-color: $primary-color;
-	--> $body-background-image: url(http://37.media.tumblr.com/a0f0741db6621818fc2d834a33d4d28c/tumblr_mx3ttmO6W11st5lhmo1_1280.jpg);
+	--> $body-background-color: $primary-color;
+	--> $body-background-image: url(http://33.media.tumblr.com/ab93cebbefa4b5b72ccb5c9c63bddf28/tumblr_naj39vH5ad1st5lhmo1_1280.jpg);
 	$body-background: #FFF $body-background-image no-repeat center fixed;
 		@if $overlay-dark == T {
 			$body-background: #555 $body-background-image no-repeat center fixed;
@@ -89,7 +93,7 @@
 			$default-border-radius: 4px;
 		}
 	$default-border: $default-border-width $default-border-style $default-border-color;
-	$default-container-padding: 40px;
+	$default-container-padding: 30px;
 	$default-mobile-container-padding: 15px;
 
 	//QUESTION CONTAINER :: LOCATION VARIES WITH THESE VARIABLES
@@ -104,7 +108,7 @@
 	$readable-hover-color: darken($question-container-background-color, 4%);
 		@if $boxed-skincontent == F {
 			@if $overlay-dark == T {
-				$readable-hover-color: rgba(255,255,255,.2);
+				$readable-hover-color: rgba(255,255,255,.1);
 			} @elseif $overlay-dark == F {
 				$readable-hover-color: rgba(0,0,0,.2);				
 			}
@@ -119,9 +123,9 @@
 
 	//LOGO
 	$logo-background-color: transparent;
-	-->	$logo-image-width: 163px;
-	-->	$logo-image-height: 50px;
-	$logo-padding: $default-container-padding;
+	-->	$logo-image-width: 180px;
+	-->	$logo-image-height: 64px;
+	$logo-padding: 20px;
 	$logo-width: $logo-image-width;
 	$logo-height: $logo-image-height + ($logo-padding * 2);
 	$logo-mobile-scale: .66;
@@ -132,8 +136,12 @@
 		@if $boxed-skincontent == F and $full-width-header == T {
 			$logo-max-width: $container-max-width;
 		}
-	$logo-image: url("logo.png");
-	$logo-mobile-image: url("logo.png");
+-->	$logo-image: url("logo.png");
+--> $logo-mobile-image: url("logo.png");
+
+$logo-image: url(https://www.google.com/images/srpr/logo11w.png);
+$logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
+
 	$logo-position: $default-container-padding center;
 	$logo-mobile-position: center center;
 	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
@@ -172,7 +180,7 @@
 	-->	$error-color: R;
 
 	//HIGHLIGHT COLOR
-	$highlight-color: #FFFBC0;
+	$highlight-color: $error-red-color;
 
 	//QUESTIONS
 	$question-text-font-size: ($default-font-size + 2);
@@ -191,7 +199,7 @@
 	//STYLE 2
 	$answer-label-background-2: #eee;
 	$answer-label-border-2: none;
-	$answer-label-image-2: rgba(255,255,255,.7);
+	$answer-label-image-2: rgba(0,0,0,.1);
 
 		@if $boxed-skincontent == T and $label-style == 2 {
 			$answer-label-background: #eee;
@@ -254,6 +262,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// import latest BaseStyles.scss version
+	/* BaseStylesV4 */
 	@import '_BaseStylesV4.scss';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -501,17 +510,37 @@
 		padding-top: 1px;
 	}
 
-	.QuestionOuter {
-		padding: $default-mobile-container-padding;
-	}
+	//BOOKMARK: rather than this, put separate padding on QuestionText and QuestionBody
+	// This makes it so the fieldset fix that Cory did won't make the questions get cut off on the sides.
+	
+	// BUT.. not done yet.  Figure this out better.  
+	// .QuestionOuter {
+	// 	padding: $default-mobile-container-padding;
+	// }
 
 	@media all and (min-width: 767px) {
 
 		.QuestionOuter {
-			padding: $default-container-padding;
-
+			// border: 1px dotted red;
+			// margin: 0 $default-container-padding;
 		}
 	}
+
+
+		@if $boxed-questions-new == T {
+			.QuestionOuter {
+				border: 1px solid blue;
+				margin: 0 $default-mobile-container-padding;
+				border-radius: $default-border-radius;
+
+			}
+
+			@media all and (max-width: 768px) {
+				.QuestionOuter {
+					margin: 0 $default-mobile-container-padding
+				}
+			}
+		}
 
 	// .QuestionOuter .Inner {
 	// 	overflow-x:hidden; //testing question scrolling
@@ -520,12 +549,26 @@
 	.QuestionText {
 		font-size: $question-text-font-size;
 		color: $question-text-color;
-		padding-bottom: $default-container-padding;
+		padding: $default-container-padding;
+		// background: gray;
 		// @if $boxed-questions == T {
 		// 	padding: 15px;
 		// 	background-color: $secondary-color;
 		// }
 	}
+
+	// Allows QuestionText to wrap, and QuestionBody to scroll left to right.
+	// Thanks, Cory.
+		@-moz-document url-prefix() {
+		   fieldset {
+		       display: table-cell;//this is added so that it doesn't break in IE
+		   }
+		}
+       fieldset {
+               width:100%;
+               min-width:0;
+               max-width:none;
+       }
 
 	.QuestionBody {
 		color: $question-body-text-color;
@@ -536,6 +579,17 @@
 				// }
 		overflow-x:auto !important; //testing question scrolling
 		overflow-y:hidden;  //testing question scrolling
+		padding: $default-container-padding;
+		padding-top: ($default-container-padding / 2);
+	}
+
+	@media all and (max-width: 768px) {
+		.QuestionText,
+		.QuestionBody {
+			padding-left: $default-mobile-container-padding;
+			padding-right: $default-mobile-container-padding;
+		}
+
 	}
 				// @if $boxed-questions == T {
 				// 	.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
@@ -762,8 +816,14 @@
 			color: $error-blue-color;
 		}
 	}
+	@media only screen and (max-width: 768px) {
+		.HeaderValidationError {
+			margin: $default-mobile-container-padding;
+		}
+	}	
 	.ValidationError {
 		font-size: 120%;
+		padding: 0 0 10px 0;
 		@if $error-color == O {
 			color: $error-orange-color;
 		} @elseif $error-color == R {
@@ -793,6 +853,7 @@
 		height: $default-border-width;
 		background: $default-border-color;
 		margin: 10px $default-container-padding;
+		//BOOKMARK: we should do something other than just a straight line for the "boxed-questions" style maybe?
 	}
 
 	@media only screen and (max-width: 768px) {
@@ -836,17 +897,24 @@
 		}
 	}
 	//Some background color needed for this class to show up at all (which is its function)
-	.QuestionOuter.Highlight .Inner,
-	.QuestionOuter.Highlight .Inner .reg,
-	.QuestionOuter.Highlight .Inner .alt,
-	.QuestionOuter.Highlight .Inner .ReadableAlt {
-		background-color: $highlight-color;
+	.QuestionOuter.Highlight .Inner {
+		// background-color: $highlight-color;
+		border: 2px solid $highlight-color;
+		border-radius: $default-border-radius;
+		margin: 0 $default-container-padding;
+	} 
+	@media only screen and (max-width: 768px) {
+		.QuestionOuter.Highlight .Inner {
+			margin: 0 $default-mobile-container-padding;
+		}	
 	}
-	//Some background color (different from above) needed for this class to show up at all (which is its function)
-	.QuestionOuter.Highlight .Inner .ReadableAlt,
-	.QuestionOuter.Highlight .Inner .LightBG  {
-		background-color: darken($highlight-color, 10%);
-	}
+
+	//BOOKMARK: getting rid of this though... just using a hover color. 
+	// //Some background color (different from above) needed for this class to show up at all (which is its function)
+	// .QuestionOuter.Highlight .Inner .ReadableAlt,
+	// .QuestionOuter.Highlight .Inner .LightBG  {
+	// 	background-color: darken($highlight-color, 10%);
+	// }
 
 	//Pick, Group, and Rank
 	// BOOKMARK: Have a "BORDER" option and a non-border option
@@ -864,6 +932,14 @@
 		border-bottom: $default-border;
 		padding: 10px;
 		background: darken($question-container-background-color, 3%);
+		@if $body-background-image-on == T and $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				background: transparent;
+			} @elseifi $overlay-dark == F {
+				background: #FFF;
+			}
+
+		}
 	}
 	.RO .DND .rank,
 	.PGR .DragAndDrop .rank{
@@ -874,7 +950,7 @@
 			border-radius: 40px;
 		}
 		background-color: $primary-color;
-		color:white;
+		color:$reverse-primary-text-color;
 	}
 	//Pick, Group, and Rank
 	//Drag and Drop
@@ -882,7 +958,7 @@
 	.RO .DND ul.NotEdited li:hover .rank,
 	.RO .DND .rank {
 		background:$primary-color;
-		color:white;
+		color:$reverse-primary-text-color;
 	}
 	// makes it so the ul and lis don't spill over
 	.PGR .DragAndDrop .Group div {
@@ -893,6 +969,10 @@
 		border: $default-border;
 		@if $border-radius-on == T {
 			border-radius: $default-border-radius;
+		}
+		//BOOKMARK: this is so the "items" show up if the default color is white.  
+		@if $default-text-color == #FFF {
+			color: #444;
 		}
 	}
 
@@ -951,20 +1031,14 @@
 	// 	background: $primary-color;
 	// }
 	.RO .DND ul li:hover{
-		@if $full-width-header == T{
-			background: darken($body-background-color, 10%);
-		}
-		@if $full-width-header == F // or $boxed-questions == T 
-		or $boxed-skincontent == T{
-			background: darken($question-container-background-color, 10%);
-		}
+		background: $readable-hover-color;
 	}
 	//BOOKMARK:
 	//THESE WERE ADDED SO THE LIs are always visible, but it may break something...?
 	.QuestionOuter.RO {
 		overflow-y: visible;
 	}
-	.QuestionOuter.RO .QuestionBody {
+	.QuestionOuter.RO .DND .QuestionBody {
 		overflow-y: visible;
 		overflow-x: visible !important;
 	}
@@ -979,20 +1053,38 @@
 	.CS .VRTL .SumTotal input {
 		margin-top: $default-container-padding / 3;
 	}
-	.CS .CSTotal,
-	.CS .Total {
-	//BOOKMARK: figure this out for IMAGE backgrounds (probably just transparent?)
-		color: lighten($default-text-color, 25%);
-		background: darken($question-container-background-color, 5%);
+
+	@if $boxed-skincontent == T {
+		.CS .CSTotal,
+		.CS .Total {
+		//BOOKMARK: figure this out for IMAGE backgrounds (probably just transparent?)
+			color: lighten($default-text-color, 25%);
+			background: $readable-hover-color;
+		}
+
+		.CS .CSTotal input,
+		.CS .Total input {
+			border-color: lighten($default-border-color, 5%);
+			background: #f7f7f7;
+			color: lighten($default-text-color, 25%);
+
+		}		
+	} 
+	
+	//Rank Order/Constant Sum inputs
+	// Looks better with number in the middle
+	.Matrix .TE .Short td input,
+	.Matrix .TE .Medium td input,
+	.Matrix .TE .Long td input,
+	.MC .TextEntryBox,
+	.SBS .InputText,
+	.CS .SumInput input,
+	.CS .SumTotal input,
+	.CS .InputText, //keep this one or not?
+	.RO .RankInput {
+		text-align: center;
 	}
 
-	.CS .CSTotal input,
-	.CS .Total input {
-		border-color: lighten($default-border-color, 5%);
-		background: #f7f7f7;
-		color: lighten($default-text-color, 25%);
-
-	}
 
 	//Slider
 	.horizontalbar th.ylabel {
@@ -1006,6 +1098,7 @@
 	// BOOKMARK: Figure out borders around these for light-overlay.  And heights and widths of the slider bars everywhere (BaseStyles?)...
 	// Borders don't work... very well.  They throw off the height/width of the element that is calculated for the JS to position the handle.
 	//Draggable Bar
+	$slider-handle-color: $primary-color;
 	$slider-bar-color: darken($question-container-background-color, 10%);
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
@@ -1014,7 +1107,14 @@
 			border: $default-border;
 		}
 	}
-	$slider-handle-color: $primary-color;
+	.HBAR .trackHolderRel .track {
+		border: $default-border;
+		border-radius: 2px;
+	}
+
+	.HBAR .trackHolderRel.activated .track {
+		border-color: darken($slider-handle-color, 10%);
+	}
 
 	// Slider
 	// This is the old sprite (the gray track)
@@ -1162,7 +1262,7 @@
 				.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
 				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
 					border-color: $primary-color;
-					outline: none;
+					// outline: none;
 				}
 
 
@@ -1354,6 +1454,7 @@
 
 	.Skin .MC .TextEntryBox {
 		padding: 4px;
+		margin-top: 8px;
 	}
 
 //BOOKMARK:
@@ -1400,6 +1501,23 @@
 
 
 	}
+
+	//Firefox label alignment test
+	
+	// .Skin .MC .MAHR table td,
+	// .Skin .MC .SAHR table td {
+	// 	display: table;
+	// 	border-collapse: collapse;
+	// 	width: 100%;
+	// }
+	// .Skin .MC .MAHR label.MultipleAnswer span.LabelWrapper,
+	// .Skin .MC .SAHR label.SingleAnswer span.LabelWrapper {
+	// 	display: inline-block;
+	// 	width: 100%;
+	// 	vertical-align: top;
+	// }
+
+	// /end Firefox testing
 
 	@media only screen and (max-width: 767px) {
 
@@ -1456,6 +1574,10 @@
 		}
 	}
 
+	.Skin .MC input:focus + label.SingleAnswer {
+		background: blue;
+	}
+
 	// /* General (MA and SA) label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
@@ -1480,7 +1602,6 @@
 		&:hover {
 			background: $primary-hue-color;
 			border-color: darken($primary-hue-color, 10%);
-			color: $primary-color;
 			@if $body-background-image-on == T and $boxed-skincontent == F {
 				@if $label-style == 1 {
 					background: transparent;
@@ -1488,15 +1609,15 @@
 				} @elseif $label-style == 2 {
 					@if $overlay-dark == T {
 						background: #333; // IE Backup
-						background: darken($answer-label-image, 40%);
+						background: darken($answer-label-image, 30%);
+						color: darken($default-text-color, 20%);
 					} @elseif $overlay-dark == F {
-						background: #FFF; // IE Backup
-						background: opacify($answer-label-image-2, 1);
+						background: #DDD; // IE Backup
+						background: opacify($answer-label-image-2, .15);
 					}
 				}
 			}
 		}
-
 		
 		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
 		// NOT ANY MORE. 
@@ -1526,12 +1647,18 @@
 		color: $answer-label-select-color;
 		
 		&:hover {
-			background: $answer-label-select-background;
-			border-color: $answer-label-select-background;
+			background: darken($answer-label-select-background, 5%);
+			border-color: darken($answer-label-select-background, 15%);
 			color: #fff;
 
 		}
 
+	}
+
+	//BOOKMARK: is this a good idea?
+	.Skin label.SingleAnswer.q-checked + input,
+	.Skin label.MultipleAnswer.q-checked + input {
+		border-color: $primary-color;
 	}
 
 	/* ... Vertically centers text in td (continued) */
@@ -1628,6 +1755,7 @@
 
 	}
 }
+
 
 // //////////// 
 // //	TEST

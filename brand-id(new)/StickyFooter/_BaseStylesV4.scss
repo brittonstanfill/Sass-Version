@@ -3,7 +3,6 @@
 //		HTML elements		//
 //////////////////////////////
 //////////////////////////////
-//BOOKMARK: Note: Need to add in "CannotFind.css", or else find that stuff.  
 ul, li {
 	list-style-image:none;
 	list-style-position:outside;
@@ -2409,6 +2408,7 @@ body.TocMargin div.Skin{
 .Skin .ProgressBarContainer span { // displays as a label in the survey, and as a span in the Look and Feel Preview.  Don't know why.
 	display: block;
 	text-align: center;
+	font-size: 80%;
 }
 .Skin .ProgressBarFill {
 	background: $primary-color;
@@ -2537,9 +2537,9 @@ body.TocMargin div.Skin{
 #SurveyEngineBody.Android .Skin #Questions, {
 	overflow-x: hidden;
 }
-#SurveyEngineBody .Skin .QuestionOuter {
-	border-radius: 0px;
-}
+// #SurveyEngineBody .Skin .QuestionOuter {
+// 	border-radius: 0px;
+// }
 #SurveyEngineBody.iOS #Page,
 #SurveyEngineBody.Android #Page {
 	overflow-x: hidden;
