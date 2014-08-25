@@ -13,21 +13,21 @@
 	--> $interchangeable-logo: F;
 
 	//LAYOUTS
-	-->	$full-width-header: T;
+	-->	$full-width-header: F;
 	--> $boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- Don't want to change, probably.
 
 	--> $boxed-questions-new: F;
 
 	//BACKGROUND
-	--> $body-background-image-on: T;
-	--> $overlay-dark: F;
+	--> $body-background-image-on: F;
+	--> $overlay-dark: T;
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
 	-->	$border-radius-on: T;
 
 	//RADIO BUTTONS OPTION
-	--> $radio-buttons: F;
+	--> $radio-buttons: T;
 
 	//LABEL STYLE OPTIONS
 	--> $label-style: 2; 
@@ -886,11 +886,14 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 	// }
 	// Get rid of color on .Bipolar Qs
 	@media only screen and (min-width: 767px) {
-		.ChoiceRow:hover,
-		.Choice:hover,
-		.RO .RB tr:hover {
-			//BOOKMARK: Need a backup color.
-			background: $readable-hover-color;
+		.ChoiceRow,
+		.Choice,
+		.RO .RB tr {
+			-webkit-transition: background .3s;
+			&:hover {
+				//BOOKMARK: Need a backup color.
+				background: $readable-hover-color;
+			}
 		}
 		.RO .RB tr.Answers {
 			background: inherit;
@@ -990,6 +993,9 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 		//BOOKMARK: the 40px makes these too wide for the .Items ul above
 		padding: 8px 40px;
 		text-align: center;
+		&:hover {
+			background: $readable-hover-color;
+		}
 	}
 
 
@@ -1376,6 +1382,7 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 		background-repeat: no-repeat;
 }
 
+/* Start Radio Buttons */
 @if $radio-buttons == T {
 
 	// Aligns the HR radio buttons vertically with each other
@@ -1424,8 +1431,9 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 		padding: 10px;
 	}
 } // end if $no-radio-buttons == F
+/* End Radio Buttons */
 
-
+/* Start Label Styles */
 @if $radio-buttons == F {
 
 
@@ -1596,7 +1604,9 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 					background: $answer-label-image-2;
 				}
 			}
-		} 
+		}
+
+		word-break: break-word; 
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background-color .2s ease-in-out;
 		&:hover {
@@ -1696,6 +1706,7 @@ $logo-mobile-image: url(https://www.google.com/images/srpr/logo11w.png);
 
 
 } // end if $no-radio-buttons == T
+/* End Label Styles */
 
 
 
