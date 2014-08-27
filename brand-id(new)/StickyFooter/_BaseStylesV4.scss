@@ -1517,19 +1517,18 @@ $slider-bar-color: blue;
 }
 // Could style the right section like the following. Or something.
 // I just think this question type is leading and confusing though.  I hope we phase it out. 
-$readable-light-color: #ccc;
 .Skin .GAP .LightBG {
-	background: $readable-light-color;
+	background: darken($readable-hover-color, 10%);
 }
-.Skin .GAP .bottom .c5 {
-	border-bottom-left-radius: 10px;
-}
-.Skin .GAP .ChoiceStructure thead .c5 {
-	border-top-left-radius: 10px;
-}
-.Skin .GAP .ChoiceStructure thead .c6 {
-	border-top-right-radius: 10px;
-}
+// .Skin .GAP .bottom .c5 {
+// 	border-bottom-left-radius: 10px;
+// }
+// .Skin .GAP .ChoiceStructure thead .c5 {
+// 	border-top-left-radius: 10px;
+// }
+// .Skin .GAP .ChoiceStructure thead .c6 {
+// 	border-top-right-radius: 10px;
+// }
 
 
 // Timing - NOT REVISED YET
