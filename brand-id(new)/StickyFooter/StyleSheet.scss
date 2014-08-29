@@ -3,9 +3,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 	
-	* {
-		-webkit-font-smoothing: antialiased;
-	}
+	// * {
+	// 	-webkit-font-smoothing: antialiased;
+	// }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@
 	$question-container-box-shadow-on: T;
 
 	//RADIO BUTTONS
-	$radio-buttons: F;
+	$radio-buttons: T;
 
 	//LABEL STYLE
 	$label-style: 2; 
@@ -239,6 +239,12 @@
 	$plug-background: rgba(0,0,0,.3);
 	$plug-background-hover: rgba(0,0,0,.4);
 	$calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
+
+
+//FIND A HOME for these
+	$slider-handle-color: $primary-color;
+	$slider-bar-color: darken($question-container-background-color, 10%);
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //IMPORT BaseStyles
@@ -476,75 +482,51 @@
 		padding-top: 1px;
 	}
 
-	//BOOKMARK: START HERE 8/28
+	//BOOKMARK: START HERE 8/29
 
-	//BOOKMARK: rather than this, put separate padding on QuestionText and QuestionBody
-	// This makes it so the fieldset fix that Cory did won't make the questions get cut off on the sides.
-	
-	// BUT.. not done yet.  Figure this out better.  
-	// .QuestionOuter {
-	// 	padding: $default-mobile-container-padding;
-	// }
-
-	@media all and (min-width: 767px) {
-
+	@if $boxed-questions-new == T {
 		.QuestionOuter {
-			// border: 1px dotted red;
-			// margin: 0 $default-container-padding;
+			border: $default-border;
+			margin: 0 $default-mobile-container-padding;
+			@include border-radius($default-border-radius);
+		}
+
+		@media all and (max-width: 768px) {
+			.QuestionOuter {
+				margin: 0 $default-mobile-container-padding
+			}
 		}
 	}
-
-
-		@if $boxed-questions-new == T {
-			.QuestionOuter {
-				border: 1px solid blue;
-				margin: 0 $default-mobile-container-padding;
-				@include border-radius($default-border-radius);
-			}
-
-			@media all and (max-width: 768px) {
-				.QuestionOuter {
-					margin: 0 $default-mobile-container-padding
-				}
-			}
-		}
-
-	// .QuestionOuter .Inner {
-	// 	overflow-x:hidden; //testing question scrolling
-	// }
 
 	.QuestionText {
 		font-size: $question-text-font-size;
 		color: $question-text-color;
 		padding: $default-container-padding;
-		// background: gray;
-		// @if $boxed-questions == T {
-		// 	padding: 15px;
-		// 	background-color: $secondary-color;
-		// }
+		@if $boxed-questions-new == T {
+			border-bottom: $default-border;
+		}
 	}
 
-	// Allows QuestionText to wrap, and QuestionBody to scroll left to right.
+	// Allows QuestionText to wrap, and QuestionBody to scroll left to right on mobile.
+	@-moz-document url-prefix() { // BOOKMARK: Removed this media query because this wasn't working in Firefox (which was the point) - Test in IE
+	   fieldset {
+	       display: table-cell; //this is added so that it doesn't break in IE - Test in IE
+	       // This makes a lot of questions not 100% width when they should be in IE (like MAHR, SAHR, .FORM, SLIDERS, etc.)
+
+	   }
+	}
+	fieldset {
+		width:100%;
+		min-width:0;
+		max-width:none;
+	}
 	// Thanks, Cory.
-		@-moz-document url-prefix() {
-		   fieldset {
-		       display: table-cell;//this is added so that it doesn't break in IE
-		   }
-		}
-       fieldset {
-               width:100%;
-               min-width:0;
-               max-width:none;
-       }
 
 	.QuestionBody {
 		color: $question-body-text-color;
 		font-size: $question-body-font-size;
-				// @if $boxed-questions == T {
-				// 	padding:$default-container-padding;
-				// 	margin:0;
-				// }
-		overflow-x:auto !important; //testing question scrolling
+
+		// overflow-x:auto !important; //testing question scrolling //BOOKARMK: Removed, and QuestionBody still appears to work
 		overflow-y:hidden;  //testing question scrolling
 		padding: $default-container-padding;
 		padding-top: ($default-container-padding / 2);
@@ -1077,8 +1059,7 @@
 	// BOOKMARK: Figure out borders around these for light-overlay.  And heights and widths of the slider bars everywhere (BaseStyles?)...
 	// Borders don't work... very well.  They throw off the height/width of the element that is calculated for the JS to position the handle.
 	//Draggable Bar
-	$slider-handle-color: $primary-color;
-	$slider-bar-color: darken($question-container-background-color, 10%);
+
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
 		@include border-radius($default-border-radius);
@@ -1148,6 +1129,9 @@
 	.TE .FORM table {
 		width: 100%;
 	}
+	.TE .ControlContainer {
+		width: 70%;
+	}
 	.TE .FORM .LabelWrapper {
 		text-align: left;
 	}
@@ -1171,16 +1155,18 @@
 	// Select Box
 	.SB select,
 	.MSB select {
-		width: 100%;
-		@media all and (min-width: 767px) {
-			@if $full-width-labels-on == T {
-				width: 100%;
-			} @else {
-				width: 50%;
-				margin: 0 auto;
-				display: block;
-			}
-		}
+
+		//BOOKMARK: decided to remove this.
+		// width: 100%;
+		// @media all and (min-width: 767px) {
+		// 	@if $full-width-labels-on == T {
+		// 		width: 100%;
+		// 	} @else {
+		// 		width: 50%;
+		// 		margin: 0 auto;
+		// 		display: block;
+		// 	}
+		// }
 
 	}
 	.SB input {

@@ -169,21 +169,6 @@ h2.noStyle {
 	padding: 6pt 0pt 0pt 0pt;
 }
 
-// 
-// .Skin .MC td input.radio,
-// .Skin .MC td input.checkbox,
-// .Skin .MC .QuestionBody td label{
-// 	margin-top:4px;
-// 	margin-bottom:4px;
-// }
-
-.Skin .MC input.radio,
-.Skin .MC input.checkbox{
-	margin-left:7px;
-	margin-right:7px;
-	background: red;
-}
-
 .Skin .MC .QuestionText li{
 	padding:0px;
 }
@@ -935,7 +920,7 @@ h2.noStyle {
 	//Do we want a new sprite? 
 	//Or a way to make these stars any color?
 	height: 26px;
-	background: transparent url('../Graphics/stars.png') 0px 0px;
+	background: transparent url('../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
 }
 // Not sure if we need this or not
 .Skin .STAR .StarsOuterContainer {
@@ -970,7 +955,7 @@ h2.noStyle {
 .Skin .STAR .StarsContainer .Star {
 	width: 36px;
 	height: 30px;
-	background: transparent url('../Graphics/stars.png') 0px 0px;
+	background: transparent url('../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
 	float: left;
 }
 
@@ -1042,15 +1027,13 @@ h2.noStyle {
 	//Is this necessary? Doesn't seem to do anything.
 	white-space: nowrap;
 	// wide enough for 3 characters
-	width: 100%;
-	max-width: 3em;
+	width: 3em;
 	//needed to center
 	display: inline-block;
 }
 .Skin .CS .SumInput input,
 .Skin .CS .SumTotal input {
-	width: 100%;
-	max-width: 3em;
+	width: 3em
 }
 //Format li to put text entry box to the right.
 .Skin .CS .VRTL li {
@@ -1379,12 +1362,12 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	right:3px;
 }
 .Skin .HotSpot .Like span{
-	background:transparent url('../Graphics/qicons.gif') -20px -5px no-repeat;
+	background:transparent url('../../WRQualtricsShared/Graphics/qicons.gif') -20px -5px no-repeat;
 	width:16px;
 	height:13px;
 }
 .Skin .HotSpot .Dislike span{
-	background:transparent url('../Graphics/qicons.gif') -3px -3px no-repeat;
+	background:transparent url('../../WRQualtricsShared/Graphics/qicons.gif') -3px -3px no-repeat;
 	width:15px;
 	height:15px;
 }
@@ -1509,7 +1492,7 @@ $slider-bar-color: blue;
 	margin:auto;
 	margin-top:2px;
 	//This is hard coded because it was originally in line, and needs to be overwritten for RTL
-	background-image:url('../Graphics/GAPRightArrow.gif');
+	background-image:url('../../WRQualtricsShared/Graphics/GAPRightArrow.gif');
 }
 // Why block or inline block
 .Skin .GAP .TextEntryBox{
@@ -2479,7 +2462,7 @@ body.TocMargin div.Skin{
 	.Skin .STAR .StarsEventWatcher,
 	.Skin .STAR .StarsContainer .Filled {
 		height: 26px;
-		background: transparent url('../Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 	}
 	.Skin .STAR .StarsOuterContainer {
@@ -2510,7 +2493,7 @@ body.TocMargin div.Skin{
 	.Skin .STAR .StarsContainer .Star {
 		width: 36px;
 		height: 30px;
-		background: transparent url('../Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 		float: left;
 	}
@@ -2564,7 +2547,7 @@ body.TocMargin div.Skin{
 
 // Arrow that shows up to indicate more content to right.
 .Skin .ScrollIndicator {
-	background: url(../Graphics/arrow.png) no-repeat center center;
+	background: url(../../WRQualtricsShared/Graphics/arrow.png) no-repeat center center;
 	background-size: 20px 13px;
 	height: 98%;
 	background-color: rgba(0,0,0,0.6);

@@ -1,8 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
-* {
-  -webkit-font-smoothing: antialiased;
-}
-
 /* BaseStylesV4 */
 ul, li {
   list-style-image: none;
@@ -178,13 +174,6 @@ h2.noStyle {
 .Skin .MC .SACOL .SkinBody,
 .Skin .MC .MACOL .SkinBody {
   padding: 6pt 0pt 0pt 0pt;
-}
-
-.Skin .MC input.radio,
-.Skin .MC input.checkbox {
-  margin-left: 7px;
-  margin-right: 7px;
-  background: red;
 }
 
 .Skin .MC .QuestionText li {
@@ -899,7 +888,7 @@ h2.noStyle {
 .Skin .STAR .StarsEventWatcher,
 .Skin .STAR .StarsContainer .Filled {
   height: 26px;
-  background: transparent url("../Graphics/stars.png") 0px 0px;
+  background: transparent url("../../WRQualtricsShared/Graphics/stars.png") 0px 0px;
 }
 
 .Skin .STAR .StarsOuterContainer {
@@ -934,7 +923,7 @@ h2.noStyle {
 .Skin .STAR .StarsContainer .Star {
   width: 36px;
   height: 30px;
-  background: transparent url("../Graphics/stars.png") 0px 0px;
+  background: transparent url("../../WRQualtricsShared/Graphics/stars.png") 0px 0px;
   float: left;
 }
 
@@ -989,15 +978,13 @@ h2.noStyle {
 .Skin .CS .SumInput,
 .Skin .CS .SumTotal {
   white-space: nowrap;
-  width: 100%;
-  max-width: 3em;
+  width: 3em;
   display: inline-block;
 }
 
 .Skin .CS .SumInput input,
 .Skin .CS .SumTotal input {
-  width: 100%;
-  max-width: 3em;
+  width: 3em;
 }
 
 .Skin .CS .VRTL li {
@@ -1330,13 +1317,13 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
 }
 
 .Skin .HotSpot .Like span {
-  background: transparent url("../Graphics/qicons.gif") -20px -5px no-repeat;
+  background: transparent url("../../WRQualtricsShared/Graphics/qicons.gif") -20px -5px no-repeat;
   width: 16px;
   height: 13px;
 }
 
 .Skin .HotSpot .Dislike span {
-  background: transparent url("../Graphics/qicons.gif") -3px -3px no-repeat;
+  background: transparent url("../../WRQualtricsShared/Graphics/qicons.gif") -3px -3px no-repeat;
   width: 15px;
   height: 15px;
 }
@@ -1416,7 +1403,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   height: 16px;
   margin: auto;
   margin-top: 2px;
-  background-image: url("../Graphics/GAPRightArrow.gif");
+  background-image: url("../../WRQualtricsShared/Graphics/GAPRightArrow.gif");
 }
 
 .Skin .GAP .TextEntryBox {
@@ -2347,7 +2334,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsEventWatcher,
   .Skin .STAR .StarsContainer .Filled {
     height: 26px;
-    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../../WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
   }
 
@@ -2383,7 +2370,7 @@ body.TocMargin div.Skin {
   .Skin .STAR .StarsContainer .Star {
     width: 36px;
     height: 30px;
-    background: transparent url("../Graphics/stars@2x.png") 0px 0px;
+    background: transparent url("../../WRQualtricsShared/Graphics/stars@2x.png") 0px 0px;
     background-size: 30px 53px;
     float: left;
   }
@@ -2433,7 +2420,7 @@ body.TocMargin div.Skin {
 }
 
 .Skin .ScrollIndicator {
-  background: url(../Graphics/arrow.png) no-repeat center center;
+  background: url(../../WRQualtricsShared/Graphics/arrow.png) no-repeat center center;
   background-size: 20px 13px;
   height: 98%;
   background-color: rgba(0, 0, 0, 0.6);
@@ -2678,7 +2665,6 @@ html, body, #Page, .Skin {
 .Skin .QuestionBody {
   color: #54575f;
   font-size: 18px;
-  overflow-x: auto !important;
   overflow-y: hidden;
   padding: 30px;
   padding-top: 15px;
@@ -3032,7 +3018,7 @@ html, body, #Page, .Skin {
   width: 4em;
 }
 .Skin .horizontalbar .bar {
-  background-color: #e6e6e6;
+  background-color: blue;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -3051,12 +3037,12 @@ html, body, #Page, .Skin {
   border-color: #1c67ea;
 }
 .Skin .horizontalbar .Slider .track {
-  background-color: #e6e6e6;
+  background-color: blue;
 }
 .Skin .SS .horizontalbar .SSTrack,
 .Skin .SS .verticalbar .SSTrack {
   margin: 20px !important;
-  background-color: #e6e6e6;
+  background-color: blue;
 }
 .Skin .horizontalbar .activated .bar,
 .Skin .horizontalbar .BarContainer:hover .bar,
@@ -3077,6 +3063,9 @@ html, body, #Page, .Skin {
 .Skin .TE .FORM table {
   width: 100%;
 }
+.Skin .TE .ControlContainer {
+  width: 70%;
+}
 .Skin .TE .FORM .LabelWrapper {
   text-align: left;
 }
@@ -3091,18 +3080,6 @@ html, body, #Page, .Skin {
 .Skin .Matrix .DL table td.last {
   text-align: right;
   padding-right: 15px;
-}
-.Skin .SB select,
-.Skin .MSB select {
-  width: 100%;
-}
-@media all and (min-width: 767px) {
-  .Skin .SB select,
-  .Skin .MSB select {
-    width: 50%;
-    margin: 0 auto;
-    display: block;
-  }
 }
 .Skin .SB input {
   background: #4b86ee;
@@ -3192,130 +3169,74 @@ html, body, #Page, .Skin {
 }
 
 /* Start Radio Buttons */
-/* End Radio Buttons */
-/* Start Label Styles */
-.Skin .MC .TextEntryBox {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+  vertical-align: bottom;
 }
 
-.Skin .MC .TextEntryBox {
-  padding: 4px;
-  margin-top: 8px;
-}
-
-@media only screen and (min-width: 768px) {
-  .Skin .MC .ChoiceStructure {
-    border-spacing: 10px;
-  }
-
-  .Skin .MC .SAVR label.SingleAnswer,
-  .Skin .MC .MAVR label.MultipleAnswer,
-  .Skin .MC .SAVR .TextEntryBox,
-  .Skin .MC .MAVR .TextEntryBox {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .Skin .MC .TextEntryBox {
-    width: 100% !important;
-  }
-}
-.Skin .LabelWrapper {
-  text-align: center;
+.Skin .MC .SAHR .QuestionBody td.LabelContatiner .LabelWrapper,
+.Skin .MC .MAHR .QuestionBody td.LabelContatiner .LabelWrapper {
+  display: block;
   width: 100%;
 }
 
-.Skin .MC .SAHR table td,
-.Skin .MC .MAHR table td,
-.Skin .MC li .LabelWrapper {
-  margin: 0 auto 10px auto;
+@media only screen and (max-width: 768px) {
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner {
+    border-bottom: 2px solid #eee;
+  }
+
+  .Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
+  .Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
+    border-bottom: none;
+  }
+}
+.Skin .ChoiceStructure li {
+  padding: 10px 0;
 }
 
-.Skin .MC .SACOL .ChoiceStructure,
-.Skin .MC .MACOL .ChoiceStructure {
-  border-spacing: 10px;
+.Skin .MC .SAVR label.q-radio,
+.Skin .MC .SAVR label.q-checkbox,
+.Skin .MC .MAVR label.q-radio,
+.Skin .MC .MAVR label.q-checkbox {
+  float: left;
+  margin-right: 10px;
+  padding: 0;
 }
 
-.Skin .MACOL .ControlContainer, .Skin .SACOL .ControlContainer {
-  display: none;
+.Skin .MC .MACOL .QuestionBody td.ControlContainer,
+.Skin .MC .SACOL .QuestionBody td.ControlContainer {
+  padding: 10px;
 }
 
-.Skin .MC input:focus + label.SingleAnswer {
-  background: blue;
+.Skin .MC .SACOL .QuestionBody label.SingleAnswer,
+.Skin .MC .MACOL .QuestionBody label.MultipleAnswer {
+  padding: 10px 0;
 }
 
-.Skin .QuestionBody label.SingleAnswer,
-.Skin .QuestionBody label.MultipleAnswer {
-  background: #eeeeee;
-  border: none;
-  transition: background-color .2s ease-in-out;
-  padding: 20px 4%;
-  display: block;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  text-align: center;
-}
-.Skin .QuestionBody label.SingleAnswer:hover,
-.Skin .QuestionBody label.MultipleAnswer:hover {
-  background: #e5efff;
-  border-color: #b3ceff;
+.Skin .MC .QuestionBody {
+  padding: 30px 40px;
+  padding-top: 0;
 }
 
-.Skin label.SingleAnswer.q-checked,
-.Skin label.MultipleAnswer.q-checked {
-  background: #4b86ee;
-  border-color: #1c67ea;
-  color: white;
+.Skin .MC .SAHR td.ControlContainer,
+.Skin .MC .MAHR td.ControlContainer {
+  position: relative;
+  height: 30px;
+  top: -30px;
 }
 
-.Skin label.SingleAnswer.q-checked:hover {
-  background: #4b86ee;
-  border-color: #1c67ea;
-  color: white;
+.Skin .MC .SAHR label.q-radio,
+.Skin .MC .MAHR label.q-checkbox {
+  margin-top: 10px;
 }
 
-.Skin label.MultipleAnswer.q-checked:hover {
-  background: #3476ec;
-  border-color: #145bd8;
-  color: #fff;
+.Skin .MC .SAHR .QuestionBody {
+  padding-bottom: 0;
 }
 
-.Skin label.SingleAnswer.q-checked + input,
-.Skin label.MultipleAnswer.q-checked + input {
-  border-color: #4b86ee;
-}
-
-.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.Skin td .LabelWrapper {
-  display: block;
-  overflow: auto;
-  height: 100%;
-}
-
-.Skin .MC label.q-radio,
-.Skin .MC label.q-checkbox {
-  display: none;
-}
-
-.Skin .SACOL label.SingleAnswer,
-.Skin .MACOL label.MultipleAnswer {
-  word-break: break-word;
-}
-
+/* End Radio Buttons */
+/* Start Label Styles */
 /* End Label Styles */
 @media only screen and (max-width: 767px) {
   html .Skin #Logo, html .CSS3 .Skin #Logo {
