@@ -15,12 +15,12 @@
 
 	//LAYOUT
 	$full-width-header: F;
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.
 		$boxed-questions-new: F; //BOOKMARK: Do we want this or not?
 
 	//BACKGROUND
-	$body-background-image-on: F;
+	$body-background-image-on: T;
 	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
@@ -30,12 +30,11 @@
 	$question-container-box-shadow-on: T;
 
 	//RADIO BUTTONS
-	$radio-buttons: T;
+	$radio-buttons: F;
 
 	//LABEL STYLE
 	$label-style: 2; 
-		// BOOKMARK: I think we are ditching STYLE 1 for now
-		// STYLE 1: Outline, 2px border-radius
+		// STYLE 1: Outline, 2px border-radius		// BOOKMARK: I think we are ditching STYLE 1 for now
 		// STYLE 2: No border, 4px border-radius
 		$full-width-labels-on: F; //BOOKMARK: we should just pick one or the other.
 
@@ -46,7 +45,7 @@
 	--> // indicate common changes or variables/elements to double check. 
 
 	//COLOR PALETTE
-	-->	$primary-color: #4b86ee; //007FC2 //39E79B //F06F6F //4b86ee
+	-->	$primary-color: #F06F6F; //007FC2 //39E79B //F06F6F //4b86ee
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -60,6 +59,7 @@
 	}
 	//This color is calculated in fucntion above, or enter manually.  
 	--> $reverse-primary-text-color: set-reverse-text-color($primary-color);
+	$link-color: #4b86ee;
 
 
 	//SURVEY ENGINE BODY - BACKGROUND
@@ -243,8 +243,12 @@
 
 //FIND A HOME for these
 	$slider-handle-color: $primary-color;
-	$slider-bar-color: darken($question-container-background-color, 10%);
+	$slider-bar-color: #DDD;
+	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == F {
+		$slider-bar-color: #505457;
+	}
 
+	$answer-label-spacing: 10px;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //IMPORT BaseStyles
@@ -286,7 +290,7 @@
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// LAYOUT
+// LAYOUT ELEMENTS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @if $pushed-to-bottom-plug == T {
@@ -297,6 +301,10 @@
 			height: 100%;
 		}
 	// }
+}
+
+a {
+	color: $link-color;
 }
 
 #SurveyEngineBody {
@@ -312,6 +320,18 @@
 	// 	background: #FFF;
 	// }
 	font-family: $font-stack;
+}
+
+// Welcome Back! Message at top of screen
+#RestoredResponseBar {
+	background: #45464b !important; // Does this pull the color from the "Highlight Questions" option? -- No, it doesn't, I checked.
+	color: #888c8f !important;
+	a {
+		color: $link-color !important;
+	}
+}
+#RestoredResponseBar .BottomShadow {
+	display: none;
 }
 
 .Skin {
@@ -342,7 +362,7 @@
 	.ProgressBarContainer{
 		width:100%;
 		border-collapse:collapse;
-		//have to add these or there is a 1px space to right and left when the 0% and 100% tds are gone
+		//have to add these borders or there is a 1px space to right and left when the 0% and 100% tds are gone -- remove if we can figure out a better way
 		border-right: 4px solid $progress-bar-background-color;
 		border-left: 2px solid $progress-bar-fill-color;
 	}
@@ -477,12 +497,9 @@
 
 	}
 
-	//BOOKMARK: take this off, and the HeaderValidationError moves to top of #Questions. Why?
 	#Questions {
-		padding-top: 1px;
+		padding-top: 1px; 	//BOOKMARK: take this off, and the HeaderValidationError moves to top of #Questions. Why?
 	}
-
-	//BOOKMARK: START HERE 8/29
 
 	@if $boxed-questions-new == T {
 		.QuestionOuter {
@@ -490,29 +507,41 @@
 			margin: 0 $default-mobile-container-padding;
 			@include border-radius($default-border-radius);
 		}
-
-		@media all and (max-width: 768px) {
-			.QuestionOuter {
-				margin: 0 $default-mobile-container-padding
-			}
-		}
 	}
 
 	.QuestionText {
 		font-size: $question-text-font-size;
 		color: $question-text-color;
 		padding: $default-container-padding;
+		@media all and (max-width: 768px) {
+			padding: $default-mobile-container-padding;
+		}
 		@if $boxed-questions-new == T {
 			border-bottom: $default-border;
 		}
 	}
 
+	.QuestionBody {
+		color: $question-body-text-color;
+		font-size: $question-body-font-size;
+		overflow-y:hidden;  // this allows the QuestionBody to scroll independently of the QuestionText
+		padding: $default-container-padding;
+		padding-top: ($default-container-padding / 2);
+		@media all and (max-width: 768px) {
+			padding: $default-mobile-container-padding;
+		}
+	}
+
+	.DB .TB .QuestionBody {
+		padding: 0;	//This removes the padding from the nonexistent .QuestionBody on Descriptive Text questions.
+	}
+
+	// BOOKMARK: Side scrolling still needs testing
 	// Allows QuestionText to wrap, and QuestionBody to scroll left to right on mobile.
-	@-moz-document url-prefix() { // BOOKMARK: Removed this media query because this wasn't working in Firefox (which was the point) - Test in IE
+	@-moz-document url-prefix() { // BOOKMARK: Removed this media query because this wasn't working in Firefox (which was the point), but then tested in IE and it causes problems
 	   fieldset {
 	       display: table-cell; //this is added so that it doesn't break in IE - Test in IE
 	       // This makes a lot of questions not 100% width when they should be in IE (like MAHR, SAHR, .FORM, SLIDERS, etc.)
-
 	   }
 	}
 	fieldset {
@@ -522,81 +551,31 @@
 	}
 	// Thanks, Cory.
 
-	.QuestionBody {
-		color: $question-body-text-color;
-		font-size: $question-body-font-size;
-
-		// overflow-x:auto !important; //testing question scrolling //BOOKARMK: Removed, and QuestionBody still appears to work
-		overflow-y:hidden;  //testing question scrolling
-		padding: $default-container-padding;
-		padding-top: ($default-container-padding / 2);
-	}
-
-	//This removes the padding from the nonexistent .QuestionBody on Descriptive Text questions.
-	.DB .TB .QuestionBody {
-		padding: 0;
-	}
-
-	@media all and (max-width: 768px) {
-		.QuestionText,
-		.QuestionBody {
-			padding-left: $default-mobile-container-padding;
-			padding-right: $default-mobile-container-padding;
-		}
-
-	}
-				// @if $boxed-questions == T {
-				// 	.RO .DND .QuestionBody, .CS .QuestionBody, .Matrix .QuestionBody, .SBSMatrix .QuestionBody{
-				// 		padding:0;
-				// 		li, tr, th{
-				// 			padding-left:$default-container-padding !important;
-				// 		}
-				// 	}
-				// 	.RO .RB .QuestionBody{
-				// 			padding:0;
-				// 		}
-				// 	.Skin .Timing .QuestionText{
-				// 		margin:0;
-				// 	}
-				// 	/////general styles I'm overriding maybe do for all Q types
-				// 	.Skin .MC input.radio, .Skin .MC input.checkbox{
-				// 		margin-left:0;
-				// 	}
-
-				// }
-
 	#Buttons {
 		// I think this margin helps make it not look stupid with just one question on the page.
 		// And just looks better in general, maybe.
 		margin-top: 80px;	
 		padding: $buttons-container-padding;
 		text-align:right;
-	}
-
-	@media only screen and (max-width: 768px) {
-		#Buttons {
+		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
 		}
 	}
-
 
 	#Buttons #PreviousButton {
 		float: left;
 	}
 
 	#Buttons #NextButton, #Buttons #PreviousButton {
-
 		@if $label-style == 1 {
 			border: $default-border;
 			background-color: transparent;
 			color: $default-text-color;
-		}
-		@else if $label-style == 2 {
+		} @else if $label-style == 2 {
 			border: none;
 			background-color: $button-primary-color;
 			color: $button-text-color;
 		}
-		
 		@include border-radius($default-border-radius);
 		cursor: pointer;
 		font-size: $button-font-size;
@@ -606,52 +585,37 @@
 		text-decoration: none;
 		-webkit-appearance: none;
 		transition: background .3s;
-
-
 		&:focus {
 			outline: none;
 		}
-
-		@media only screen and (min-device-width: 1024px) {
-
-
+		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px)
 			@if $label-style == 1 {
-
 				&:hover {
 					background: $primary-hue-color-light;
 					border-color: darken($primary-hue-color-light, 20%);
 					color: $primary-color;
 				}
-
 				&:active {
 					background: darken($primary-hue-color-light, 5%);
 				}
-
 			}
-
 			@if $label-style == 2 {
-
 				&:hover {
 					background: darken($primary-color, 8%);
 				}
-
 				&:active {
 					//background-color: rgba(0,0,0,.2);
 					background: darken($primary-color, 15%);
 				}
-		
 			}
-
 		}
 	}
-
 	#Footer {
 		color: $footer-text-color;
 		font-size: $footer-font-size;
 		max-width: $container-max-width;
 		margin: 0px auto;
 		padding: $footer-padding;
-
 	}
 
 	#PushStickyFooter{
@@ -661,7 +625,6 @@
 	
 	#Plug {
 		float:right;
-
 		a {
 			font-size: $plug-font-size;
 			color: $plug-link-color;
@@ -681,24 +644,12 @@
 			}
 		}
 	}
-}
 
+	// Still inside .Skin
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// QUESTION TYPES, etc. STYLES
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Welcome Back! Message at top of screen
-#RestoredResponseBar {
-	background: #45464b !important; // Does this pull the color from the "Hilight Questions" option? -- No, it doesn't, I checked.
-	color: #888c8f !important;
-}
-#RestoredResponseBar .BottomShadow {
-	display: none;
-}
-
-.Skin {
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// QUESTION TYPES, etc. STYLES
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Styles for html elements that don't automatically style
 	button, input, select, textarea {
@@ -707,7 +658,6 @@
 		color: $default-text-color;
 	}
 
-	// Put default border on all text inputs
 	input.TextEntryBox, 
 	.TE textarea, 
 	textarea, 
@@ -719,11 +669,10 @@
 		@if $border-radius-on == T {
 			@include border-radius($default-border-radius);
 		}
-		//BOOKMARK: 
-		// I think maybe we should just set the padding..
-		// because if we add too much, it cuts off the text (with box-sizing: border-box)
-		padding: 4px;
-		max-width: 100%;
+		padding: 4px; // If we add too much padding, it cuts off the text (with box-sizing: border-box). Probably stick with 4px or less.
+		//BOOKMARK: max-width: 100% causes problems in IE8 (the text inputs shrink down to "100%" of the td they are in)
+		// max-width: 100%;
+
 		//Figure out the best way to make text inputs not spill over on mobile.  
 		// Can't just indiscriminately apply 100% !important because some are set to 3em or whatever (on purpose)
 		// @media only screen and (max-width: 768px) {
@@ -737,19 +686,17 @@
 		}
 
 		&:focus {
+			// These inputs need a border, otherwise the focus class will be nonexistent (bad for accessibility)
 			border-color: $primary-color;
 			outline: none;
 		}
 	}
 
 	.TE textarea, textarea {
-		padding: 8px;
+		padding: 8px; // Give these a little extra padding.  
 	}
 
-
-
-	//Validation Error Message
-	// BOOKMARK: How do I make it not touch the top of the #Questions without adding padding to #Questions?
+	// BOOKMARK: How can I make it not touch the top of the #Questions without adding padding to #Questions?
 	.HeaderValidationError {
 		margin: $default-container-padding;
 		padding: 15px;
@@ -766,12 +713,10 @@
 			background: $error-blue-background;
 			color: $error-blue-color;
 		}
-	}
-	@media only screen and (max-width: 768px) {
-		.HeaderValidationError {
+		@media only screen and (max-width: 768px) {
 			margin: $default-mobile-container-padding;
 		}
-	}	
+	}
 	.ValidationError {
 		font-size: 120%;
 		padding: 0 0 10px 0;
@@ -798,90 +743,66 @@
 		}
 	}
 
-	// Question Separator
-
-	.Separator {
-		height: $default-border-width;
-		background: $default-border-color;
-		margin: 10px $default-container-padding;
-		//BOOKMARK: we should do something other than just a straight line for the "boxed-questions" style maybe?
-	}
-
-	@media only screen and (max-width: 768px) {
-		.Separator {
-			margin: 10px $default-mobile-container-padding;
-		}
-	}
-	
-	//Readable, LightText, Highlight
-	.LightText{
-		color:lighten($default-text-color, 15%);
-	}
-//rgba(36, 36, 36, 0.15)
-//BOOKMARK: ^ transparent
-
-	// // I think it makes more sense to do this than to have a .readableAlt color;
-	// tr:hover,
-	// .ChoiceRow:hover {
-	// 	background: #fea;
-	// }
-	//Do we want this anymore?
-	// BOOKMARK:
-	// Need if statement.  If the container is on (and the background's white) then go off that.
-	// If it's a dark, light, or colored image, then base on that.
-	// .ReadableAlt, .LightBG {
-	// 	background: darken($question-container-background-color, 2%);
-	// 	@if $boxed-skincontent == F {
-	// 		background: black;
-	// 	}
-	// }
-	// Get rid of color on .Bipolar Qs
-	@media only screen and (min-width: 767px) {
-		.ChoiceRow,
-		.Choice,
-		.RO .RB tr {
-			-webkit-transition: background .3s;
-			&:hover {
-				background: $readable-hover-backup; //backup for IE8
-				background: $readable-hover-color;
-			}
-		}
-		.RO .RB tr.Answers {
-			background: inherit;
-		}
-	}
-	//Some background color needed for this class to show up at all (which is its function)
 	.QuestionOuter.Highlight .Inner {
 		// background-color: $highlight-color;
 		border: 2px solid $highlight-color;
 		@include border-radius($default-border-radius);
 		margin: 0 $default-container-padding;
 		margin-bottom: ($default-container-padding / 2);
-	} 
-	@media only screen and (max-width: 768px) {
-		.QuestionOuter.Highlight .Inner {
-			margin: 0 $default-mobile-container-padding;
-		}	
+		@media only screen and (max-width: 768px) {
+			margin: 0 $default-mobile-container-padding;	
+		}
 	}
 
-	//BOOKMARK: getting rid of this though... just using a hover color. 
-	// //Some background color (different from above) needed for this class to show up at all (which is its function)
-	// .QuestionOuter.Highlight .Inner .ReadableAlt,
-	// .QuestionOuter.Highlight .Inner .LightBG  {
-	// 	background-color: darken($highlight-color, 10%);
-	// }
+	.EndOfSurvey {
+		color: $question-text-color;
+		padding: 30px;
+	}
 
-	//Pick, Group, and Rank
-	// BOOKMARK: Have a "BORDER" option and a non-border option
+	.Separator {
+		height: $default-border-width;
+		background: $default-border-color;
+		margin: 10px $default-container-padding;
+		@media only screen and (max-width: 768px) {
+			margin: 5px $default-mobile-container-padding;
+		}
+	}
+
+	//Readable, LightText, Highlight
+	.LightText{
+		color:lighten($default-text-color, 15%);
+	}
+
+	// Readable Hover state (rather than ReadableAlt class)
+	@media only screen and (min-width: 767px) {
+		.ChoiceRow,
+		.Choice,
+		.RO .RB tr,
+		.CS .VRTL li {
+			-webkit-transition: background .3s;
+			&:hover {
+				background: $readable-hover-backup; //backup for IE8
+				background: $readable-hover-color;
+			}
+		}
+		// Remove this for these question types, because it looks weird. 
+		.RO .RB tr.Answers,
+		.Matrix .Bipolar tr,
+		.Matrix .Profile tr {
+			background: inherit;
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////
+	// Pick Group & Rank / Rank Order
+	////////////////////////////////////////////////////////////////////
 	.PGR .DragAndDrop td.groupsContainerTd div > div {
 		border: $default-border;
-		@if $border-radius-on == T {
-			@include border-radius($default-border-radius);
-		}
+		@include border-radius($default-border-radius);
 		margin: 5px;
 	}
 	.PGR .DragAndDrop h2 {
-		font-size: inherit;
+		font-size: $default-font-size + 2px;
 	}
 	.PGR .DragAndDrop .Group h2 {
 		border-bottom: $default-border;
@@ -907,16 +828,14 @@
 		background-color: $primary-color;
 		color:$reverse-primary-text-color;
 	}
-	//Pick, Group, and Rank
-	//Drag and Drop
 	.RO .DND ul.Edited .rank,
 	.RO .DND ul.NotEdited li:hover .rank,
 	.RO .DND .rank {
 		background:$primary-color;
 		color:$reverse-primary-text-color;
 	}
-	// makes it so the ul and lis don't spill over
 	.PGR .DragAndDrop .Group div {
+		// makes it so the ul and lis don't spill over
 		-moz-box-sizing: content-box;
 		box-sizing: content-box;
 	}
@@ -925,12 +844,11 @@
 		@if $border-radius-on == T {
 			@include border-radius($default-border-radius);
 		}
-		//BOOKMARK: this is so the "items" show up if the default color is white.  
 		@if $default-text-color == #FFF {
-			color: #444;
+			color: #444;  // this is so the "items" show up if the default text color is white.  
+
 		}
 	}
-
 	.RO .DND .Items ul li,
 	.PGR .DragAndDrop .Items ul li{
 		padding: 8px 0;
@@ -939,10 +857,8 @@
 			@include border-radius($default-border-radius);
 		}
 	}
-
 	.RO .DND .Group ul li,
-	.PGR .DragAndDrop .Group ul li{
-		//BOOKMARK: the 40px makes these too wide for the .Items ul above
+	.PGR .DragAndDrop ul li {
 		padding: 8px 40px;
 		text-align: center;
 		&:hover {
@@ -950,19 +866,18 @@
 			background: $readable-hover-color;
 		}
 	}
-
-
+	.PGR .DragAndDrop ul li.stack {
+		&:hover {
+			background: #fff; // Change the hover state for the white "stacked" ones
+		}
+	}
 	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
 		margin: 0 auto 10px auto; //Not sure we need this... seems like we want the group boxes close to the items 
 	}
-
-	//Rank Order
-	// Don't want the text entry ones to be on the same line on mobile.
-	// (Constant Sum and Rank Order)
-	@media all and (max-width: 768px) {
+	@media all and (max-width: 768px) { 
 		.CS .HR li,
 		.RO .HR li {
-			float: none;
+			float: none; // Don't want the text entry ones to be on the same line on mobile.
 		}
 	}
 	@media all and (min-width: 767px) {
@@ -980,21 +895,8 @@
 	.RO .DND ul li .rank {
 		margin: 0 10px;
 	}
-	//Rank Order - Radio Button
-	.RO .RB .ChoiceStructure td {
-		//BOOKMARK: we should maybe have a default-container-padding for within questions? Based on Style 1 or 2?
-		padding: ($default-container-padding / 2) inherit;
-	}
-	// moved to above
-	// .RO .DND ul.Edited .rank, .RO .DND ul.NotEdited li:hover .rank, .RO .DND .rank {
-	// 	background: $primary-color;
-	// }
-	.RO .DND ul li:hover{
-		background: $readable-hover-backup; //backup for IE8
-		background: $readable-hover-color;
-	}
 	//BOOKMARK:
-	//THESE WERE ADDED SO THE LIs are always visible, but it may break something...?
+	//THESE WERE ADDED SO THE LIs are always visible, but it may break something...?  It did.. found it with Cory, but can't remember what it was. 
 	.QuestionOuter.RO {
 		overflow-y: visible;
 	}
@@ -1002,109 +904,69 @@
 		overflow-y: visible;
 		overflow-x: visible !important;
 	}
+	//
+	//Rank Order - Radio Button
+	.RO .RB .ChoiceStructure td {
+		padding: ($default-container-padding / 2) inherit;
+	}
+	.RO .DND ul li:hover{
+		background: $readable-hover-backup; //backup for IE8
+		background: $readable-hover-color;
+	}
 
-	//Constant Sum
+	////////////////////////////////////////////////////////////////////
+	// Constant Sum
+	////////////////////////////////////////////////////////////////////
 	.CS .ChoiceStructure li {
 		padding: $default-container-padding / 2;
 	}
-	//BOOKMARK: This has to be calculated based on the li padding above.
-
 	.CS .VRTL .SumInput input,
 	.CS .VRTL .SumTotal input {
-		margin-top: $default-container-padding / 3;
+		margin-top: $default-container-padding / 3;	//This is to vertically center the inputs in Constan Sum.  Not always perfect.  
 	}
-
-	@if $boxed-skincontent == T {
-		.CS .CSTotal,
-		.CS .Total {
-		//BOOKMARK: figure this out for IMAGE backgrounds (probably just transparent?)
-			color: lighten($default-text-color, 25%);
-			background: $readable-hover-backup; //backup for IE8
-			background: $readable-hover-color;
-		}
-
-		.CS .CSTotal input,
-		.CS .Total input {
-			border-color: lighten($default-border-color, 5%);
-			background: #f7f7f7;
-			color: lighten($default-text-color, 25%);
-
-		}		
-	} 
-	
-	//Rank Order/Constant Sum inputs
-	// Looks better with number in the middle
-	.Matrix .TE .Short td input,
-	.Matrix .TE .Medium td input,
-	.Matrix .TE .Long td input,
-	// .MC .TextEntryBox,
-	.SBS .InputText,
-	.CS .SumInput input,
-	.CS .SumTotal input,
-	.CS .InputText, //keep this one or not?
-	.RO .RankInput {
+	.CS .CSTotal,
+	.CS .Total {
+		background: $readable-hover-backup;
+		background: $readable-hover-color;
+	}	
+	//Rank Order/Constant Sum inputs -- Center the number
+	.Matrix .TE .Short td input, .Matrix .TE .Medium td input, .Matrix .TE .Long td input, .SBS .InputText, .CS input.SumInput, .CS .SumInput input.InputText, .CS .SumTotal input, .RO .RankInput {
 		text-align: center;
 	}
 
-
-	//Slider
+	////////////////////////////////////////////////////////////////////
+	// Slider
+	////////////////////////////////////////////////////////////////////
+	.horizontalbar .Slider .track {
+		background-color: $slider-bar-color; //BOOKMARK: what's a good way to make the area around the slider selectable, without having to use an image
+	}
 	.horizontalbar th.ylabel {
 		padding:($default-container-padding / 2);
 	}
 	.horizontalbar tr.Stars td.value input,
 	.horizontalbar table.sliderGrid tr td.value input {
 		width: 4em;
+		border: $default-border; // This is so the focus class can apply a color border
+		border-color: transparent;
 	}
-	//Slider
-	// BOOKMARK: Figure out borders around these for light-overlay.  And heights and widths of the slider bars everywhere (BaseStyles?)...
-	// Borders don't work... very well.  They throw off the height/width of the element that is calculated for the JS to position the handle.
 	//Draggable Bar
-
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
 		@include border-radius($default-border-radius);
-		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == F {
-			border: $default-border;
-		}
 	}
 	.HBAR .trackHolderRel .track {
 		border: $default-border;
 			@include border-radius(2px);
 	}
-
 	.HBAR .trackHolderRel.activated .track {
 		border-color: darken($slider-handle-color, 10%);
-	}
-
-	// Slider
-	// This is the old sprite (the gray track)
-	.horizontalbar .Slider .track {
-		background-color: $slider-bar-color;
-		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == F {
-			border: $default-border;
-			height: 12px; 
-		}
-		//BOOKMARK: what's a good way to make the area around the slider selectable, without having to use a sprite
 	}
 	//Graphic Slider
 	.SS .horizontalbar .SSTrack,
 	.SS .verticalbar .SSTrack {
 		margin: 20px !important;
 		background-color: $slider-bar-color;
-
 	}
-		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == F {
-			.SS .horizontalbar .SSTrack {
-				border: $default-border;
-				height: 12px;
-			}
-			.SS .verticalbar .SSTrack {
-				border: $default-border;
-				width: 12px;
-			}
-		}
-	
-
 	.horizontalbar .activated .bar,
 	.horizontalbar .BarContainer:hover .bar,
 	.SS .horizontalbar .handle,
@@ -1112,63 +974,52 @@
 	.SS .verticalbar .SSTrack .handle{
 		background: $slider-handle-color;
 	}
-
 	.SS .horizontalbar .handle:hover,
 	.horizontalbar .Slider .handle:hover {
 		background-color: $primary-color;
 		padding: 10px;
 	}
 
-	//End of Survey message
-	.EndOfSurvey {
-		color: $question-text-color;
-		padding: 30px;
-	}
-
-	//.TE Text Entry
+	////////////////////////////////////////////////////////////////////
+	// Text Entry
+	////////////////////////////////////////////////////////////////////
 	.TE .FORM table {
 		width: 100%;
 	}
 	.TE .ControlContainer {
-		width: 70%;
+		width: 50%; //Mobile
 	}
 	.TE .FORM .LabelWrapper {
 		text-align: left;
 	}
+	@media all and (max-width: 768px) {
+		.TE .FORM input.InputText {
+			width: 100% !important; // Mobile
+		}
+	}	
+	@media all and (min-width: 768px) {
+		.TE .FORM span.LabelWrapper {
+			padding-right: 1em;
+		}
+		.TE .ControlContainer {
+			width: 75%;
+		}
+	}
 	.TE textarea {
 		width: 100%;
 	}
-	@media all and (max-width: 768px) {
-		.TE .FORM input.InputText {
-			width: 100% !important;
-		}
-	}
 
-	//DropDown
-	//Moves text boxes to right, utilizing full width of question.  
+	////////////////////////////////////////////////////////////////////
+	// Dropdown
+	////////////////////////////////////////////////////////////////////
 	.Matrix .DL table td.last{
-		text-align:right;
 		padding-right: $default-container-padding / 2;
+		text-align: right;
 	}
 
-
+	////////////////////////////////////////////////////////////////////
 	// Select Box
-	.SB select,
-	.MSB select {
-
-		//BOOKMARK: decided to remove this.
-		// width: 100%;
-		// @media all and (min-width: 767px) {
-		// 	@if $full-width-labels-on == T {
-		// 		width: 100%;
-		// 	} @else {
-		// 		width: 50%;
-		// 		margin: 0 auto;
-		// 		display: block;
-		// 	}
-		// }
-
-	}
+	////////////////////////////////////////////////////////////////////
 	.SB input {
 		background: $button-primary-color;
 		color:$button-text-color;
@@ -1179,23 +1030,23 @@
 		border: none;	
 		border: $default-border;
 		border-color: $button-primary-color;
+		-webkit-appaerance: none;
 	}
 
-
-	// .Matrix
+	////////////////////////////////////////////////////////////////////
+	// Matrix
+	////////////////////////////////////////////////////////////////////
 	.RO .RB th,
 	.SBSMatrix th,
 	.Matrix th {
 		padding: $default-container-padding / 2;
 	}
 
-	// This keeps the long .TE inputs from touching each other.
 	.Matrix .TE td input {
-		margin: 2px;
+		margin: 2px; // This keeps the long .TE inputs from touching each other.
 	}
 
-	// // BOOKMARK: 
-	// // TEST STYLES
+	// // BOOKMARK: TEST STYLES
 	// .Matrix .Profile .MultipleAnswer table th.c1 {
 	// 	background: $primary-color;
 	// 	color: #fff;
@@ -1214,11 +1065,16 @@
 	// }
 
 
+
+
+
 } // /.Skin
 
+//BOOKMARK: Start here 9/5
 
 
-// /end stuff from basestyles
+
+
 
 
 				// determining focus class for text entry boxes... do we need to be this specific?
@@ -1228,6 +1084,7 @@
 				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
 					border-color: $primary-color;
 					// outline: none;
+					//BOOKMARK: Need to apply a focus class to inputs, so people can tab through the survey. 
 				}
 
 
@@ -1235,8 +1092,12 @@
 				// Pulled these out of media query in BaseStyles, but haven't removed compeletely from BaseStyles yet...
 				// @media only screen and (max-device-width: 480px) {
 					.Skin .Inner.CS,
-					.Skin .Inner.HBAR {
-						min-width: 0px;
+					// .Skin .Inner.HBAR,
+					.Skin .Inner.HSLIDER {
+						// min-width: 0px;
+						// background: orange; 
+						//BOOKMARK: this is overriding the min-width: 500px in BaseStyles.  
+						// but it appears to make the horizontal scrolling work better.  What's the min-width: 500px for again? 
 					}
 				// }
 
@@ -1257,6 +1118,13 @@
 								td {
 									display: block;
 									width: 100%;
+
+									//BOOKMARK: 
+									// THIS OR THE ABOVE?
+									// display: inline-block;
+									// width: auto;
+									// margin: ($answer-label-spacing / 2) !important;
+
 								}
 							}
 						}
@@ -1618,7 +1486,10 @@
 		
 		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
 		// NOT ANY MORE. 
-		padding: 20px 4%;
+		padding: 10px 5px;
+		@media all and (min-width: 768px) {
+			padding: 20px 4%;
+		}
 		display: block;
 		@if $border-radius-on == T {
 			@include border-radius($default-border-radius);
@@ -1665,19 +1536,33 @@
 		border-color: $primary-color;
 	}
 
-	///* ... Vertically centers text in td (continued) */
-	.Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-	.Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-		display: table-cell;
-		vertical-align: middle;
-	}
+	// First attempt to vertically center text in td... Doesn't work very well.  
+	// ///* ... Vertically centers text in td (continued) */
+	// .Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
+	// .Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
+	// 	display: table-cell;
+	// 	vertical-align: middle;
+	// 	background: red !important;
+	// 	padding: 100px;
+	// }
+	//BOOKMARK: The below messes up the vertical alignment on FORM questions... Do we still need this, or is this left over from the CSS vertical align label solution?
 	///* ... Make labels full-height of span of td (continued) */
-	.Skin td .LabelWrapper {
-		display: block;
-		overflow: auto;
-		height: 100%;
+	// This only works on Chrome to align them... Firefox is sixes.
+	// .Skin td .LabelWrapper {
+	// 	display: block;
+	// 	overflow: auto;
+	// 	height: 100%;
+	// }
+	//INSTEAD, we can do this...?
+	.Skin .SAHR td.LabelContatiner,
+	.Skin .MAHR td.LabelContatiner,
+	.Skin .SACOL td.LabelContatiner,
+	.Skin .MACOL td.LabelContatiner {
+		//Aligns the labels when there's a .TextEntryBox
+		vertical-align: top;
 	}
 
+	//BOOKMARK: This was over-riding BaseStyles right? so remove now.  
 	// /* Have to remove the below from BaseStyles or labels spill over top and bottom
 	// because of full-height label CSS. */
 	// .Skin .MC .QuestionBody td label {
@@ -1710,6 +1595,11 @@
 
 // End LABEL STYLES TEST
 
+.Skin .LanguageSelectorContainer {
+	margin: $default-container-padding;
+	margin-bottom: 0;
+	text-align: right;
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

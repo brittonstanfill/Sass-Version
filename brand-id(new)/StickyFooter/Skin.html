@@ -20,38 +20,38 @@
 	</div>
 	<div id="Plug" style="display:block !important;"><a style="display:block !important;" href="http://www.qualtrics.com/" target="_blank">Survey Powered by Qualtrics</a></div>
 </div>
-<script type="text/javascript">
-var Lance = {
-	uniformButton: function(qid) {
-		var labels = $$('#'+ qid +' label');
-		var tallest = 0;
-		var label;
-		var padding;
-		for(label in labels) {
-			if(labels.hasOwnProperty(label) && labels[label].offsetHeight > tallest )
-			tallest = labels[label].offsetHeight;
-		}
-		for(label in labels) {
-			if(labels.hasOwnProperty(label) && labels[label].offsetHeight <= tallest) {
-				padding = parseInt($(labels[label]).getStyle('padding-top')) + parseInt($(labels[label]).getStyle('padding-bottom'));
-				var newHeight = tallest - labels[label].offsetHeight;
-				newHeight = parseInt(newHeight/2);
-				var paddingtop = parseInt($(labels[label]).getStyle('padding-top'))+newHeight;
-				var paddingbottom = parseInt($(labels[label]).getStyle('padding-bottom'))+newHeight;
-					if(labels[label].hasClassName('q-radio') == false && labels[label].hasClassName('q-checkbox') == false){
-					labels[label].style.paddingTop = paddingtop +'px';
-					labels[label].style.paddingBottom = paddingbottom +'px';
-					}
-			}
-		}
-	}
-}
-window.onload = function(){
+<!-- // <script type="text/javascript">
+// var Lance = {
+// 	uniformButton: function(qid) {
+// 		var labels = $$('#'+ qid +' label');
+// 		var tallest = 0;
+// 		var label;
+// 		var padding;
+// 		for(label in labels) {
+// 			if(labels.hasOwnProperty(label) && labels[label].offsetHeight > tallest )
+// 			tallest = labels[label].offsetHeight;
+// 		}
+// 		for(label in labels) {
+// 			if(labels.hasOwnProperty(label) && labels[label].offsetHeight <= tallest) {
+// 				padding = parseInt($(labels[label]).getStyle('padding-top')) + parseInt($(labels[label]).getStyle('padding-bottom'));
+// 				var newHeight = tallest - labels[label].offsetHeight;
+// 				newHeight = parseInt(newHeight/2);
+// 				var paddingtop = parseInt($(labels[label]).getStyle('padding-top'))+newHeight;
+// 				var paddingbottom = parseInt($(labels[label]).getStyle('padding-bottom'))+newHeight;
+// 					if(labels[label].hasClassName('q-radio') == false && labels[label].hasClassName('q-checkbox') == false){
+// 					labels[label].style.paddingTop = paddingtop +'px';
+// 					labels[label].style.paddingBottom = paddingbottom +'px';
+// 					}
+// 			}
+// 		}
+// 	}
+// }
+// window.onload = function(){
 	
-	$$('.QuestionOuter').each(function(el) {
-		if($(el).hasClassName('MC')){
-			Lance.uniformButton(el.id);
+// 	$$('.QuestionOuter').each(function(el) {
+// 		if($(el).hasClassName('MC')){
+// 			Lance.uniformButton(el.id);
 
-		}
-	});
-};</script>
+// 		}
+// 	});
+// };</script> -->

@@ -438,7 +438,7 @@ h2.noStyle {
 //////////////////////////////
 //////////////////////////////
 
-//Makes label .QuestionTexts same as div ones
+//Makes label .QuestionText(s) same as div ones
 .Skin label.QuestionText{
 	display: block;
 }
@@ -460,9 +460,6 @@ h2.noStyle {
 }
 .Skin .QuestionText{
 	zoom: 1;
-}
-.Skin .LanguageSelectorContainer {
-	text-align: right;
 }
 ///* Must remain general so styles of like priority can overwrite this */
 .LanguageSelectorContainer a {
@@ -557,7 +554,9 @@ h2.noStyle {
 .Skin .NPS table .ColumnLabels .Last {
 	text-align: right;
 }
-
+.SAHR .Selection {
+	display: inline-block; //Needed for "Horizontal" option with side labels
+}
 
 //MATRIX
 
@@ -627,9 +626,6 @@ h2.noStyle {
 // .Skin .TE .FORM .ChoiceStructure table {
 // 	width: 100%;
 // }
-.Skin .TE .FORM span.LabelWrapper {
-	padding-right: 2em;
-}
 // changing from px to em so increased font-size will make box larger to accomodate
 .Skin .TE .ChoiceStructure .Short {
 	width: 30px;
@@ -1398,7 +1394,6 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	width:200px;
 	margin:0 auto;
 }
-$slider-bar-color: blue;
 .Skin .SS .verticalbar .SSTrack {
 	position:relative;
 	width:8px;
@@ -2591,23 +2586,25 @@ body.TocMargin div.Skin{
 	// be able to put slider labels (on left) above or below the sliders themselves.  
 
 	// BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
-	.Skin .Inner.HSLIDER {
-		min-width: 500px;
-		max-width: 500px;
-	}
-	.Skin .Inner.HBAR {
-		min-width: 500px;
-		max-width: 500px;
-	}
-	.Skin .Inner.CS {
-		min-width: 500px;
-		max-width: 500px;
-	}
-	/* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
+	// .Skin .Inner.HSLIDER {
+	// 	min-width: 500px;
+	// 	max-width: 500px;
+	// }
+	// .Skin .Inner.HBAR {
+	// 	// min-width: 500px;
+	// 	// background: red;
+	// 	// max-width: 500px;
+	// }
+	// .Skin .Inner.CS {
+	// 	min-width: 500px;
+	// 	max-width: 500px;
+	// }
+	// // /* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
 	.Skin .HSLIDER .horizontalbar,
 	.Skin .HBAR .horizontalbar {
 		min-width: 500px;
-		max-width: 500px;
+		background: orange;
+		// max-width: 500px;
 	}
 
 	//
