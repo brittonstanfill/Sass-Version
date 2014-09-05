@@ -1283,6 +1283,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 .Skin .PGR .GroupNoDnd .GroupItems td input{
 	white-space: nowrap;
 	width: 25px;
+	color:#333;//added for better text contrast on old school group and rank 
 }
 .Skin .PGR .NumGroups {
 	margin-top: 5px;
@@ -1291,6 +1292,9 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	min-height: 0;
 }
 .Skin .PGR .QuestionBody .ChoiceStructure .Group ul {
+}
+.Skin	.PGR .RecipientDefined input[type="text"]{
+	width:100%; 
 }
 /////////////////////
 /// end of "not drag and drop"

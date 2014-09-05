@@ -993,13 +993,17 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
 .Skin .PGR .GroupNoDnd h2 .GetItems,
 .Skin .PGR .GroupNoDnd .GroupItems td input {
   white-space: nowrap;
-  width: 25px; }
+  width: 25px;
+  color: #333; }
 
 .Skin .PGR .NumGroups {
   margin-top: 5px; }
 
 .Skin .PGR .QuestionBody .ChoiceStructure .LabelWrapper ul {
   min-height: 0; }
+
+.Skin .PGR .RecipientDefined input[type="text"] {
+  width: 100%; }
 
 .Skin .HotSpot .QuestionBody {
   position: relative; }
