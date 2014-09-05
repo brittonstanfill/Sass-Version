@@ -527,6 +527,7 @@ a {
 		overflow-y:hidden;  // this allows the QuestionBody to scroll independently of the QuestionText
 		padding: $default-container-padding;
 		padding-top: ($default-container-padding / 2);
+		position:relative;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking - needs to be here for overflowing questions
 		@media all and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
 		}
@@ -1154,7 +1155,11 @@ a {
 .Skin input[type="radio"],
 .Skin input[type="checkbox"] {
 	position: absolute;
-	left: -9999px;
+	//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+	opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+	z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+	height:0;
+	width:0;
 }
 
 // Radio Buttons Conditionals
