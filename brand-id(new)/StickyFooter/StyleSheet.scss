@@ -21,7 +21,7 @@
 
 	//BACKGROUND
 	$body-background-image-on: T;
-	$overlay-dark: F;
+	$overlay-dark: T;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
@@ -1074,67 +1074,37 @@ a {
 //BOOKMARK: Start here 9/5
 
 
-
-
-
-
-				// determining focus class for text entry boxes... do we need to be this specific?
-				.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
-				.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, .CS .SumInput input:focus,
-				.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus, 
-				.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-					border-color: $primary-color;
-					// outline: none;
-					//BOOKMARK: Need to apply a focus class to inputs, so people can tab through the survey. 
-				}
-
-
-				// Added to allow text to wrap on mobile for these questions
-				// Pulled these out of media query in BaseStyles, but haven't removed compeletely from BaseStyles yet...
-				// @media only screen and (max-device-width: 480px) {
-					.Skin .Inner.CS,
-					// .Skin .Inner.HBAR,
-					.Skin .Inner.HSLIDER {
-						// min-width: 0px;
-						// background: orange; 
-						//BOOKMARK: this is overriding the min-width: 500px in BaseStyles.  
-						// but it appears to make the horizontal scrolling work better.  What's the min-width: 500px for again? 
-					}
-				// }
-
-
 // From Mark's New-Sass-Framework - - make questions break, etc.
-// BOOKMARK: 
-// Perhaps this should be optional, with an explanation?
+// BOOKMARK: This change should be advertised.  
 	
-				.Skin {
+.Skin {
 
-					//MC (MULTIPLE CHOICE) CLASS 
-					.MC {
+	//MC (MULTIPLE CHOICE) CLASS 
+	.MC {
 
-						.MAHR, .SAHR {
+		.MAHR, .SAHR {
 
-							@media all and (max-width: 768px) {
+			@media all and (max-width: 768px) {
 
-								td {
-									display: block;
-									width: 100%;
+				td {
+					display: block;
+					width: 100%;
 
-									//BOOKMARK: 
-									// THIS OR THE ABOVE?
-									// display: inline-block;
-									// width: auto;
-									// margin: ($answer-label-spacing / 2) !important;
+					//BOOKMARK: 
+					// THIS OR THE ABOVE?
+					// display: inline-block;
+					// width: auto;
+					// margin: ($answer-label-spacing / 2) !important;
 
-								}
-							}
-						}
-
-					}
 				}
+			}
+		}
+
+	}
+}
 
   /////////////////////////////
- // START LABEL STYLES TEST //
+ // START LABEL STYLES 		//
 /////////////////////////////
 
 // Need "No Radio Buttons" and "Styled Radio Buttons option"

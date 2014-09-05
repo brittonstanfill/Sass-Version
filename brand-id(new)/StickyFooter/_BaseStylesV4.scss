@@ -2579,32 +2579,9 @@ body.TocMargin div.Skin{
 		top: 0px!important;
 	}
 
-	// REMOVE all this...?
-	// Do need some kind of width for the slider questions... maybe not?
-	// IF remove this, the SLIDER questions get squished as narrow widths.
-	// Would need to figure out a solution to remove middle numbers on upper scale labels, and 
-	// be able to put slider labels (on left) above or below the sliders themselves.  
-
-	// BOOKMARK: Makes sense to make sliders not be too narrow... figure out best way to do this.  
-	// .Skin .Inner.HSLIDER {
-	// 	min-width: 500px;
-	// 	max-width: 500px;
-	// }
-	// .Skin .Inner.HBAR {
-	// 	// min-width: 500px;
-	// 	// background: red;
-	// 	// max-width: 500px;
-	// }
-	// .Skin .Inner.CS {
-	// 	min-width: 500px;
-	// 	max-width: 500px;
-	// }
-	// // /* We don't apply this without the HSLIDER or HBAR since it could affect sliding scale questions */
 	.Skin .HSLIDER .horizontalbar,
 	.Skin .HBAR .horizontalbar {
-		min-width: 500px;
-		background: orange;
-		// max-width: 500px;
+		min-width: 500px; // To prevent slider questions from squishing together very small. 
 	}
 
 	//
