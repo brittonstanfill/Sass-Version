@@ -1140,7 +1140,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul {
   display: block; }
 
 .Skin .GAP .LightBG {
-  background: rgba(0, 0, 0, 0.2); }
+  background: rgba(230, 230, 230, 0.1); }
 
 /* Display the clock on a timer question to see all this
 */
@@ -1862,7 +1862,7 @@ body.TocMargin div.Skin {
 
 .Skin .ProgressBarFillContainer {
   width: 150px;
-  background: #505457; }
+  background: #dddddd; }
 
 .Skin .Redirect a {
   padding-top: 6pt; }
@@ -2005,8 +2005,7 @@ body.TocMargin div.Skin {
 
   .Skin .HSLIDER .horizontalbar,
   .Skin .HBAR .horizontalbar {
-    min-width: 500px;
-    background: orange; }
+    min-width: 500px; }
 
   body.TocMargin div.Skin {
     margin-left: 0px; }
@@ -2068,7 +2067,7 @@ a {
   color: #4b86ee; }
 
 #SurveyEngineBody {
-  background: white url(http://37.media.tumblr.com/0da1e786ac7997b82b072c30b32092ca/tumblr_naj3n71TcT1st5lhmo1_1280.jpg) no-repeat center fixed;
+  background: #555555 url(http://37.media.tumblr.com/0da1e786ac7997b82b072c30b32092ca/tumblr_naj3n71TcT1st5lhmo1_1280.jpg) no-repeat center fixed;
   background-size: cover;
   font-family: "Roboto", "Helvetica", Arial, sans-serif; }
 
@@ -2091,7 +2090,7 @@ a {
     height: auto !important;
     height: 100%;
     margin: 0 auto -39px;
-    background: rgba(255, 255, 255, 0.7); }
+    background: rgba(0, 0, 0, 0.7); }
   .Skin #ProgressBar {
     font-size: 14px;
     position: relative; }
@@ -2143,7 +2142,7 @@ a {
     margin: 0 auto; }
   .Skin #Header {
     font-size: 18px;
-    color: #333333;
+    color: white;
     margin: 0px auto;
     max-width: 960px;
     padding: 10px 30px; }
@@ -2157,13 +2156,13 @@ a {
     padding-top: 1px; }
   .Skin .QuestionText {
     font-size: 21px;
-    color: #333333;
+    color: white;
     padding: 30px; }
     @media all and (max-width: 768px) {
       .Skin .QuestionText {
         padding: 15px; } }
   .Skin .QuestionBody {
-    color: #333333;
+    color: white;
     font-size: 18px;
     overflow-y: hidden;
     padding: 30px;
@@ -2242,7 +2241,7 @@ a {
   .Skin button, .Skin input, .Skin select, .Skin textarea {
     font-family: "Roboto", "Helvetica", Arial, sans-serif;
     font-size: 18px;
-    color: #333333; }
+    color: white; }
   .Skin input.TextEntryBox,
   .Skin .TE textarea,
   .Skin textarea,
@@ -2250,13 +2249,15 @@ a {
   .Skin input[type="text"],
   .Skin input[type="search"],
   .Skin select {
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px;
-    padding: 4px; }
+    padding: 4px;
+    background: transparent;
+    color: #FFF; }
     .Skin input.TextEntryBox:focus,
     .Skin .TE textarea:focus,
     .Skin textarea:focus,
@@ -2304,17 +2305,17 @@ a {
       .Skin .QuestionOuter.Highlight .Inner {
         margin: 0 15px; } }
   .Skin .EndOfSurvey {
-    color: #333333;
+    color: white;
     padding: 30px; }
   .Skin .Separator {
     height: 2px;
-    background: #666666;
+    background: #cccccc;
     margin: 10px 30px; }
     @media only screen and (max-width: 768px) {
       .Skin .Separator {
         margin: 5px 15px; } }
   .Skin .LightText {
-    color: #595959; }
+    color: white; }
   @media only screen and (min-width: 767px) {
     .Skin .ChoiceRow,
     .Skin .Choice,
@@ -2325,14 +2326,14 @@ a {
       .Skin .Choice:hover,
       .Skin .RO .RB tr:hover,
       .Skin .CS .VRTL li:hover {
-        background: #dddddd;
-        background: rgba(0, 0, 0, 0.2); }
+        background: #555555;
+        background: rgba(255, 255, 255, 0.1); }
     .Skin .RO .RB tr.Answers,
     .Skin .Matrix .Bipolar tr,
     .Skin .Matrix .Profile tr {
       background: inherit; } }
   .Skin .PGR .DragAndDrop td.groupsContainerTd div > div {
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
@@ -2342,10 +2343,10 @@ a {
   .Skin .PGR .DragAndDrop h2 {
     font-size: 20px; }
   .Skin .PGR .DragAndDrop .Group h2 {
-    border-bottom: 2px solid #666666;
+    border-bottom: 2px solid #cccccc;
     padding: 10px;
     background: #f7f7f7;
-    background: #FFF; }
+    background: transparent; }
   .Skin .RO .DND .rank,
   .Skin .PGR .DragAndDrop .rank {
     padding: 0px 10px;
@@ -2367,12 +2368,13 @@ a {
     -moz-box-sizing: content-box;
     box-sizing: content-box; }
   .Skin .PGR .DragAndDrop .stack ul li.stack {
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
-    border-radius: 4px; }
+    border-radius: 4px;
+    color: #444; }
   .Skin .RO .DND .Items ul li,
   .Skin .PGR .DragAndDrop .Items ul li {
     padding: 8px 0;
@@ -2388,8 +2390,8 @@ a {
     text-align: center; }
     .Skin .RO .DND .Group ul li:hover,
     .Skin .PGR .DragAndDrop ul li:hover {
-      background: #dddddd;
-      background: rgba(0, 0, 0, 0.2); }
+      background: #555555;
+      background: rgba(255, 255, 255, 0.1); }
   .Skin .PGR .DragAndDrop ul li.stack:hover {
     background: #fff; }
   .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
@@ -2419,8 +2421,8 @@ a {
   .Skin .RO .RB .ChoiceStructure td {
     padding: 15px inherit; }
   .Skin .RO .DND ul li:hover {
-    background: #dddddd;
-    background: rgba(0, 0, 0, 0.2); }
+    background: #555555;
+    background: rgba(255, 255, 255, 0.1); }
   .Skin .CS .ChoiceStructure li {
     padding: 15px; }
   .Skin .CS .VRTL .SumInput input,
@@ -2428,28 +2430,28 @@ a {
     margin-top: 10px; }
   .Skin .CS .CSTotal,
   .Skin .CS .Total {
-    background: #dddddd;
-    background: rgba(0, 0, 0, 0.2); }
+    background: #555555;
+    background: rgba(255, 255, 255, 0.1); }
   .Skin .Matrix .TE .Short td input, .Skin .Matrix .TE .Medium td input, .Skin .Matrix .TE .Long td input, .Skin .SBS .InputText, .Skin .CS input.SumInput, .Skin .CS .SumInput input.InputText, .Skin .CS .SumTotal input, .Skin .RO .RankInput {
     text-align: center; }
   .Skin .horizontalbar .Slider .track {
-    background-color: #505457; }
+    background-color: #dddddd; }
   .Skin .horizontalbar th.ylabel {
     padding: 15px; }
   .Skin .horizontalbar tr.Stars td.value input,
   .Skin .horizontalbar table.sliderGrid tr td.value input {
     width: 4em;
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     border-color: transparent; }
   .Skin .horizontalbar .bar {
-    background-color: #505457;
+    background-color: #dddddd;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px; }
   .Skin .HBAR .trackHolderRel .track {
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -2460,7 +2462,7 @@ a {
   .Skin .SS .horizontalbar .SSTrack,
   .Skin .SS .verticalbar .SSTrack {
     margin: 20px !important;
-    background-color: #505457; }
+    background-color: #dddddd; }
   .Skin .horizontalbar .activated .bar,
   .Skin .horizontalbar .BarContainer:hover .bar,
   .Skin .SS .horizontalbar .handle,
@@ -2500,7 +2502,7 @@ a {
     border-radius: 4px;
     padding: 4px 12px;
     border: none;
-    border: 2px solid #666666;
+    border: 2px solid #cccccc;
     border-color: #f06f6f;
     -webkit-appaerance: none; }
   .Skin .RO .RB th,
@@ -2509,12 +2511,6 @@ a {
     padding: 15px; }
   .Skin .Matrix .TE td input {
     margin: 2px; }
-
-.QuestionBody .TextEntryBox:focus, .TE textarea:focus, .TE input:focus, .TE .ML textarea:focus,
-.TE .ESTB textarea:focus, .RO .RankInput:focus, .CS input.SumInput:focus, .CS input.SumTotal:focus, .CS .SumInput input:focus,
-.Matrix .CS input:focus, .Matrix .RO input:focus, .SBS .Long:focus, .horizontalbar tr.Stars td.value input:focus,
-.horizontalbar table.sliderGrid tr td.value input:focus, .PGR .DragAndDrop ul:focus, select:focus, input:focus {
-  border-color: #f06f6f; }
 
 @media all and (max-width: 768px) {
   .Skin .MC .MAHR td, .Skin .MC .SAHR td {
@@ -2528,6 +2524,14 @@ a {
   z-index: -1;
   height: 0;
   width: 0; }
+
+.Skin input[type="radio"],
+.Skin input[type="checkbox"] {
+  position: relative\9;
+  opacity: 1\9;
+  z-index: 1\9;
+  height: inherit\9;
+  width: inherit\9; }
 
 .Skin label.q-radio,
 .Skin .q-checkbox {
@@ -2615,8 +2619,8 @@ a {
 .Skin .QuestionBody label.MultipleAnswer {
   background: #eeeeee;
   border: none;
-  background: #EEE;
-  background: rgba(0, 0, 0, 0.1);
+  background: #555;
+  background: rgba(255, 255, 255, 0.1);
   transition: background-color .2s ease-in-out;
   padding: 10px 5px;
   display: block;
@@ -2630,8 +2634,9 @@ a {
   .Skin .QuestionBody label.MultipleAnswer:hover {
     background: #ffe5e5;
     border-color: #ffb3b3;
-    background: #DDD;
-    background: rgba(0, 0, 0, 0.25); }
+    background: #333;
+    background: rgba(179, 179, 179, 0.1);
+    color: #cccccc; }
   @media all and (min-width: 768px) {
     .Skin .QuestionBody label.SingleAnswer,
     .Skin .QuestionBody label.MultipleAnswer {

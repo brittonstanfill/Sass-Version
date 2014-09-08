@@ -1132,6 +1132,15 @@ a {
 	width:0;
 }
 
+.Skin input[type="radio"],
+.Skin input[type="checkbox"] {
+	position:relative\9;
+	opacity:1\9;
+	z-index:1\9;
+	height:inherit\9;
+	width:inherit\9;
+}
+
 // Radio Buttons Conditionals
 
 
