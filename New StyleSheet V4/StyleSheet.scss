@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//LOGO
-	$interchangeable-logo: F;
+	$interchangeable-logo: T;
 
 	//LAYOUT
 	$full-width-header: F;
@@ -30,7 +30,7 @@
 	$question-container-box-shadow-on: T;
 
 	//RADIO BUTTONS
-	$radio-buttons: F;
+	$radio-buttons: T;
 
 	//LABEL STYLE
 	$label-style: 2; 
@@ -230,7 +230,7 @@
 	//FOOTER
 	$footer-font-size: ($default-font-size - 4);
 	$footer-padding: $default-container-padding;
-	-->	$footer-text-color: #FFF; //BOOKMARK: We could figure out a way to calculate this.  For now, $default-text-color, or manually update. 
+	-->	$footer-text-color: $default-text-color; //BOOKMARK: We could figure out a way to calculate this.  For now, $default-text-color, or manually update. 
 
 	//PLUG
 	$plug-font-size: $footer-font-size;
@@ -238,8 +238,8 @@
 	$plug-link-color: #FFF;
 	$plug-background: rgba(0,0,0,.3);
 	$plug-background-hover: rgba(0,0,0,.4);
-	$calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
-
+	// $calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
+	$calculated-sticky-footer-height: 40px;
 
 //FIND A HOME for these
 	$slider-handle-color: $primary-color;
@@ -344,6 +344,15 @@ a {
 			height: 100%;
 			margin: 0 auto (-$calculated-sticky-footer-height);
 		}
+	}
+
+	#Overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -9;
 		@if $body-background-image-on == T and $boxed-skincontent == F {
 			@if $overlay-dark == T {
 				background: $wrapper-background-overlay-dark;
@@ -374,6 +383,9 @@ a {
 	  line-height: $progress-bar-fill-height;
 	  border-left: 2px solid $progress-bar-fill-color;
 	  width: 100%;
+	  &:empty {
+	  	display: none;
+	  }
 	}
 	
 	#ProgressBar tr td:nth-child(2){
@@ -385,6 +397,9 @@ a {
 	  right: 0;
 	  line-height: $progress-bar-fill-height;
 	  color: $progress-bar-fill-color;
+	  &:empty {
+	  	background: blue;
+	  }
 	}
 
 	.ProgressBarFillContainer {
@@ -494,8 +509,13 @@ a {
 		@if $interchangeable-logo == T {
 			padding: $logo-padding $default-container-padding; // the Header acts as the Logo
 		}
-		&:empty {
-			padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
+		@if $interchangeable-logo == F or $interchangeable-logo == T and $boxed-skincontent == T {
+			&:empty {
+				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
+			}
+		} 
+		@if $interchangeable-logo == T and $boxed-skincontent == T {
+			padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
 		}
 	}
 
@@ -522,7 +542,7 @@ a {
 	}
 
 	#Questions {
-		padding-top: 1px; 	//BOOKMARK: take this off, and the HeaderValidationError moves to top of #Questions. Why?
+		overflow: auto; // Prevents the Validation Error Message from touching to top (previously used: padding-top: 1px;)
 	}
 
 	@if $boxed-questions-new == T {
@@ -531,6 +551,12 @@ a {
 			margin: 0 $default-mobile-container-padding;
 			@include border-radius($default-border-radius);
 		}
+	}
+
+	.QuestionOuter .Inner {
+		// Need these so we can add a border to the "highlighted" questions
+		border: $default-border; 
+		border-color: transparent;
 	}
 
 	.QuestionText {
@@ -584,6 +610,10 @@ a {
 		text-align:right;
 		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
+		}
+		&:empty {
+			margin-top: 0;
+			padding: 0;
 		}
 	}
 
@@ -659,6 +689,7 @@ a {
 			background: $plug-background;
 			-webkit-transition: background .3s;
 			text-align: center;
+			height: $calculated-sticky-footer-height;
 			@if $border-radius-on == T{
 				@media all and (min-width: 767px) {
 					@include border-radius(5px 0 0 0);
@@ -757,16 +788,31 @@ a {
 		}
 	}
 	.ValidationError {
-		font-size: 120%;
-		padding: 0 0 10px 0;
-		@if $error-color == O {
-			color: $error-orange-color;
-		} @elseif $error-color == R {
-			color: $error-red-color;
-		} @elseif $error-color == B {
-			color: $error-blue-color;
-		}
+		font-size: $question-text-font-size;
+		font-weight: bold;
 		text-align: center;
+		@if $boxed-skincontent == F {
+			padding: 0 0 10px 0;
+			@if $error-color == O {
+				color: $error-orange-color;
+			} @elseif $error-color == R {
+				color: $error-red-color;
+			} @elseif $error-color == B {
+				color: $error-blue-color;
+			}
+		} @elseif $boxed-skincontent == T {
+			padding: 10px 0 0 0;
+			@if $error-color == O {
+				background: lighten($error-orange-background, 4%);
+				color: $error-orange-color;
+			} @elseif $error-color == R {
+				background: lighten($error-red-background, 4%);
+				color: $error-red-color;
+			} @elseif $error-color == B {
+				background: lighten($error-blue-background, 4%);
+				color: $error-blue-color;
+			}
+		}
 	}
 	.HeaderValidationError h1 {
 		font-size: 120%;
@@ -784,18 +830,30 @@ a {
 
 	.QuestionOuter.Highlight .Inner {
 		// background-color: $highlight-color;
-		border: 2px solid $highlight-color;
+		border-color: $highlight-color;
 		@include border-radius($default-border-radius);
-		margin: 0 $default-container-padding;
-		margin-bottom: ($default-container-padding / 2);
+		// margin: 0 $default-container-padding;
+		// margin-bottom: ($default-container-padding / 2);
 		@media only screen and (max-width: 768px) {
 			margin: 0 $default-mobile-container-padding;	
 		}
+		@if $boxed-skincontent == T {
+			border-color: transparent;
+			@if $error-color == O {
+				background: lighten($error-orange-background, 4%);
+			} @elseif $error-color == R {
+				background: lighten($error-red-background, 4%);
+			} @elseif $error-color == B {
+				background: lighten($error-blue-background, 4%);
+			}
+			@include border-radius(0);
+		}
 	}
+
 
 	.EndOfSurvey {
 		color: $question-text-color;
-		padding: 30px;
+		padding: 60px 30px;
 	}
 
 	.Separator {
@@ -1108,8 +1166,28 @@ a {
 	// 	border-radius: 0 0 0 $default-border-radius;
 	// }
 
-
-
+	////////////////////////////////////////////////////////////////////
+	// NPS
+	////////////////////////////////////////////////////////////////////
+	@if $radio-buttons == T { // Prevent radio buttons from riding up
+		.NPS label.SingleAnswer {
+			display: block;
+		}
+		.NPS td.LabelContatiner {
+			text-align: center;
+		}
+		.NPS td.ControlContainer {
+			position: relative;
+			height: 30px; // (height + margin-top) of label.q-radio
+			top: - 30px; // (height + margin-top) of label.q-radio
+			//IE8-
+			position: static\9;
+		}
+		// This is because these questions get extra space at the bottom for the invisible td.ControlContainer
+		.NPS .QuestionBody {
+			padding-bottom: 0;
+		}
+	}
 
 
 } // /.Skin
@@ -1308,7 +1386,10 @@ a {
 		padding-bottom: 0;
 	}
 
-
+	.Skin .MC .SAVR span.LabelWrapper,
+	.Skin .MC .MAVR span.LabelWrapper {
+		width: 90%; //Added to allow long answers to wrap rather than start on line below label.q-radio
+	}
 
 
 } // end if $radio-buttons == T
