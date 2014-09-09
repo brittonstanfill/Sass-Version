@@ -15,12 +15,12 @@
 
 	//LAYOUT
 	$full-width-header: F;
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.
 		$boxed-questions-new: F; //BOOKMARK: Do we want this or not?
 
 	//BACKGROUND
-	$body-background-image-on: F;
+	$body-background-image-on: T;
 	$overlay-dark: T;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
@@ -33,7 +33,7 @@
 	$radio-buttons: F;
 
 	//LABEL STYLE
-	$label-style: 1; 
+	$label-style: 2; 
 		// STYLE 1: Outline, 2px border-radius		// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 		// STYLE 2: No border, 4px border-radius
 		$full-width-labels-on: F; //BOOKMARK: we should just pick one or the other.
@@ -75,8 +75,8 @@
 	
 	//WRAPPER OVERLAY
 	//BOOKMARK: If we add an overlay to the image, we need to remove this overlay
-	$wrapper-background-overlay-dark: rgba(0,0,0,.7); 	//BOOKMARK: need to use an image for this to work in IE8-
-	$wrapper-background-overlay-light: rgba(255,255,255,.7);
+	$wrapper-background-overlay-dark: url(dark.png); 	//BOOKMARK: need to use an image for this to work in IE8-
+	$wrapper-background-overlay-light: url(light.png);
 
 	//DEFAULT - 
 	//WIDTH and PADDING
@@ -422,6 +422,12 @@ a {
 				}	
 			}
 		}
+		@media only screen and (max-width: 767px) {
+			margin: 0 auto !important;
+			max-width: $container-max-width;
+			@include border-radius(0);
+		}
+
 	}
 
 	#LogoContainer {
@@ -442,6 +448,12 @@ a {
 			background-size: $logo-image-width $logo-image-height;
 			height: $logo-height;
 			max-width: $logo-max-width;
+			@media only screen and (max-width: 767px) {
+				background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
+				background-size: $logo-mobile-width $logo-mobile-height;
+				height: $logo-mobile-height + $logo-padding;
+			}
+
 			@if $full-width-header == T {
 				margin: 0 auto;
 			}
@@ -464,6 +476,9 @@ a {
 			} @elseif $boxed-skincontent == F {
 				margin-bottom: ($default-container-padding);
 			}
+		}
+		@media only screen and (max-width: 767px) {
+			text-align: center;
 		}
 	}
 
@@ -500,7 +515,10 @@ a {
 				}
 			}
 		}
-
+		@media only screen and (max-width: 767px) {
+			border: none;
+			@include border-radius(0);
+		}
 	}
 
 	#Questions {
@@ -650,6 +668,12 @@ a {
 				background: $plug-background-hover;
 			}
 		}
+		@media only screen and (max-width: 767px) {
+			float:none;
+			a {
+				width:100%;
+			}
+		}
 	}
 
 	// Still inside .Skin
@@ -699,7 +723,8 @@ a {
 	}
 
 	.TE textarea, textarea {
-		padding: 8px; // Give these a little extra padding.  
+		padding: 8px; // Give these a little extra padding. 
+		max-width: 100%; 
 	}
 
 	@media only screen and (max-width: 767px) {
@@ -841,6 +866,11 @@ a {
 		}
 		background-color: $primary-color;
 		color:$reverse-primary-text-color;
+		@if $label-style == 1 {
+			border: 1px solid $primary-color;
+			background: transparent;
+			color: $primary-color;
+		}
 	}
 	.RO .DND ul.Edited .rank,
 	.RO .DND ul.NotEdited li:hover .rank,
@@ -1333,7 +1363,17 @@ a {
 	.Skin .MC .TextEntryBox {
 		padding: 4px;
 		margin-top: 8px;
+
 	}
+	// To make these look like text entry boxes. Maybe?
+	@if $label-style == 1 {
+		.Skin .TextEntryBox {
+			-webkit-box-shadow: inset 1px 1px 5px #ccc;
+			-moz-box-shadow: inset 1px 1px 5px #ccc;
+			box-shadow: inset 1px 1px 5px #ccc;
+		}
+	}
+
 
 	@media only screen and (min-width: 768px) {
 		.Skin .MC .ChoiceStructure {
@@ -1376,12 +1416,12 @@ a {
 			// display: none; // BOOKMARK: Figure out some way to do this without display:none;  (See below) 
 		}
 	}
-
-	.Skin .MC .MACOL table.ChoiceStructure,
-	.Skin .MC .SACOL table.ChoiceStructure {
-		border-spacing: 2px; //BOOKMARK: reducing space on column questions so the .ControlContainer doesn't have so much space around it to throw off the formatting
+	@media only screen and (max-width: 767px) {
+		.Skin .MC .MACOL table.ChoiceStructure,
+		.Skin .MC .SACOL table.ChoiceStructure {
+			border-spacing: 2px; //BOOKMARK: reducing space on column questions so the .ControlContainer doesn't have so much space around it to throw off the formatting
+		}
 	}
-
 	// /* General label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
@@ -1484,61 +1524,6 @@ a {
 
 
 // End LABEL STYLES
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// MOBILE
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Changed from max-device-width to max-width
-@media only screen and (max-width: 767px) {
-
-	html  {
-
-		.Skin #Logo, .CSS3 .Skin #Logo {
-			background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
-			background-size: $logo-mobile-width $logo-mobile-height;
-			height: $logo-mobile-height + $logo-padding;
-		}
-	}
-
-	.Skin {
-		@if $full-width-header == F{ 
-			#LogoContainer{
-				margin-top:0;
-			}
-		}
-
-		#Header{
-			text-align: center;
-		}
-
-		.SkinInner {
-			margin: 0 auto !important;
-			max-width: $container-max-width;
-			@include border-radius(0);
-
-		}
-
-		#SkinContent {
-			border: none;
-			@include border-radius(0);
-		}
-
-		// @if $boxed-questions == T {
-		// 	.QuestionOuter {
-		// 		margin:0;
-		// 	}
-		// }
-		#Plug {
-			float:none;
-			a{
-				width:100%;
-			}
-		}
-
-	}
-}
 
 
 

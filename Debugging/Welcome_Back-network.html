@@ -1,0 +1,294 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html lang="EN">
+
+
+ <!-- *** WEB SITE INFORMATION AND COPYRIGHT ***************************************************************************************
+
+    Qualtrics Control Panel
+    COPYRIGHT:  This page, its design, and content (photographic, written, etc.) are copyrighted by, Qualtrics, Inc.
+   	** For more information, see: www.Qualtrics.com **
+
+ ************************************************************************************************************************************ -->
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10, chrome=1" />
+	<link rel='stylesheet' type='text/css' href='../WRQualtricsShared/DefaultStyleSheets/BaseStylesV3.56094.css'/>
+<link rel='stylesheet' type='text/css' href='../WRQualtricsShared/Skins/abbvielms/MQ/abbvielms1/StyleSheet.56094.css'/>
+<style>#Plug{
+display:none;
+}
+
+/* #QID45 {
+	height: 400px;
+	overflow-y: visible;
+	margin-top: -30px;
+}
+
+#Buttons {
+	padding: 0;
+}
+
+html .Skin .SkinInner {
+	margin: 0px auto 100px auto !important;
+}
+
+.Skin .Grading .ChoiceStructure .Correct,
+.Skin .Grading .ChoiceStructure .Selected .Correct, .Skin .Grading .Correct{
+	color: #237729;
+}
+
+
+.Skin #Questions {
+	max-height: 400px;
+	overflow: auto;
+}
+*/
+#FooterContainer {
+position: fixed;
+}
+.Skin .Grading .ChoiceStructure .Correct {
+color: #01adb1;
+}
+.Skin .Grading .ChoiceStructure .Selected .Incorrect, .Skin .Grading .Incorrect {
+color: #FF7C7C;
+}
+.Skin .Grading .ChoiceStructure .Selected .Correct, .Skin .Grading .Correct {
+color: #01adb1;
+}
+.Skin .Grading .ChoiceStructure .Incorrect {
+color: #FF7C7C;
+}
+.Skin .Grading .TotalScore .GradingQuestionText .Score {
+font-size: 24pt;
+color: #000000;
+display: block;
+}
+.Skin .ValidationError{color:rgb(168, 0, 0);background-color:transparent;border-color:transparent;}
+.Skin .HeaderValidationError, .Skin .HeaderValidationError li a{color:rgb(255,255,255);background-color:rgb(168, 0, 0);}
+#SurveyEngineBody{}
+.SkinInner{font-family:verdana, geneva, sans-serif;font-size:130%;color:rgb(0, 0, 0);}
+.Skin .QuestionText{font-family:verdana, geneva, sans-serif;font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgb(0, 0, 0);}
+.Skin .horizontalbar th.ylabel, .Skin .Matrix table td, .Skin .Matrix table th, .Skin .Matrix table thead th, .Skin .Matrix table thead td, .Skin .PGR .DragAndDrop .Items label, .Skin .QuestionBody ul.ChoiceStructure, .Skin .PGR .DragAndDrop .Group ul, .Skin .PGR .DragAndDrop .Group h2, .Skin .PGR .DragAndDrop .Items ul, .Skin .PGR .DragAndDrop .Items h2, .Skin .DD .QuestionBody table.ChoiceStructure, .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div ul, .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div h2, .Skin .SBS thead th, .Skin .SBS td, .Skin .SBS .Answers td, .Skin .SBS .Answers th, .SBS table.ChoiceStructure, .Skin .horizontalbar thead table.LabelDescriptions tr td, .Skin .horizontalbar thead tr td.NotApplicable, .QuestionBody th, .Skin .QuestionBody .MC .MAVR label, .Skin .QuestionBody .MC .SAVR label, .Skin .SBS thead th, .Skin .SBS td, .Skin .RO .DND ul li, .Skin .reg, .SkinInner .ChoiceStructure, .Skin thead, .Skin .GAP .ChoiceStructure thead th, .Skin .GAP .ChoiceStructure .c4, .Skin .GAP .ChoiceStructure th, .Skin .GAP .ChoiceStructure .WhyText, .SkinInner .ChoiceStructure .LightBG, .Skin .QuestionOuter.Highlight .Inner .reg, .Skin .QuestionOuter.Highlight .Inner .alt, .Skin .QuestionOuter.Highlight .Inner .ReadableAlt       {font-family:verdana, geneva, sans-serif;font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgb(0, 0, 0);}
+.Skin div#Header{color:rgb(4, 41, 78);}
+.Skin #Footer{color:#04294e;}
+.Skin .Separator{display:block;}
+.Skin .QuestionOuter.Highlight .Inner, .Skin .QuestionOuter.Highlight .Inner .reg, .Skin .QuestionOuter.Highlight .Inner .alt, .Skin .QuestionOuter.Highlight .Inner .ReadableAlt{}
+.Skin .QuestionOuter.Highlight .Inner .ReadableAlt, .Skin .QuestionOuter.Highlight .Inner .LightBG{}
+.Skin select, .Skin .InputText{color:rgb(0, 0, 0);}
+.Skin .CS .horizontalbar table.sliderGrid tr.xlabel th, .Skin .CS .horizontalbar .ylabel, .Skin .CS .horizontalbar table.sliderGrid tr td.value, .Skin .Slider .horizontalbar table.sliderGrid tr.xlabel th, .Skin .BorderColor, .Skin .DarkBorderColor, .Skin .Slider .horizontalbar table.sliderGrid tr td.value, .Skin thead, .Skin .GAP .ChoiceStructure thead th  {border-color:rgb(2, 4, 101);}
+.Skin .ReadableAlt, .Skin .LightBG{}
+</style>
+	<link rel="shortcut icon" href="../WRQualtricsShared/Brands/abbvielms/favicon.ico" type="image/x-icon" />
+
+	<title>Pathology Training</title>
+	<meta name="Description" content="Pathology Training" />
+			<meta name="robots" content="noindex" />
+		<meta property="og:title" content="Pathology Training" />
+	<link rel="apple-touch-icon-precomposed" href="../WRQualtricsShared/Graphics/qipadicon.png"/>
+
+	<script type="text/javascript" src="../WRQualtricsShared/JavaScript/javascriptRequired.56094.js"></script>
+	<script type="text/javascript" src="../WRQualtricsShared/JavaScript/javascriptSE.56094.js"></script>
+
+	
+	
+		</head>
+
+<body id='SurveyEngineBody' class="SkinV2 webkit CSS3">
+
+	<noscript>
+		<img src="?action=log&type=noScript"></img>
+	</noscript>
+
+
+
+
+	<FORM id="Page" NAME="Page" METHOD="POST" ENCTYPE="multipart/form-data" >
+				<INPUT id='SurveyID' TYPE='HIDDEN' NAME='SurveyID' VALUE='SV_0eK2aIPT2CABxOZ'>
+					<INPUT id='SessionID' TYPE='HIDDEN' NAME='SessionID' VALUE='SS_86xj6f8cXlvXU4B'>
+				<INPUT id='PageDisplayTime' TYPE='HIDDEN' NAME='PageDisplayTime' VALUE='2014-05-20 10:05:19'>
+							<style>
+	body{
+		position:relative;
+		top:35px;
+	}
+	#RestoredResponseBar{
+		height:35px;
+		background:#FFFFD2;
+		margin-top:-35px;
+		line-height:36px;
+		text-align:center;
+		color:#666;
+	}
+	#RestoredResponseBar a{
+		font-weight:bold;
+		color:#3D72D6;
+		margin:0 5px;
+	}
+	.BottomShadow{
+		height:8px;
+		background:url('../WRQualtricsShared/Graphics/previewsprites.png') repeat-x 0 -109px;
+	}
+</style>
+<div id='RestoredResponseBar'>
+	Welcome Back!
+			
+			You began on <strong>May 20 2014</strong>.
+			
+					<a href='javascript:Qualtrics.SurveyEngine.restartResponse()'>Restart</a>
+				
+	<div class='BottomShadow'></div>
+</div>		
+		<INPUT TYPE='HIDDEN' NAME='TransactionID' VALUE='4'>
+
+					<noscript>
+	<h2 style="background-color: #c00; color: #FFF; margin: 10px; padding: 10px;">
+		<center>
+			Please enable Javascript on your browser to take this survey.
+		</center>
+	</h2>
+	</noscript>
+
+	
+
+	
+	
+			<a href="#" onclick="javascript:Qualtrics.SurveyEngine.setAccessibleSkin();" class='offScreen'>Activate an optimized version of the page designed specifically for Jaws version 11 and greater.</a>
+	
+<meta name="HandheldFriendly" content="true" />
+<meta name = "viewport" content = "user-scalable = no, maximum-scale=1, minimum-scale=1, initial-scale = 1, width = device-width" />
+<link rel="stylesheet" type="text/css" href="/WRQualtricsShared/DefaultStyleSheets/BaseStylesV3Mobile.css">
+<div class='Skin'>
+	<div id='LogoContainer'>
+		<div id='Logo'>
+			<div id='Header'><span style="font-family: arial, helvetica, sans-serif"><span style="font-size: 19px"><span style="color: #afeeee"><strong>PATHOLOGY TRAINING FOR STUDY M14-011</strong></span></span></span></div>
+		</div>
+	</div>
+	<div id='HeaderContainer'>
+	</div>
+	<div class='SkinInner'>
+		<div id='SkinContent'>
+			<div id='Questions'><input type=hidden name='SE~Context' value="Response">
+
+<!-- *************** SKIN QUESTION #0 ************************** -->
+
+
+		
+
+	<!-- ** SURVEY QUESTION ID: QID7 ** OUTPUT TAG: QID7 ** -->
+	<div class='QuestionOuter MC BorderColor  ' id='QID7' QuestionID='QID7' PostTag="QID7" >
+		<script>
+			try {
+				Qualtrics.SurveyEngine.QuestionInfo["QID7"] = {"QuestionID":"QID7","postTag":"QID7","QuestionText":"<div>Question 1 of 10<br \/>\n<br \/>\n<strong>The definition for triple-negative tumors for ER-negative and PR-negative is<\/strong>:&nbsp;<\/div>","QuestionType":"MC","Choices":{"1":{"RecodeValue":"1","VariableName":"A) More than 2 percent tumor staining by immunohistochemistry (IHC).","Text":"A) More than 2 percent tumor staining by immunohistochemistry (IHC).","Exclusive":false},"2":{"RecodeValue":"2","VariableName":"B) Less than or equal to 1 percent tumor staining by immunohistochemistry (IHC).","Text":"B) Less than or equal to 1 percent tumor staining by immunohistochemistry (IHC).","Exclusive":false},"3":{"RecodeValue":"3","VariableName":"C) Equal to 1.5 percent tumor staining by immunohistochemistry","Text":"C) Equal to 1.5 percent tumor staining by immunohistochemistry","Exclusive":false}},"Validation":{"Settings":{"ForceResponse":"ON","ForceResponseType":"ON","Type":"None"}},"Selector":"SAVR","SubSelector":"TX"};
+			}
+			catch(e){}
+							
+					</script>
+				<!-- Debugging stuff -->
+		
+		<div class='Inner SAVR BorderColor'>
+			<div class='InnerInner TX BorderColor'>
+				<INPUT TYPE="HIDDEN" ID="QM~QID7~Displayed" NAME="QM~QID7~Displayed" value="1">
+ 
+ 				<INPUT TYPE="HIDDEN" ID="QR~QID7~QuestionID" NAME="QR~QID7~QuestionID" value="QID7">
+				<INPUT TYPE="HIDDEN" ID="QR~QID7~DisplayOrder" NAME="QR~QID7~DisplayOrder" value="1|2|3">
+												<INPUT TYPE="HIDDEN" ID="QR~QID7~QuestionType" NAME="QR~QID7~QuestionType" value="MC">
+				<INPUT TYPE="HIDDEN" ID="QR~QID7~Selector" NAME="QR~QID7~Selector" value="SAVR">
+				<INPUT TYPE="HIDDEN" ID="QR~QID7~SubSelector" NAME="QR~QID7~SubSelector" value="TX">
+								
+								<fieldset>
+				<h2 class='noStyle'>
+<div class='QuestionText BorderColor'>
+	<div>Question 1 of 10<br />
+<br />
+<strong>The definition for triple-negative tumors for ER-negative and PR-negative is</strong>:&nbsp;</div>
+</div>
+</h2>
+<div class='QuestionBody'>
+			<ul class='ChoiceStructure'>
+			
+									
+					<li class='Selection reg'>
+													<input choiceid='1' class='radio' type="radio" name="QR~QID7" id="QR~QID7~1" value="QR~QID7~1"   >
+												<span class='LabelWrapper'><label for='QR~QID7~1'>A) More than 2 percent tumor staining by immunohistochemistry (IHC).</label></span>
+						<div class='clear'></div>
+					</li>
+				
+	 		
+									
+					<li class='Selection alt'>
+													<input choiceid='2' class='radio' type="radio" name="QR~QID7" id="QR~QID7~2" value="QR~QID7~2"  checked >
+												<span class='LabelWrapper'><label for='QR~QID7~2'>B) Less than or equal to 1 percent tumor staining by immunohistochemistry (IHC).</label></span>
+						<div class='clear'></div>
+					</li>
+				
+	 		
+									
+					<li class='Selection reg'>
+													<input choiceid='3' class='radio' type="radio" name="QR~QID7" id="QR~QID7~3" value="QR~QID7~3"   >
+												<span class='LabelWrapper'><label for='QR~QID7~3'>C) Equal to 1.5 percent tumor staining by immunohistochemistry</label></span>
+						<div class='clear'></div>
+					</li>
+				
+	 				</ul>
+ 		<div class='clear zero'>
+ 		</div>
+
+					<input type=hidden name='Transformation~QID7' value='YToxOntzOjc6IlFSflFJRDciO3M6MTY6Int2YWx1ZX09U2VsZWN0ZWQiO30='>
+		
+	</div>
+
+								</fieldset>
+							</div>
+		</div>
+	</div>
+
+<!-- ^^^^^^^^^^^^^^^^^^^^^^ SKIN QUESTION #0 ^^^^^^^^^^^^^^^^^ -->
+
+</div>
+		</div>
+	</div>
+</div>
+<div id='FooterContainer'>
+	<div id="footer-bar-wrap">
+		<div id="bar-left-custom"></div>
+		<div id="bar-center-custom"></div>
+		<div id="bar-right-custom"></div>
+	</div>
+	<div id='ProgressBar'></div>
+			<div id='Buttons'><input id='PreviousButton' onkeypress="if(!this.disabled){Qualtrics.SurveyEngine.navEnter(arguments[0],this, 'PreviousButton'); };  "  onclick="Qualtrics.SurveyEngine.navClick(event,'PreviousButton')" title='PREVIOUS' type='submit' name='PreviousButton' value='PREVIOUS' ><input id='NextButton' onkeypress="if(!this.disabled){Qualtrics.SurveyEngine.navEnter(arguments[0],this, 'NextButton'); };  "  onclick="Qualtrics.SurveyEngine.navClick(event, 'NextButton')" title='NEXT' type='submit' name='NextButton' value='NEXT' ></div>
+	<div id="Footer"><table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><span style="color: #ffffff">&copy; 2014 AbbVie</span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+	<div id='Plug'>Survey Powered By <a href='http://www.qualtrics.com'>Qualtrics</a></div>
+</div><script>Event.observe(window, "load", function() {Event.stopObserving(document, "mousedown", QualtricsSETools.highlightHandler); QualtricsSETools.highlightOn = false; QualtricsSETools.killHighlighter();});</script>
+
+
+</form>
+
+
+
+<script type="text/javascript">
+
+window.canCheckParent = '';
+
+Qualtrics.SurveyEngine.onPageLoad();
+	// beforeunload doesn't exist in MobileWebKit so we use pagehide instead as
+	// it is the only browser that doesn't support beforeunload
+	if (Qualtrics.Browser && Qualtrics.Browser.MobileWebKit) {
+		Event.observe(window, 'pagehide', Qualtrics.SurveyEngine.savePageBeforeUnload);
+	} else {
+		Event.observe(window, 'beforeunload', Qualtrics.SurveyEngine.savePageBeforeUnload);
+	}
+</script>
+
+
+</body>
+</html>
+
