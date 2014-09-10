@@ -1627,6 +1627,12 @@ Maybe we could customize/color the dark line?*/
   left: 0px;
   width: 100%; }
 
+.TocMargin #SkinContent {
+  padding-top: 48px; }
+
+.TocMargin .Skin .LanguageSelectorContainer {
+  padding: 0 30px 0 0; }
+
 #TocHeader {
   position: relative; }
 
@@ -1638,43 +1644,51 @@ Maybe we could customize/color the dark line?*/
 
 #TocSidebarContainer {
   position: absolute;
-  left: -20px;
   top: 0px;
+  z-index: 5000;
+  overflow: hidden;
+  transition: left .5s ease-in-out; }
+  #TocSidebarContainer.reduced {
+    top: 0;
+    z-index: 0; }
+    #TocSidebarContainer.reduced.closed {
+      z-index: -1;
+      transition: left .5s ease-in-out;
+      background: transparent; }
+  #TocSidebarContainer.closed {
+    background: transparent;
+    left: 0; }
+
+.closed #TocSidebar {
+  left: 0;
+  top: 0;
   z-index: -1; }
 
-.IE7 #TocSidebarContainer {
-  z-index: 1; }
-
-#TocSidebarContainer.reduced {
-  left: -70px;
-  top: 0px;
-  z-index: 0; }
-
 #TocSidebar {
-  left: -100%;
+  left: 0;
+  top: 0;
   z-index: 1;
-  position: relative;
-  max-width: 300px; }
+  border: 0px solid #e6e6e6; }
 
 .reduced #TocSidebar {
   left: 0; }
 
 #TocSidebarIcons {
-  padding: 20px;
-  background-color: white;
-  border: medium none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  height: 20px;
-  width: 30px;
-  padding: 2px 5px;
-  float: right;
-  overflow: hidden; }
+  background-color: transparent;
+  height: 18px;
+  width: 18px;
+  padding: 15px;
+  overflow: hidden;
+  box-sizing: content-box; }
 
 .reduced #TocSidebarIcons {
-  float: left; }
+  float: right; }
+
+.reduced.closed #TocSidebarIcons {
+  transition: all .5s ease-in-out; }
 
 .IE #TocSidebarIcons {
-  float: left; }
+  float: right; }
 
 #TocIcon {
   background-image: url(../../WRQualtricsControlPanel/CPGraphics/flowicons.png);
@@ -1689,22 +1703,35 @@ Maybe we could customize/color the dark line?*/
   width: 10px;
   height: 10px;
   float: right;
-  margin-top: 5px; }
+  margin-top: 5px;
+  display: none; }
 
 .closed #TocArrow {
   background-position: -11px -60px; }
 
-.closed #TocSidebarContent {
-  display: none; }
+#Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
+  background-color: #f06f6f; }
 
 #TocSidebarContent {
-  background-color: white;
-  border: medium none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
+  border: none;
+  margin-left: 0;
+  width: 200px;
+  background-color: transparent;
+  transition: margin .5s ease-in-out;
+  padding-bottom: 20px; }
+
+.closed #TocSidebarContent {
+  display: block;
+  visibility: hidden; }
+
+.closed.reduced #TocSidebarContent {
+  display: block;
+  margin-left: -150px;
+  visibility: hidden; }
 
 #Toc {
-  padding: 10px 0;
-  background-color: white;
+  padding: 0;
+  background-color: transparent;
   position: relative;
   z-index: 1; }
 
@@ -1725,7 +1752,6 @@ Maybe we could customize/color the dark line?*/
 
 #Toc a, #Toc strong, #TocHeader a {
   padding: 4px 20px 4px 20px;
-  color: #666;
   display: block;
   font-size: 14px; }
 
@@ -1744,11 +1770,8 @@ Maybe we could customize/color the dark line?*/
 #Toc ul ul ul ul a, #Toc ul ul ul ul strong {
   padding-left: 78px; }
 
-#Toc li.Alert a {
-  color: red; }
-
 #Toc li.Complete a {
-  color: #666; }
+  color: #999; }
 
 #Toc li span.TocIcon {
   height: 16px;
@@ -1757,6 +1780,23 @@ Maybe we could customize/color the dark line?*/
   float: left;
   font-size: 10px;
   line-height: 16px; }
+
+.closed #TocIcon {
+  background: #f06f6f; }
+
+.closed #TocIcon:before {
+  top: 6px;
+  -webkit-transform-origin: 0.28571rem center; }
+
+.closed #TocIcon:after {
+  top: -6px;
+  transform-origin: 0.28571rem center; }
+
+.closed #TocIcon:before, .closed #TocIcon:after {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  width: 18px; }
 
 #Toc li span.TocText {
   display: block;
@@ -1791,22 +1831,68 @@ Maybe we could customize/color the dark line?*/
   line-height: 16px;
   margin-right: 5px; }
 
-#TocHeader td.Current a {
-  color: #FFF;
-  background-color: #666; }
-
-#Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
-  background-color: #366CCC;
-  color: #FFF; }
-
-#Toc li.Incomplete a {
-  color: #aaa; }
-
 .Hidden {
   display: none; }
 
-body.TocMargin div.Skin {
-  margin-left: 70px; }
+#TocIcon {
+  background-image: none;
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  background: #f06f6f;
+  border-radius: 1.5px;
+  transition: 0.3s;
+  position: relative;
+  top: 8px; }
+
+#TocIcon:before, #TocIcon:after {
+  display: inline-block;
+  width: 9.9px;
+  height: 3px;
+  background: #f06f6f;
+  border-radius: 1.5px;
+  transition: 0.3s;
+  position: absolute;
+  right: 0;
+  content: ''; }
+
+#TocIcon:before {
+  -webkit-transform: rotate3d(0, 0, 1, -30deg);
+  transform: rotate3d(0, 0, 1, -30deg);
+  top: 2px; }
+
+#TocIcon:after {
+  -webkit-transform: rotate3d(0, 0, 1, 30deg);
+  transform: rotate3d(0, 0, 1, 30deg);
+  top: -2px; }
+
+.reduced #TocIcon:before {
+  -webkit-transform: rotate3d(0, 0, 1, 30deg);
+  transform: rotate3d(0, 0, 1, 30deg);
+  top: 2px;
+  left: 0; }
+.reduced #TocIcon:after {
+  -webkit-transform: rotate3d(0, 0, 1, -30deg);
+  transform: rotate3d(0, 0, 1, -30deg);
+  top: -2px;
+  left: 0; }
+
+.closed #TocIcon {
+  background: #f06f6f; }
+
+.closed #TocIcon:before {
+  top: 6px;
+  -webkit-transform-origin: 0.28571rem center; }
+
+.closed #TocIcon:after {
+  top: -6px;
+  transform-origin: 0.28571rem center; }
+
+.closed #TocIcon:before, .closed #TocIcon:after {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  width: 18px; }
 
 @media print {
   .Skin .ReadableAlt {
@@ -2007,21 +2093,6 @@ body.TocMargin div.Skin {
   .Skin .HBAR .horizontalbar {
     min-width: 500px; }
 
-  body.TocMargin div.Skin {
-    margin-left: 0px; }
-
-  #TocSidebarContainer {
-    position: absolute;
-    right: -192px; }
-
-  .Skin #TocSidebarContainer.reduced {
-    right: 10px;
-    top: 10px;
-    left: auto; }
-
-  .reduced #TocSidebarIcons {
-    float: right; }
-
   .Skin #JumpButton {
     display: none; }
 
@@ -2059,10 +2130,10 @@ body.TocMargin div.Skin {
 /**
  * END MOBILE STYLES
  */
-.JFE, .JFEContent,
-html, body, #Page, .Skin {
-  height: 100%; }
-
+@media only screen and (min-width: 400px) {
+  .JFE, .JFEContent,
+  html, body, #Page, .Skin {
+    height: 100%; } }
 a {
   color: #4b86ee; }
 
@@ -2711,3 +2782,33 @@ a {
     float: none; }
     .Skin #Plug a {
       width: 100%; } }
+.closed #TocSidebarIcons, .reduced #TocSidebarIcons {
+  padding-left: 30px; }
+  @media only screen and (max-width: 768px) {
+    .closed #TocSidebarIcons, .reduced #TocSidebarIcons {
+      padding-left: 15px; } }
+
+#TocSidebarContainer {
+  left: -200px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1); }
+  #TocSidebarContainer.reduced {
+    background: #333;
+    left: 0; }
+
+#Toc a, #Toc strong, #TocHeader a {
+  color: white; }
+
+#TocHeader td.Current a, #Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
+  background-color: #f06f6f;
+  color: #FFF; }
+
+#Toc li.Incomplete a {
+  color: white; }
+
+#Toc li.Alert a {
+  color: red; }

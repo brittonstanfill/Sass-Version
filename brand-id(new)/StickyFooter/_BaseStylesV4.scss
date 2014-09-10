@@ -2068,13 +2068,24 @@ Maybe we could customize/color the dark line?*/
 }
 
 
-//Table of Contents -- NOT REVISED
+//Table of Contents -- REVISED
+
+$ToCButton-width: 18px;
+$ToCButton-height: 3px;
 
 #TocHeaderContainer{
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	width:100%;
+}
+
+.TocMargin #SkinContent {
+padding-top: 48px; //added so that the menu icon doesn't cover the first question.
+}
+
+.TocMargin .Skin .LanguageSelectorContainer{
+	padding: 0 $default-container-padding 0 0; //added to reduce padding when ToC is present
 }
 
 #TocHeader {
@@ -2090,51 +2101,67 @@ Maybe we could customize/color the dark line?*/
 }
 
 #TocSidebarContainer{
-	position: absolute;
-	left: -20px;
+	position:absolute;
 	top:0px;
-	z-index: -1;
+	z-index:5000;
+	overflow:hidden;
+	transition: left .5s ease-in-out;
+	&.reduced{
+		top:0;
+		z-index: 0;
+		&.closed{
+			z-index:-1;
+			transition: left .5s ease-in-out;
+			background:transparent;
+		}
+	}
+	&.closed{
+		background:transparent;
+		left:0;
+	}
 }
 
-.IE7 #TocSidebarContainer{
-	z-index: 1;
-}
-
-#TocSidebarContainer.reduced{
-	left: -70px;
-	top:0px;
-	z-index: 0;
-}
+// .IE7 #TocSidebarContainer{
+// 	z-index: 1;
+// }
+	.closed #TocSidebar{
+		//width:50px;
+		left:0;
+		top:0;
+		z-index:-1;
+	}
 
 #TocSidebar{
-	left: -100%;
+	left:0;
+	top:0;
 	z-index: 1;
-	position: relative;
-	max-width: 300px;
+	border: $skin-content-border;
 }
+
 
 .reduced #TocSidebar{
 	left: 0;
 }
 
 #TocSidebarIcons{
-	padding: 20px;
-	background-color: white;
-	border: medium none;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-	height: 20px;
-	width: 30px;
-	padding: 2px 5px;
-	float: right;
+	background-color: transparent;
+	height: $ToCButton-width;
+	width:$ToCButton-width;
+	padding: 15px;
 	overflow: hidden;
+	box-sizing: content-box;
 }
 
 .reduced #TocSidebarIcons{
-	float: left;
+	float: right;
+}
+.reduced.closed #TocSidebarIcons{
+	//float:left;
+	transition: all .5s ease-in-out;
 }
 
 .IE #TocSidebarIcons{
-	float: left;
+	float: right;
 }
 
 #TocIcon{
@@ -2148,29 +2175,42 @@ Maybe we could customize/color the dark line?*/
 #TocArrow{
 	background-image: url(../../WRQualtricsControlPanel/CPGraphics/editwidgets.png);
 	background-position:-1px -60px;
-    width:10px;
-    height:10px;
+  width:10px;
+  height:10px;
 	float: right;
 	margin-top: 5px;
+	display:none; //remove unecessary stuff ?
 }
 
 .closed #TocArrow{
 	background-position:-11px -60px;
 }
-
-.closed #TocSidebarContent{
-	display:none;
+	#Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
+background-color: $primary-color;
 }
 
 #TocSidebarContent{
-	background-color: white;
-	border: medium none;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	border: none;
+	margin-left:0;
+	width:200px;
+	background-color:transparent;
+	transition: margin .5s ease-in-out;
+	padding-bottom:20px;
+}
+.closed #TocSidebarContent{
+	display:block;
+	visibility: hidden;
+}
+.closed.reduced #TocSidebarContent{
+	display:block;
+	margin-left:-150px;
+	visibility: hidden;
 }
 
+
 #Toc{
-	padding: 10px 0;
-	background-color: white;
+	padding: 0;
+	background-color: transparent;
 	position: relative;
 	z-index: 1;
 }
@@ -2196,7 +2236,6 @@ Maybe we could customize/color the dark line?*/
 
 #Toc a, #Toc strong, #TocHeader a{
 	padding: 4px 20px 4px 20px;
-	color: #666;
 	display:block;
 	font-size: 14px;
 }
@@ -2221,12 +2260,8 @@ Maybe we could customize/color the dark line?*/
 	padding-left:78px;
 }
 
-#Toc li.Alert a{
-	color: red;
-}
-
 #Toc li.Complete a{
-	color: #666;
+	color: #999;
 }
 
 #Toc li span.TocIcon{
@@ -2236,6 +2271,27 @@ Maybe we could customize/color the dark line?*/
 	float: left;
 	font-size: 10px;
 	line-height: 16px;
+}
+
+.closed #TocIcon {
+	background: $primary-color;
+}
+
+.closed #TocIcon:before {
+	top: 6px;
+	-webkit-transform-origin: 0.28571rem center;
+}
+.closed #TocIcon:after {
+
+	top: -6px;
+	transform-origin: 0.28571rem center;
+}
+.closed #TocIcon:before, .closed #TocIcon:after {
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	-webkit-transform: rotate3d(0, 0, 1, 0deg);
+	width: $ToCButton-width;
+
 }
 
 #Toc li span.TocText{
@@ -2277,28 +2333,85 @@ Maybe we could customize/color the dark line?*/
 	margin-right:5px;
 }
 
-#TocHeader td.Current a{
-	color: #FFF;
-	background-color: #666;
-}
-
-#Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
-	background-color: #366CCC;
-	color: #FFF;
-}
-
-#Toc li.Incomplete a{
-	color: #aaa;
-}
-
 .Hidden{
 	display:none;
 }
 
-body.TocMargin div.Skin{
-	margin-left:70px;
+// body.TocMargin div.Skin{
+// 	margin-left:70px; 
+// }
+
+/////////////////animated button//////////
+#TocIcon{
+	background-image:none;
+	display: inline-block;
+	width: $ToCButton-width;
+	height: $ToCButton-height;
+	background: $primary-color;
+	border-radius: $ToCButton-height/2;
+	transition: 0.3s;
+	position: relative;
+	top:8px;
+}
+#TocIcon:before, #TocIcon:after {
+	display: inline-block;
+	width: $ToCButton-width*.55;
+	height: $ToCButton-height;
+	background: $primary-color;
+	border-radius: $ToCButton-height/2;
+	transition: 0.3s;
+	position: absolute;
+	right: 0;
+	content: '';
+}
+#TocIcon:before {
+	-webkit-transform: rotate3d(0, 0, 1, -30deg);
+	transform: rotate3d(0, 0, 1, -30deg);
+	top:2px;
+}
+#TocIcon:after {
+	-webkit-transform: rotate3d(0, 0, 1, 30deg);
+	transform: rotate3d(0, 0, 1, 30deg);
+	top:-2px;
 }
 
+.reduced {
+		#TocIcon:before {
+		-webkit-transform: rotate3d(0, 0, 1, 30deg);
+		transform: rotate3d(0, 0, 1, 30deg);
+		top:2px;
+		left:0;
+	}
+	#TocIcon:after {
+		-webkit-transform: rotate3d(0, 0, 1, -30deg);
+		transform: rotate3d(0, 0, 1, -30deg);
+		top:-2px;
+		left:0;
+	}
+}
+
+
+.closed #TocIcon {
+	background: $primary-color;
+}
+
+.closed #TocIcon:before {
+	top: 6px;
+	-webkit-transform-origin: 0.28571rem center;
+}
+.closed #TocIcon:after {
+
+	top: -6px;
+	transform-origin: 0.28571rem center;
+}
+.closed #TocIcon:before, .closed #TocIcon:after {
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	-webkit-transform: rotate3d(0, 0, 1, 0deg);
+	width: $ToCButton-width;
+
+}
+//////////////END ToC Styles/////////////
 
 //Print styles
 
@@ -2591,21 +2704,21 @@ body.TocMargin div.Skin{
 	//
 	// Cory is working on TOC
 	//
-	body.TocMargin div.Skin {
-		margin-left: 0px;
-	}
-	#TocSidebarContainer {
-		position: absolute;
-		right: -192px;
-	}
-	.Skin #TocSidebarContainer.reduced {
-		right: 10px;
-		top: 10px;
-		left: auto;
-	}
-	.reduced #TocSidebarIcons {
-		float: right;
-	}
+	// body.TocMargin div.Skin {
+	// 	margin-left: 0px;
+	// }
+	// #TocSidebarContainer {
+	// 	position: absolute;
+	// 	right: -192px;
+	// }
+	// .Skin #TocSidebarContainer.reduced {
+	// 	right: 10px;
+	// 	top: 10px;
+	// 	left: auto;
+	// }
+	// .reduced #TocSidebarIcons {
+	// 	float: right;
+	// }
 	//
 	// What is the JumpButton?
 	.Skin #JumpButton {
