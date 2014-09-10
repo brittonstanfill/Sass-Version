@@ -260,7 +260,7 @@ h2.noStyle {
 }
 .Skin input.Searching
 {
-	background: white url('../WRQualtricsShared/Graphics/spinner.gif') no-repeat right 2px;
+	background: white url('../../../../../WRQualtricsShared/Graphics/spinner.gif') no-repeat right 2px;
 }
 // ************************
 // * CS Sliding Bars
@@ -384,7 +384,7 @@ h2.noStyle {
 }
 * html .Skin .LeadGenerator div {
 	background-image: none;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../WRQualtricsShared/Graphics/leadGenerator.png", sizingMethod="crop")
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../../../../../WRQualtricsShared/Graphics/leadGenerator.png", sizingMethod="crop")
 }
 .Skin .LeadGenerator {
 	text-align: center;
@@ -395,7 +395,7 @@ h2.noStyle {
 	border: 0px;
 	width: 532px;
 	height: 176px;
-	background: url(../WRQualtricsShared/Graphics/leadGenerator.png) no-repeat;
+	background: url(../../../../../WRQualtricsShared/Graphics/leadGenerator.png) no-repeat;
 	line-height:24px;
 	margin:auto;
 }
@@ -916,7 +916,7 @@ h2.noStyle {
 	//Do we want a new sprite? 
 	//Or a way to make these stars any color?
 	height: 26px;
-	background: transparent url('../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
+	background: transparent url('../../../../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
 }
 // Not sure if we need this or not
 .Skin .STAR .StarsOuterContainer {
@@ -951,7 +951,7 @@ h2.noStyle {
 .Skin .STAR .StarsContainer .Star {
 	width: 36px;
 	height: 30px;
-	background: transparent url('../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
+	background: transparent url('../../../../../WRQualtricsShared/Graphics/stars.png') 0px 0px;
 	float: left;
 }
 
@@ -1362,12 +1362,12 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	right:3px;
 }
 .Skin .HotSpot .Like span{
-	background:transparent url('../../WRQualtricsShared/Graphics/qicons.gif') -20px -5px no-repeat;
+	background:transparent url('../../../../../WRQualtricsShared/Graphics/qicons.gif') -20px -5px no-repeat;
 	width:16px;
 	height:13px;
 }
 .Skin .HotSpot .Dislike span{
-	background:transparent url('../../WRQualtricsShared/Graphics/qicons.gif') -3px -3px no-repeat;
+	background:transparent url('../../../../../WRQualtricsShared/Graphics/qicons.gif') -3px -3px no-repeat;
 	width:15px;
 	height:15px;
 }
@@ -1491,7 +1491,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	margin:auto;
 	margin-top:2px;
 	//This is hard coded because it was originally in line, and needs to be overwritten for RTL
-	background-image:url('../../WRQualtricsShared/Graphics/GAPRightArrow.gif');
+	background-image:url('../../../../../WRQualtricsShared/Graphics/GAPRightArrow.gif');
 }
 // Why block or inline block
 .Skin .GAP .TextEntryBox{
@@ -2027,7 +2027,7 @@ Maybe we could customize/color the dark line?*/
 }
 
 .Skin .FileUpload .loadingImage {
-	background: transparent url('../WRQualtricsShared/Graphics/ajax-loading.gif') no-repeat;
+	background: transparent url('../../../../../WRQualtricsShared/Graphics/ajax-loading.gif') no-repeat;
 	width:220px;
 	height:19px;
 	margin:40px auto;
@@ -2574,7 +2574,7 @@ background-color: $primary-color;
 	.Skin .STAR .StarsEventWatcher,
 	.Skin .STAR .StarsContainer .Filled {
 		height: 26px;
-		background: transparent url('../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../../../../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 	}
 	.Skin .STAR .StarsOuterContainer {
@@ -2605,7 +2605,7 @@ background-color: $primary-color;
 	.Skin .STAR .StarsContainer .Star {
 		width: 36px;
 		height: 30px;
-		background: transparent url('../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
+		background: transparent url('../../../../../WRQualtricsShared/Graphics/stars@2x.png') 0px 0px;
 		background-size: 30px 53px;
 		float: left;
 	}
@@ -2659,7 +2659,7 @@ background-color: $primary-color;
 
 // Arrow that shows up to indicate more content to right.
 .Skin .ScrollIndicator {
-	background: url(../../WRQualtricsShared/Graphics/arrow.png) no-repeat center center;
+	background: url('../../../../../WRQualtricsShared/Graphics/arrow.png') no-repeat center center;
 	background-size: 20px 13px;
 	height: 98%;
 	background-color: rgba(0,0,0,0.6);

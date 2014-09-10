@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//LOGO
-	$interchangeable-logo: F;
+	$interchangeable-logo: T;
 
 	//LAYOUT
 	$full-width-header: F;
@@ -30,11 +30,11 @@
 	$question-container-box-shadow-on: T;
 
 	//RADIO BUTTONS
-	$radio-buttons: F;
+	$radio-buttons: T;
 
 	//LABEL STYLE
 	$label-style: 2; 
-		// STYLE 1: Outline, 2px border-radius		// BOOKMARK: I think we are ditching STYLE 1 for now
+		// STYLE 1: Outline, 2px border-radius		// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 		// STYLE 2: No border, 4px border-radius
 		$full-width-labels-on: F; //BOOKMARK: we should just pick one or the other.
 
@@ -64,7 +64,7 @@
 
 	//SURVEY ENGINE BODY - BACKGROUND
 	$body-background-color: $primary-color;
-	--> $body-background-image: url(http://37.media.tumblr.com/0da1e786ac7997b82b072c30b32092ca/tumblr_naj3n71TcT1st5lhmo1_1280.jpg);
+	--> $body-background-image: url(https://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_cOnSH9l3PPJjFmR&V=1410189252);
 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-size: cover; 
 	$body-background-repeat: no-repeat; 
@@ -75,8 +75,8 @@
 	
 	//WRAPPER OVERLAY
 	//BOOKMARK: If we add an overlay to the image, we need to remove this overlay
-	$wrapper-background-overlay-dark: rgba(0,0,0,.7); 	//BOOKMARK: need to use an image for this to work in IE8-
-	$wrapper-background-overlay-light: rgba(255,255,255,.7);
+	$wrapper-background-overlay-dark: url(dark.png); 	//BOOKMARK: need to use an image for this to work in IE8-
+	$wrapper-background-overlay-light: url(light.png);
 
 	//DEFAULT - 
 	//WIDTH and PADDING
@@ -230,7 +230,7 @@
 	//FOOTER
 	$footer-font-size: ($default-font-size - 4);
 	$footer-padding: $default-container-padding;
-	-->	$footer-text-color: #FFF; //BOOKMARK: We could figure out a way to calculate this.  For now, $default-text-color, or manually update. 
+	-->	$footer-text-color: $default-text-color; //BOOKMARK: We could figure out a way to calculate this.  For now, $default-text-color, or manually update. 
 
 	//PLUG
 	$plug-font-size: $footer-font-size;
@@ -238,8 +238,8 @@
 	$plug-link-color: #FFF;
 	$plug-background: rgba(0,0,0,.3);
 	$plug-background-hover: rgba(0,0,0,.4);
-	$calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
-
+	// $calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
+	$calculated-sticky-footer-height: 40px;
 
 //FIND A HOME for these
 	$slider-handle-color: $primary-color;
@@ -294,13 +294,21 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @if $pushed-to-bottom-plug == T {
+<<<<<<< HEAD:brand-id(new)/StickyFooter/StyleSheet.scss
 	 @media only screen and (min-width: 400px) { // BOOKMARK: Originally added this media query to fix scrolling QuestionBody on mobile issue.  Doesn't seem to be an issue now.  
+=======
+	@media only screen and (min-device-width: 400px) { // BOOKMARK: Added this media query to fix scrolling QuestionBody on mobile issue.  Also needed for .RO .DND to properly rank
+>>>>>>> FETCH_HEAD:New StyleSheet V4/StyleSheet.scss
 		//Needed for Sticky Footer Plug - Do Not Remove
 		.JFE, .JFEContent,
 		html, body, #Page, .Skin {
 			height: 100%;
 		}
+<<<<<<< HEAD:brand-id(new)/StickyFooter/StyleSheet.scss
 	 }
+=======
+	}
+>>>>>>> FETCH_HEAD:New StyleSheet V4/StyleSheet.scss
 }
 
 a {
@@ -344,6 +352,15 @@ a {
 			height: 100%;
 			margin: 0 auto (-$calculated-sticky-footer-height);
 		}
+	}
+
+	#Overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -9;
 		@if $body-background-image-on == T and $boxed-skincontent == F {
 			@if $overlay-dark == T {
 				background: $wrapper-background-overlay-dark;
@@ -374,6 +391,9 @@ a {
 	  line-height: $progress-bar-fill-height;
 	  border-left: 2px solid $progress-bar-fill-color;
 	  width: 100%;
+	  &:empty {
+	  	display: none;
+	  }
 	}
 	
 	#ProgressBar tr td:nth-child(2){
@@ -385,6 +405,9 @@ a {
 	  right: 0;
 	  line-height: $progress-bar-fill-height;
 	  color: $progress-bar-fill-color;
+	  &:empty {
+	  	background: blue;
+	  }
 	}
 
 	.ProgressBarFillContainer {
@@ -398,7 +421,13 @@ a {
 		background-color: $progress-bar-fill-color;
 		height: $progress-bar-fill-height;
 	}
-
+	
+	.Skin .LanguageSelectorContainer {
+		margin: $default-container-padding;
+		margin-bottom: 0;
+		text-align: right;
+	}
+	
 	.SkinInner {
 		@if $full-width-header == F { // The SkinInner acts as the SkinContent (the "white box") in this case
 			max-width: $skin-inner-max-width;
@@ -416,6 +445,12 @@ a {
 				}	
 			}
 		}
+		@media only screen and (max-width: 767px) {
+			margin: 0 auto !important;
+			max-width: $container-max-width;
+			@include border-radius(0);
+		}
+
 	}
 
 	#LogoContainer {
@@ -436,6 +471,12 @@ a {
 			background-size: $logo-image-width $logo-image-height;
 			height: $logo-height;
 			max-width: $logo-max-width;
+			@media only screen and (max-width: 767px) {
+				background: $logo-background-color $logo-mobile-image no-repeat $logo-mobile-position;
+				background-size: $logo-mobile-width $logo-mobile-height;
+				height: $logo-mobile-height + $logo-padding;
+			}
+
 			@if $full-width-header == T {
 				margin: 0 auto;
 			}
@@ -459,6 +500,9 @@ a {
 				margin-bottom: ($default-container-padding);
 			}
 		}
+		@media only screen and (max-width: 767px) {
+			text-align: center;
+		}
 	}
 
 	#Header {
@@ -473,8 +517,13 @@ a {
 		@if $interchangeable-logo == T {
 			padding: $logo-padding $default-container-padding; // the Header acts as the Logo
 		}
-		&:empty {
-			padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
+		@if $interchangeable-logo == F or $interchangeable-logo == T and $boxed-skincontent == T {
+			&:empty {
+				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
+			}
+		} 
+		@if $interchangeable-logo == T and $boxed-skincontent == T {
+			padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
 		}
 	}
 
@@ -494,11 +543,14 @@ a {
 				}
 			}
 		}
-
+		@media only screen and (max-width: 767px) {
+			border: none;
+			@include border-radius(0);
+		}
 	}
 
 	#Questions {
-		padding-top: 1px; 	//BOOKMARK: take this off, and the HeaderValidationError moves to top of #Questions. Why?
+		overflow: auto; // Prevents the Validation Error Message from touching to top (previously used: padding-top: 1px;)
 	}
 
 	@if $boxed-questions-new == T {
@@ -507,6 +559,12 @@ a {
 			margin: 0 $default-mobile-container-padding;
 			@include border-radius($default-border-radius);
 		}
+	}
+
+	.QuestionOuter .Inner {
+		// Need these so we can add a border to the "highlighted" questions
+		border: $default-border; 
+		border-color: transparent;
 	}
 
 	.QuestionText {
@@ -560,6 +618,10 @@ a {
 		text-align:right;
 		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
+		}
+		&:empty {
+			margin-top: 0;
+			padding: 0;
 		}
 	}
 
@@ -635,6 +697,7 @@ a {
 			background: $plug-background;
 			-webkit-transition: background .3s;
 			text-align: center;
+			height: $calculated-sticky-footer-height;
 			@if $border-radius-on == T{
 				@media all and (min-width: 767px) {
 					@include border-radius(5px 0 0 0);
@@ -642,6 +705,12 @@ a {
 			}			
 			&:hover {
 				background: $plug-background-hover;
+			}
+		}
+		@media only screen and (max-width: 767px) {
+			float:none;
+			a {
+				width:100%;
 			}
 		}
 	}
@@ -679,12 +748,11 @@ a {
 		// @media only screen and (max-width: 768px) {
 		// 	width: 100%;
 		// }
-		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T {
+		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T or $default-text-color == #FFFFFF {
 			background: transparent;
-			//Can't be white, or it won't show up in Native Firefox select menus.
-			// Or will it?  Just checked again and now the background on the select is black, making #FFF visible
-			color: #FFF;
-		}
+			//Can't be white, or it won't show up in some Firefox or IE select menus.
+			color: #CCC;
+		} 
 
 		&:focus {
 			// These inputs need a border, otherwise the focus class will be nonexistent (bad for accessibility)
@@ -694,7 +762,16 @@ a {
 	}
 
 	.TE textarea, textarea {
-		padding: 8px; // Give these a little extra padding.  
+		padding: 8px; // Give these a little extra padding. 
+		max-width: 100%; 
+	}
+
+	@media only screen and (max-width: 767px) {
+
+		.MC .TextEntryBox	{
+			width: 100% !important;
+		}
+
 	}
 
 	// BOOKMARK: How can I make it not touch the top of the #Questions without adding padding to #Questions?
@@ -719,16 +796,31 @@ a {
 		}
 	}
 	.ValidationError {
-		font-size: 120%;
-		padding: 0 0 10px 0;
-		@if $error-color == O {
-			color: $error-orange-color;
-		} @elseif $error-color == R {
-			color: $error-red-color;
-		} @elseif $error-color == B {
-			color: $error-blue-color;
-		}
+		font-size: $question-text-font-size;
+		font-weight: bold;
 		text-align: center;
+		@if $boxed-skincontent == F {
+			padding: 0 0 10px 0;
+			@if $error-color == O {
+				color: $error-orange-color;
+			} @elseif $error-color == R {
+				color: $error-red-color;
+			} @elseif $error-color == B {
+				color: $error-blue-color;
+			}
+		} @elseif $boxed-skincontent == T {
+			padding: 10px 0 0 0;
+			@if $error-color == O {
+				background: lighten($error-orange-background, 4%);
+				color: $error-orange-color;
+			} @elseif $error-color == R {
+				background: lighten($error-red-background, 4%);
+				color: $error-red-color;
+			} @elseif $error-color == B {
+				background: lighten($error-blue-background, 4%);
+				color: $error-blue-color;
+			}
+		}
 	}
 	.HeaderValidationError h1 {
 		font-size: 120%;
@@ -746,18 +838,30 @@ a {
 
 	.QuestionOuter.Highlight .Inner {
 		// background-color: $highlight-color;
-		border: 2px solid $highlight-color;
+		border-color: $highlight-color;
 		@include border-radius($default-border-radius);
-		margin: 0 $default-container-padding;
-		margin-bottom: ($default-container-padding / 2);
+		// margin: 0 $default-container-padding;
+		// margin-bottom: ($default-container-padding / 2);
 		@media only screen and (max-width: 768px) {
 			margin: 0 $default-mobile-container-padding;	
 		}
+		@if $boxed-skincontent == T {
+			border-color: transparent;
+			@if $error-color == O {
+				background: lighten($error-orange-background, 4%);
+			} @elseif $error-color == R {
+				background: lighten($error-red-background, 4%);
+			} @elseif $error-color == B {
+				background: lighten($error-blue-background, 4%);
+			}
+			@include border-radius(0);
+		}
 	}
+
 
 	.EndOfSurvey {
 		color: $question-text-color;
-		padding: 30px;
+		padding: 60px 30px;
 	}
 
 	.Separator {
@@ -828,6 +932,11 @@ a {
 		}
 		background-color: $primary-color;
 		color:$reverse-primary-text-color;
+		@if $label-style == 1 {
+			border: 1px solid $primary-color;
+			background: transparent;
+			color: $primary-color;
+		}
 	}
 	.RO .DND ul.Edited .rank,
 	.RO .DND ul.NotEdited li:hover .rank,
@@ -1065,13 +1174,32 @@ a {
 	// 	border-radius: 0 0 0 $default-border-radius;
 	// }
 
-
-
+	////////////////////////////////////////////////////////////////////
+	// NPS
+	////////////////////////////////////////////////////////////////////
+	@if $radio-buttons == T { // Prevent radio buttons from riding up
+		.NPS label.SingleAnswer {
+			display: block;
+		}
+		.NPS td.LabelContatiner {
+			text-align: center;
+		}
+		.NPS td.ControlContainer {
+			position: relative;
+			height: 30px; // (height + margin-top) of label.q-radio
+			top: - 30px; // (height + margin-top) of label.q-radio
+			//IE8-
+			position: static\9;
+		}
+		// This is because these questions get extra space at the bottom for the invisible td.ControlContainer
+		.NPS .QuestionBody {
+			padding-bottom: 0;
+		}
+	}
 
 
 } // /.Skin
 
-//BOOKMARK: Start here 9/5
 
 
 // From Mark's New-Sass-Framework - - make questions break, etc.
@@ -1118,31 +1246,6 @@ a {
 /////////////////////////////
 /////////////////////////////
 
-// 1. Include this in all themes, no matter what.
-// BOOKMARK: 
-// Except, might need to figure out a different IE8 solution
-// /* Hides radio buttons and checkboxes */
-.Skin input[type="radio"],
-.Skin input[type="checkbox"] {
-	position: absolute;
-	//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
-	opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
-	z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
-	height:0;
-	width:0;
-}
-
-.Skin input[type="radio"],
-.Skin input[type="checkbox"] {
-	position:relative\9;
-	opacity:1\9;
-	z-index:1\9;
-	height:inherit\9;
-	width:inherit\9;
-}
-
-// Radio Buttons Conditionals
-
 
 // These q-radio/checkbox classes apply by default
 // Then for "No Radio Buttons" option, the .MC .q-radio/checkbox labels are hidden
@@ -1150,51 +1253,73 @@ a {
 	// Default is to have "Styled" Radio Buttons
 	// If $no-radio-buttons == T, then remove Radio Buttons for selected questions (mostly MC)
 
+	/* Start Radio Buttons */
 	.Skin label.q-radio,
-	.Skin .q-checkbox {
+	.Skin label.q-checkbox {
 		@if $label-style == 1 {
 			border: 1px solid $primary-color;
 		} @elseif $label-style == 2 {
 			border: 2px solid $primary-color;
 		}
 		display: inline-block;
-		// margin: 10px auto;
 		width: 20px;
 		height: 20px;
-		// BOOKMARK:
-		// could do something like this... to make radio button match font size more??
+		// BOOKMARK: // could do something like this... to make radio button match font size more??
 		@if $default-font-size < 14px {
 			width: 16px;
 			height: 16px;
 		}
+
+		// Bring back native radio buttons and checkboxes for IE8-
+		display: none\9;
+
 	}
-	//Need to be circles
-	//Also need to figure out what to do with IE8 (no border-radius)
 	.Skin label.q-radio {
-		@include border-radius(100%);
+		@include border-radius(100%); 	//Need to be circles
+		&.q-checked {
+			background-color: lighten($primary-color, 8%);
+		}
 	}
 	.Skin label.q-checkbox {
 		@if $border-radius-on == T {
 			@include border-radius(2px);
 		}
+		&.q-checked {
+			background-image: url(check.png);
+			background-color: lighten($primary-color, 8%);
+			background-size: 100%;
+			background-position: center center;
+			background-repeat: no-repeat;	
+		}
 	}
-	.Skin label.q-checkbox.q-checked {
-		background-image: url(check.png);
-		background-color: lighten($primary-color, 8%);
-		background-size: 100%;
-		background-position: center center;
-		background-repeat: no-repeat;
-	}
-	.Skin label.q-radio.q-checked {
-		background:url(radio.png);
-		background-color: lighten($primary-color, 8%);
-		background-size: 100%;
-		background-position: center center;
-		background-repeat: no-repeat;
-}
 
-/* Start Radio Buttons */
+// Conditionals
+
+//If radio buttons is TRUE - 
+	// hide ALL radio button inputs
+	// IE8 bring back ALL radio buttons
 @if $radio-buttons == T {
+
+	// /* Hides radio buttons and checkboxes */
+	.Skin input[type="radio"],
+	.Skin input[type="checkbox"] {
+		position: absolute;
+		//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		height:0;
+		width:0;
+
+		// Bring back native radio buttons and checkboxes for IE8-
+		position:relative\9;
+		opacity:1\9;
+		z-index:1\9;
+		height:inherit\9;
+		width:inherit\9;	
+	}
+
+
+//OLD Conditional
 
 	// Aligns the HR radio buttons vertically with each other
 	.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
@@ -1214,13 +1339,11 @@ a {
 		.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
 		.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
 			border-bottom: 2px solid #eee;
+			padding: 10px 0;
+			&:last-child {
+				border-bottom: none;
+			}
 		}
-
-		.Skin .MC .MAHR .QuestionBody td.LabelContatiner:last-child,
-		.Skin .MC .SAHR .QuestionBody td.LabelContatiner:last-child {
-			border-bottom: none;
-		}
-
 	}
 
 	.Skin .ChoiceStructure li {
@@ -1259,6 +1382,8 @@ a {
 		position: relative;
 		height: 30px; // (height + margin-top) of label.q-radio
 		top: - 30px; // (height + margin-top) of label.q-radio
+		//IE8-
+		position: static\9;
 	}
 	.Skin .MC .SAHR label.q-radio,
 	.Skin .MC .MAHR label.q-checkbox {
@@ -1269,31 +1394,55 @@ a {
 		padding-bottom: 0;
 	}
 
+	.Skin .MC .SAVR span.LabelWrapper,
+	.Skin .MC .MAVR span.LabelWrapper {
+		width: 90%; //Added to allow long answers to wrap rather than start on line below label.q-radio
+	}
 
-} // end if $no-radio-buttons == F
+
+} // end if $radio-buttons == T
 /* End Radio Buttons */
 
+
+
+
 /* Start Label Styles */
+
+//If radio buttons is FALSE - 
+	// hide ALL radio button inputs
+	// IE8 bring back just non-MC radio buttons
 @if $radio-buttons == F {
 
+	.Skin input[type="radio"],
+	.Skin input[type="checkbox"] {
+		position: absolute;
+		//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		height:0;
+		width:0;
 
-	/////////////////////////////
-	/////////////////////////////
-	// Below are the original Label Style Tests: 
-	/////////////////////////////
-	/////////////////////////////
+		// Bring back native radio buttons and checkboxes for IE8-
+		position:relative\9;
+		opacity:1\9;
+		z-index:1\9;
+		height:inherit\9;
+		width:inherit\9;	
 
-	// should maybe have a $mobile-answer-label-spacing ?
-	$answer-label-spacing: 10px;
+		//BOOKMARK: MACOL and SACOL questions aren't highlighting the "selected" class in IE8.  Don't know why.  
+	}
 
-	// New Testing text entry box placement
-	// plan: 
-	// make .TextEntryBox position relative - to move it up and keep the additional space in the label
-	// then hide the overflow-y, so you can't scroll down to where the .TextEntryBox should be
+	.Skin .MC input[type="radio"],
+	.Skin .MC input[type="checkbox"] {
+		// Hide again (override IE8 styles above) for IE8 on .MC
+		position: absolute;
+		//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
+		height:0;
+		width:0;
+	}
 
-	// put this in a media query, and it doesn't hide the text on mobile.
-	// But what's going on that makes it move up... something to do with the display:block or whatever
-	// we're using to make the items break and go vertical 
 	@if $border-radius-on == T {
 		.Skin .MC .TextEntryBox {
 			@include border-radius($default-border-radius);
@@ -1303,39 +1452,23 @@ a {
 	.Skin .MC .TextEntryBox {
 		padding: 4px;
 		margin-top: 8px;
+
+	}
+	// To make these look like text entry boxes. Maybe?
+	@if $label-style == 1 {
+		.Skin .TextEntryBox {
+			-webkit-box-shadow: inset 1px 1px 5px #ccc;
+			-moz-box-shadow: inset 1px 1px 5px #ccc;
+			box-shadow: inset 1px 1px 5px #ccc;
+		}
 	}
 
-//BOOKMARK:
-	.Skin .MC .MACOL .TextEntryBox,
-	.Skin .MC .SACOL .TextEntryBox {
-
-		// position: relative;
-		// top: -44px;
-		// width: 90% !important;
-		//The above solution solution screws up in Firefox (and so probably other browsers too)
-		
-		// position: absolute;
-	}
 
 	@media only screen and (min-width: 768px) {
-
-		.Skin .MC .MAHR .TextEntryBox,
-		.Skin .MC .SAHR .TextEntryBox {
-
-			// position: relative;
-			// top: - 44px;
-			//The above solution solution screws up in Firefox (and so probably other browsers too)
-
-			// position: absolute;
-			// This width makes it not spill over.  This can't be the best solution, but all I have now.
-			// width: 11%;
-		}
-
 		.Skin .MC .ChoiceStructure {
 			border-spacing: $answer-label-spacing;
 		}
-
-	//BOOKMARK: Should these be 100% or not?
+		//BOOKMARK: Should these be 100% or not?
 		@if $full-width-labels-on == F and $radio-buttons == F {
 			.Skin .MC .SAVR label.SingleAnswer,
 			.Skin .MC .MAVR label.MultipleAnswer,
@@ -1346,45 +1479,6 @@ a {
 				margin-right: auto;
 			}
 		}
-
-
-	}
-
-	//Firefox label alignment test
-	
-	// .Skin .MC .MAHR table td,
-	// .Skin .MC .SAHR table td {
-	// 	display: table;
-	// 	border-collapse: collapse;
-	// 	width: 100%;
-	// }
-	// .Skin .MC .MAHR label.MultipleAnswer span.LabelWrapper,
-	// .Skin .MC .SAHR label.SingleAnswer span.LabelWrapper {
-	// 	display: inline-block;
-	// 	width: 100%;
-	// 	vertical-align: top;
-	// }
-
-	// /end Firefox testing
-
-	@media only screen and (max-width: 767px) {
-
-		.Skin .MC .TextEntryBox	{
-			width: 100% !important;
-		}
-
-	}
-
-
-
-
-	//Add this to make label not scroll down to where .TextEntryBox should be
-	.Skin .MC .MAHR td .LabelWrapper,
-	.Skin .MC .SAHR td .LabelWrapper,
-	.Skin .MC .MACOL td .LabelWrapper,
-	.Skin .MC .SACOL td .LabelWrapper {
-		// overflow-y: hidden;
-		// border: 2px solid blue;
 	}
 
 	// /* Centers text entry boxes in spans*/
@@ -1392,12 +1486,6 @@ a {
 		text-align: center;
 		width: 100%;
 	}
-
-	// // BOOKMARK: I just added this to make the labels more easily clickable with Radio Buttons option,
-	// // but might cause problems.  
-	// .Skin .MC .QuestionBody label {
-	// 	padding: 20px 0;
-	// }
 
 	.Skin .MC .SAHR table td,
 	.Skin .MC .MAHR table td,
@@ -1410,23 +1498,20 @@ a {
 		border-spacing: $answer-label-spacing;
 	}
 
-
-
-	// This causes problems, if I remember right.  It hides a certain element that has a radio button input, 
-	// which makes it unselectable in old IE 
-	// PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove then.  
+	//BOOKMARK: The reason we want this as display: none, is to fix the formatting of MACOL and SACOL questions. 
+	// PROBLEM: there is a .ControlContainer in MAHR/SAHR questions that holds an input.  Can't remove or it is unselectable in IE.  
 	.Skin .MACOL, .Skin .SACOL {
-
 		.ControlContainer {
-			display: none;
+			// display: none; // BOOKMARK: Figure out some way to do this without display:none;  (See below) 
 		}
 	}
-
-	.Skin .MC input:focus + label.SingleAnswer {
-		background: blue;
+	@media only screen and (max-width: 767px) {
+		.Skin .MC .MACOL table.ChoiceStructure,
+		.Skin .MC .SACOL table.ChoiceStructure {
+			border-spacing: 2px; //BOOKMARK: reducing space on column questions so the .ControlContainer doesn't have so much space around it to throw off the formatting
+		}
 	}
-
-	// /* General (MA and SA) label styles */
+	// /* General label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
 		@if $label-style == 1 {
@@ -1445,9 +1530,17 @@ a {
 				}
 			}
 		}
-
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background-color .2s ease-in-out;
+		padding: 10px 5px;
+		@media all and (min-width: 768px) {
+			padding: 20px 4%;
+		}
+		display: block;
+		@if $border-radius-on == T {
+			@include border-radius($default-border-radius);
+		}
+		text-align: center;
 		&:hover {
 			background: $primary-hue-color-light;
 			border-color: darken($primary-hue-color-light, 10%);
@@ -1466,38 +1559,14 @@ a {
 					}
 				}
 			}
+		}	
+		&.q-checked {
+			background: $answer-label-select-background;
+			border-color: darken($answer-label-select-background, 10%);
+			color: $answer-label-select-color;			
 		}
-		
-		// with current .TextEntryBox solution, this padding has to be enough to fit a text entry box...
-		// NOT ANY MORE. 
-		padding: 10px 5px;
-		@media all and (min-width: 768px) {
-			padding: 20px 4%;
-		}
-		display: block;
-		@if $border-radius-on == T {
-			@include border-radius($default-border-radius);
-		}
-		text-align: center;
-
-		// //BOOKMARK: REMOVING LABEL HEIGHT STYLES (GOING TO ADD WITH LANCE'S JAVASCRIPT MAYBE)
-		// /* Make labels full-height ... */	
-		// height: 100%;
-		// box-sizing: border-box;
-		// margin: 0;
-
-		// /* Vertically centers text in td ... */
-		// display: table;
-		// width: 100%;
-			
 	}
 
-	.Skin label.SingleAnswer.q-checked,
-	.Skin label.MultipleAnswer.q-checked {
-		background: $answer-label-select-background;
-		border-color: darken($answer-label-select-background, 10%);
-		color: $answer-label-select-color;
-	}
 	.Skin label.SingleAnswer.q-checked {
 		&:hover {
 			background: $answer-label-select-background;
@@ -1520,24 +1589,6 @@ a {
 		border-color: $primary-color;
 	}
 
-	// First attempt to vertically center text in td... Doesn't work very well.  
-	// ///* ... Vertically centers text in td (continued) */
-	// .Skin .QuestionBody label.SingleAnswer span.LabelWrapper,
-	// .Skin .QuestionBody label.MultipleAnswer span.LabelWrapper {
-	// 	display: table-cell;
-	// 	vertical-align: middle;
-	// 	background: red !important;
-	// 	padding: 100px;
-	// }
-	//BOOKMARK: The below messes up the vertical alignment on FORM questions... Do we still need this, or is this left over from the CSS vertical align label solution?
-	///* ... Make labels full-height of span of td (continued) */
-	// This only works on Chrome to align them... Firefox is sixes.
-	// .Skin td .LabelWrapper {
-	// 	display: block;
-	// 	overflow: auto;
-	// 	height: 100%;
-	// }
-	//INSTEAD, we can do this...?
 	.Skin .SAHR td.LabelContatiner,
 	.Skin .MAHR td.LabelContatiner,
 	.Skin .SACOL td.LabelContatiner,
@@ -1545,29 +1596,14 @@ a {
 		//Aligns the labels when there's a .TextEntryBox
 		vertical-align: top;
 	}
-
-	//BOOKMARK: This was over-riding BaseStyles right? so remove now.  
-	// /* Have to remove the below from BaseStyles or labels spill over top and bottom
-	// because of full-height label CSS. */
-	// .Skin .MC .QuestionBody td label {
-	// 	margin-bottom: 0;
-	// 	margin-top: 0;
-	// }
-	// /* Adds space between tds */
-	// .Skin .MC .QuestionBody table.ChoiceStructure {
-	// 	border-spacing: 4px;
-	// }
-
-
-	// BOOKMARK: We're going to need to use some radio buttons, or figure out how we want to style
-	// matrix, etc. questions that need something to click on that's not text.
-
+	//Hide q-radio/checkbox for label questions
 	.Skin .MC label.q-radio,
 	.Skin .MC label.q-checkbox {
 		display: none;
 	}
 	.Skin .SACOL label.SingleAnswer,
 	.Skin .MACOL label.MultipleAnswer {
+		//If a single word is too long, it will break rather than spill over
 		word-break: break-word; 
 	}
 
@@ -1576,7 +1612,9 @@ a {
 /* End Label Styles */
 
 
+// End LABEL STYLES
 
+<<<<<<< HEAD:brand-id(new)/StickyFooter/StyleSheet.scss
 // End LABEL STYLES TEST
 
 .Skin .LanguageSelectorContainer {
@@ -1737,5 +1775,7 @@ a {
 // 	position: absolute;
 // 	padding-bottom: 40px;
 // }
+=======
+>>>>>>> FETCH_HEAD:New StyleSheet V4/StyleSheet.scss
 
 
