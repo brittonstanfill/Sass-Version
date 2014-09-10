@@ -159,6 +159,135 @@
                   </div>
                 </div>
                 <!-- ^^^^^^^^^^^^^^^^^^^^^^ SKIN QUESTION #8 ^^^^^^^^^^^^^^^^^ -->
+              <script type="text/javascript">
+                function setPosFixed()
+                {
+                  var offset = $('TocSidebar').cumulativeOffset();
+                  $('TocSidebar').setStyle({
+                    top:offset.top + "px",
+                    left:offset.left + "px",
+                    position:'fixed'
+                  });
+                }
+                
+                function setPosRel()
+                {
+                  $('TocSidebar').setStyle({
+                    top:null,
+                    left:null,
+                    position:'relative'
+                  });
+                }
+                
+                function tocSidebarInit()
+                {
+                  //Before init is run, the sidebar is closed, and it's not in reduced form.  If it's big enough we want to open the sidebar,
+                  //otherwise we signal that the sidebar should be in reduced state
+                  var offset = $('TocSidebar').cumulativeOffset(),
+                    tsc = $('TocSidebarContainer');
+                  if(offset.left > 250)
+                    tsc.removeClassName('closed');
+                  else
+                    tsc.addClassName('reduced');
+                  
+                  //this will scroll to the active item, after a spell
+                  scrollToTOCItem.defer();
+                }
+                
+                function scrollToTOCItem()
+                {
+                  var tsc = $('TocSidebarContainer'),
+                    sel = $('Toc').select('ul li.Current')[0];
+                  
+                  if (sel && sel.offsetTop > (tsc.offsetHeight + tsc.scrollTop))
+                    tsc.scrollTop = sel.offsetTop;
+                }
+                
+                function handleScreenResize()
+                {
+                  var offset = $('TocSidebar').cumulativeOffset();
+                  if(offset.left < 0)
+                  {
+                    $('TocSidebarContainer').addClassName('reduced');
+                    $('TocSidebarContainer').addClassName('closed');
+                  }
+                  else if (offset.left > 250 && $('TocSidebarContainer').hasClassName('reduced'))
+                  {
+                    $('TocSidebarContainer').removeClassName('reduced');
+                    $('TocSidebarContainer').removeClassName('closed');
+                  }
+                }
+                
+                function toggleOpenSidebar()
+                {
+                  $('TocSidebarContainer').toggleClassName('closed');
+                }
+                
+                document.body.className += ' TocMargin';
+                Event.observe(window, 'load', function() {
+                  tocSidebarInit();
+                });
+                Event.observe(window, 'resize', function() {
+                  handleScreenResize();
+                });
+              </script>
+              <div id="TocSidebarContainer" class="">
+  <div id="TocSidebar">
+    <a href="#" onclick="toggleOpenSidebar()">
+      <div id="TocSidebarIcons">
+        <div id="TocIcon"></div>
+        <div id="TocArrow"></div>
+      </div>
+    </a>
+    <div class="clear"></div>
+    <div id="TocSidebarContent">
+    <div id="Toc">
+    <strong>All Question Types</strong>
+    <ul class="TocList">
+          <li class="Current Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '0')"><span class="TocIcon"></span><span class="TocText">Static Content</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '1')"><span class="TocIcon"></span><span class="TocText">Multiple Choice Questions</span><div class="clear"></div></a>
+          </li>
+        <li class=" Complete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '2')"><span class="TocIcon"></span><span class="TocText">Text Entry Questions</span><div class="clear"></div></a>
+          </li>
+        <li class=" Complete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '3')"><span class="TocIcon"></span><span class="TocText">Rank Order</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '4')"><span class="TocIcon"></span><span class="TocText">Constant Sum</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '5')"><span class="TocIcon"></span><span class="TocText">Matrix Table Questions</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '6')"><span class="TocIcon"></span><span class="TocText">Sliding Scale</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '7')"><span class="TocIcon"></span><span class="TocText">Drilldown</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '8')"><span class="TocIcon"></span><span class="TocText">Gap Analysis</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '9')"><span class="TocIcon"></span><span class="TocText">Pick, Group, and Rank</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '10')"><span class="TocIcon"></span><span class="TocText">Side by Side</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '11')"><span class="TocIcon"></span><span class="TocText">Heat Map / Hot Spot</span><div class="clear"></div></a>
+          </li>
+        <li class=" Incomplete">
+            <a href="#" onclick="Qualtrics.SurveyEngine.navClick(event, 'JumpButton', false, '12')"><span class="TocIcon"></span><span class="TocText">Specialty Questions</span><div class="clear"></div></a>
+          </li>
+    </ul>
+</div>    </div>
+  </div>
+</div>
+                
               </div>
               <div id="Buttons">
                 <input id="PreviousButton" type='button' value='<<' name=''>
