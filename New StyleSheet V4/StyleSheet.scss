@@ -30,7 +30,7 @@
 	$question-container-box-shadow-on: T;
 
 	//RADIO BUTTONS
-	$radio-buttons: T;
+	$radio-buttons: F;
 
 	//LABEL STYLE
 	$label-style: 2; 
@@ -1608,3 +1608,71 @@ a {
 
 
 
+////Start Table of Contents Styles ////////////////
+.closed #TocSidebarIcons, .reduced #TocSidebarIcons{
+	padding-left: $default-container-padding;
+	@media only screen and (max-width: 768px) {
+			padding-left: $default-mobile-container-padding;
+		}
+}
+#TocSidebarContainer{
+	@if $boxed-skincontent == T{
+		left:-220px;
+		@include border-radius($default-border-radius);
+		box-shadow: 0 0 10px rgba(0,0,0, .4);
+		background:$question-container-background-color;
+		&.reduced{
+			background: $question-container-background-color;
+			left:0;
+			-webkit-border-top-left-radius: 0;
+		  -webkit-border-bottom-left-radius: 0;
+		  -moz-border-radius-topleft: 0;
+		  -moz-border-radius-bottomleft: 0;
+		  border-top-left-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		&.closed{
+			box-shadow:none;
+			transition: 0s linear left;
+		}
+
+	}
+	@if $boxed-skincontent == F{
+		@if $overlay-dark == T{
+			left:-200px;
+			@include border-radius($default-border-radius);
+			background:rgba(255,255,255,.1);
+			&.reduced{
+				background: #333;
+				left:0;
+			}
+		}
+		@if $overlay-dark == F{
+			left:-200px;
+			@include border-radius($default-border-radius);
+			background:rgba(0,0,0,.1);
+
+			&.reduced{
+				background: $question-container-background-color;
+				left:0;
+			}
+		}
+	}
+}
+#Toc a, #Toc strong, #TocHeader a{
+	color:$default-text-color;
+}
+#TocHeader td.Current a, #Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
+	background-color: $primary-color;
+	color: #FFF;
+}
+
+#Toc li.Incomplete a{
+	color: $default-text-color;
+}
+
+#Toc li.Alert a{
+	color: red;
+}
+
+//End Table of Contents Styles//////////////////
