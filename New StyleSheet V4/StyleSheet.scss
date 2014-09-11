@@ -233,7 +233,7 @@
 	-->	$footer-text-color: $default-text-color; //BOOKMARK: We could figure out a way to calculate this.  For now, $default-text-color, or manually update. 
 
 	//PLUG
-	$plug-font-size: $footer-font-size;
+	$plug-font-size: 14px;
 	$plug-padding: 12px 24px;
 	$plug-link-color: #FFF;
 	$plug-background: rgba(0,0,0,.3);
@@ -765,6 +765,11 @@ a {
 		}
 
 	}
+	@if $boxed-skincontent == F and $overlay-dark == T { 
+		.yui-skin-sam .yui-calendar .calheader {
+			color: #000; //Fixes the white text on that extra calendar question
+		}		
+	}
 
 	// BOOKMARK: How can I make it not touch the top of the #Questions without adding padding to #Questions?
 	.HeaderValidationError {
@@ -1182,6 +1187,7 @@ a {
 			top: - 30px; // (height + margin-top) of label.q-radio
 			//IE8-
 			position: static\9;
+			height: inherit\9;
 		}
 		// This is because these questions get extra space at the bottom for the invisible td.ControlContainer
 		.NPS .QuestionBody {
@@ -1306,8 +1312,8 @@ a {
 		position:relative\9;
 		opacity:1\9;
 		z-index:1\9;
-		height:inherit\9;
-		width:inherit\9;	
+		height:auto\9;
+		width:auto\9;	
 	}
 
 
@@ -1376,6 +1382,7 @@ a {
 		top: - 30px; // (height + margin-top) of label.q-radio
 		//IE8-
 		position: static\9;
+		height: inherit\9;
 	}
 	.Skin .MC .SAHR label.q-radio,
 	.Skin .MC .MAHR label.q-checkbox {
@@ -1418,23 +1425,60 @@ a {
 		position:relative\9;
 		opacity:1\9;
 		z-index:1\9;
-		height:inherit\9;
-		width:inherit\9;	
+		height:auto\9;
+		width:auto\9;	
 
-		//BOOKMARK: MACOL and SACOL questions aren't highlighting the "selected" class in IE8.  Don't know why.  
 	}
 
 	.Skin .MC input[type="radio"],
-	.Skin .MC input[type="checkbox"] {
-		// Hide again (override IE8 styles above) for IE8 on .MC
+	.Skin .MC input[type="checkbox"],
+	.Skin .Matrix .Profile input[type="radio"],
+	.Skin .Matrix .Profile input[type="checkbox"],
+	.Skin .GAP .Why input[type="radio"],
+	.Skin .GAP .Why input[type="checkbox"]	{
+		// Hide again (override IE8 styles above) for IE8 on .MC (and for Matrix Profile and GAP)
 		position: absolute;
 		//left: -9999px; //removed for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
 		opacity:0;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
 		z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
 		height:0;
 		width:0;
+		&:focus {
+			outline: none; // This was showing up in IE (even though the radio buttons are supposed to be hidden)
+		}
 	}
 
+	.Skin .Matrix .Profile label.q-radio,
+	.Skin .Matrix .Profile label.q-checkbox,
+	.Skin .GAP .Why label.q-radio,
+	.Skin .GAP .Why label.q-checkbox {
+		display: none; // hide the styled radio buttons for Matrix Profile questions, for "no radio buttons" themes
+	}
+	.Skin .GAP .Why.Scale label.q-radio,
+	.Skin .GAP .Why.Scale label.q-checkbox {
+		display: inline-block; // unhide the styled radio button for the "Scale" part of GAP analysis -- inline-block is the display of other label.q-radio elements
+		display: none\9;
+	}
+	.Skin .GAP .Why.Scale input[type="radio"],
+	.Skin .GAP .Why.Scale input[type="checkbox"] {
+		// Bring back THESE native radio buttons and checkboxes for IE8-
+		position:relative\9;
+		opacity:1\9;
+		z-index:1\9;
+		height:auto\9;
+		width:auto\9;	
+		&:focus {
+			outline: 1px dotted #aaa\9; //Not sure why initial or inherit won't work here.  
+		}
+	}
+
+
+
+
+	.Skin .GAP .ChoiceStructure .WhyText, .Skin .GAP .Why, .Skin .GAP .Scale {
+		padding: 4px; // give some space between the WHY elements in GAP analysis questions.  
+	}
+	
 	@if $border-radius-on == T {
 		.Skin .MC .TextEntryBox {
 			@include border-radius($default-border-radius);
