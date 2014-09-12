@@ -2610,51 +2610,56 @@ background-color: $primary-color;
 	}
 }
 
+// BOOKMARK: 
+// PULLED OUT THE BELOW: It was making the questions not scroll now, what we did to make the QuestionBody scroll horizontally independent of the QuestionText seems to be incompatible with this.  
 
-// MOBILE STYLES
+// // MOBILE STYLES
 
-// PULLED OUT THE SCROLLING/OVERFLOW STUFF below
-// PULLED it out of the media query and compare to normal questions
-// They should behave the same whether the browser is wide or narrow.
-#SurveyEngineBody.iOS,
-#SurveyEngineBody.Android {
-	overflow-x: hidden;
-	max-width: 100%;
-	display: block;
-}
-#SurveyEngineBody.iOS .Skin,
-#SurveyEngineBody.Android .Skin {
-	overflow-x: hidden;
-}
-#SurveyEngineBody.iOS .Skin #Questions,
-#SurveyEngineBody.Android .Skin #Questions, {
-	overflow-x: hidden;
-}
-// #SurveyEngineBody .Skin .QuestionOuter {
-// 	border-radius: 0px;
+// // PULLED OUT THE SCROLLING/OVERFLOW STUFF below
+// // PULLED it out of the media query and compare to normal questions
+// // They should behave the same whether the browser is wide or narrow.
+// #SurveyEngineBody.iOS,
+// #SurveyEngineBody.Android {
+// 	overflow-x: hidden;
+// 	max-width: 100%;
+// 	display: block;
 // }
-#SurveyEngineBody.iOS #Page,
-#SurveyEngineBody.Android #Page {
-	overflow-x: hidden;
-}
-#SurveyEngineBody.iOS .Skin #Questions .QuestionOuter,
-#SurveyEngineBody.Android .Skin #Questions .QuestionOuter {
-	overflow-x: scroll;
-	-webkit-overflow-scrolling: auto;
-}
-#SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset,
-#SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset {
-	overflow-x: hidden;
-}
-#SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset .QuestionBody,
-#SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset .QuestionBody {
-	overflow-x: hidden;
-}
-#SurveyEngineBody.iOS .SkinInner,
-#SurveyEngineBody.Android .SkinInner {
-	margin: 0px;
-	max-width: 100%;
-}
+// #SurveyEngineBody.iOS .Skin,
+// #SurveyEngineBody.Android .Skin {
+// 	overflow-x: hidden;
+// }
+// #SurveyEngineBody.iOS .Skin #Questions,
+// #SurveyEngineBody.Android .Skin #Questions, {
+// 	overflow-x: hidden;
+// }
+// // #SurveyEngineBody .Skin .QuestionOuter {
+// // 	border-radius: 0px;
+// // }
+// #SurveyEngineBody.iOS #Page,
+// #SurveyEngineBody.Android #Page {
+// 	overflow-x: hidden;
+// }
+// #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter,
+// #SurveyEngineBody.Android .Skin #Questions .QuestionOuter {
+// 	overflow-x: scroll;
+// 	-webkit-overflow-scrolling: auto;
+// }
+// #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset,
+// #SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset {
+// 	overflow-x: hidden;
+// }
+// #SurveyEngineBody.iOS .Skin #Questions .QuestionOuter fieldset .QuestionBody,
+// #SurveyEngineBody.Android .Skin #Questions .QuestionOuter fieldset .QuestionBody {
+// 	overflow-x: hidden;
+// }
+
+
+//BOOKMARK: This was messing up the display:table test...
+// #SurveyEngineBody.iOS .SkinInner,
+// #SurveyEngineBody.Android .SkinInner {
+// 	margin: 0px;
+// 	max-width: 100%;
+// }
 
 // Arrow that shows up to indicate more content to right.
 .Skin .ScrollIndicator {

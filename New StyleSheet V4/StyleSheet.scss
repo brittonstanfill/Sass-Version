@@ -14,8 +14,8 @@
 	$interchangeable-logo: T;
 
 	//LAYOUT
-	$full-width-header: F;
-	$boxed-skincontent: F;
+	$full-width-header: T;
+	$boxed-skincontent: T;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.
 		$boxed-questions-new: F; //BOOKMARK: Do we want this or not?
 
@@ -27,7 +27,7 @@
 	$border-radius-on: T; //Do we ever want this False?
 
 	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
-	$question-container-box-shadow-on: T;
+	$question-container-box-shadow-on: F;
 
 	//RADIO BUTTONS
 	$radio-buttons: F;
@@ -36,11 +36,24 @@
 	$label-style: 2; 
 		// STYLE 1: Outline, 2px border-radius		// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 		// STYLE 2: No border, 4px border-radius
-		$full-width-labels-on: F; //BOOKMARK: we should just pick one or the other.
+		$full-width-labels-on: T; //BOOKMARK: we should just pick one or the other.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //VARIABLES
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	// Two different partial sass files
+	// One for cookie cutter automatic themes -- rework sass file to include conditionals in the VARIABLES section (rather than down in the CSS)
+	// One for custom themes -- no or few conditionals within variables.  
+	// Comment one or the other out, depending on which you're doing.  
+
+	//	@if $customize-theme == T {
+	//		@import '_variable.scss';
+	//	} @elseif $customize-theme == F {
+	//		@import '_customVariables.scss'
+	//	}
+
 
 	--> // indicate common changes or variables/elements to double check. 
 
@@ -61,40 +74,43 @@
 	--> $reverse-primary-text-color: set-reverse-text-color($primary-color);
 	$link-color: #4b86ee;
 
-
 	//SURVEY ENGINE BODY - BACKGROUND
-	$body-background-color: $primary-color;
+	--> $body-background-color: $primary-color; // Or #fff is a good option.  -- should include this as a conditional when we get "Minimal" and other layouts included?
 	--> $body-background-image: url(https://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_cOnSH9l3PPJjFmR&V=1410189252);
 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-size: cover; 
 	$body-background-repeat: no-repeat; 
-	$body-background: #FFF $body-background-image $body-background-repeat center fixed; // Light background color for light image
-	@if $overlay-dark == T {
-		$body-background: #555 $body-background-image $body-background-repeat center fixed; // Dark background color for dark image
-	}
-	
-	//WRAPPER OVERLAY
-	//BOOKMARK: If we add an overlay to the image, we need to remove this overlay
-	$wrapper-background-overlay-dark: url(dark.png); 	//BOOKMARK: need to use an image for this to work in IE8-
-	$wrapper-background-overlay-light: url(light.png);
 
-	//DEFAULT - 
-	//WIDTH and PADDING
-	$container-max-width: 900px; // 770px - 1080px is a normal range
-	$default-container-padding: 30px;
-	$default-mobile-container-padding: 15px;
-	$skin-inner-max-width: $container-max-width;
-	//FONT
-	--> $font-stack: "Roboto", "Helvetica", Arial, sans-serif;
-	$default-font-size: 18px; // Try to make this consistent with $default-container-padding above.
-	$default-text-color: #54575F;
-	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
-		@if $overlay-dark == T {
-			$default-text-color: #FFF; // Changes default-text-color for dark background images	
-		} @elseif $overlay-dark == F {
-			$default-text-color: #333; // Changes default-text-color for light background images	
+	$body-background: $body-background-color;
+	@if $body-background-image-on == T {
+		$body-background: $body-background-image $body-background-repeat center fixed; // Normal background image with boxed skin content (no overlay)
+
+		@if $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				$body-background: #555 $body-background-image $body-background-repeat center fixed; // Dark background color for dark image
+			} @elseif $overlay-dark == F {
+				$body-background: #FFF $body-background-image $body-background-repeat center fixed; // Light background color for light image
+			}			
 		}
 	}
+
+	//OVERLAY
+
+	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$overlay-background: url(dark.png);
+		} @elseif $overlay-dark == F {
+			$overlay-background: url(light.png);
+		}
+	}
+
+	//DEFAULTS
+	//WIDTH / PADDING
+	$container-max-width: 770px; // 770px - 1080px is a normal range
+	$container-min-width: 500px;
+	$default-container-padding: 30px;
+	$default-mobile-container-padding: 15px;
 	//BORDER
 	$default-border-width: 1px;
 	@if $label-style == 2 {
@@ -121,9 +137,32 @@
 	$container-box-shadow-y: 0;
 	$container-box-shadow-spread: 15px;
 	$container-box-shadow-color: rgba(0,0,0,.3); //Can't use box-shadow on IE8 anyway, so might as well do rgba
+	$question-container-border-radius: $default-border-radius * 2;
+	$question-container-box-shadow: ($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 
+	//SKININNER
+	$skin-inner-max-width: $container-max-width;
+	$skin-inner-background: $question-container-background-color;
+	$skin-inner-margin: ($default-container-padding * 2) auto;
+	@if $boxed-skincontent == F {
+		$skin-inner-background: transparent;
+		$skin-inner-margin: 0 auto;
+	}
+
+	//FONT
+	--> $font-stack: "Roboto", "Helvetica", Arial, sans-serif;
+	$default-font-size: 18px; // Try to make this consistent with $default-container-padding above.
+	$default-text-color: #54575F;
+	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
+		@if $overlay-dark == T {
+			$default-text-color: #FFF; // Changes default-text-color for dark background images	
+		} @elseif $overlay-dark == F {
+			$default-text-color: #333; // Changes default-text-color for light background images	
+		}
+	}
+	
 	//READABLE / ALT / HOVER
-	$readable-hover-color: darken($question-container-background-color, 4%);
+	$readable-hover-color: rgba(0,0,0,.05);
 	$readable-hover-backup: darken($question-container-background-color, 4%);
 	@if $boxed-skincontent == F and $body-background-image-on == T {
 		@if $overlay-dark == T {
@@ -135,10 +174,11 @@
 		}
 	}
 
-	//SKIN INNER
-
 	//LOGO CONTAINER
 	$logo-container-background: #FFF;
+	@if $full-width-header == F {
+		$logo-container-background: transparent;
+	}
 
 	//LOGO
 	$logo-background-color: transparent; //If we're going to add a color here, we need to include the same border-radius, or make it transparent for full-width-header == F;
@@ -173,7 +213,16 @@
 		@if $full-width-header == T and $interchangeable-logo == F {
 			$header-padding: 0 $default-container-padding 20px $default-container-padding; 
 		}
+		@if $interchangeable-logo == T {
+			$header-padding: $logo-padding $default-container-padding; // the Header acts as the Logo
+			@if $boxed-skincontent == T {
+				$header-padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
+			}
+		}
 	$header-text-color: $default-text-color;
+	@if $full-width-header == T and $boxed-skincontent == F { // Because the default-text-color is often white in this case
+		$header-text-color: $primary-color; 
+	}
 
 	//SKIN CONTENT
 	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);  //BOOKMARK: Do we want this here or at all? 
@@ -206,7 +255,8 @@
 	$answer-label-background: transparent;
 	$answer-label-border: 1px solid $default-border-color; // Customers4 style
 	//STYLE 2
-	$answer-label-background-2: #eee; //For white background
+	$answer-label-background-2-backup: #eee; //For IE
+	$answer-label-background-2: rgba(0,0,0,.05); //For white background
 	$answer-label-background-2-transparent-dark: rgba(0,0,0,.1); //For light image/color backgrounds
 	$answer-label-background-2-transparent-light: rgba(255,255,255,.1); //For dark image/color backgrounds
 	$answer-label-border-2: none;
@@ -294,7 +344,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @if $pushed-to-bottom-plug == T {
-	@media only screen and (min-device-width: 400px) { // BOOKMARK: Added this media query to fix scrolling QuestionBody on mobile issue.  Also needed for .RO .DND to properly rank
+	@media only screen and (min-device-width: 400px) { // BOOKMARK: Added this media query to fix scrolling QuestionBody on mobile issue.  Also needed for .RO .DND to properly rank // This media query still sketches me out a little--the problem is touch, not device width.
 		//Needed for Sticky Footer Plug - Do Not Remove
 		.JFE, .JFEContent,
 		html, body, #Page, .Skin {
@@ -308,22 +358,12 @@ a {
 }
 
 #SurveyEngineBody {
-	@if $body-background-image-on == T {
-		background: $body-background;
-		background-size: $body-background-size;
-	} @else {
-		background: $body-background-color;
-	} 
-	// // BOOKMARK: We were going to limit this option to white or gray, but now we might do color background too.  
-	// @if $body-background-image-on == F and $boxed-skincontent == F {
-	// 	//BOOKMARK: This could be white or gray?
-	// 	background: #FFF;
-	// }
+	background: $body-background;
+	background-size: $body-background-size;
 	font-family: $font-stack;
 }
 
-// Welcome Back! Message at top of screen
-#RestoredResponseBar {
+#RestoredResponseBar { // Welcome Back! Message at top of screen
 	background: #45464b !important; // Does this pull the color from the "Highlight Questions" option? -- No, it doesn't, I checked.
 	color: #888c8f !important;
 	a {
@@ -353,13 +393,7 @@ a {
 		bottom: 0;
 		left: 0;
 		z-index: -9;
-		@if $body-background-image-on == T and $boxed-skincontent == F {
-			@if $overlay-dark == T {
-				background: $wrapper-background-overlay-dark;
-			} @elseif $overlay-dark == F {
-				background: $wrapper-background-overlay-light;
-			}
-		}
+		background: $overlay-background;
 	}
 
 	#ProgressBar {
@@ -414,50 +448,43 @@ a {
 		height: $progress-bar-fill-height;
 	}
 	
-	.Skin .LanguageSelectorContainer {
+	.LanguageSelectorContainer {
 		margin: $default-container-padding;
 		margin-bottom: 0;
 		text-align: right;
 	}
 	
 	.SkinInner {
-		@if $full-width-header == F { // The SkinInner acts as the SkinContent (the "white box") in this case
+		@if $full-width-header == F { // The SkinInner acts as the SkinContent (the "white box") ONLY in this case.  Otherwise, it's just the whole window (expands to allow full width header)
 			max-width: $skin-inner-max-width;
-			margin: ($default-container-padding * 2) auto;
-			background: $question-container-background-color;
-			@if $boxed-skincontent == F {
-				background: transparent;
-				margin: 0 auto;
-			} @elseif $boxed-skincontent == T {
+			margin: $skin-inner-margin;
+			background: $skin-inner-background;
+			
+			@if $boxed-skincontent == T {
 				@if $question-container-box-shadow-on == T {
-					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+					@include box-shadow($question-container-box-shadow);
 				}
 				@if $border-radius-on == T {
-					@include border-radius($default-border-radius * 2);
+					@include border-radius($question-container-border-radius);
 				}	
+				@media only screen and (max-width: 767px) {
+					margin: 0 auto; // Removes space at top and bottom
+					@if $border-radius-on {
+						@include border-radius(0)
+					}
+				}
 			}
 		}
-		@media only screen and (max-width: 767px) {
-			margin: 0 auto !important;
-			max-width: $container-max-width;
-			@include border-radius(0);
-		}
-
-	}
+	} 
 
 	#LogoContainer {
 		background: $logo-container-background;
-		@if $full-width-header == F {
-			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
-			margin:0 auto;
-			background: transparent;
-		}
 		@if $full-width-header == T and $question-container-box-shadow-on == T {
 			@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 		}
 	}
 
-	@if $interchangeable-logo == F {
+	@if $interchangeable-logo == F { //Only style the #Logo div if we're including it.  
 		#Logo  {
 			background: $logo-background-color $logo-image no-repeat $logo-position;
 			background-size: $logo-image-width $logo-image-height;
@@ -468,7 +495,6 @@ a {
 				background-size: $logo-mobile-width $logo-mobile-height;
 				height: $logo-mobile-height + $logo-padding;
 			}
-
 			@if $full-width-header == T {
 				margin: 0 auto;
 			}
@@ -479,7 +505,7 @@ a {
 		}
 	}
 
-	#HeaderContainer {
+	#HeaderContainer { //I AM HERE
 		@if $full-width-header == F {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
 			margin: 0 auto;
@@ -500,23 +526,14 @@ a {
 	#Header {
 		font-size: $header-font-size;
 		color: $header-text-color;
-		@if $full-width-header == T and $boxed-skincontent == F { // Because the default-text-color is often white in this case
-			color: $primary-color; 
-		}
 		margin: 0px auto;
 		max-width: $header-max-width;
 		padding: $header-padding;
-		@if $interchangeable-logo == T {
-			padding: $logo-padding $default-container-padding; // the Header acts as the Logo
-		}
 		@if $interchangeable-logo == F or $interchangeable-logo == T and $boxed-skincontent == T {
 			&:empty {
 				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
 			}
 		} 
-		@if $interchangeable-logo == T and $boxed-skincontent == T {
-			padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
-		}
 	}
 
 	#SkinContent {
@@ -796,27 +813,13 @@ a {
 		font-size: $question-text-font-size;
 		font-weight: bold;
 		text-align: center;
-		@if $boxed-skincontent == F {
-			padding: 0 0 10px 0;
-			@if $error-color == O {
-				color: $error-orange-color;
-			} @elseif $error-color == R {
-				color: $error-red-color;
-			} @elseif $error-color == B {
-				color: $error-blue-color;
-			}
-		} @elseif $boxed-skincontent == T {
-			padding: 10px 0 0 0;
-			@if $error-color == O {
-				background: lighten($error-orange-background, 4%);
-				color: $error-orange-color;
-			} @elseif $error-color == R {
-				background: lighten($error-red-background, 4%);
-				color: $error-red-color;
-			} @elseif $error-color == B {
-				background: lighten($error-blue-background, 4%);
-				color: $error-blue-color;
-			}
+		padding: 10px 0;
+		@if $error-color == O {
+			color: $error-orange-color;
+		} @elseif $error-color == R {
+			color: $error-red-color;
+		} @elseif $error-color == B {
+			color: $error-blue-color;
 		}
 	}
 	.HeaderValidationError h1 {
@@ -870,10 +873,10 @@ a {
 		}
 	}
 
-	//Readable, LightText, Highlight
-	.LightText{
-		color:lighten($default-text-color, 15%);
-	}
+	// //Readable, LightText, Highlight
+	// .LightText{
+	// 	color:lighten($default-text-color, 15%);  // This does more harm than good, and it's barely noticeable and rarely used.  
+	// }
 
 	// Readable Hover state (rather than ReadableAlt class)
 	@media only screen and (min-width: 767px) {
@@ -1181,18 +1184,22 @@ a {
 		.NPS td.LabelContatiner {
 			text-align: center;
 		}
-		.NPS td.ControlContainer {
-			position: relative;
-			height: 30px; // (height + margin-top) of label.q-radio
-			top: - 30px; // (height + margin-top) of label.q-radio
-			//IE8-
-			position: static\9;
-			height: inherit\9;
-		}
-		// This is because these questions get extra space at the bottom for the invisible td.ControlContainer
-		.NPS .QuestionBody {
-			padding-bottom: 0;
-		}
+
+		//REMOVED the below, it only works on Chrome, and causes other problems (with Highlight colors covering the answer)
+		// Originally added to make the radio button more clickable/selectable
+
+		// .NPS td.ControlContainer {
+		// 	position: relative;
+		// 	height: 30px; // (height + margin-top) of label.q-radio
+		// 	top: -30px; // (height + margin-top) of label.q-radio
+		// 	//IE8-
+		// 	position: static\9;
+		// 	height: inherit\9;
+		// }
+		// // This is because these questions get extra space at the bottom for the invisible td.ControlContainer
+		// .NPS .QuestionBody {
+		// 	padding-bottom: 0;
+		// }
 	}
 
 
@@ -1372,26 +1379,30 @@ a {
 		padding-top: 0;
 	}
 
-	//BOOKMARK: 
-	// test to make HR radio buttons more clickable.
-	// by making td.ControlContainer positioned around the label.q-radio
-	.Skin .MC .SAHR td.ControlContainer,
-	.Skin .MC .MAHR td.ControlContainer {
-		position: relative;
-		height: 30px; // (height + margin-top) of label.q-radio
-		top: - 30px; // (height + margin-top) of label.q-radio
-		//IE8-
-		position: static\9;
-		height: inherit\9;
-	}
-	.Skin .MC .SAHR label.q-radio,
-	.Skin .MC .MAHR label.q-checkbox {
-		margin-top: 10px;
-	}
-	// This is because these questions get extra space at the bottom for the invisible td.ControlContainer
-	.Skin .MC .SAHR .QuestionBody {
-		padding-bottom: 0;
-	}
+
+	//REMOVED the below, it only works on Chrome, and causes other problems (with Highlight colors covering the answer)
+	// Originally added to make the radio button more clickable/selectable
+
+	// //BOOKMARK: 
+	// // test to make HR radio buttons more clickable.
+	// // by making td.ControlContainer positioned around the label.q-radio
+	// .Skin .MC .SAHR td.ControlContainer,
+	// .Skin .MC .MAHR td.ControlContainer {
+	// 	position: relative;
+	// 	height: 30px; // (height + margin-top) of label.q-radio
+	// 	top: -30px; // (height + margin-top) of label.q-radio
+	// 	//IE8-
+	// 	position: static\9;
+	// 	height: inherit\9;
+	// }
+	// .Skin .MC .SAHR label.q-radio,
+	// .Skin .MC .MAHR label.q-checkbox {
+	// 	margin-top: 10px;
+	// }
+	// // This is because these questions get extra space at the bottom for the invisible td.ControlContainer
+	// .Skin .MC .SAHR .QuestionBody {
+	// 	padding-bottom: 0;
+	// }
 
 	.Skin .MC .SAVR span.LabelWrapper,
 	.Skin .MC .MAVR span.LabelWrapper {
@@ -1554,6 +1565,7 @@ a {
 			background: $answer-label-background;
 			border: $answer-label-border;
 		} @elseif $label-style == 2 {
+			background: $answer-label-background-2-backup;
 			background: $answer-label-background-2;
 			border: $answer-label-border-2;
 			@if $body-background-image-on == T and $boxed-skincontent == F {
@@ -1570,13 +1582,13 @@ a {
 		transition: background-color .2s ease-in-out;
 		padding: 10px 5px;
 		@media all and (min-width: 768px) {
-			padding: 20px 4%;
+			padding: 20px;
 		}
 		display: block;
+		text-align: center;
 		@if $border-radius-on == T {
 			@include border-radius($default-border-radius);
 		}
-		text-align: center;
 		&:hover {
 			background: $primary-hue-color-light;
 			border-color: darken($primary-hue-color-light, 10%);
@@ -1588,7 +1600,6 @@ a {
 					@if $overlay-dark == T {
 						background: #333; // IE Backup
 						background: darken($answer-label-background-2-transparent-light, 30%);
-						color: darken($default-text-color, 20%);
 					} @elseif $overlay-dark == F {
 						background: #DDD; // IE Backup
 						background: opacify($answer-label-background-2-transparent-dark, .15);
@@ -1603,11 +1614,16 @@ a {
 		}
 	}
 
+	.Skin .SAVR .QuestionBody label.SingleAnswer,
+	.Skin .MAVR .QuestionBody label.MultipleAnswer {
+		text-align: left;
+	}
+
 	.Skin label.SingleAnswer.q-checked {
 		&:hover {
 			background: $answer-label-select-background;
 			border-color: darken($answer-label-select-background, 10%);
-			color: $answer-label-select-color;
+			// color: $answer-label-select-color; //
 		}
 	}
 	.Skin label.MultipleAnswer.q-checked {
@@ -1649,6 +1665,34 @@ a {
 
 
 // End LABEL STYLES
+
+
+//BELOW IS A TEST to make large questions expand the width of the survey
+@if $full-width-header == T {
+	@media (min-width: 900px) {
+		.Skin #SkinContent {
+			display: table;
+			min-width: $container-min-width;
+		}
+	}
+	// And this is because IE8 doesn't do media queries.  
+	.Skin #SkinContent {
+		display: table\9;
+		min-width: $container-min-width \9;
+	}	
+} @elseif $full-width-header == F {
+	@media (min-width: 900px) {
+		.Skin .SkinInner {
+			display: table;
+			min-width: $container-min-width;
+		}
+	}
+	// And this is because IE8 doesn't do media queries.  
+	.Skin .SkinInner {
+		display: table\9;
+		min-width: $container-min-width \9;
+	}	
+}
 
 
 
