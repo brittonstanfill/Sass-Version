@@ -1,0 +1,321 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONDITIONALS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//LOGO
+	$interchangeable-logo: T;
+
+	//LAYOUT
+	$full-width-header: T;
+	$boxed-skincontent: T;
+	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.
+		$boxed-questions-new: F; //BOOKMARK: Do we want this or not?
+
+	//BACKGROUND
+	$body-background-image-on: F;
+	$overlay-dark: T;
+
+	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
+	$border-radius-on: T; //Do we ever want this False?
+
+	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
+	$question-container-box-shadow-on: F;
+
+	//RADIO BUTTONS
+	$radio-buttons: F;
+
+	//LABEL STYLE
+	$label-style: 2; // BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+		
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//VARIABLES
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	--> // indicate common changes or variables/elements to double check. 
+
+	//COLOR PALETTE
+	-->	$primary-color: #c32432;
+	$primary-hue: hue($primary-color);
+	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
+	$desaturated-primary-color: desaturate($primary-color, 20%);
+	// Function to change text color based on background color
+	@function set-reverse-text-color($primary-color) {
+	  @if (lightness($primary-color) > 70%) or (lightness($primary-color) > 30%) and (hue($primary-color) > 45) and (hue($primary-color) < 80) {
+	    @return darken($primary-color, 70%); 
+	  } @else {
+	    @return white; 
+	  }
+	}
+	//This color is calculated in fucntion above, or enter manually.  
+	--> $reverse-primary-text-color: set-reverse-text-color($primary-color);
+	$link-color: #4b86ee;
+
+	//SURVEY ENGINE BODY - BACKGROUND
+	--> $body-background-color: $primary-color;
+	--> $body-background-image: url(https://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_cOnSH9l3PPJjFmR&V=1410189252);
+	// Change to "auto" and "repeat" for repeating background images
+	$body-background-size: cover; 
+	$body-background-repeat: no-repeat; 
+
+	$body-background: $body-background-color;
+	@if $body-background-image-on == T {
+		$body-background: $body-background-image $body-background-repeat center fixed; // Normal background image with boxed skin content (no overlay)
+		@if $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				$body-background: #555 $body-background-image $body-background-repeat center fixed; // Dark background color for dark image
+			} @elseif $overlay-dark == F {
+				$body-background: #FFF $body-background-image $body-background-repeat center fixed; // Light background color for light image
+			}			
+		}
+	}
+
+	//OVERLAY
+	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$overlay-background: url(dark.png);
+		} @elseif $overlay-dark == F {
+			$overlay-background: url(light.png);
+		}
+	}
+
+	//DEFAULTS
+	//WIDTH / PADDING
+	$container-max-width: 770px; // 770px - 1080px is a normal range
+	$container-min-width: 770px; // Needed for "display:table" solution
+	--> $default-container-padding: 30px;
+	$default-mobile-container-padding: 15px;
+	//FONT
+	--> $font-stack: "Roboto", "Helvetica", Arial, sans-serif;
+	$default-font-size: 18px; // Try to make this consistent with $default-container-padding above.
+	$default-text-color: #54575F;
+	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
+		@if $overlay-dark == T {
+			$default-text-color: #FFF; // Changes default-text-color for dark background images	
+		} @elseif $overlay-dark == F {
+			$default-text-color: #333; // Changes default-text-color for light background images	
+		}
+	}
+	//BORDER
+	$default-border-width: 1px; // Don't make this 0 (need border for accessibility)
+	@if $label-style == 2 {
+		$default-border-width: 2px;
+	}
+	$default-border-style: solid;	
+	$default-border-color: #ccc;
+	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
+		@if $overlay-dark == F {
+			$default-border-color: lighten($default-text-color, 20%);
+		} @elseif $overlay-dark == T {
+			$default-border-color: #ccc;				
+		}
+	}
+	$default-border-radius: 2px;
+	@if $label-style == 2 {
+		$default-border-radius: 4px;
+	}
+	$default-border: $default-border-width $default-border-style $default-border-color; // Need border for accessibility
+	//SEPARATOR
+	$separator-height: $default-border-width;
+	$separator-margin: 10px;
+
+	//QUESTION CONTAINER
+	$question-container-background-color: #FFF; //I think this should never be anything but white, for now at least.
+	$container-box-shadow-x: 0;
+	$container-box-shadow-y: 0;
+	$container-box-shadow-spread: 15px;
+	$container-box-shadow-color: rgba(0,0,0,.3); //Can't use box-shadow on IE8 anyway, so might as well do rgba
+	$question-container-border-radius: $default-border-radius * 2;
+	$question-container-box-shadow: ($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+
+	//SKININNER
+	$skin-inner-max-width: $container-max-width;
+	$skin-inner-background: $question-container-background-color;
+	$skin-inner-margin: ($default-container-padding * 2) auto;
+	@if $boxed-skincontent == F {
+		$skin-inner-background: transparent;
+		$skin-inner-margin: 0 auto;
+	}
+	
+	//READABLE / ALT / HOVER
+	$readable-hover-color: rgba(0,0,0,.05);
+	$readable-hover-backup: darken($question-container-background-color, 4%);
+	@if $boxed-skincontent == F and $body-background-image-on == T {
+		@if $overlay-dark == T {
+			$readable-hover-backup: #555; //Backup color for IE8
+			$readable-hover-color: rgba(255,255,255,.1);
+		} @elseif $overlay-dark == F {
+			$readable-hover-backup: #DDD; //Backup color for IE8
+			$readable-hover-color: rgba(0,0,0,.2);				
+		}
+	}
+
+	//LOGO CONTAINER
+	$logo-container-background: #FFF;
+	@if $full-width-header == F {
+		$logo-container-background: transparent;
+	}
+
+	//LOGO
+	$logo-background-color: transparent; //If we're going to add a color here, we need to include the same border-radius, or make it transparent for full-width-header == F;
+	-->	$logo-image-width: 180px;
+	-->	$logo-image-height: 64px;
+	$logo-padding: 20px; 
+	$logo-width: $logo-image-width;
+	$logo-height: $logo-image-height + ($logo-padding * 2);
+	$logo-mobile-scale: .66;
+	$logo-mobile-width: ($logo-image-width * $logo-mobile-scale);
+	$logo-mobile-height: ($logo-image-height * $logo-mobile-scale);
+	$logo-max-width: $container-max-width + ($default-container-padding * 2.5); //2.5? There's almost always some padding around the logo in the image file.  Good idea or not?
+	@if $boxed-skincontent == F and $full-width-header == T {
+		$logo-max-width: $container-max-width + ($default-container-padding); //Better to have it too far out than too far in.  In my opinion.
+	}
+	-->	$logo-image: url("logo2.png");
+	--> $logo-mobile-image: url("logo2.png");
+
+	$logo-position: $default-container-padding center; // So it doesn't touch the edge
+	$logo-mobile-position: center center;
+	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
+
+	//HEADER
+	$header-font-size: $default-font-size;
+	$header-max-width: $container-max-width + ($default-container-padding * 2);
+		@if $boxed-skincontent == F and $full-width-header == T {
+			$header-max-width: $container-max-width + ($default-container-padding * .5);
+		}
+	$header-padding: 10px $default-container-padding;
+		@if $full-width-header == T and $interchangeable-logo == F {
+			$header-padding: 0 $default-container-padding 20px $default-container-padding; 
+		}
+		@if $interchangeable-logo == T {
+			$header-padding: $logo-padding $default-container-padding; // the Header acts as the Logo
+			@if $boxed-skincontent == T {
+				$header-padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
+			}
+		}
+	$header-text-color: $default-text-color;
+	@if $full-width-header == T and $boxed-skincontent == F { // Because the default-text-color is often white in this case
+		$header-text-color: $primary-color; 
+	}
+
+	//SKIN CONTENT
+	$skin-content-border: 0px $default-border-style darken(#FFFFFF, 10%);  //BOOKMARK: Do we want this here or at all? 
+	$skin-content-border-radius: $default-border-radius;
+
+	//VALIDATION ERROR MESSAGE
+	// == R
+	$error-red-background: #FFD7D7;
+	$error-red-color: #E73F61;
+	// == O
+	$error-orange-background: #FFDAAB;
+	$error-orange-color: #D66D31;
+	// == B
+	$error-blue-background: #C0E1FF;
+	$error-blue-color: #3180D6;
+	-->	$error-color: R;
+
+	$error-background-color: lighten($error-red-background, 4%); // If R
+	$error-border-color: $error-red-color; // If "R"ed
+	$error-text-color: $error-red-color;
+	@if $error-color == O {
+		$error-background-color: lighten($error-orange-background, 4%);
+		$error-border-color: $error-orange-color;
+		$error-text-color: $error-orange-color;
+	} @elseif $error-color == B {
+		$error-background-color: lighten($error-blue-background, 4%);
+		$error-border-color: $error-blue-color;	
+		$error-text-color: $error-blue-color;
+	}
+
+	//QUESTIONS
+	--> $question-text-font-size: ($default-font-size + 3);
+	$question-text-color: $default-text-color;
+	$question-body-font-size: $default-font-size;
+	$question-body-text-color: $default-text-color;
+
+	//OPTIONAL LABEL STYLES / RADIO BUTTON STYLES
+	//SELECTED STATE
+	$answer-label-select-background: $primary-color;
+	$answer-label-select-color: $reverse-primary-text-color;
+	//STYLE 1
+	$answer-label-background: transparent;
+	$answer-label-border: 1px solid $default-border-color; // Customers4 style
+	//STYLE 2
+	$answer-label-background-2-backup: #eee; //For IE
+	$answer-label-background-2: rgba(0,0,0,.05); //For white background
+	$answer-label-background-2-transparent-dark: rgba(0,0,0,.1); //For light image/color backgrounds
+	$answer-label-background-2-transparent-light: rgba(255,255,255,.1); //For dark image/color backgrounds
+	$answer-label-border-2: none;
+
+	$q-radio-border: 1px solid $primary-color;
+	@if $label-style == 2 {
+		$q-radio-border: 2px solid $primary-color;
+	}
+	$q-radio-size: 20px;
+
+	//PROGRESS BAR
+	$progress-bar-background-color: $primary-hue-color-light;
+	@if $full-width-header == F and $body-background-image-on == T {
+		@if $overlay-dark == T {
+			$progress-bar-background-color: rgba(255,255,255,.2);
+		}
+
+	}
+	$progress-bar-fill-color: darken($desaturated-primary-color, 10%);
+	$progress-bar-font-size: 14px;
+	$progress-bar-fill-height: $progress-bar-font-size + 2px;
+
+	//BUTTONS
+	$button-primary-color: $primary-color;
+	$button-font-size: $default-font-size;
+	$button-padding: 8px 20px;
+	$buttons-container-padding: $default-container-padding;
+	// STYLE 2
+	$button-background: $button-primary-color;
+	$button-background-hover: darken($primary-color, 8%);
+	$button-background-active: darken($button-background, 15%);
+	$button-background-focus: darken($button-background, 15%); // Need to leave this for accessibility.  
+
+	$button-border: none;
+	$button-border-hover: darken($primary-hue-color-light, 20%);
+
+	$button-text-color: $reverse-primary-text-color;
+	$button-text-color-hover: $primary-color;
+	// STYLE 1
+	@if $label-style == 1 {
+		$button-background: transparent;
+		$button-border: $default-border;
+		$button-text-color: $default-text-color;
+	}
+
+	@if $label-style == 1 {
+		$button-background-hover: $primary-hue-color-light;
+		$button-background-active: darken($primary-hue-color-light, 5%);
+	}
+
+	//FOOTER
+	$footer-font-size: ($default-font-size - 4);
+	$footer-padding: $default-container-padding;
+	-->	$footer-text-color: #FFF; //BOOKMARK: We could figure out a way to calculate this.  For now, manually update. 
+
+	//PLUG
+	$plug-font-size: 14px;
+	$plug-padding: 12px 24px;
+	$plug-link-color: #FFF;
+	$plug-background: rgba(0,0,0,.3);
+	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T {
+		$plug-background: rgba(255,255,255,.1);
+	}
+	$plug-background-hover: #c32432; // New Qualtrics red
+	// $calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
+	$calculated-sticky-footer-height: 40px;
+
+//FIND A HOME for these
+	$slider-handle-color: $primary-color;
+	$slider-bar-color: #DDD;
+	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == F {
+		$slider-bar-color: #505457;
+	}
+
+	$answer-label-spacing: 10px;
