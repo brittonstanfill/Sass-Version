@@ -183,7 +183,8 @@ h2.noStyle {
 
 .Skin .MC .SAHR li,
 .Skin .MC .MAHR li{
-	padding-right: 9pt;
+	// padding-right: 9pt;
+	padding: 0 $answer-label-spacing $answer-label-spacing 0; //Need space to the right and bottom of these, so they don't touch each other. 
 }
 
 .Skin .Matrix .ColumnLabels table {
@@ -346,34 +347,7 @@ h2.noStyle {
 #SurveyEngineBody .HideSelects select {
 	display:none !important; /* For Look and Feel survey preview - hides selects under the Skins menu */
 }
-.Skin .SurveyError {
-	padding: 10px;
-	padding: 10px;
-	width: 60%;
-	margin: 0 auto;
-	/* border-style: solid;
-	border-width: 2px; */
-}
-.Skin .SurveyError h1,
-.Skin .SurveyError h2,
-.Skin .SurveyError h3 {
-	font-size: 100%;
-	font-weight: normal;
-}
-.Skin .SurveyError h1 {
-	/*text-align: center;*/
-}
-.Skin .SurveyError h2,
-.Skin .SurveyError h3 {
-	padding-top: 10px;
-}
-.Skin .SurveyError h2 {
-	font-weight: bold;
-	font-size: 110%;
-}
-.Skin .SurveyError h3 {
-	font-size: 80%;
-}
+
 .Skin .PreviewResults em {
 	font-weight: normal;
 	font-size: 80%;
@@ -431,6 +405,7 @@ h2.noStyle {
 	padding:25px;
 }
 
+//End CANNOT FIND 
 
 //////////////////////////////
 //////////////////////////////
@@ -472,11 +447,29 @@ h2.noStyle {
 	cursor:pointer;
 }
 
+.Skin .SurveyError { //This is the error that shows up if the survey has been closed. 
+	// padding: 10px;
+	// padding: 10px;
+
+	// width: 60%;
+	// margin: 0 auto;
+
+	text-align: center;
+	padding: 60px $default-container-padding;
+
+	/* border-style: solid;
+	border-width: 2px; */
+	h1, h2, h3 {
+		font-weight: normal;
+		font-size: 120%;
+	}
+}
+
 // $default-border-color: #555;
-// //I don't think these need to be different colors, especially if we want to can them (make transparent) anyway
-// //and the Light vs. Dark can be achieved easily in Sass as below.
+// //We've pretty much removed these borrders. 
+// //but the Light vs. Dark can be achieved easily in Sass as below.
 // .Skin .BorderColor {
-// 	border-color: $defaut-border-color;
+// 	border-color: $default-border-color;
 // }
 // .Skin .LightBorderColor{
 // 	border-color: lighten($default-border-color, 10%);
@@ -513,25 +506,13 @@ h2.noStyle {
 	//Doesn't seem to do anything
 	clear:left;
 }
-//Makes these wider. Not sure what's going on here exactly, or if it's needed
-.Skin .MC .SAVR input,
-.Skin .MC .SAVR span.LabelWrapper,
-.Skin .MC .MAVR input,
-.Skin .MC .MAVR span.LabelWrapper{
-	float:left;
-}
 //////////////////
 /////////////////	BOOKMARK: REWORK Text Entry boxes -- Figure out with NEW LABEL STYLES.
 .Skin .MC .MAVR input.TextEntryBox,
 .Skin .MC .SAVR input.TextEntryBox{
-	//you can float this left for inline text boxes
-	float:none !important;
-	//Actually, I think you can remove display: block for inline text boxes
-	display:block;
+	// float:none !important;
+	display: inline-block; 	// This used to be display:block.  I think it should be inline-block, so it can come on the same line as the answer.  
 	clear:both;
-	// left:3px;
-	// position:relative;
-	// top:3px;
 }
 //Centers answers in td
 .Skin .MC .SAHR table td,
@@ -650,10 +631,6 @@ h2.noStyle {
 	width: 100%;
 	height: 4em;
 }
-// These are the options for "Form" text entry questions.
-// They need to be different lengths, but we also want them never wider than 100%.
-// Can make these the same as "Text Entry" from line 220
-//	...
 
 
 //Sliders
@@ -822,9 +799,11 @@ h2.noStyle {
 	//Seems important?
 	overflow:visible;
 }
-//Centers the inputs below the "Not Applicable" text
+
+.Skin .horizontalbar thead .NotApplicable,
 .Skin .horizontalbar tbody .NotApplicable{
 	text-align:center;
+	padding-left: 20px; // so this doesn't run into the slider labels, etc. on the left
 }
 //Important for this quesiton type, I assume
 .Skin .horizontalbar .trackHolderRel{
@@ -1043,7 +1022,7 @@ h2.noStyle {
 .Skin .CS .VRTL .SumInput,
 .Skin .CS .VRTL .SumTotal {
 	position:absolute;
-	right: 4px; // Needs to be in top right
+	right: ($default-container-padding / 2) + $default-font-size; // This gives enough space for there to be a symbol to the left or right (e.g., % or $)
 	top: 0px; // 
 }
 //Makes it so they are HORIZONTAL .HR (could do display: inline-block instead?)
@@ -2525,22 +2504,6 @@ background-color: $primary-color;
 }
 
 
-// I think all input/buttons, etc. should have consistent "active" state
-// #JumpButton:active,
-// #SaveButton:active,
-// #PreviousButton:active,
-// #NextButton:active{
-// 	outline: none;
-// }
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-
-
 // BEGIN RETINA/HIDPI STYLES */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
 	//STAR questions (need @2x sprite image)
@@ -2724,7 +2687,7 @@ background-color: $primary-color;
 		float: right;
 	}
 	//
-	// What is the JumpButton?
+	// What is the JumpButton?  And why do we hide it on mobile?
 	.Skin #JumpButton {
 		display: none;
 	}
@@ -2743,9 +2706,9 @@ background-color: $primary-color;
 			-webkit-transform: translateX(0);
 		}
 	}
-	/*
-	  * Percentage width for lead generator.
-	  */
+	
+	// * Percentage width for lead generator.
+	
 	.Skin .LeadGenerator {
 		width: 90%;
 		margin: 0 auto;
@@ -2762,9 +2725,9 @@ background-color: $primary-color;
 	.Skin .LeadGenerator a {
 		width:100%;
 	}
-}/*End of media query*/
+} // End of media query
 
-/**
- * END MOBILE STYLES
- */
+// *
+//  * END MOBILE STYLES
+ 
 

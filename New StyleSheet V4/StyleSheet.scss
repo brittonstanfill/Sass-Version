@@ -12,8 +12,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//LAYOUT
-	$interchangeable-logo: F;
-	$full-width-header: T;
+	$interchangeable-logo: T;
+	$full-width-header: F;
 	$boxed-skincontent: T;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
@@ -28,7 +28,7 @@
 	$question-container-box-shadow-on: F;
 
 	//RADIO BUTTONS
-	$radio-buttons: F;
+	$radio-buttons: T;
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
@@ -143,10 +143,8 @@
 	//SKININNER
 	$skin-inner-max-width: $container-max-width;
 	$skin-inner-background: $question-container-background-color;
-	$skin-inner-margin: ($default-container-padding * 2) auto;
 	@if $boxed-skincontent == F {
 		$skin-inner-background: transparent;
-		$skin-inner-margin: 0 auto;
 	}
 	
 	/////////////////////////////
@@ -201,16 +199,23 @@
 		@if $boxed-skincontent == F and $full-width-header == T {
 			$header-max-width: $container-max-width + ($default-container-padding * .5);
 		}
-	$header-padding: 10px $default-container-padding;
-		@if $full-width-header == T and $interchangeable-logo == F {
-			$header-padding: 0 $default-container-padding 20px $default-container-padding; 
+	$header-padding: 10px $default-container-padding; //&:empty {padding: 0}
+	@if $interchangeable-logo == F {
+		@if $full-width-header == T {
+			//Pushes the header closer to the logo, gives it a more balanced look with the logo				
+			$header-padding: 0 $default-container-padding 20px $default-container-padding; //&:empty {padding: 0}
 		}
-		@if $interchangeable-logo == T {
-			$header-padding: $logo-padding $default-container-padding; // the Header acts as the Logo
-			@if $boxed-skincontent == T {
-				$header-padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
-			}
+	}
+	@if $interchangeable-logo == T { // the Header acts as the Logo
+		@if $full-width-header == T {
+			$header-padding: $logo-padding $default-container-padding;
 		}
+		@if $full-width-header == F {
+			$header-padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
+		}
+	}
+
+
 	$header-text-color: $default-text-color;
 	@if $full-width-header == T and $boxed-skincontent == F { // Because the default-text-color is often white in this case
 		$header-text-color: $primary-color; 
@@ -244,6 +249,8 @@
 	$answer-label-border-2: none;
 	//Q RADIO BUTTONS
 	$q-radio-size: 20px;
+	$q-radio-background: transparent;
+	$q-radio-background-checked: lighten($primary-color, 8%);
 	$q-radio-border: 1px solid $primary-color;
 	@if $label-style == 2 {
 		$q-radio-border: 2px solid $primary-color;
@@ -284,7 +291,7 @@
 	/////////////////////////////
 	$footer-font-size: ($default-font-size - 2);
 	$footer-padding: $default-container-padding;
-	-->	$footer-text-color: #FFF; //BOOKMARK: We could figure out a way to calculate this.  For now, manually update. 
+	-->	$footer-text-color: $default-text-color; //BOOKMARK: We could figure out a way to calculate this.  For now, manually update. 
 
 	/////////////////////////////
 	// PLUG
@@ -407,6 +414,7 @@ a {
 #SurveyEngineBody {
 	background: $body-background;
 	background-size: $body-background-size;
+	color: $default-text-color;
 	font-family: $font-stack;
 }
 
@@ -448,6 +456,12 @@ a {
 		font-size: $progress-bar-font-size;
 		// padding: 0; // Do we even need this? Don't think so. 
 		position:relative;
+		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
+			@media only screen and (min-width: 768px) {
+				// SOLUTION: Add padding-bottom to the #ProgressBar (even if there's no progress bar, the div is still there...) Nice.  Kind of weird place to put padding, but fine. 
+				padding-bottom: ($default-container-padding * 2); 
+			}
+		}
 	}
 
 	.ProgressBarContainer{
@@ -466,7 +480,7 @@ a {
 	  border-left: 2px solid $progress-bar-fill-color;
 	  width: 100%;
 	  &:empty {
-	  	display: none;
+		 //BOOKMARK: the progress bar is driving me crazy.  How can we get rid of the spaces at the left and right
 	  }
 	}
 	
@@ -505,7 +519,7 @@ a {
 	.SkinInner {
 		@if $full-width-header == F { // The SkinInner acts as the SkinContent (the "white box") ONLY in this case.  Otherwise, it's just the whole window (expands to allow full width header)
 			max-width: $skin-inner-max-width;
-			margin: $skin-inner-margin;
+			margin: 0 auto;
 			background: $skin-inner-background;
 			
 			@if $boxed-skincontent == T {
@@ -561,8 +575,9 @@ a {
 		@if $full-width-header == T {
 			background: $logo-container-background;
 			@if $boxed-skincontent == T {
-				margin-bottom: ($default-container-padding * 2);
-			} @elseif $boxed-skincontent == F {
+				margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
+			} 
+			@if $boxed-skincontent == F {
 				margin-bottom: ($default-container-padding);
 			}
 		}
@@ -577,7 +592,8 @@ a {
 		margin: 0px auto;
 		max-width: $header-max-width;
 		padding: $header-padding;
-		@if $interchangeable-logo == F or $interchangeable-logo == T and $boxed-skincontent == T {
+		//BOOKMARK: when do we want this to go away vs. not?  ALSO CONSIDER the plug, and how margins can push it off the page if there's a margin on an element with no height. or something. 
+		@if $interchangeable-logo == F or $interchangeable-logo == T and $full-width-header == F { // Basically, if there's a Permanent Logo - OR - If there no Permanent Logo, but the Header/Logo is inside the box
 			&:empty {
 				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
 			}
@@ -705,6 +721,7 @@ a {
 			}
 		}
 	}
+
 	#Footer {
 		color: $footer-text-color;
 		font-size: $footer-font-size;
@@ -759,11 +776,11 @@ a {
 		}
 	}
 
-	// Still inside .Skin
+	// (Still inside .Skin)
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// UNIVERSAL ELEMENTS
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// UNIVERSAL ELEMENTS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Styles for html elements that don't automatically style
 	button, input, select, textarea {
@@ -772,6 +789,7 @@ a {
 		color: $default-text-color;
 	} 
 
+	// Text inputs and select menus
 	input.TextEntryBox, 
 	.TE textarea, 
 	textarea, 
@@ -783,7 +801,7 @@ a {
 		@if $border-radius-on == T {
 			@include border-radius(2px);
 		}
-		padding: 4px; // If we add too much padding, it cuts off the text (with box-sizing: border-box). Probably stick with 4px or less.
+		padding: 2px; // If we add too much padding, it cuts off the text (with box-sizing: border-box). Probably stick with 4px or less.
 		// max-width: 100%;	//BOOKMARK: max-width: 100% causes problems in IE8 (the text inputs shrink down to "100%" of the td they are in)
 
 		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T or $default-text-color == #FFFFFF {
@@ -803,30 +821,50 @@ a {
 		}
 	}
 
-	// Included all these to hopefully not let text inputs spill over ever.  
+	// Text input width fixes
 	.TE .SL .InputText,
 	.TE .ML .InputText,
 	.TE .ESTB .InputText,
 	.TE .PW .InputText,
-	.TE .FORM .InputText {
-		max-width: 100%;
-	}
+	.TE .FORM .InputText,
 	.MC .TextEntryBox {
-		width: 100% !important; // Overrides the inline-width that can be set in platform
+		max-width: 100%; // So these can be edited in survey builder to be smaller (but not bigger than 100% of the space)
+	}
+
+	.MC .SACOL .TextEntryBox,
+	.MC .MACOL .TextEntryBox {
+		width: 100% !important; // This is needed to keep the tds in these questions the same uniform width. Otherwise these textentryboxes make their tds wider. 	
+	}
+	@if $radio-buttons == F { 
+		.MC .MAHR .TextEntryBox,
+		.MC .SAHR .TextEntryBox {
+			width: 100% !important; // Don't want these to be 100% width in the "Radio Buttons" option
+			@media only screen and (min-width: 481px) {
+				float: left; //This lets the lis (in Horizontal - Side label option) align to the top with lis that have a .TextEntryBox
+			}
+		}
+		.MC .MAHR li .TextEntryBox,
+		.MC .SAHR li .TextEntryBox {
+			float: left; //Only want this for the lis (side label option)
+		}
 	}
 	@media only screen and (max-width: 767px) {
 		.TE .FORM .InputText {
-			width: 100% !important
+			width: 100% !important; // !important is to override inline width set in platform
 		}
 		.CS .TX .TextEntryBox,
 		.RO .TX .TextEntryBox {
 			width: 50% !important; // Make these 100% and they automatically go to a new line... I guess 50% works
+			// or what about max-width: 100%? as long as it's fine in IE8.
+			max-width: 100%;
+			background: red;
 		}
 	}	
 	// /end Text input width fixes
-	@if $boxed-skincontent == F and $overlay-dark == T { 
+
+	@if $boxed-skincontent == F and $overlay-dark == T or $default-text-color == #FFF { 
 		.yui-skin-sam .yui-calendar .calheader {
-			color: #000; //Fixes the white text on that extra calendar question
+			color: #000; //Fixes the white text on that custom calendar question
 		}		
 	}
 
@@ -896,7 +934,7 @@ a {
 		}
 	}
 
-	////Start Table of Contents Styles ////////////////
+	// Table of Contents
 	.closed #TocSidebarIcons, .reduced #TocSidebarIcons{
 		padding-left: $default-container-padding;
 		@media only screen and (max-width: 768px) {
@@ -904,7 +942,7 @@ a {
 			}
 	}
 	#TocSidebarContainer{
-		@if $boxed-skincontent == T{
+		@if $boxed-skincontent == T {
 			left:-220px;
 			@include border-radius($default-border-radius);
 			box-shadow: 0 0 10px rgba(0,0,0, .4);
@@ -960,11 +998,13 @@ a {
 	#Toc li.Alert a{
 		color: red;
 	}
-	//End Table of Contents Styles//////////////////
+	//End Table of Contents
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// SPECIFIC QUESTION TYPES
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// (Still inside .Skin)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// QUESTION TYPES
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	////////////////////////////////////////////////////////////////////
 	// Pick Group & Rank / Rank Order
@@ -1060,7 +1100,8 @@ a {
 	@media all and (min-width: 767px) {
 		.CS .HR li,
 		.RO .HR li {
-			margin: $default-container-padding / 2;
+			margin-right: $default-container-padding;
+			// background: blue;
 		}
 	}
 	.RO .DND ul li {
@@ -1279,7 +1320,7 @@ a {
 .Skin {
 	.MC {
 		.MAHR, .SAHR {
-			@media all and (max-width: 768px) {
+			@media all and (max-width: 481px) {
 				td {
 					display: block;
 					width: 100%;
@@ -1295,38 +1336,42 @@ a {
 	}
 }
 
-  /////////////////////////////
- // START LABEL STYLES 		//
-/////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LABEL STYLES
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// .SingleAnswer & .MultipleAnswer are the actual labels (with text in them)
 	// .q-radio & .q-checkbox are the labels that mimic the input
 
-	// .q-radio/checkbox need to exist in both (but be hidden for .MC, etc in the "No Radio Buttons" option)
+	// .SinleAnswer & .MultipleAnswer are only styled in "No Radio Buttons" option
+	// .q-radio/checkbox are hidden for .MC, etc in the "No Radio Buttons" option
 
 /////////////////////////////
 /////////////////////////////
 
 	/* Start Radio Buttons */
+	////////////////////////////////////////////////////////////////////
+	// STYLED RADIO BUTTONS / CHECKBOXES
+	////////////////////////////////////////////////////////////////////
 	.Skin label.q-radio,
 	.Skin label.q-checkbox {
 		border: $q-radio-border;
 		width: $q-radio-size;
 		height: $q-radio-size;
 		display: inline-block;
+		background: $q-radio-background;
 		@if $default-font-size < 14px { // BOOKMARK: // could do something like this... to make radio button match font size more??
 			width: 16px;
 			height: 16px;
 		}
-		// HIDE ALL q-radio inputs (to bring back native radio buttons and checkboxes for IE8-)
+		// IE8: HIDE ALL q-radio inputs (to bring back NATIVE radio buttons and checkboxes for IE8-)
 		display: none\9;
-
-	}
+	}	
 	// RADIO BUTTON
 	.Skin label.q-radio {
 		@include border-radius(100%); 	//Need to be circles
 		&.q-checked {
-			background-color: lighten($primary-color, 8%);
+			background-color: $q-radio-background-checked;
 		}
 	}
 	// CHECK BOX
@@ -1336,7 +1381,7 @@ a {
 		}
 		&.q-checked {
 			background-image: url(check.png);
-			background-color: lighten($primary-color, 8%);
+			background-color: $q-radio-background-checked;
 			background-size: 100%;
 			background-position: center center;
 			background-repeat: no-repeat;	
@@ -1370,6 +1415,12 @@ a {
 		width:auto\9;	
 	}
 
+	// Sometimes this seems to help and sometimes it doesn't.  Can't figure out the alignment of the radio buttons consistently.  
+	// .Skin .MC .q-radio,
+	// .Skin .MC .q-checkbox {
+	// 	margin-top: 4px;
+	// }
+
 	// Aligns the HR radio buttons vertically with each other
 	.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
 	.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
@@ -1383,20 +1434,20 @@ a {
 	} 
 	// This is to group the answer with the correct associated input on mobile..
 	// Good idea? bad idea?
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 480px) {
 
 		.Skin .MC .MAHR .QuestionBody td.LabelContatiner,
 		.Skin .MC .SAHR .QuestionBody td.LabelContatiner {
-			border-bottom: 2px solid #eee;
 			padding: 10px 0;
 			&:last-child {
-				border-bottom: none;
+				padding-bottom: none;
 			}
 		}
 	}
 
 	.Skin .ChoiceStructure li {
 		padding: 10px 0;
+
 	}
 
 	.Skin .MC .SAVR label.q-radio,
@@ -1407,14 +1458,21 @@ a {
 		margin-right: 10px;
 		padding: 0;
 	}
-	.Skin .MC .MACOL .QuestionBody td.ControlContainer,
-	.Skin .MC .SACOL .QuestionBody td.ControlContainer{
-		padding: 10px;
+
+	.Skin .MC .SAHR label.SingleAnswer,
+	.Skin .MC .MAHR label.MultipleAnswer {
+		display: inline-block; //Allows the padding below to take effect (and put some space between the radio button).  Can't use "block" or it won't go on the same line as radio button in "side labels" option
+		@media only screen and (min-width: 481px) {
+			padding-bottom: 20px;
+		}
 	}
-	.Skin .MC .SACOL .QuestionBody label.SingleAnswer,
-	.Skin .MC .MACOL .QuestionBody label.MultipleAnswer {
-		// should match the 10px above, for consistency
-		padding: 10px 0;
+
+	.Skin .MC .MACOL .QuestionBody td.ControlContainer,
+	.Skin .MC .SACOL .QuestionBody td.ControlContainer,
+	.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
+	.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
+		padding: 10px 10px 10px 0;
+		vertical-align: top;
 	}
 
 	// Because the "radio button" questions need different padding format
@@ -1527,6 +1585,7 @@ a {
 		padding: 4px; // give some space between the WHY elements in GAP analysis questions.  
 	}
 
+	// Just adds some space between the answer label (inside td) and the textbox below
 	.Skin .MC .TextEntryBox {
 		margin-top: 8px;
 	}
@@ -1538,7 +1597,7 @@ a {
 		}
 	}
 
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 481px) {
 		.Skin .MC .ChoiceStructure {
 			border-spacing: $answer-label-spacing;
 		}
@@ -1558,17 +1617,18 @@ a {
 
 	.Skin .MC .SACOL .ChoiceStructure,
 	.Skin .MC .MACOL .ChoiceStructure {
-		border-spacing: $answer-label-spacing;
+		border-spacing: $answer-label-spacing / 2;
 	}
 
-	//BOOKMARK: The reason we want this as display: none, is to fix the formatting of MACOL and SACOL questions. 
-	// PROBLEM: the .ControlContainer holds an input in some questions.  Can't remove or it is unselectable in IE.  
-	.Skin .MACOL, .Skin .SACOL {
-		.ControlContainer {
-			display: none; // BOOKMARK: Will this be OK?  TEST MACOL and SACOL questions really well.   
-			display: table-cell\9;
-		}
-	}
+	// //BOOKMARK: The reason we want this as display: none, is to fix the formatting of MACOL and SACOL questions. 
+	// // PROBLEM: the .ControlContainer holds an input in some questions.  Can't remove or it is unselectable in IE. 
+	// // Another Problem: even on Chrome, you can't track tabbing through the survey (focus class) if this isn't here because there's no input.   
+	// .Skin .MACOL, .Skin .SACOL {
+	// 	.ControlContainer {
+	// 		display: none; // BOOKMARK: Will this be OK?  TEST MACOL and SACOL questions really well.   
+	// 		display: table-cell\9;
+	// 	}
+	// }
 	// /* General label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
@@ -1592,7 +1652,7 @@ a {
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background-color .2s ease-in-out;
 		padding: 10px;
-		@media all and (min-width: 768px) {
+		@media all and (min-width: 481px) {
 			padding: 20px;
 		}
 		display: block;
@@ -1630,6 +1690,15 @@ a {
 	.Skin .SAVR .QuestionBody label.SingleAnswer,
 	.Skin .MAVR .QuestionBody label.MultipleAnswer {
 		text-align: left;
+	}
+
+	//Makes these wider. Not sure what's going on here exactly, or if it's needed -- Decided to take it out: //This is making them drop to a new line below radio button, on small window widths. 
+	// Found out it's necessary for the no radio buttons to have margin between the VR lis (not sure why) 
+	.Skin .MC .SAVR input,
+	.Skin .MC .SAVR span.LabelWrapper,
+	.Skin .MC .MAVR input,
+	.Skin .MC .MAVR span.LabelWrapper{
+		float:left; 
 	}
 
 	.Skin label.SingleAnswer.q-checked {
@@ -1670,11 +1739,11 @@ a {
 	.Skin .MC label.q-checkbox {
 		display: none;
 	}
-	.Skin .SACOL label.SingleAnswer,
-	.Skin .MACOL label.MultipleAnswer {
-		//If a single word is too long, it will break rather than spill over
-		word-break: break-word; 
-	}
+	// .Skin .SACOL label.SingleAnswer,
+	// .Skin .MACOL label.MultipleAnswer {
+	// 	//If a single word is too long, it will break rather than spill over -- not a good idea, I guess. It also breaks something small like 10 into 1 and 0. 
+	// 	word-break: break-word; 
+	// }
 
 
 } // end if $radio-buttons == F
@@ -1687,7 +1756,7 @@ a {
 //BELOW IS A TEST to make large questions expand the width of the survey
 //So far this has been successful (9/15/14)
 @if $full-width-header == T {
-	@media (min-width: 900px) {
+	@media (min-width: 980px) {
 		.Skin #SkinContent {
 			display: table;
 			min-width: $container-min-width;
@@ -1699,7 +1768,7 @@ a {
 		min-width: $container-min-width \9;
 	}	
 } @elseif $full-width-header == F {
-	@media (min-width: 900px) {
+	@media (min-width: 980px) {
 		.Skin .SkinInner {
 			display: table;
 			min-width: $container-min-width;
