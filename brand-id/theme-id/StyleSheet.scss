@@ -37,15 +37,17 @@
 
 	//LOGO
 	$logo-background-color: transparent;
-	$logo-width: 150px;
-	$logo-height: 50px;
-	$logo-mobile-height: ($logo-height / 1.5);
-	$logo-mobile-width: auto;
+	$logo-width: 180px;
+	$logo-height: 91px;
+	$logo-scale: .66;
+	$logo-mobile-height: $logo-height * $logo-scale;
+	$logo-mobile-width: $logo-width * $logo-scale;
 	$logo-margin: 0px auto;
 	$logo-padding: 25px $default-container-padding;
+	$logo-mobile-padding: $default-container-padding * $logo-scale;
 	$logo-max-width: $container-max-width;
 	$logo-image: url("logo.png");
-	$logo-mobile-image: url("logo-mobile.png");
+	$logo-mobile-image: url("logo.png");
 	$logo-position: $default-container-padding center;
 	$logo-mobile-position: center center;
 	$logo: $logo-background-color $logo-image no-repeat $logo-position;
@@ -82,7 +84,7 @@
 
 	//PROGRESS BAR
 	$progress-bar-fill-color: $secondary-color;
-	$progress-bar-border-radius: $default-border-radius;
+	$progress-bar-border-radius: $default-border-radius - 2;
 	$progress-bar-fill-padding: 5px 0px;
 	$progress-bar-padding: 20px $default-container-padding;
 	$progess-bar-background-color: darken($skin-content-background-color, 10%);
@@ -123,22 +125,22 @@
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//LAYOUTS - Default is old school container
-	$full-width-header: true;
-	$boxed-main-container: false;
-	$boxed-questions: false; 
-	$fixed-to-bottom-buttons: false; //alpha testing
+	$full-width-header: T;
+	$boxed-main-container: T;
+	$boxed-questions: F; 
+	$fixed-to-bottom-buttons: F; //alpha testing
 	$fixed-to-bottom-progress-bar: $fixed-to-bottom-buttons; //alpha testing
 
 
 	//TURNS THE BORDER RADIUS ON SKIN CONTENT, PROGRESS BAR, & BUTTONS
-	$border-radius-on: true;
+	$border-radius-on: T;
 	$button-border-radius-on: $border-radius-on;
 	$progress-bar-border-radius-on: $border-radius-on;
 	$skin-content-border-radius-on: $border-radius-on;
 
 	//BUTTON STYLE
-	$button-outline: false;
-	$button-solid: true;
+	$button-outline: F;
+	$button-solid: T;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//MIXINS
@@ -195,7 +197,7 @@ html {
 
 	#LogoContainer {
 		background: $logo-container-background-color;
-		@if $full-width-header == false {
+		@if $full-width-header == F {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
 			margin:0 auto;
 		}
@@ -203,7 +205,7 @@ html {
 
 	#HeaderContainer {
 		background: $header-container-background-color;
-		@if $full-width-header == false {
+		@if $full-width-header == F {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
 			margin:0 auto;
 		}
@@ -222,15 +224,15 @@ html {
 
 	.SkinInner {
 		margin: $skin-inner-margin;
-		@if $boxed-main-container == false {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
-		@else if $boxed-main-container == true {max-width: $skin-inner-max-width;}
+		@if $boxed-main-container == F {max-width: ($skin-inner-max-width + ($default-container-padding * 2));}
+		@else if $boxed-main-container == T {max-width: $skin-inner-max-width;}
 		width: 100%;
 	}
 
 	#SkinContent {
 		background-color: $skin-content-background-color;
 		border: $skin-content-border;
-		@if $skin-content-border-radius-on == true {@include border-radius($skin-content-border-radius)}
+		@if $skin-content-border-radius-on == T {@include border-radius($skin-content-border-radius)}
 		padding: 0px;
 	}
 
@@ -240,7 +242,7 @@ html {
 
 	.QuestionOuter {
 		padding: $question-outer-padding;
-		@if $boxed-questions == true {
+		@if $boxed-questions == T {
 			background: $question-background-boxed;
 			margin:0 $questionouter-padding-boxed;
 		}
@@ -314,14 +316,14 @@ html {
 	#ProgressBar {
 		font-size: $default-font-size;
 		padding: $progress-bar-padding;
-		@if $fixed-to-bottom-progress-bar == true {
+		@if $fixed-to-bottom-progress-bar == T {
 			position:fixed;
 			bottom: 82px;
 			left:0;
 			right:0;
 		}
 	}
-	@if $fixed-to-bottom-progress-bar == true {
+	@if $fixed-to-bottom-progress-bar == T {
 		.ProgressBarContainer{
 			width:100%;
 			border-collapse:collapse;
@@ -335,7 +337,7 @@ html {
 		border: none;
 		overflow:hidden;
 		background:$progess-bar-background-color;
-		@if $fixed-to-bottom-progress-bar == true {
+		@if $fixed-to-bottom-progress-bar == T {
 			position:absolute;
 			bottom:0;
 			left:0;
@@ -343,8 +345,8 @@ html {
 			width:100%;
 			z-index: 3;
 		}
-		@else if $fixed-to-bottom-progress-bar == false {
-			@if $progress-bar-border-radius-on == true {@include border-radius($progress-bar-border-radius)}
+		@else if $fixed-to-bottom-progress-bar == F {
+			@if $progress-bar-border-radius-on == T {@include border-radius($progress-bar-border-radius)}
 		}
 	}
 
@@ -355,7 +357,7 @@ html {
 
 	#Buttons {
 		padding: $buttons-padding;
-		@if $fixed-to-bottom-buttons == true {
+		@if $fixed-to-bottom-buttons == T {
 			position:fixed;
 			bottom:0;
 			right:0;
@@ -383,8 +385,8 @@ html {
 	#Buttons #NextButton, #Buttons #PreviousButton {
 		background-color: $button-background-color;
 		border: $button-border;
-		@if $button-border-radius-on == true {@include border-radius($button-border-radius)}
-		@else if $button-border-radius-on == false {@include border-radius(0px)}
+		@if $button-border-radius-on == T {@include border-radius($button-border-radius)}
+		@else if $button-border-radius-on == F {@include border-radius(0px)}
 		color: $button-text-color;
 		cursor: pointer;
 		font-size: $default-font-size;
@@ -397,7 +399,7 @@ html {
 		@media only screen and (min-device-width: 1024px) {
 
 
-			@if $button-solid == true {
+			@if $button-solid == T {
 
 				&:hover {
 					background-color: darken($button-background-color, 10%);
@@ -411,7 +413,7 @@ html {
 		
 			}
 
-			@if $button-outline == true {
+			@if $button-outline == T {
 
 				&:hover {
 					background-color: $button-text-color;
@@ -473,11 +475,12 @@ MOBILE
 			background: $logo-mobile;
 			background-size: $logo-mobile-width $logo-mobile-height;
 			height: $logo-mobile-height;
+			padding: $logo-mobile-padding;
 		}
 	}
 
 	.Skin {
-		@if $full-width-header == false{ 
+		@if $full-width-header == F{ 
 			#LogoContainer{
 			margin-top:0;
 			}
@@ -488,18 +491,23 @@ MOBILE
 		}
 
 		.SkinInner {
+			@if $boxed-main-container == T{
+				margin:0 auto !important;
+			}
+			@if $boxed-main-container == F{
 			margin: $skin-inner-margin !important;
+			}
 			max-width: $container-max-width;
 		}
 
 		#SkinContent {
 			border: none;
-			@if $skin-content-border-radius-on == true {
+			@if $skin-content-border-radius-on == T {
 			@include border-radius(0);
 			}
 		}
 
-		@if $boxed-questions == true {
+		@if $boxed-questions == T {
 			.QuestionOuter {
 			margin:0;
 		}
