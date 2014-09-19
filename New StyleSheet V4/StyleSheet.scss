@@ -13,13 +13,13 @@
 
 	//LAYOUT
 	$interchangeable-logo: T;
-	$full-width-header: F;
-	$boxed-skincontent: T;
+	$full-width-header: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: F;
-	$overlay-dark: T;
+	$body-background-image-on: T;
+	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
@@ -943,9 +943,9 @@ a {
 	}
 	#TocSidebarContainer{
 		@if $boxed-skincontent == T {
-			left:-220px;
+
 			@include border-radius($default-border-radius);
-			box-shadow: 0 0 10px rgba(0,0,0, .4);
+			@include box-shadow(0, 0, 20px, rgba(0,0,0, .2));
 			background:$question-container-background-color;
 			&.reduced{
 				background: $question-container-background-color;
@@ -965,7 +965,6 @@ a {
 		}
 		@if $boxed-skincontent == F{
 			@if $overlay-dark == T{
-				left:-200px;
 				@include border-radius($default-border-radius);
 				background:rgba(255,255,255,.1);
 				&.reduced{
@@ -974,7 +973,6 @@ a {
 				}
 			}
 			@if $overlay-dark == F{
-				left:-200px;
 				@include border-radius($default-border-radius);
 				background:rgba(0,0,0,.1);
 
@@ -988,13 +986,14 @@ a {
 	#Toc a, #Toc strong, #TocHeader a{
 		color:$default-text-color;
 	}
-	#TocHeader td.Current a, #Toc li.Current, body #Toc li.Current a, #Toc li.Current strong {
+		#Toc li.Incomplete a{
+		color: $default-text-color;
+	}
+	#TocHeader td.Current a, #Toc li.Current,  #Toc li.Current a, body #Toc li.Current a, #Toc li.Current strong, #Toc li.Current {
 		background-color: $primary-color;
 		color: #FFF;
 	}
-	#Toc li.Incomplete a{
-		color: $default-text-color;
-	}
+
 	#Toc li.Alert a{
 		color: red;
 	}
