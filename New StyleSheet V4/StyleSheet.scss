@@ -14,22 +14,22 @@
 	//LAYOUT
 	$interchangeable-logo: T;
 	$full-width-header: T;
-	$boxed-skincontent: F;
+	$boxed-skincontent: T;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: T;
-	$overlay-dark: F;
+	$body-background-image-on: F;
+	$overlay-dark: T;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
 
 	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
-	$question-container-box-shadow-on: F;
-	$question-container-border-on: T;
+	$question-container-box-shadow-on: T;
+	$question-container-border-on: F;
 
 	//RADIO BUTTONS
-	$radio-buttons: T;
+	$radio-buttons: F;
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
@@ -43,7 +43,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #ff5050;
+	-->	$primary-color: #4A7CFD;
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -60,8 +60,8 @@
 	/////////////////////////////
 	// SURVEY ENGINE BODY
 	/////////////////////////////
-	--> $body-background-color: #FFF;
-	--> $body-background-image: url(https://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_cOnSH9l3PPJjFmR&V=1410189252);
+	--> $body-background-color: $primary-color;
+	--> $body-background-image: url(https://unsplash.imgix.net/45/HWijjF7RwOPGEJ1nb4Zb_IMG_3773.jpg?q=75&fm=jpg&auto=format&s=94d1c5903468f9008b682217f498c0d8);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -80,12 +80,15 @@
 	/////////////////////////////
 	// OVERLAY
 	/////////////////////////////
+	$overlay-background-backup: url(dark.png); //This backup image is for IE8.  
 	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
-			$overlay-background: url(dark.png);
+			$overlay-background-backup: url(dark.png);
+			$overlay-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjI2MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjI3MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODhFQTM2MjQyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODhFQTM2MjUyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7GrwiJAAAAGElEQVR42mJhYGDYzIAEmBjQAGEBgAADAC7gAL6OYuzKAAAAAElFTkSuQmCC);
 		} @elseif $overlay-dark == F {
-			$overlay-background: url(light.png);
+			$overlay-background-backup: url(light.png);
+			$overlay-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjIyMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjIzMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEEzQUI2ODkyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEEzQUI2OEEyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4rnAl1AAAAGElEQVR42mL8////ZgYkwMSABggLAAQYAPNOA7i/q9LvAAAAAElFTkSuQmCC);
 		}
 	}
 
@@ -114,7 +117,7 @@
 		$default-border-width: 2px;
 	}
 	$default-border-style: solid;	
-	$default-border-color: #ccc;
+	$default-border-color: #D2D2D6;
 	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
 		@if $overlay-dark == F {
 			$default-border-color: lighten($default-text-color, 20%);
@@ -129,7 +132,7 @@
 	$default-border: $default-border-width $default-border-style $default-border-color;
 	//SEPARATOR
 	$separator-height: $default-border-width;
-	$separator-margin: 0;
+	$separator-margin: 5px;
 
 	/////////////////////////////
 	// QUESTION CONTAINER
@@ -138,7 +141,7 @@
 	$container-box-shadow-x: 0;
 	$container-box-shadow-y: 0;
 	$container-box-shadow-spread: 15px;
-	$container-box-shadow-color: rgba(0,0,0,.3); //Can't use box-shadow on IE8 anyway, so might as well do rgba
+	$container-box-shadow-color: rgba(0,0,0,.2); //Can't use box-shadow on IE8 anyway, so might as well do rgba
 	$question-container-border-radius: $default-border-radius * 2;
 	$question-container-box-shadow: ($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 	$question-container-border: $default-border-width $default-border-style darken($primary-color, 10%);
@@ -152,7 +155,7 @@
 	/////////////////////////////
 	// PROGRESS BAR
 	/////////////////////////////
-	$progress-bar-background-color: $primary-hue-color-light;
+	$progress-bar-background-color: #e8e8eb;
 	@if $full-width-header == F and $body-background-image-on == T {
 		@if $overlay-dark == T {
 			$progress-bar-background-color: rgba(255,255,255,.2);
@@ -186,9 +189,12 @@
 	$logo-mobile-width: ($logo-image-width * $logo-mobile-scale);
 	$logo-mobile-height: ($logo-image-height * $logo-mobile-scale);
 	$logo-max-width: $container-max-width + ($default-container-padding * 2.5); //2.5? There's almost always some padding around the logo in the image file.  Good idea or not?
-	@if $boxed-skincontent == F and $full-width-header == T {
-		$logo-max-width: $container-max-width + ($default-container-padding); //Better to have it too far out than too far in.  In my opinion.
+	@if $full-width-header == T {
+		$logo-max-width: none; //Not sure if this is best, but it needs to align with the Content Box, or at least be wider
 	}
+	// @if $boxed-skincontent == F and $full-width-header == T {
+	// 	$logo-max-width: $container-max-width + ($default-container-padding); //Better to have it too far out than too far in.  In my opinion.
+	// }
 	$logo-position: $default-container-padding center; // So it doesn't touch the edge
 	$logo-mobile-position: center center;
 	$logo-mobile-padding: ($logo-padding * $logo-mobile-scale);
@@ -198,9 +204,12 @@
 	/////////////////////////////
 	$header-font-size: $default-font-size;
 	$header-max-width: $container-max-width + ($default-container-padding * 2);
-		@if $boxed-skincontent == F and $full-width-header == T {
-			$header-max-width: $container-max-width + ($default-container-padding * .5);
-		}
+	@if $full-width-header == T {
+		$header-max-width: none; //Not sure if this is best, but it needs to align with the Content Box, or at least be wider
+	}
+	// @if $boxed-skincontent == F and $full-width-header == T {
+	// 	$header-max-width: $container-max-width + ($default-container-padding * .5);
+	// }
 	$header-padding: 10px $default-container-padding; //&:empty {padding: 0}
 	@if $interchangeable-logo == F {
 		@if $full-width-header == T {
@@ -301,7 +310,7 @@
 	$plug-font-size: 14px; // IMPORTANT: If this changes, need to change the $calculated-sticky-footer-height (or it will overflow or be too short)
 	$plug-padding: 12px 24px;
 	$plug-link-color: #FFF;
-	$plug-background: rgba(0,0,0,.3);
+	$plug-background: rgba(61,61,68,.3);
 	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T {
 		$plug-background: rgba(255,255,255,.1);
 	}
@@ -451,6 +460,7 @@ a {
 		bottom: 0;
 		left: 0;
 		z-index: -9;
+		background: $overlay-background-backup;
 		background: $overlay-background;
 	}
 
@@ -543,7 +553,6 @@ a {
 			}
 		}
 	} 
-
 	#LogoContainer {
 		background: $logo-container-background;
 		@if $full-width-header == T {
@@ -551,8 +560,11 @@ a {
 				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
 			}
 			@if $question-container-border-on == T {
-				border: $question-container-border;
+				border-bottom: $question-container-border;
 			}
+			@if $boxed-skincontent == T {
+				margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
+			} 
 		}
 	}
 
@@ -577,6 +589,8 @@ a {
 		}
 	}
 
+
+
 	#HeaderContainer {
 		@if $full-width-header == F {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
@@ -584,12 +598,12 @@ a {
 		}
 		@if $full-width-header == T {
 			background: $logo-container-background;
-			@if $boxed-skincontent == T {
-				margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
-			} 
-			@if $boxed-skincontent == F {
-				margin-bottom: ($default-container-padding);
-			}
+			// @if $boxed-skincontent == T {
+			// 	margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
+			// } 
+			// @if $boxed-skincontent == F {
+			// 	margin-bottom: ($default-container-padding);
+			// }
 		}
 		@media only screen and (max-width: 767px) {
 			text-align: center;
@@ -692,7 +706,9 @@ a {
 	// Thanks, Cory.
 
 	#Buttons {
-		margin-top: 50px;	// BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		@media only screen and (min-width: 481px) {
+			margin-top: 50px; // BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		}
 		padding: $buttons-container-padding;
 		text-align: right;
 		@media only screen and (max-width: 768px) {
@@ -736,7 +752,7 @@ a {
 			}
 			&:active {
 				background: $button-background-active;
-				border: $button-background-active;
+				border-color: $button-background-active;
 			}
 		}
 	}
@@ -1178,16 +1194,6 @@ a {
 	.horizontalbar tbody th.ylabel {
 		padding:($default-container-padding / 2);
 	}
-	// .horizontalbar tr.GuidingCells {
-	// 	th, td, th.ylabel {
-	// 		padding: 0; // Gets rid of the extra space above the slider. 
-	// 	}
-	// }
-	// .horizontalbar {
-	// 	tr.LabelDescriptions  {
-	// 		empty-cells: hide;
-	// 	}
-	// }
 	.horizontalbar tr.Stars td.value input,
 	.horizontalbar table.sliderGrid tr td.value input {
 		width: 4em;
@@ -1197,14 +1203,17 @@ a {
 	//Draggable Bar
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
-		@include border-radius($default-border-radius);
+		@include border-radius(2px);
 	}
 	.HBAR .trackHolderRel .track {
 		border: $default-border;
 			@include border-radius(2px);
+		&:hover {
+			border-color: $slider-handle-color;
+		}
 	}
 	.HBAR .trackHolderRel.activated .track {
-		border-color: darken($slider-handle-color, 10%);
+		border-color: $slider-handle-color;
 	}
 	//Graphic Slider
 	.SS .horizontalbar .SSTrack,
@@ -1223,6 +1232,18 @@ a {
 	.horizontalbar .Slider .handle:hover {
 		background-color: $primary-color;
 		padding: 10px;
+	}
+
+	// This is so the number labels above the sliders don't squish together. 
+	@media all and (max-width: 480px) {
+		.horizontalbar tr.xlabel th span.TickContainer span,
+		.horizontalbar tr.xlabel td span.TickContainer span{
+			font-size: 12px;
+		}
+		.horizontalbar tr.xlabel th span.TickContainer span.MinValue,
+		.horizontalbar tr.xlabel td span.TickContainer span.MinValue{
+			font-size: 12px;
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -1434,6 +1455,8 @@ a {
 			width: 16px;
 			height: 16px;
 		}
+		margin-top: 3px; //These align fine in the Preview file, but something about the difference between their being an extra span inside the label makes these not align that well in a real survey.  
+		
 		// IE8: HIDE ALL q-radio inputs (to bring back NATIVE radio buttons and checkboxes for IE8-)
 		display: none\9;
 	}	
@@ -1853,4 +1876,11 @@ a {
 	}	
 }
 
+@media (min-width: 980px) {
+
+	.Skin .TE .ESTB .InputText,
+	.Skin .TE .ML .InputText {
+		max-width: 1080px; // So the user can't stretch these to some ungodly width.  (Have to put it in this media query, where we're including the display:table fix, so it doesn't override the max-width:100%)
+	} 
+}
 
