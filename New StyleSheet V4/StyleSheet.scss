@@ -26,6 +26,7 @@
 
 	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
 	$question-container-box-shadow-on: F;
+	$question-container-border-on: T;
 
 	//RADIO BUTTONS
 	$radio-buttons: T;
@@ -59,7 +60,7 @@
 	/////////////////////////////
 	// SURVEY ENGINE BODY
 	/////////////////////////////
-	--> $body-background-color: $primary-color;
+	--> $body-background-color: #FFF;
 	--> $body-background-image: url(https://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_cOnSH9l3PPJjFmR&V=1410189252);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
@@ -128,7 +129,7 @@
 	$default-border: $default-border-width $default-border-style $default-border-color;
 	//SEPARATOR
 	$separator-height: $default-border-width;
-	$separator-margin: 10px;
+	$separator-margin: 0;
 
 	/////////////////////////////
 	// QUESTION CONTAINER
@@ -140,6 +141,7 @@
 	$container-box-shadow-color: rgba(0,0,0,.3); //Can't use box-shadow on IE8 anyway, so might as well do rgba
 	$question-container-border-radius: $default-border-radius * 2;
 	$question-container-box-shadow: ($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+	$question-container-border: $default-border-width $default-border-style darken($primary-color, 10%);
 	//SKININNER
 	$skin-inner-max-width: $container-max-width;
 	$skin-inner-background: $question-container-background-color;
@@ -524,7 +526,10 @@ a {
 			
 			@if $boxed-skincontent == T {
 				@if $question-container-box-shadow-on == T {
-					@include box-shadow($question-container-box-shadow);
+					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+				}
+				@if $question-container-border-on == T {
+					border: $question-container-border;
 				}
 				@if $border-radius-on == T {
 					@include border-radius($question-container-border-radius);
@@ -541,8 +546,13 @@ a {
 
 	#LogoContainer {
 		background: $logo-container-background;
-		@if $full-width-header == T and $question-container-box-shadow-on == T {
-			@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+		@if $full-width-header == T {
+			@if $question-container-box-shadow-on == T  {
+				@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+			}
+			@if $question-container-border-on == T {
+				border: $question-container-border;
+			}
 		}
 	}
 
@@ -610,9 +620,14 @@ a {
 				@if $border-radius-on == T {
 					@include border-radius($default-border-radius * 2);
 				}	
-				@if $boxed-skincontent == T and $question-container-box-shadow-on == T{
-					@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
-				}
+				@if $boxed-skincontent == T {
+					@if $question-container-box-shadow-on == T {
+						@include box-shadow($container-box-shadow-x, $container-box-shadow-y, $container-box-shadow-spread, $container-box-shadow-color);
+					}
+					@if $question-container-border-on == T {
+						border: $question-container-border;
+					}
+				} 
 			}
 		}
 		@media only screen and (max-width: 767px) {
@@ -655,6 +670,10 @@ a {
 
 	.DB .TB .QuestionBody {
 		padding: 0;	//This removes the padding from the nonexistent .QuestionBody on Descriptive Text questions.
+	}
+
+	.WOTXB .QuestionBody {
+		padding-top: $default-container-padding; //This adds padding to the top of the Graphic Without Text question (since there's no .QuestionText div at the top)
 	}
 
 	// BOOKMARK: Side scrolling still needs testing
@@ -854,10 +873,9 @@ a {
 		}
 		.CS .TX .TextEntryBox,
 		.RO .TX .TextEntryBox {
-			width: 50% !important; // Make these 100% and they automatically go to a new line... I guess 50% works
+			// width: 50% !important; // Make these 100% and they automatically go to a new line... I guess 50% works
 			// or what about max-width: 100%? as long as it's fine in IE8.
 			max-width: 100%;
-			background: red;
 		}
 	}	
 	// /end Text input width fixes
@@ -1154,9 +1172,22 @@ a {
 	.horizontalbar .Slider .track {
 		background-color: $slider-bar-color; //BOOKMARK: what's a good way to make the area around the slider selectable, without having to use an image
 	}
-	.horizontalbar th.ylabel {
+	.horizontalbar .LabelDescriptions {
+		margin-bottom: ($default-container-padding / 2);
+	}
+	.horizontalbar tbody th.ylabel {
 		padding:($default-container-padding / 2);
 	}
+	// .horizontalbar tr.GuidingCells {
+	// 	th, td, th.ylabel {
+	// 		padding: 0; // Gets rid of the extra space above the slider. 
+	// 	}
+	// }
+	// .horizontalbar {
+	// 	tr.LabelDescriptions  {
+	// 		empty-cells: hide;
+	// 	}
+	// }
 	.horizontalbar tr.Stars td.value input,
 	.horizontalbar table.sliderGrid tr td.value input {
 		width: 4em;
@@ -1255,6 +1286,10 @@ a {
 	.Matrix .TE td input {
 		margin: 2px; // This keeps the long .TE inputs from touching each other.
 	}
+	//BIPOLAR
+	.Matrix .Bipolar tr.ChoiceRow td {
+		padding: 0 7px;
+	}
 
 	// // BOOKMARK: TEST STYLES
 	// .Matrix .Profile .MultipleAnswer table th.c1 {
@@ -1275,14 +1310,50 @@ a {
 	// }
 
 	////////////////////////////////////////////////////////////////////
+	// Side by Side
+	////////////////////////////////////////////////////////////////////
+	// FROM BASESTYLES: 
+	// .SBS .Answers td,
+	// .SBS .Answers th {
+	// 	border-bottom-width: 1px;
+	// 	border-style: solid;
+	// 	background: red;
+	// }
+	// .SBS .c2 {
+	// 	border-right-width: 1px;
+	// 	border-style: solid;
+	// 	background: blue;
+	// }
+
+	.SBS .Separator1 {
+		border-right: $default-border;
+	}
+
+	// .SBS .Answers td, .Skin .SBS .Answers th {
+	// 	border-right: 1px solid red;
+	// }
+
+	.SBS .c2 {
+		border-right: $default-border;
+	}
+
+	.SBS .Answers td, .SBS .Answers th {
+		border-bottom: $default-border;
+	}
+
+	////////////////////////////////////////////////////////////////////
 	// NPS
 	////////////////////////////////////////////////////////////////////
 	@if $radio-buttons == T { // Prevent radio buttons from riding up
 		.NPS label.SingleAnswer {
 			display: block;
+			padding-bottom: $answer-label-spacing;
 		}
 		.NPS td.LabelContatiner {
 			text-align: center;
+		}
+		.NPS td.ColumnLabels {
+			padding-bottom: $answer-label-spacing;
 		}
 
 		// BOOKMARK: 
@@ -1380,6 +1451,8 @@ a {
 		}
 		&.q-checked {
 			background-image: url(check.png);
+			//BOOKMARK: DATA URI ok to use?
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAOCAYAAAAi2ky3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGtJREFUeNpiYqASYCJH0////wUoNghqyH4gPZ9s54MMAeLz/xFgPskugrkEiA2o6ZL/eL0GlEwAYWoYAgMJ5BoC0vAeTUMBSYYgGWaAxTDSDCHCsPnkxBC6YRQlPJhh8ynOhEBDFEhRDxBgAB+/ARRU5dv/AAAAAElFTkSuQmCC);
 			background-color: $q-radio-background-checked;
 			background-size: 100%;
 			background-position: center center;

@@ -979,16 +979,19 @@ h2.noStyle {
 	// width: 120px;
 	width: 60px;
 	width: 6em;
+	margin: 2px; // Just so they're not touching.  
 }
 .Skin .SBS .Long {
 	// width: 200px;
 	width: 90px;
 	width: 9em;
+	margin: 2px
 }
 .Skin .SBS .Essay {
 	// width: 350px;
 	width: 100%;
 	height: 4em;
+	margin: 2px;
 }
 .SBS table.ChoiceStructure{
 	border-collapse:collapse;
