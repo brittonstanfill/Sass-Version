@@ -19,13 +19,13 @@
 
 	//BACKGROUND
 	$body-background-image-on: F;
-	$overlay-dark: T;
+	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
 
 	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
-	$question-container-box-shadow-on: T;
+	$question-container-box-shadow-on: F;
 	$question-container-border-on: F;
 
 	//RADIO BUTTONS
@@ -33,6 +33,13 @@
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+
+	//BUTTON STYLE
+	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
+	@if $label-style == 1 {
+		$button-style: 1;
+	}
+	$buttons-centered: F; // F pushes buttons to left and right
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ALL VARIABLES
@@ -43,7 +50,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #4A7CFD;
+	-->	$primary-color: #c32432; //4A7CFD c32432 6fb9c4
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -61,7 +68,7 @@
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(https://unsplash.imgix.net/45/HWijjF7RwOPGEJ1nb4Zb_IMG_3773.jpg?q=75&fm=jpg&auto=format&s=94d1c5903468f9008b682217f498c0d8);
+	--> $body-background-image: url(http://33.media.tumblr.com/8feb407e7d74d9cf1009e493a80bf404/tumblr_naosi8UVhG1qfirfao1_1280.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -162,7 +169,7 @@
 		}
 
 	}
-	$progress-bar-fill-color: darken($desaturated-primary-color, 10%);
+	$progress-bar-fill-color: $primary-color;
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
@@ -242,23 +249,8 @@
 	$question-body-padding: 0 $default-container-padding $default-container-padding $default-container-padding;
 
 	/////////////////////////////
-	// RADIO BUTTONS / LABELS
+	// Q RADIO BUTTONS
 	/////////////////////////////
-	//LABELS
-	$answer-label-spacing: 10px;
-	//SELECTED STATE
-	$answer-label-select-background: $primary-color;
-	$answer-label-select-color: $reverse-primary-text-color;
-	//STYLE 1
-	$answer-label-background: transparent;
-	$answer-label-border: 1px solid $default-border-color; // Customers4 style
-	//STYLE 2
-	$answer-label-background-2-backup: #eee; //For IE
-	$answer-label-background-2: rgba(0,0,0,.05); //For white background
-	$answer-label-background-2-transparent-dark: rgba(0,0,0,.1); //For light image/color backgrounds
-	$answer-label-background-2-transparent-light: rgba(255,255,255,.1); //For dark image/color backgrounds
-	$answer-label-border-2: none;
-	//Q RADIO BUTTONS
 	$q-radio-size: 20px;
 	$q-radio-background: transparent;
 	$q-radio-background-checked: lighten($primary-color, 8%);
@@ -268,33 +260,100 @@
 	}
 
 	/////////////////////////////
+	// LABELS
+	/////////////////////////////
+	-->$answer-label-spacing: 10px;
+
+	//BACKGROUND
+	$answer-label-background-backup: #f7f7f7;
+	$answer-label-background: rgba(0,0,0,.03);
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-background-backup: #555; // IE Backup
+			$answer-label-background: rgba(255,255,255,.07); //For dark image/color backgrounds
+		} @elseif $overlay-dark == F {
+			$answer-label-background-backup: #EEE; // IE Backup
+			$answer-label-background: rgba(0,0,0,.1); //For light image/color backgrounds
+
+		}
+	}	
+	// BORDER
+	$answer-label-border: none;
+	@if $label-style == 1 {
+		$answer-label-border: 1px solid rgba(0,0,0,.03);
+
+		@if $body-background-image-on == T and $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				$answer-label-border: 1px solid rgba(255,255,255,.2);
+			} @elseif $overlay-dark == F {
+				$answer-label-border: 1px solid rgba(0,0,0,.1);
+			}
+		}	
+	}
+	// SELECTED STATE (.q-checked)
+	$answer-label-select-background: $primary-color;
+	$answer-label-select-color: $reverse-primary-text-color;
+	$answer-label-select-border: darken($answer-label-select-background, 10%);
+	// HOVER STATE
+	$answer-label-hover-background-backup: #DDD;
+	$answer-label-hover-background: $primary-hue-color-light;
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-hover-background-backup: #555; // IE Backup
+			$answer-label-hover-background: opacify($answer-label-background, .1); //For dark image/color backgrounds
+		} @elseif $overlay-dark == F {
+			$answer-label-hover-background-backup: #EEE; // IE Backup
+			$answer-label-hover-background: opacify($answer-label-background, .1); //For light image/color backgrounds
+
+		}
+	}		
+	$answer-label-hover-border: darken($primary-hue-color-light, 10%);
+	@if $label-style == 1 {
+		$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
+
+		@if $body-background-image-on == T and $boxed-skincontent == F {
+			@if $overlay-dark == T {
+				$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
+			} @elseif $overlay-dark == F {
+				$answer-label-hover-border: 1px solid rgba(0,0,0,.1);
+			}
+		}	
+	}
+
+	/////////////////////////////
 	// BUTTONS
 	/////////////////////////////
-	--> $button-primary-color: $primary-color;
+	--> $button-primary-color: lighten($primary-color, 0%);
 	--> $button-padding: 8px 20px;
 	$button-font-size: $default-font-size;
 	$buttons-container-padding: $default-container-padding;
-	// STYLE 2
-	$button-background: $button-primary-color;
-	$button-background-hover: darken($primary-color, 8%);
-	$button-background-active: darken($button-background, 15%);
-	$button-background-focus: darken($button-background, 15%); // Need to leave this for accessibility.  
-
-	$button-border: none;
-	$button-border-hover: darken($primary-hue-color-light, 20%);
-
-	$button-text-color: $reverse-primary-text-color;
-	$button-text-color-hover: $primary-color;
-	// STYLE 1
-	@if $label-style == 1 {
-		$button-background: transparent;
-		$button-border: $default-border;
-		$button-text-color: $default-text-color;
+	--> $button-gradient-percentage: 8%;
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		$button-gradient-percentage: 16%; //Makes it pop more on a background image.  
+	}
+	// ALIGNMENT
+	$buttons-text-align: right;
+	@if $buttons-centered == T {
+		$buttons-text-align: center;
 	}
 
-	@if $label-style == 1 {
-		$button-background-hover: $primary-hue-color-light;
-		$button-background-active: darken($primary-hue-color-light, 5%);
+	// STYLE 2
+	$button-background: $button-primary-color;
+		$button-background-hover: darken($button-background, 5%);
+		$button-background-active: darken($button-background, 10%);
+		$button-background-focus: $button-background-active; // Need to leave this for accessibility.  
+	$button-border: none;
+	$button-text-color: $reverse-primary-text-color;
+	$button-border-radius: $default-border-radius;
+	// STYLE 1
+	@if $button-style == 1 {
+		$button-background: $button-primary-color;
+			$button-background-hover: darken($button-background, 5%);
+			$button-background-active: darken($button-background, 10%);
+			$button-background-focus: $button-background-active; // Need to leave this for accessibility.  
+		$button-border: 1px $default-border-style darken($button-background, 25%);
+		$button-text-color: $reverse-primary-text-color;
+		$button-border-radius: 4px;
 	}
 
 	/////////////////////////////
@@ -314,7 +373,7 @@
 	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T {
 		$plug-background: rgba(255,255,255,.1);
 	}
-	$plug-background-hover: #c32432; // New Qualtrics red (or should it be $primary-color?)
+	$plug-background-hover: $primary-color;
 	// $calculated-sticky-footer-height: $footer-font-size + 10 * 2 +5; //BOOKMARK: I think we should make this one size fits all.  It's causing problems. 
 	$calculated-sticky-footer-height: 40px;
 
@@ -705,56 +764,78 @@ a {
 	}
 	// Thanks, Cory.
 
+	//BUTTON STYLES.  
+
 	#Buttons {
-		@media only screen and (min-width: 481px) {
-			margin-top: 50px; // BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
-		}
+		text-align: $buttons-text-align;
 		padding: $buttons-container-padding;
-		text-align: right;
 		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
+		}
+		@media only screen and (min-width: 481px) {
+			margin-top: 50px; // BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
 		}
 		&:empty {
 			// hide the button div if there's not buttons on the page. 
 			margin-top: 0;
 			padding: 0;
 		}
-	}
 
-	#Buttons #PreviousButton {
-		float: left;
+		@if $buttons-centered == F {
+			#PreviousButton {
+				float: left;
+			}
+		}
 	}
 
 	#Buttons #NextButton, #Buttons #PreviousButton {
 		border: $button-border;
-		background-color: $button-background; 
 		color: $button-text-color;
 		font-size: $button-font-size;
 		padding: $button-padding;
-		@include border-radius($default-border-radius);
+		@include border-radius($button-border-radius);
 		cursor: pointer;
 		margin: 0px;
 		text-align: center;
 		text-decoration: none;
 		-webkit-appearance: none;
 		transition: background .3s;
-		&:focus {
-			background: $button-background-focus;
-			outline: none;
+
+		@if $button-style == 2 {
+			background-color: $button-background; 
+			&:focus {
+				background: $button-background-focus;
+				outline: none;
+			}
+			@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+				&:hover {
+					background: $button-background-hover;
+					border-color: $button-primary-color;
+				}
+				&:active {
+					background: $button-background-active;
+					border-color: $button-background-active;
+				}
+			}			
 		}
-		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
-			&:hover {
-				background: $button-background-hover;
-				@if $label-style == 1 {
-					border-color: $button-border-hover;
-					color: $button-text-color-hover;
+		@if $button-style == 1 {
+			@include linear-gradient($button-background, darken($button-background, $button-gradient-percentage));
+			
+			&:focus {
+				@include linear-gradient($button-background-hover, darken($button-background, $button-gradient-percentage));
+				outline: none;
+			}
+			
+			@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+				&:hover {
+					@include linear-gradient($button-background-hover, darken($button-background-hover, $button-gradient-percentage));
+				}
+				&:active {
+					@include linear-gradient($button-background-active, darken($button-background-active, ($button-gradient-percentage / 2)));
 				}
 			}
-			&:active {
-				background: $button-background-active;
-				border-color: $button-background-active;
-			}
 		}
+
 	}
 
 	#Footer {
@@ -1073,11 +1154,6 @@ a {
 		}
 		background-color: $primary-color;
 		color:$reverse-primary-text-color;
-		@if $label-style == 1 {
-			border: 1px solid $primary-color;
-			background: transparent;
-			color: $primary-color;
-		}
 	}
 	.RO .DND ul.Edited .rank,
 	.RO .DND ul.NotEdited li:hover .rank,
@@ -1684,13 +1760,13 @@ a {
 	.Skin .MC .TextEntryBox {
 		margin-top: 8px;
 	}
-	@if $label-style == 1 {	// BOOKMARK: Makes these look more like text entry boxes. Maybe?
-		.Skin .TextEntryBox {
-			-webkit-box-shadow: inset 1px 1px 5px #ccc;
-			-moz-box-shadow: inset 1px 1px 5px #ccc;
-			box-shadow: inset 1px 1px 5px #ccc;
-		}
-	}
+	// @if $label-style == 1 {	// BOOKMARK: Makes these look more like text entry boxes. Maybe?
+	// 	.Skin .TextEntryBox {
+	// 		-webkit-box-shadow: inset 1px 1px 5px #ccc;
+	// 		-moz-box-shadow: inset 1px 1px 5px #ccc;
+	// 		box-shadow: inset 1px 1px 5px #ccc;
+	// 	}
+	// }
 
 	@media only screen and (min-width: 481px) {
 		.Skin .MC .ChoiceStructure {
@@ -1727,23 +1803,9 @@ a {
 	// /* General label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
-		@if $label-style == 1 {
-			background: $answer-label-background;
-			border: $answer-label-border;
-		} @elseif $label-style == 2 {
-			background: $answer-label-background-2-backup;
-			background: $answer-label-background-2;
-			border: $answer-label-border-2;
-			@if $body-background-image-on == T and $boxed-skincontent == F {
-				@if $overlay-dark == T {
-					background: #555; // IE Backup
-					background: $answer-label-background-2-transparent-light;
-				} @elseif $overlay-dark == F {
-					background: #EEE; // IE Backup
-					background: $answer-label-background-2-transparent-dark;
-				}
-			}
-		}
+		background: $answer-label-background-backup;
+		background: $answer-label-background;
+		border: $answer-label-border;
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background-color .2s ease-in-out;
 		padding: 10px;
@@ -1757,27 +1819,15 @@ a {
 		}
 		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
 			&:hover {
-				background: $primary-hue-color-light;
-				border-color: darken($primary-hue-color-light, 10%);
-				@if $body-background-image-on == T and $boxed-skincontent == F {
-					@if $label-style == 1 {
-						background: transparent;
-						border-color: darken($primary-hue-color-light, 20%);
-					} @elseif $label-style == 2 {
-						@if $overlay-dark == T {
-							background: #333; // IE Backup
-							background: darken($answer-label-background-2-transparent-light, 30%);
-						} @elseif $overlay-dark == F {
-							background: #DDD; // IE Backup
-							background: opacify($answer-label-background-2-transparent-dark, .15);
-						}
-					}
-				}
+				
+				background: $answer-label-hover-background-backup;
+				background: $answer-label-hover-background;
+				border-color: $answer-label-hover-border;
 			}	
 		}
 		&.q-checked {
 			background: $answer-label-select-background;
-			border-color: darken($answer-label-select-background, 10%);
+			border-color: $answer-label-select-border;
 			color: $answer-label-select-color;			
 		}
 	}
