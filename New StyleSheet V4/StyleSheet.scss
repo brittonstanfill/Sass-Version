@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //IMPORT FONT
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+	@import url(https://fonts.googleapis.com/css?family=Roboto:700,300italic,700italic,300);
 	
 	// * {
 	// 	-webkit-font-smoothing: antialiased;
@@ -50,7 +50,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #c32432; //4A7CFD c32432 6fb9c4
+	-->	$primary-color: #c32432; //4b86ee c32432 6fb9c4
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -68,7 +68,7 @@
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(http://33.media.tumblr.com/8feb407e7d74d9cf1009e493a80bf404/tumblr_naosi8UVhG1qfirfao1_1280.jpg);
+	--> $body-background-image: url(https://unsplash.imgix.net/reserve/aOcWqRTfQ12uwr3wWevA_14401305508_804b300054_o.jpg?q=75&fm=jpg&auto=format&s=badee9ec6f68a1be59bbaae87b7fe147);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -108,7 +108,7 @@
 	--> $default-container-padding: 30px;
 	$default-mobile-container-padding: 15px;
 	//FONT
-	--> $font-stack: "Roboto", "Helvetica", Arial, sans-serif;
+	--> $font-stack: "Roboto", "Helvetica Neue", Arial, sans-serif;
 	$default-font-size: 18px;
 	$default-text-color: #43464D;
 	@if $boxed-skincontent == F and $body-background-image-on == T {
@@ -253,10 +253,10 @@
 	/////////////////////////////
 	$q-radio-size: 20px;
 	$q-radio-background: transparent;
-	$q-radio-background-checked: lighten($primary-color, 8%);
+	$q-radio-background-checked: $primary-color;
 	$q-radio-border: 1px solid $primary-color;
 	@if $label-style == 2 {
-		$q-radio-border: 2px solid $primary-color;
+		$q-radio-border: 2px solid darken($primary-color, 8%);
 	}
 
 	/////////////////////////////
@@ -266,21 +266,21 @@
 
 	//BACKGROUND
 	$answer-label-background-backup: #f7f7f7;
-	$answer-label-background: rgba(0,0,0,.03);
+	$answer-label-background: rgba(0,0,0,.01);
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
 			$answer-label-background-backup: #555; // IE Backup
 			$answer-label-background: rgba(255,255,255,.07); //For dark image/color backgrounds
 		} @elseif $overlay-dark == F {
 			$answer-label-background-backup: #EEE; // IE Backup
-			$answer-label-background: rgba(0,0,0,.1); //For light image/color backgrounds
+			$answer-label-background: rgba(0,0,0,.05); //For light image/color backgrounds
 
 		}
 	}	
 	// BORDER
 	$answer-label-border: none;
 	@if $label-style == 1 {
-		$answer-label-border: 1px solid rgba(0,0,0,.03);
+		$answer-label-border: 1px solid rgba(0,0,0,.1);
 
 		@if $body-background-image-on == T and $boxed-skincontent == F {
 			@if $overlay-dark == T {
@@ -292,11 +292,18 @@
 	}
 	// SELECTED STATE (.q-checked)
 	$answer-label-select-background: $primary-color;
+	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
+		$answer-label-select-background-backup: darken($primary-color, 10%);
+		$answer-label-select-background: opacify($answer-label-background, .2);
+	}
 	$answer-label-select-color: $reverse-primary-text-color;
 	$answer-label-select-border: darken($answer-label-select-background, 10%);
 	// HOVER STATE
 	$answer-label-hover-background-backup: #DDD;
-	$answer-label-hover-background: $primary-hue-color-light;
+	$answer-label-hover-background: opacify($answer-label-background, .05);
+	@if $label-style == 1 {
+		$answer-label-hover-background: $primary-hue-color-light;
+	}
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
 			$answer-label-hover-background-backup: #555; // IE Backup
@@ -309,7 +316,7 @@
 	}		
 	$answer-label-hover-border: darken($primary-hue-color-light, 10%);
 	@if $label-style == 1 {
-		$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
+		$answer-label-hover-border: lighten($primary-color, 15%);
 
 		@if $body-background-image-on == T and $boxed-skincontent == F {
 			@if $overlay-dark == T {
@@ -421,7 +428,7 @@
 			$readable-hover-color: rgba(255,255,255,.1);
 		} @elseif $overlay-dark == F {
 			$readable-hover-backup: #DDD; //Backup color for IE8
-			$readable-hover-color: rgba(0,0,0,.2);				
+			$readable-hover-color: rgba(0,0,0,.1);				
 		}
 	}
 
@@ -542,8 +549,9 @@ a {
 		border-right: 4px solid $progress-bar-background-color;
 		border-left: 2px solid $progress-bar-fill-color;
 	}
-	
-	#ProgressBar tr td:nth-child(1) {
+
+	// IE can't use nth-child -- this is a cross-browser workaround
+	#ProgressBar tr td:first-child {
 	  position: absolute;
 	  left: 0;
 	  color: $progress-bar-fill-color;
@@ -551,15 +559,15 @@ a {
 	  border-left: 2px solid $progress-bar-fill-color;
 	  width: 100%;
 	  &:empty {
-		 //BOOKMARK: the progress bar is driving me crazy.  How can we get rid of the spaces at the left and right
+		 //BOOKMARK: the progress bar is driving me crazy.  How can we get rid of the spaces at the left and right without using these extra borders
 	  }
 	}
 	
-	#ProgressBar tr td:nth-child(2){
+	#ProgressBar tr td:first-child + td {
 		width:100%;
 	}
 	
-	#ProgressBar tr td:nth-child(3) {
+	#ProgressBar tr td:first-child + td + td {
 	  position: absolute;
 	  right: 0;
 	  line-height: $progress-bar-fill-height;
@@ -611,6 +619,18 @@ a {
 				}
 			}
 		}
+
+		// BELOW is the display:table method:
+		// So content that is too wide will stretch the survey box, rather than cutting it off (but only at screen widths over 980, so it can be responsive at widths below that)
+		@if $full-width-header == F {
+			@media (min-width: 980px) {
+				display: table;
+				min-width: $container-min-width;
+			}
+			// And this is because IE8 doesn't do media queries.  
+			display: table\9;
+			min-width: $container-min-width \9;
+		}		
 	} 
 	#LogoContainer {
 		background: $logo-container-background;
@@ -648,8 +668,6 @@ a {
 		}
 	}
 
-
-
 	#HeaderContainer {
 		@if $full-width-header == F {
 			max-width: ($skin-inner-max-width + ($default-container-padding * 2));
@@ -657,12 +675,6 @@ a {
 		}
 		@if $full-width-header == T {
 			background: $logo-container-background;
-			// @if $boxed-skincontent == T {
-			// 	margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
-			// } 
-			// @if $boxed-skincontent == F {
-			// 	margin-bottom: ($default-container-padding);
-			// }
 		}
 		@media only screen and (max-width: 767px) {
 			text-align: center;
@@ -675,9 +687,8 @@ a {
 		margin: 0px auto;
 		max-width: $header-max-width;
 		padding: $header-padding;
-		//BOOKMARK: when do we want this to go away vs. not?  ALSO CONSIDER the plug, and how margins can push it off the page if there's a margin on an element with no height. or something. 
-		@if $interchangeable-logo == F or $interchangeable-logo == T and $full-width-header == F { // Basically, if there's a Permanent Logo - OR - If there no Permanent Logo, but the Header/Logo is inside the box
-			&:empty {
+		@if $interchangeable-logo == F or $interchangeable-logo == T and $full-width-header == F { // If there's a Permanent Logo - OR - If there's no Permanent Logo, but the Header/Logo is inside the box
+			&:empty { // Basically, we want this to hide when it would screw up the padding.  If it's a question of it disappearing completely or not, we'll leave it... so it doesn't look completely different from IE8. 
 				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
 			}
 		} 
@@ -707,6 +718,19 @@ a {
 			border: none;
 			@include border-radius(0);
 		}
+
+		// BELOW is the display:table method:
+		// So content that is too wide will stretch the survey box, rather than cutting it off (but only at screen widths over 980, so it can be responsive at widths below that)	
+		@if $full-width-header == T {
+			@media (min-width: 980px) {
+				display: table;
+				min-width: $container-min-width;
+			}
+			// And this is because IE8 doesn't do media queries.  
+			display: table\9;
+			min-width: $container-min-width \9;
+		}
+
 	}
 
 	#Questions {
@@ -715,7 +739,7 @@ a {
 	
 	@if $boxed-skincontent == F {
 		.QuestionOuter .Inner {
-			// Need these so we can add a border to the "highlighted" questions
+			// Needed so we can add a border to the "highlighted" questions
 			border: $default-border; 
 			border-color: transparent;
 		}
@@ -945,6 +969,16 @@ a {
 	.TE .FORM .InputText,
 	.MC .TextEntryBox {
 		max-width: 100%; // So these can be edited in survey builder to be smaller (but not bigger than 100% of the space)
+		margin: 2px 0px; // This is the automatic, default style in Chrome, and it helps space these apart (Added for Firefox and IE)
+	}
+
+	@media (min-width: 980px) {
+
+		.TE .ESTB .InputText,
+		.TE .ML .InputText {
+			max-width: 1080px; // So the user can't stretch these to some ungodly width.  
+			// (Have to put it in this media query, where we're including the display:table fix, so it doesn't override the max-width:100%)
+		} 
 	}
 
 	.MC .SACOL .TextEntryBox,
@@ -1123,6 +1157,9 @@ a {
 	////////////////////////////////////////////////////////////////////
 	// Pick Group & Rank / Rank Order
 	////////////////////////////////////////////////////////////////////
+	.RO .ChoiceStructure li {
+		padding: 10px 0;
+	}
 	.PGR .DragAndDrop td.groupsContainerTd div > div {
 		border: $default-border;
 		@include border-radius($default-border-radius);
@@ -1200,19 +1237,18 @@ a {
 	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
 		margin: 0 auto 10px auto; //Not sure we need this... seems like we want the group boxes close to the items 
 	}
+	.CS .HR li,
+	.RO .HR li {
+		margin-right: $default-container-padding; //Gives space between these horizontal list items
+	}	
 	@media all and (max-width: 768px) { 
 		.CS .HR li,
 		.RO .HR li {
 			float: none; // Don't want the text entry ones to be on the same line on mobile.
+			margin-right: 0; //Don't want this space on mobile
 		}
 	}
-	@media all and (min-width: 767px) {
-		.CS .HR li,
-		.RO .HR li {
-			margin-right: $default-container-padding;
-			// background: blue;
-		}
-	}
+
 	.RO .DND ul li {
 		padding: ($default-container-padding / 2) 0;
 		@if $border-radius-on == T {
@@ -1409,19 +1445,6 @@ a {
 	////////////////////////////////////////////////////////////////////
 	// Side by Side
 	////////////////////////////////////////////////////////////////////
-	// FROM BASESTYLES: 
-	// .SBS .Answers td,
-	// .SBS .Answers th {
-	// 	border-bottom-width: 1px;
-	// 	border-style: solid;
-	// 	background: red;
-	// }
-	// .SBS .c2 {
-	// 	border-right-width: 1px;
-	// 	border-style: solid;
-	// 	background: blue;
-	// }
-
 	.SBS .Separator1 {
 		border-right: $default-border;
 	}
@@ -1452,23 +1475,6 @@ a {
 		.NPS td.ColumnLabels {
 			padding-bottom: $answer-label-spacing;
 		}
-
-		// BOOKMARK: 
-		//REMOVED the below, it only works on Chrome, and causes other problems (with Highlight colors covering the answer)
-		// Originally added to make the radio button more clickable/selectable
-
-		// .NPS td.ControlContainer {
-		// 	position: relative;
-		// 	height: 30px; // (height + margin-top) of label.q-radio
-		// 	top: -30px; // (height + margin-top) of label.q-radio
-		// 	//IE8-
-		// 	position: static\9;
-		// 	height: inherit\9;
-		// }
-		// // This is because these questions get extra space at the bottom for the invisible td.ControlContainer
-		// .NPS .QuestionBody {
-		// 	padding-bottom: 0;
-		// }
 	}
 	////////////////////////////////////////////////////////////////////
 	// File Upload
@@ -1618,7 +1624,6 @@ a {
 
 	.Skin .ChoiceStructure li {
 		padding: 10px 0;
-
 	}
 
 	.Skin .MC .SAVR label.q-radio,
@@ -1651,31 +1656,6 @@ a {
 		padding: $default-container-padding ($default-container-padding + 10px);
 		padding-top: 0;
 	}
-
-
-	//REMOVED the below, it only works on Chrome, and causes other problems (with Highlight colors covering the answer)
-	// Originally added to make the radio button more clickable/selectable
-
-	// //BOOKMARK: 
-	// // test to make HR radio buttons more clickable.
-	// // by making td.ControlContainer positioned around the label.q-radio
-	// .Skin .MC .SAHR td.ControlContainer,
-	// .Skin .MC .MAHR td.ControlContainer {
-	// 	position: relative;
-	// 	height: 30px; // (height + margin-top) of label.q-radio
-	// 	top: -30px; // (height + margin-top) of label.q-radio
-	// 	//IE8-
-	// 	position: static\9;
-	// 	height: inherit\9;
-	// }
-	// .Skin .MC .SAHR label.q-radio,
-	// .Skin .MC .MAHR label.q-checkbox {
-	// 	margin-top: 10px;
-	// }
-	// // This is because these questions get extra space at the bottom for the invisible td.ControlContainer
-	// .Skin .MC .SAHR .QuestionBody {
-	// 	padding-bottom: 0;
-	// }
 
 	.Skin .MC .SAVR span.LabelWrapper,
 	.Skin .MC .MAVR span.LabelWrapper {
@@ -1788,18 +1768,9 @@ a {
 
 	.Skin .MC .SACOL .ChoiceStructure,
 	.Skin .MC .MACOL .ChoiceStructure {
-		border-spacing: $answer-label-spacing / 2;
+		border-spacing: ($answer-label-spacing / 2 - 2) $answer-label-spacing; //The ($answer-label-spacing / 2) is because there is an extra td (ControlContainer) that we can't delete, but that throws off the spacing if you don't adjust for it. 
 	}
 
-	// //BOOKMARK: The reason we want this as display: none, is to fix the formatting of MACOL and SACOL questions. 
-	// // PROBLEM: the .ControlContainer holds an input in some questions.  Can't remove or it is unselectable in IE. 
-	// // Another Problem: even on Chrome, you can't track tabbing through the survey (focus class) if this isn't here because there's no input.   
-	// .Skin .MACOL, .Skin .SACOL {
-	// 	.ControlContainer {
-	// 		display: none; // BOOKMARK: Will this be OK?  TEST MACOL and SACOL questions really well.   
-	// 		display: table-cell\9;
-	// 	}
-	// }
 	// /* General label styles */
 	.Skin .QuestionBody label.SingleAnswer,
 	.Skin .QuestionBody label.MultipleAnswer {
@@ -1807,7 +1778,7 @@ a {
 		background: $answer-label-background;
 		border: $answer-label-border;
 		// cursor: pointer; BOOKMARK: Do we want this or not?
-		transition: background-color .2s ease-in-out;
+		transition: background .2s ease-in-out;
 		padding: 10px;
 		@media all and (min-width: 481px) {
 			padding: 20px;
@@ -1846,25 +1817,25 @@ a {
 		float:left; 
 	}
 
-	.Skin label.SingleAnswer.q-checked {
-		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
-			&:hover {
-				background: $answer-label-select-background;
-				border-color: darken($answer-label-select-background, 10%);
-				// color: $answer-label-select-color; //
-			}
-		}
-	}
-	.Skin label.MultipleAnswer.q-checked {
-		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
-			&:hover {
-				//Change color for MultipleAnswer (but not SingleAnswer), because you can click these again.
-				background: darken($answer-label-select-background, 5%);
-				border-color: darken($answer-label-select-background, 15%);
-				color: #fff;
-			}
-		}
-	}
+	//BOOKMARK: Do we want this at all? Maybe we don't need a hover state for .q-checked class. 
+	// .Skin label.SingleAnswer.q-checked {
+	// 	@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+	// 		&:hover {
+	// 			background: $answer-label-select-background;
+	// 			border-color: darken($answer-label-select-background, 10%);
+	// 			// color: $answer-label-select-color; //
+	// 		}
+	// 	}
+	// }
+	// .Skin label.MultipleAnswer.q-checked {
+	// 	@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+	// 		&:hover {
+	// 			//Change color for MultipleAnswer (but not SingleAnswer), because you can click these again.
+	// 			background: darken($answer-label-select-background, 5%);
+	// 			border-color: darken($answer-label-select-background, 15%);
+	// 		}
+	// 	}
+	// }
 
 	//BOOKMARK: is this a good idea?
 	.Skin label.SingleAnswer.q-checked + input,
@@ -1896,41 +1867,4 @@ a {
 
 
 // End LABEL STYLES
-
-
-//BELOW IS A TEST to make large questions expand the width of the survey
-//So far this has been successful (9/15/14)
-@if $full-width-header == T {
-	@media (min-width: 980px) {
-		.Skin #SkinContent {
-			display: table;
-			min-width: $container-min-width;
-		}
-	}
-	// And this is because IE8 doesn't do media queries.  
-	.Skin #SkinContent {
-		display: table\9;
-		min-width: $container-min-width \9;
-	}	
-} @elseif $full-width-header == F {
-	@media (min-width: 980px) {
-		.Skin .SkinInner {
-			display: table;
-			min-width: $container-min-width;
-		}
-	}
-	// And this is because IE8 doesn't do media queries.  
-	.Skin .SkinInner {
-		display: table\9;
-		min-width: $container-min-width \9;
-	}	
-}
-
-@media (min-width: 980px) {
-
-	.Skin .TE .ESTB .InputText,
-	.Skin .TE .ML .InputText {
-		max-width: 1080px; // So the user can't stretch these to some ungodly width.  (Have to put it in this media query, where we're including the display:table fix, so it doesn't override the max-width:100%)
-	} 
-}
 
