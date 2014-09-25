@@ -68,7 +68,7 @@
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(https://unsplash.imgix.net/reserve/aOcWqRTfQ12uwr3wWevA_14401305508_804b300054_o.jpg?q=75&fm=jpg&auto=format&s=badee9ec6f68a1be59bbaae87b7fe147);
+	--> $body-background-image: url(http://brain.smugmug.com/Travel/Las-Lenas-2013/Las-Lenas-Day-4/i-3VpR8d9/0/X3/P8280217-X3.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -87,7 +87,7 @@
 	/////////////////////////////
 	// OVERLAY
 	/////////////////////////////
-	$overlay-background-backup: url(dark.png); //This backup image is for IE8.  
+	$overlay-background-backup: url(dark.png); //This backup image is for IE8.   // BOOKMARK: Don't need it.  Data URIs this small work in IE8 apparently
 	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
@@ -127,7 +127,7 @@
 	$default-border-color: #D2D2D6;
 	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
 		@if $overlay-dark == F {
-			$default-border-color: lighten($default-text-color, 20%);
+			$default-border-color: lighten($default-text-color, 30%);
 		} @elseif $overlay-dark == T {
 			$default-border-color: #ccc;				
 		}
@@ -169,7 +169,7 @@
 		}
 
 	}
-	$progress-bar-fill-color: $primary-color;
+	$progress-bar-fill-color: darken($primary-color, 10%);
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
@@ -266,7 +266,10 @@
 
 	//BACKGROUND
 	$answer-label-background-backup: #f7f7f7;
-	$answer-label-background: rgba(0,0,0,.01);
+	$answer-label-background: rgba(0,0,0,.03);
+	@if $label-style == 1 {
+		$answer-label-background: rgba(0,0,0,.01);
+	}
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
 			$answer-label-background-backup: #555; // IE Backup
@@ -326,7 +329,10 @@
 			}
 		}	
 	}
-
+	// FOUCS STATE
+	$answer-label-focus-background-backup: $answer-label-hover-background-backup;
+	$answer-label-focus-background: $answer-label-hover-background;
+	$answer-label-focus-border: $answer-label-hover-border;
 	/////////////////////////////
 	// BUTTONS
 	/////////////////////////////
@@ -1328,6 +1334,9 @@ a {
 		border-color: $slider-handle-color;
 	}
 	//Graphic Slider
+	.SS img {
+		max-width: none; // This overrides the max-width: 100% which makes the image disappear in IE8.  
+	}
 	.SS .horizontalbar .SSTrack,
 	.SS .verticalbar .SSTrack {
 		margin: 20px !important;
@@ -1655,6 +1664,10 @@ a {
 	.Skin .MC .QuestionBody {
 		padding: $default-container-padding ($default-container-padding + 10px);
 		padding-top: 0;
+		@media all and (max-width: 768px) {
+			padding: $default-mobile-container-padding;
+			padding-top: 0;
+		}
 	}
 
 	.Skin .MC .SAVR span.LabelWrapper,
@@ -1800,6 +1813,11 @@ a {
 			background: $answer-label-select-background;
 			border-color: $answer-label-select-border;
 			color: $answer-label-select-color;			
+		}
+		&.q-focused {
+			background: $answer-label-focus-background-backup;
+			background: $answer-label-focus-background;
+			border-color: $answer-label-focus-border;
 		}
 	}
 
