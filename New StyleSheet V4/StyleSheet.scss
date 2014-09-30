@@ -29,7 +29,7 @@
 	$question-container-border-on: F;
 
 	//RADIO BUTTONS
-	$radio-buttons: F;
+	$radio-buttons: T;
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
@@ -87,15 +87,17 @@
 	/////////////////////////////
 	// OVERLAY
 	/////////////////////////////
-	$overlay-background-backup: url(dark.png); //This backup image is for IE8.   // BOOKMARK: Don't need it.  Data URIs this small work in IE8 apparently
+	//This backup image (Data URI) is for IE8
+	//rgba works for every browser but IE8-
+	//Using rgba rather than an image, we can more easily change the filter darkness/lightness/opacity
+	$overlay-background-backup: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjI2MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjI3MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODhFQTM2MjQyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODhFQTM2MjUyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7GrwiJAAAAGElEQVR42mJhYGDYzIAEmBjQAGEBgAADAC7gAL6OYuzKAAAAAElFTkSuQmCC);
 	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
-			$overlay-background-backup: url(dark.png);
-			$overlay-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjI2MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjI3MkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODhFQTM2MjQyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODhFQTM2MjUyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7GrwiJAAAAGElEQVR42mJhYGDYzIAEmBjQAGEBgAADAC7gAL6OYuzKAAAAAElFTkSuQmCC);
+			$overlay-background: rgba(0,0,0,.7);
 		} @elseif $overlay-dark == F {
-			$overlay-background-backup: url(light.png);
-			$overlay-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjIyMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjIzMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEEzQUI2ODkyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEEzQUI2OEEyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4rnAl1AAAAGElEQVR42mL8////ZgYkwMSABggLAAQYAPNOA7i/q9LvAAAAAElFTkSuQmCC);
+			$overlay-background-backup: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjIyMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjIzMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEEzQUI2ODkyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEEzQUI2OEEyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4rnAl1AAAAGElEQVR42mL8////ZgYkwMSABggLAAQYAPNOA7i/q9LvAAAAAElFTkSuQmCC);
+			$overlay-background: rgba(255,255,255,.7);
 		}
 	}
 
@@ -127,9 +129,7 @@
 	$default-border-color: #D2D2D6;
 	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
 		@if $overlay-dark == F {
-			$default-border-color: lighten($default-text-color, 30%);
-		} @elseif $overlay-dark == T {
-			$default-border-color: #ccc;				
+			$default-border-color: lighten($default-text-color, 10%);
 		}
 	}
 	$default-border-radius: 2px;
@@ -140,6 +140,10 @@
 	//SEPARATOR
 	$separator-height: $default-border-width;
 	$separator-margin: 5px;
+	$separator-color: $default-border-color;
+	@if $boxed-skincontent == F and $body-background-image-on == T {
+		$separator-color: transparentize($default-border-color, 0.7);
+	}
 
 	/////////////////////////////
 	// QUESTION CONTAINER
@@ -263,6 +267,8 @@
 	// LABELS
 	/////////////////////////////
 	-->$answer-label-spacing: 10px;
+	$answer-label-padding: 20px;
+	$answer-label-padding-mobile: 10px 4%;
 
 	//BACKGROUND
 	$answer-label-background-backup: #f7f7f7;
@@ -287,7 +293,8 @@
 
 		@if $body-background-image-on == T and $boxed-skincontent == F {
 			@if $overlay-dark == T {
-				$answer-label-border: 1px solid rgba(255,255,255,.2);
+				// $answer-label-border: 1px solid rgba(255,255,255,.2); // -- Leigh didn't like this.  I don't know if I do either. 
+				$answer-label-border: none;
 			} @elseif $overlay-dark == F {
 				$answer-label-border: 1px solid rgba(0,0,0,.1);
 			}
@@ -509,6 +516,13 @@ a {
 	}
 }
 
+@media all and (max-width: 480px) { //This makes the ResotredResponseBar not get hidden on mobile widths
+	#RestoredResponseBar {
+		height: auto !important;
+		margin-top: auto !important;
+	}
+}
+
 #RestoredResponseBar .BottomShadow {
 	display: none;
 }
@@ -648,7 +662,7 @@ a {
 				border-bottom: $question-container-border;
 			}
 			@if $boxed-skincontent == T {
-				margin-bottom: ($default-container-padding * 2); // This causes a problem, pushes the plug off the page.  
+				margin-bottom: ($default-container-padding * 1.5); // This makes it so the plug stays on the page.  If you add a margin to SkinInner or whatever it pushed it off. 
 			} 
 		}
 	}
@@ -1058,7 +1072,7 @@ a {
 	}
 	.Separator {
 		height: $separator-height;
-		background: $default-border-color;
+		background: $separator-color;
 		margin: $separator-margin $default-container-padding;
 		@media only screen and (max-width: 768px) {
 			margin: ($separator-margin / 2) $default-mobile-container-padding;
@@ -1473,6 +1487,11 @@ a {
 	////////////////////////////////////////////////////////////////////
 	// NPS
 	////////////////////////////////////////////////////////////////////
+	.NPS label.SingleAnswer,
+	.NPS label.MultipleAnswer {
+		padding: $answer-label-padding-mobile;
+	}
+
 	@if $radio-buttons == T { // Prevent radio buttons from riding up
 		.NPS label.SingleAnswer {
 			display: block;
@@ -1491,6 +1510,15 @@ a {
 	.FileUpload .QuestionBody {
 		padding-bottom: 0; // There's already some space below the upload button. 
 	}
+
+	////////////////////////////////////////////////////////////////////
+	// Heat Map
+	////////////////////////////////////////////////////////////////////
+	// Can't include this, because it registers the click based on the fixed width and height.  
+	// .HeatMapContainer {
+	// 	max-width: 100%;
+	// 	height: auto !important;
+	// }
 
 } // /.Skin
 
@@ -1785,16 +1813,16 @@ a {
 	}
 
 	// /* General label styles */
-	.Skin .QuestionBody label.SingleAnswer,
-	.Skin .QuestionBody label.MultipleAnswer {
+	.Skin label.SingleAnswer,
+	.Skin label.MultipleAnswer {
 		background: $answer-label-background-backup;
 		background: $answer-label-background;
 		border: $answer-label-border;
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background .2s ease-in-out;
-		padding: 10px;
+		padding: $answer-label-padding-mobile;
 		@media all and (min-width: 481px) {
-			padding: 20px;
+			padding: $answer-label-padding;
 		}
 		display: block;
 		text-align: center;
@@ -1821,8 +1849,8 @@ a {
 		}
 	}
 
-	.Skin .SAVR .QuestionBody label.SingleAnswer,
-	.Skin .MAVR .QuestionBody label.MultipleAnswer {
+	.Skin .SAVR label.SingleAnswer,
+	.Skin .MAVR label.MultipleAnswer {
 		text-align: left;
 	}
 
