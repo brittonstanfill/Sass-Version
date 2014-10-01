@@ -29,7 +29,9 @@
 	$question-container-border-on: F;
 
 	//RADIO BUTTONS
-	$radio-buttons: T;
+		// IMPORTANT: IF YOU CHANGE THIS. 
+		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
+			$radio-buttons: F; 
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
@@ -68,7 +70,7 @@
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(http://brain.smugmug.com/Travel/Las-Lenas-2013/Las-Lenas-Day-4/i-3VpR8d9/0/X3/P8280217-X3.jpg);
+	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -94,10 +96,10 @@
 	$overlay-background: transparent; // Don't want an overlay unless there's a background image and no boxed SkinContent
 	@if $body-background-image-on == T and $boxed-skincontent == F {
 		@if $overlay-dark == T {
-			$overlay-background: rgba(0,0,0,.7);
+			$overlay-background: rgba(0,0,0,.8);
 		} @elseif $overlay-dark == F {
 			$overlay-background-backup: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg4RUEzNjIyMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg4RUEzNjIzMkZCQTExRTRCQ0I1QzE5MTk4NUUxNUE3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEEzQUI2ODkyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEEzQUI2OEEyRkJBMTFFNEJDQjVDMTkxOTg1RTE1QTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4rnAl1AAAAGElEQVR42mL8////ZgYkwMSABggLAAQYAPNOA7i/q9LvAAAAAElFTkSuQmCC);
-			$overlay-background: rgba(255,255,255,.7);
+			$overlay-background: rgba(255,255,255,.8);
 		}
 	}
 
@@ -271,8 +273,8 @@
 	$answer-label-padding-mobile: 10px 4%;
 
 	//BACKGROUND
-	$answer-label-background-backup: #f7f7f7;
-	$answer-label-background: rgba(0,0,0,.03);
+	$answer-label-background-backup: #f1f1f1;
+	$answer-label-background: rgba(0,0,0,.06);
 	@if $label-style == 1 {
 		$answer-label-background: rgba(0,0,0,.01);
 	}
@@ -307,7 +309,7 @@
 		$answer-label-select-background: opacify($answer-label-background, .2);
 	}
 	$answer-label-select-color: $reverse-primary-text-color;
-	$answer-label-select-border: darken($answer-label-select-background, 10%);
+	$answer-label-select-border: darken($answer-label-select-background, 20%);
 	// HOVER STATE
 	$answer-label-hover-background-backup: #DDD;
 	$answer-label-hover-background: opacify($answer-label-background, .05);
@@ -1578,6 +1580,10 @@ a {
 		
 		// IE8: HIDE ALL q-radio inputs (to bring back NATIVE radio buttons and checkboxes for IE8-)
 		display: none\9;
+		// FOCUS class - needed for accessibility, to tab through the survey.  
+		&.q-focused {
+			outline: thin dotted #aaa;
+		}
 	}	
 	// RADIO BUTTON
 	.Skin label.q-radio {
@@ -1842,7 +1848,7 @@ a {
 			border-color: $answer-label-select-border;
 			color: $answer-label-select-color;			
 		}
-		&.q-focused {
+		&.q-focused { // FOCUS class for tabbing through survey. 
 			background: $answer-label-focus-background-backup;
 			background: $answer-label-focus-background;
 			border-color: $answer-label-focus-border;

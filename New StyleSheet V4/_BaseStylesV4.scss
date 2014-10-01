@@ -270,14 +270,14 @@ h2.noStyle {
 	position:relative;
 }
 .Skin .horizontalbar table.sliderGrid tr.xlabel th div span{
-	/* to make them shift right and align to the grid lines */
+//	/* to make them shift right and align to the grid lines */
 	position:absolute;
 	left:15px;
 	top:-25px;
 }
 // /* value styles */
 .Skin .horizontalbar table.sliderGrid tr.xlabel th.value div span{
-	/* total th should be aligned right */
+//	/* total th should be aligned right */
 	position:absolute;
 	right:0px;
 	top:-25px;
@@ -309,7 +309,7 @@ h2.noStyle {
 	position:relative;
 	vertical-align:top;
 	border-bottom:1px solid #cccccc;
-	/*float:left;  this puts the relative left at the start of the td instead of the screen */
+//	/*float:left;  this puts the relative left at the start of the td instead of the screen */
 }
 .Skin .horizontalbar .yLabelTicksTd .labelTicks div{
 	position:absolute;
@@ -345,7 +345,7 @@ h2.noStyle {
 	font-size: 9pt;
 }
 #SurveyEngineBody .HideSelects select {
-	display:none !important; /* For Look and Feel survey preview - hides selects under the Skins menu */
+	display:none !important; // /* For Look and Feel survey preview - hides selects under the Skins menu */
 }
 
 .Skin .PreviewResults em {
@@ -456,8 +456,8 @@ h2.noStyle {
 	text-align: center;
 	padding: 60px $default-container-padding;
 
-	/* border-style: solid;
-	border-width: 2px; */
+	// border-style: solid;
+	// border-width: 2px;
 	h1, h2, h3 {
 		font-weight: normal;
 		font-size: 120%;
@@ -496,8 +496,8 @@ h2.noStyle {
 	background-color:transparent;
 }
 .Skin .MC .QuestionBody label{
-	/* IE puts the label 1px higher 
-	http://stackoverflow.com/questions/8557367/css-label-vertical-alignment-with-input-fields */
+	// IE puts the label 1px higher 
+	// http://stackoverflow.com/questions/8557367/css-label-vertical-alignment-with-input-fields
 	vertical-align:1px;
 }
 .Skin .MC .SAVR li,
@@ -1018,7 +1018,7 @@ h2.noStyle {
 	_height: 26px;	// This isn't real, right?
 	min-height: 26px;	// Bookmark: Could put a line-height instead -- I think it would be better
 	zoom: 1; // force has layout
-	padding-right: 150px; /* Gives space at right, so text doesn't overlap into text entry box */
+	padding-right: 150px; // /* Gives space at right, so text doesn't overlap into text entry box */
 }
 //Positions these text entry boxes to the right
 .Skin .CS .VRTL .SumInput,
@@ -1089,7 +1089,7 @@ html > body .Skin .PGR .DragAndDrop ul{
 }
 // ITEM container, "stack" option uls 
 html > body .Skin .PGR .DragAndDrop .stack ul.stack{
-	margin: 25px 25px 0 0; /* This is to give space for the stacked items, if hanging over the top and right */
+	margin: 25px 25px 0 0; // /* This is to give space for the stacked items, if hanging over the top and right */
 }
 // GROUP container, "stack" option uls 
 html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
@@ -1104,9 +1104,9 @@ html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label {
 	width: 187px; /////// Magic 187 width.  
 }
-/*********************************************
-Rank images --- TEST THIS OUT with an image
-*********************************************************/
+// ********************************************
+// Rank images --- TEST THIS OUT with an image
+// ********************************************************
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label img {
 	width: 187px; /////// Magic 187 width.  
 	visibility: visible;
@@ -1115,9 +1115,9 @@ Rank images --- TEST THIS OUT with an image
 .Skin .PGR .DragAndDrop .stack .Group li.stack span.rank {
 	visibility: hidden;
 }
-/*********************************************
-Rank images --- TEST THIS OUT with an image
-*********************************************************/
+// ********************************************
+// Rank images --- TEST THIS OUT with an image
+// ********************************************************
 .Skin .PGR .DragAndDrop .stack div.Group ul li span img {
 	width: 117px;
 }
@@ -1496,8 +1496,8 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 
 // Timing - NOT REVISED YET
 
-/* Display the clock on a timer question to see all this
-*/
+ // Display the clock on a timer question to see all this
+
 .Skin .Timing .QuestionText {
 	margin-top: 6pt;
 }
@@ -1628,9 +1628,9 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
     top:22px;
 }
 
-/*
-Captcha: makes the ugly white box containing the captcha image transparent.
-*/
+
+// Captcha: makes the ugly white box containing the captcha image transparent.
+
 .recaptchatable .recaptcha_image_cell, #recaptcha_table{
 	background-color:transparent !important;
 	border: none!important;
@@ -1652,7 +1652,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	width: 100%;
 }
 
-/* Mixed */
+// /* Mixed */
 .Skin .Conjoint .LeastMostTable tbody th,
 .Skin .Conjoint .LOPTable tbody th,
 .Skin .Conjoint .MPUTable tbody th,
@@ -1661,7 +1661,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	padding: 3px 0 3px 0;
 }
 
-/** EliminationTable **/
+// /** EliminationTable **/
 .Skin .Conjoint .EliminationTable {
 	margin-top: 20pt;
 }
@@ -1676,7 +1676,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	padding: 3px;
 }
 
-/** LeastMostTable */
+// /** LeastMostTable */
 .Skin .Conjoint .LeastMostTable {
 	margin-top: 24pt;
 }
@@ -1705,7 +1705,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	border-right-width: 0px;
 }
 
-/** LOPTable **/
+// /** LOPTable **/
 .Skin .Conjoint .LOPTable {
 	margin-top: 20pt;
 }
@@ -1742,7 +1742,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	border-bottom-style: solid;
 }
 
-/** ULOPTable **/
+// /** ULOPTable **/
 .Skin .Conjoint .MPUTable thead th {
 	font-weight: bold;
 	border-bottom-width: 1px;
@@ -1750,7 +1750,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	padding-bottom: 2px;
 }
 
-/** CSTable **/
+// /** CSTable **/
 .Skin .Conjoint .CSTable thead td {
 	font-weight: bold;
 	border-bottom-width: 1px;
@@ -1774,15 +1774,15 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	padding: 3px;
 }
 
-/* Carried Forward choice */
+// /* Carried Forward choice */
 .Skin .CarryForwardSymbol{
-	color:#577033; /* dark green */
+	color:#577033; // /* dark green */
 	font-weight:bold;
 	font-size:130%;
 	line-height:70%;
 }
 
-/** Drill Down */
+// /** Drill Down */
 .Skin .DD .QuestionBody table.ChoiceStructure {
 	width: auto;
 }
@@ -1865,7 +1865,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	font-weight: bold;
 }
 
-/* grading table */
+// /* grading table */
 .Skin .Grading table.ChoiceStructure .Icon{
 	width: 18px;
 	height: 17px;
@@ -1911,7 +1911,7 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	border-right:none;
 }
 
-/** total score **/
+// /** total score **/
 
 .Skin .Grading .TotalScore .Correct,
 .Skin .Grading .TotalScore .Incorrect {
@@ -1943,9 +1943,9 @@ Captcha: makes the ugly white box containing the captcha image transparent.
 	position:relative;
 }
 
-/* 
-This is the POINT in the middle of where you click
-What's something interesting that could go here?  A color? Circle? */
+
+// This is the POINT in the middle of where you click
+// What's something interesting that could go here?  A color? Circle?
 .Skin .HeatMapContainer .point{
 	width:4px;
     height:4px;
@@ -1957,10 +1957,10 @@ What's something interesting that could go here?  A color? Circle? */
     line-height:0px;
     cursor:crosshair;
 }
-/* 
-This is the HORIZONTAL line where you click
-Smart: there's a white line and a dark line
-Maybe we could customize/color the dark line? */
+
+// This is the HORIZONTAL line where you click
+// Smart: there's a white line and a dark line
+// Maybe we could customize/color the dark line?
 .Skin .HeatMapContainer .chh{
 	height:0px;
 	position:absolute;
@@ -1970,10 +1970,10 @@ Maybe we could customize/color the dark line? */
 	line-height:0px;
 	cursor:crosshair;
 }
-/* 
-This is the VERTICAL line where you click
-Smart: there's a white line and a dark line
-Maybe we could customize/color the dark line?*/
+ 
+// This is the VERTICAL line where you click
+// Smart: there's a white line and a dark line
+// Maybe we could customize/color the dark line?
 .Skin .HeatMapContainer .chv{
 	width:0px;
 	position:absolute;
@@ -2018,11 +2018,11 @@ Maybe we could customize/color the dark line?*/
 	text-align: center;
 }
 
-/*
- * Be careful about editing this class
- * We are not using display:none since it sets dimensions to zero in most
- * browsers. This breaks some questions that require javascript for setup.
- */
+
+ // * Be careful about editing this class
+ // * We are not using display:none since it sets dimensions to zero in most
+ // * browsers. This breaks some questions that require javascript for setup.
+ 
 .Skin .IPDLHidden{
 	position:absolute;
 	visibility: hidden;
@@ -2030,9 +2030,9 @@ Maybe we could customize/color the dark line?*/
 	overflow:hidden;
 }
 
-/* IE7 has a bug where table borders show when visibility is set to hidden
- * Also, using transparent instead of none since it messes up the slider position
- */
+// IE7 has a bug where table borders show when visibility is set to hidden
+//  * Also, using transparent instead of none since it messes up the slider position
+
 .Skin .IPDLHidden td, .Skin .IPDLHidden th{
 	border-color: transparent !important;
 }
@@ -2397,7 +2397,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 
 @media print{
 	.Skin .ReadableAlt{
-		/* this fixes a problem with pdfs on windows having uneven borders in the alt rows */
+		// /* this fixes a problem with pdfs on windows having uneven borders in the alt rows */
 		background:none;
 	}
 }
