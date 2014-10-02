@@ -1590,6 +1590,8 @@ a {
 		@include border-radius(100%); 	//Need to be circles
 		&.q-checked {
 			background-color: $q-radio-background-checked;
+			// Added this so the focus class doesn't apply when you click on answer.  Cause I think it looks dumb.  
+			outline: none;
 		}
 	}
 	// CHECK BOX
@@ -1605,6 +1607,8 @@ a {
 			background-size: 100%;
 			background-position: center center;
 			background-repeat: no-repeat;	
+			// Added this so the focus class doesn't apply when you click on answer.  Cause I think it looks dumb.  
+			outline: none;
 		}
 	}
 	////////////////////////////////////////////////////////////////////
@@ -1843,15 +1847,17 @@ a {
 				border-color: $answer-label-hover-border;
 			}	
 		}
-		&.q-checked {
-			background: $answer-label-select-background;
-			border-color: $answer-label-select-border;
-			color: $answer-label-select-color;			
-		}
 		&.q-focused { // FOCUS class for tabbing through survey. 
 			background: $answer-label-focus-background-backup;
 			background: $answer-label-focus-background;
 			border-color: $answer-label-focus-border;
+		}
+		// Moved this below the focused class, so it overrides it
+		// when you initially click on the answer, you want the .q-checked class, not .q-focused class
+		&.q-checked { 
+			background: $answer-label-select-background;
+			border-color: $answer-label-select-border;
+			color: $answer-label-select-color;			
 		}
 	}
 
