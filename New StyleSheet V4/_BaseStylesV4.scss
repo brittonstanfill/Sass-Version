@@ -746,7 +746,8 @@ h2.noStyle {
 .Skin .horizontalbar .bar{
 	position:absolute;
 	left:0px;
-	width: 100px;
+	width: 20px; //this is the width it starts at by default.  
+	// Changed from width:100px to 20px, because of the way the question kind of malfunctions on mobile -- where the user needs to start dragging from the far left end. 
 	z-index:500;
 	font-size:0;
 	// needs a background color
