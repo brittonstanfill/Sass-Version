@@ -57,6 +57,8 @@ h2.noStyle {
 }
 //Might want to add this.  At least to the slider/drag questions, so user doesn't accidentally highlight instead of drag
 .Skin .QuestionBody {
+	-ms-user-select: none;
+	-moz-user-select: none;
 	-webkit-user-select: none;
 	cursor: default;
 }
@@ -404,7 +406,7 @@ h2.noStyle {
 	text-align:center;
 	padding:25px;
 }
-
+//
 //End CANNOT FIND 
 
 //////////////////////////////
@@ -435,38 +437,27 @@ h2.noStyle {
 .Skin .QuestionText{
 	zoom: 1;
 }
-///* Must remain general so styles of like priority can overwrite this */
-.LanguageSelectorContainer a {
-	color: black;
-}
+//Doesn't appear to do anything. 
 .Skin .HeaderValidationError li {
 	clear:both;
 }
+// Seems unecessary.  Leaving, in case. 
 .Skin .HeaderValidationError li a{
 	cursor:pointer;
 }
-
-.Skin .SurveyError { //This is the error that shows up if the survey has been closed. 
-	// padding: 10px;
-	// padding: 10px;
-
-	// width: 60%;
-	// margin: 0 auto;
-
+.Skin .SurveyError { //This is the message that shows up if the survey has been closed. 
 	text-align: center;
 	padding: 60px $default-container-padding;
 
-	// border-style: solid;
-	// border-width: 2px;
 	h1, h2, h3 {
 		font-weight: normal;
 		font-size: 120%;
 	}
 }
 
-// $default-border-color: #555;
-// //We've pretty much removed these borrders. 
+// //We've pretty much removed these borders. 
 // //but the Light vs. Dark can be achieved easily in Sass as below.
+// $default-border-color: #555;
 // .Skin .BorderColor {
 // 	border-color: $default-border-color;
 // }
@@ -480,7 +471,6 @@ h2.noStyle {
 // 	border-color: darken($default-border-color, 10%);
 // }
 //
-
 
 
 //////////////////////////////
@@ -502,14 +492,12 @@ h2.noStyle {
 }
 .Skin .MC .SAVR li,
 .Skin .MC .MAVR li{
-	//Doesn't seem to do anything
+	//Doesn't appear to do anything. 
 	clear:left;
 }
 //////////////////
-/////////////////	BOOKMARK: REWORK Text Entry boxes -- Figure out with NEW LABEL STYLES.
 .Skin .MC .MAVR input.TextEntryBox,
 .Skin .MC .SAVR input.TextEntryBox{
-	// float:none !important;
 	display: inline-block; 	// This used to be display:block.  I think it should be inline-block, so it can come on the same line as the answer.  
 	clear:both;
 }
@@ -566,10 +554,6 @@ h2.noStyle {
 	width: 9em;
 }
 //MSE Styles
-// //Doesn't seem to do anything
-// .Skin .Matrix table thead th.c1{
-// 	padding-left:10px;
-// }
 //Overrides the text-align center of the rest of other td, th
 .Skin .Matrix table th.c1{
 	text-align:left;
@@ -601,12 +585,7 @@ h2.noStyle {
 
 
 //Text Entry
-
-// Makes forms full-width.  Not sure if we want this or not. 
-// .Skin .TE .FORM .ChoiceStructure table {
-// 	width: 100%;
-// }
-// changing from px to em so increased font-size will make box larger to accomodate
+// changing from px to em so increased font-size will make box larger to accomodate larger text
 .Skin .TE .ChoiceStructure .Short {
 	width: 30px;
 	width: 3em;
@@ -649,10 +628,9 @@ h2.noStyle {
 }
 .Skin .horizontalbar thead table.LabelDescriptions tr td,
 .Skin .horizontalbar thead tr td.NotApplicable{
-	//Needed to position labels. Override for .First (left) and .Last (right)
+	//Needed to position labels. Override for .First (left) and .Last (right) (see below)
 	text-align:center;
 }
-//Needed to position labels. Override for .First (left) and .Last (right)
 .Skin .horizontalbar table.LabelDescriptions .LabelCount3 td.First,
 .Skin .horizontalbar table.LabelDescriptions .LabelCount2 td.First{
 	text-align: left;
@@ -661,9 +639,10 @@ h2.noStyle {
 .Skin .horizontalbar table.LabelDescriptions .LabelCount2 td.Last{
 	text-align: right;
 }
-//"Center Labels" option add this class
+//"Center Labels" option adds this class
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels td.LightText {
 	text-align: center;
+	background: blue;
 }
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount3 td.First label,
 .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.First label{
@@ -726,8 +705,8 @@ h2.noStyle {
 }
 //Probably important..
 .Skin .horizontalbar .bar,
- .Skin .horizontalbar .handle,
-  .Skin .horizontalbar .track{
+.Skin .horizontalbar .handle,
+.Skin .horizontalbar .track{
 	height:20px;
 	-ms-touch-action: none;
 }
@@ -815,12 +794,9 @@ h2.noStyle {
 //
 //Slider // These are for the non-bar, non-star sliders.  
 //
-// Does the top -15px need to match the padding?
+// Does the top -15px need to match the height of this container?
 .Skin .horizontalbar .Slider .BarContainer{
 	top:-15px;
-}
-.Skin .horizontalbar .Slider tbody th.ylabel{
-	padding:15px;
 }
 // The actual slider (used to be a sprite)
 .Skin .SS .horizontalbar .SSTrack,
@@ -966,29 +942,22 @@ h2.noStyle {
 .Skin .SBS td {
 	text-align: center;
 } 
-//*********************************************
-//		Need to figure out Text Enty boxes and their widths.
-//*********************************************************/
 // changing from px to em so increased font-size will make box larger to accomodate
 .Skin .SBS .Short {
-	// width: 60px;
 	width: 30px;
 	width: 3em;
 }
 .Skin .SBS .Medium {
-	// width: 120px;
 	width: 60px;
 	width: 6em;
 	margin: 2px; // Just so they're not touching.  
 }
 .Skin .SBS .Long {
-	// width: 200px;
 	width: 90px;
 	width: 9em;
 	margin: 2px
 }
 .Skin .SBS .Essay {
-	// width: 350px;
 	width: 100%;
 	height: 4em;
 	margin: 2px;
@@ -1016,7 +985,7 @@ h2.noStyle {
 //Format li to put text entry box to the right.
 .Skin .CS .VRTL li {
 	position: relative;	//Needed for the position:absolute of the text entry boxes
-	_height: 26px;	// This isn't real, right?
+	_height: 26px;	// This is some IE thing I think. 
 	min-height: 26px;	// Bookmark: Could put a line-height instead -- I think it would be better
 	zoom: 1; // force has layout
 	padding-right: 150px; // /* Gives space at right, so text doesn't overlap into text entry box */
@@ -1105,9 +1074,6 @@ html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label {
 	width: 187px; /////// Magic 187 width.  
 }
-// ********************************************
-// Rank images --- TEST THIS OUT with an image
-// ********************************************************
 .Skin .PGR .DragAndDrop .stack div ul li.stack span label img {
 	width: 187px; /////// Magic 187 width.  
 	visibility: visible;
@@ -1116,9 +1082,6 @@ html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 .Skin .PGR .DragAndDrop .stack .Group li.stack span.rank {
 	visibility: hidden;
 }
-// ********************************************
-// Rank images --- TEST THIS OUT with an image
-// ********************************************************
 .Skin .PGR .DragAndDrop .stack div.Group ul li span img {
 	width: 117px;
 }
@@ -1137,9 +1100,9 @@ html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 	margin-top: -10px;
 	margin-left: 10px;
 }
-//*********************************************
-//		EXAMPLE
-//*********************************************************/
+// *********************************************
+// 		EXAMPLE
+// *********************************************************/
 // .Skin .PGR .DragAndDrop .stack ul li.stack.penultimate {
 // 	margin-top: 5px;
 // 	margin-left: -5px;
@@ -1148,9 +1111,9 @@ html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 // 	margin-top: 10px;
 // 	margin-left: -10px;
 // }
-//*********************************************
-//		/EXAMPLE
-//*********************************************************/
+// *********************************************
+// 		/EXAMPLE
+// *********************************************************/
 .Skin .PGR .DragAndDrop .ProgressCounter{
 	text-align: center;
 }
@@ -2668,7 +2631,8 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 
 	.Skin .HSLIDER .horizontalbar,
 	.Skin .HBAR .horizontalbar {
-		min-width: 500px; // To prevent slider questions from squishing together very small. 
+		min-width: 250px; // To prevent slider questions from squishing together very small. 
+		padding-right: 15px; //BOOKMARK: Added this... so that slider question scale labels don't spill over and cause unecessary scrolling.  
 	}
 
 	//

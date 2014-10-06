@@ -14,12 +14,12 @@
 	//LAYOUT
 	$interchangeable-logo: T;
 	$full-width-header: T;
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: F;
-	$overlay-dark: F;
+	$body-background-image-on: T;
+	$overlay-dark: T;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
@@ -52,7 +52,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #c32432; //4b86ee c32432 6fb9c4
+	-->	$primary-color: #59c974; //4b86ee c32432 6fb9c4 59c974
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -70,7 +70,7 @@
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(bg.jpg);
+	--> $body-background-image: url(http://bradcampbellphotography.com/images/1.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -498,6 +498,11 @@
 		}
 	}
 }
+@media only screen and (max-width: 480px) { // Hide the Preview Banner on mobile (it's hidden anyway, but display: none makes it go away to prevent side scrolling issues.  
+	.PreviewBanner {
+		display: none;
+	}
+}
 
 a {
 	color: $link-color;
@@ -506,13 +511,12 @@ a {
 #SurveyEngineBody {
 	background: $body-background;
 	background-size: $body-background-size;
-	color: $default-text-color;
-	font-family: $font-stack;
 }
 
 #RestoredResponseBar { // Welcome Back! Message at top of screen
 	background: #45464b !important; // Does this pull the color from the "Highlight Questions" option? -- No, it doesn't, I checked.
 	color: #888c8f !important;
+	font-family: $font-stack;
 	a {
 		color: $link-color !important;
 	}
@@ -530,6 +534,9 @@ a {
 }
 
 .Skin {
+
+	color: $default-text-color;
+	font-family: $font-stack;
 
 	#Wrapper{
 		@if $pushed-to-bottom-plug == T{
@@ -1327,6 +1334,7 @@ a {
 	}
 	.horizontalbar tbody th.ylabel {
 		padding:($default-container-padding / 2);
+		padding-left: 0; //Need all the room we can get for slider questions on mobile.  
 	}
 	.horizontalbar tr.Stars td.value input,
 	.horizontalbar table.sliderGrid tr td.value input {
@@ -1334,7 +1342,23 @@ a {
 		border: $default-border; // This is so the focus class can apply a color border
 		border-color: transparent;
 	}
-	//Draggable Bar
+	@media all and (max-width: 480px) {  // Because we don't want this WidthStrut eating up all the space on mobile. 
+		.horizontalbar .LabelDescriptions .WidthStrut {
+			width: 0px !important;
+			background: blue;
+			height: 4px;
+		}
+		//This reduces the size of the font in the descript to the left of the slider. 
+		.horizontalbar th.ylabel,
+		// And this is so the number labels above the sliders don't squish together. 
+		.horizontalbar tr.xlabel th span.TickContainer span,
+		.horizontalbar tr.xlabel td span.TickContainer span,
+		.horizontalbar tr.xlabel th span.TickContainer span.MinValue,
+		.horizontalbar tr.xlabel td span.TickContainer span.MinValue{
+			font-size: 14px;
+		}
+	}
+	//Draggable Bar specific
 	.horizontalbar .bar{
 		background-color: $slider-bar-color;
 		@include border-radius(2px);
@@ -1369,18 +1393,6 @@ a {
 	.horizontalbar .Slider .handle:hover {
 		background-color: $primary-color;
 		padding: 10px;
-	}
-
-	// This is so the number labels above the sliders don't squish together. 
-	@media all and (max-width: 480px) {
-		.horizontalbar tr.xlabel th span.TickContainer span,
-		.horizontalbar tr.xlabel td span.TickContainer span{
-			font-size: 12px;
-		}
-		.horizontalbar tr.xlabel th span.TickContainer span.MinValue,
-		.horizontalbar tr.xlabel td span.TickContainer span.MinValue{
-			font-size: 12px;
-		}
 	}
 
 	////////////////////////////////////////////////////////////////////
