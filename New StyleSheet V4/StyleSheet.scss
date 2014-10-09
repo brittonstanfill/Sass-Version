@@ -13,13 +13,13 @@
 
 	//LAYOUT
 	$interchangeable-logo: T;
-	$full-width-header: T;
-	$boxed-skincontent: F;
+	$full-width-header: F;
+	$boxed-skincontent: T;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: T;
-	$overlay-dark: T;
+	$body-background-image-on: F;
+	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
@@ -34,7 +34,7 @@
 			$radio-buttons: F; 
 
 	//LABEL STYLE
-	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+	$label-style: 1; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 
 	//BUTTON STYLE
 	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
@@ -52,7 +52,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #59c974; //4b86ee c32432 6fb9c4 59c974
+	-->	$primary-color: #4b86ee; //4b86ee c32432 6fb9c4 59c974
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -69,8 +69,8 @@
 	/////////////////////////////
 	// SURVEY ENGINE BODY
 	/////////////////////////////
-	--> $body-background-color: $primary-color;
-	--> $body-background-image: url(http://bradcampbellphotography.com/images/1.jpg);
+	--> $body-background-color: #FFF;
+	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 
@@ -109,11 +109,11 @@
 	// WIDTH & PADDING
 	$container-max-width: 770px; // 770px - 1080px is a normal range
 	$container-min-width: 770px; // Needed for "display:table" solution
-	--> $default-container-padding: 30px;
+	--> $default-container-padding: 20px;
 	$default-mobile-container-padding: 15px;
 	//FONT
 	--> $font-stack: "Roboto", "Helvetica Neue", Arial, sans-serif;
-	$default-font-size: 18px;
+	$default-font-size: 16px;
 	$default-text-color: #43464D;
 	@if $boxed-skincontent == F and $body-background-image-on == T {
 		@if $overlay-dark == T {
@@ -175,7 +175,7 @@
 		}
 
 	}
-	$progress-bar-fill-color: darken($primary-color, 10%);
+	$progress-bar-fill-color: $primary-color;
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
@@ -304,10 +304,10 @@
 	}
 	// SELECTED STATE (.q-checked)
 	$answer-label-select-background: $primary-color;
-	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
-		$answer-label-select-background-backup: darken($primary-color, 10%);
-		$answer-label-select-background: opacify($answer-label-background, .2);
-	}
+	// @if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds -- which we haven't perfected yet. 
+	// 	$answer-label-select-background-backup: darken($primary-color, 10%);
+	// 	$answer-label-select-background: opacify($answer-label-background, .2);
+	// }
 	$answer-label-select-color: $reverse-primary-text-color;
 	$answer-label-select-border: darken($answer-label-select-background, 20%);
 	// HOVER STATE
@@ -326,18 +326,14 @@
 
 		}
 	}		
-	$answer-label-hover-border: darken($primary-hue-color-light, 10%);
-	@if $label-style == 1 {
-		$answer-label-hover-border: lighten($primary-color, 15%);
-
-		@if $body-background-image-on == T and $boxed-skincontent == F {
-			@if $overlay-dark == T {
-				$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
-			} @elseif $overlay-dark == F {
-				$answer-label-hover-border: 1px solid rgba(0,0,0,.1);
-			}
-		}	
-	}
+	$answer-label-hover-border: lighten($primary-color, 15%);
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
+		} @elseif $overlay-dark == F {
+			$answer-label-hover-border: 1px solid rgba(0,0,0,.1);
+		}
+	}	
 	// FOUCS STATE
 	$answer-label-focus-background-backup: $answer-label-hover-background-backup;
 	$answer-label-focus-background: $answer-label-hover-background;
@@ -778,6 +774,7 @@ a {
 		font-size: $question-text-font-size;
 		color: $question-text-color;
 		padding: $default-container-padding;
+		line-height: 1.5em;
 		@media all and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
 		}
@@ -1024,7 +1021,9 @@ a {
 		}
 		.MC .MAHR li .TextEntryBox,
 		.MC .SAHR li .TextEntryBox {
-			float: left; //Only want this for the lis (side label option)
+			@media only screen and (min-width: 481px) { // don't want to float these on mobile, because we display:block these li's
+				float: left; //Only want this for the lis (side label option)
+			}
 		}
 	}
 	@media only screen and (max-width: 767px) {
@@ -1534,6 +1533,13 @@ a {
 	// 	height: auto !important;
 	// }
 
+	////////////////////////////////////////////////////////////////////
+	// Dill Down
+	////////////////////////////////////////////////////////////////////
+	.DD td {
+		padding-bottom: ($default-container-padding / 2);
+	}
+
 } // /.Skin
 
 
@@ -1544,16 +1550,10 @@ a {
 .Skin {
 	.MC {
 		.MAHR, .SAHR {
-			@media all and (max-width: 481px) {
-				td {
+			@media all and (max-width: 480px) {
+				td, li { // td is for horizontal "above label" option, and li is for horizontal "side label" option
 					display: block;
 					width: 100%;
-
-					//BOOKMARK: 
-					// THIS OR THE ABOVE? -- Not this
-					// display: inline-block;
-					// width: auto;
-					// margin: ($answer-label-spacing / 2) !important;
 				}
 			}
 		}

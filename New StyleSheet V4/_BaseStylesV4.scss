@@ -183,12 +183,6 @@ h2.noStyle {
 	text-align: center;
 }
 
-.Skin .MC .SAHR li,
-.Skin .MC .MAHR li{
-	// padding-right: 9pt;
-	padding: 0 $answer-label-spacing $answer-label-spacing 0; //Need space to the right and bottom of these, so they don't touch each other. 
-}
-
 .Skin .Matrix .ColumnLabels table {
 	width: 100%;
 }
@@ -521,6 +515,11 @@ h2.noStyle {
 }
 .Skin .NPS table .ColumnLabels .Last {
 	text-align: right;
+}
+.Skin .MC .SAHR li,
+.Skin .MC .MAHR li{
+	// padding-right: 9pt;
+	padding: 0 $answer-label-spacing $answer-label-spacing 0; //Need space to the right and bottom of these, so they don't touch each other. 
 }
 .SAHR .Selection {
 	display: inline-block; //Needed for "Horizontal" option with side labels
