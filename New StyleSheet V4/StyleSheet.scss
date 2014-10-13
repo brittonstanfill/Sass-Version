@@ -345,10 +345,7 @@
 	--> $button-padding: 8px 20px;
 	$button-font-size: $default-font-size;
 	$buttons-container-padding: $default-container-padding;
-	--> $button-gradient-percentage: 8%;
-	@if $body-background-image-on == T and $boxed-skincontent == F {
-		$button-gradient-percentage: 16%; //Makes it pop more on a background image.  
-	}
+	--> $button-gradient-percentage: 10%;
 	// ALIGNMENT
 	$buttons-text-align: right;
 	@if $buttons-centered == T {
@@ -1318,8 +1315,21 @@ a {
 		background: $readable-hover-backup;
 		background: $readable-hover-color;
 	}	
-	.Matrix .TE .Short td input, .Matrix .TE .Medium td input, .Matrix .TE .Long td input, .SBS .InputText, .CS input.SumInput, .CS .SumInput input.InputText, .CS .SumTotal input, .RO .RankInput {
+	.Matrix .TE .Short td input, 
+	.Matrix .TE .Medium td input, 
+	.Matrix .TE .Long td input, 
+	.SBS .InputText, 
+	.CS input.SumInput, 
+	.CS .SumInput input.InputText, 
+	.CS .SumTotal input, 
+	.RO .RankInput {
 		text-align: center;	//Rank Order/Constant Sum inputs -- Center the number
+	}
+
+	.Matrix .RO td input,
+	.Matrix .CS td input {
+		width: 3em; //3em (same as BaseStyles)
+		text-align: center; //Because the SumInput class isn't being added on JFE, so need to be more general for these. 
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -1822,9 +1832,13 @@ a {
 		text-align: center;
 		width: 100%;
 	}
+	@media only screen and (max-width: 480px) { // Only want this margin on mobile, when they "stack" on each other. 
+		.Skin .MC .SAHR table td,
+		.Skin .MC .MAHR table td {
+			margin: 0 auto $answer-label-spacing auto;
+		}
+	}
 
-	.Skin .MC .SAHR table td,
-	.Skin .MC .MAHR table td,
 	.Skin .MC li .LabelWrapper {
 		margin: 0 auto $answer-label-spacing auto;
 	}
