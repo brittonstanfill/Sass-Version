@@ -982,12 +982,12 @@ h2.noStyle {
 	width: 3em
 }
 //Format li to put text entry box to the right.
-.Skin .CS .VRTL li {
+.Skin .CS .VRTL .ChoiceStructure li {
 	position: relative;	//Needed for the position:absolute of the text entry boxes
 	_height: 26px;	// This is some IE thing I think. 
 	min-height: 26px;	// Bookmark: Could put a line-height instead -- I think it would be better
 	zoom: 1; // force has layout
-	padding-right: 150px; // /* Gives space at right, so text doesn't overlap into text entry box */
+	padding-right: 100px; // /* Gives space at right, so text doesn't overlap into text entry box */
 }
 //Positions these text entry boxes to the right
 .Skin .CS .VRTL .SumInput,
