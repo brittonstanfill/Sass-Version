@@ -10,6 +10,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	-->	$logo-image-width: 180px;
+	-->	$logo-image-height: 64px;
 
 	//LAYOUT
 	$interchangeable-logo: T;
@@ -73,15 +75,16 @@
 	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
+	$body-background-position: center fixed;
 
 	$body-background: $body-background-color;
 	@if $body-background-image-on == T {
-		$body-background: $body-background-image $body-background-repeat center fixed; // Normal background image with boxed skin content (no overlay)
+		$body-background: $body-background-image $body-background-repeat $body-background-position; // Normal background image with boxed skin content (no overlay)
 		@if $boxed-skincontent == F {
 			@if $overlay-dark == T {
-				$body-background: #555 $body-background-image $body-background-repeat center fixed; // Dark background color for dark image
+				$body-background: #555 $body-background-image $body-background-repeat $body-background-position; // Dark background color for dark image
 			} @elseif $overlay-dark == F {
-				$body-background: #FFF $body-background-image $body-background-repeat center fixed; // Light background color for light image
+				$body-background: #FFF $body-background-image $body-background-repeat $body-background-position; // Light background color for light image
 			}			
 		}
 	}
@@ -190,11 +193,11 @@
 	/////////////////////////////
 	// LOGO
 	/////////////////////////////
-	-->	$logo-image: url("logo2.png");
+	-->	$logo-image: url("logo.png");
 	$logo-mobile-image: $logo-image; // Good idea to upload @2X image if exists (for retina displays)
 	$logo-background-color: transparent; // If colored, need to include the same border-radius (if applicable);
-	-->	$logo-image-width: 180px;
-	-->	$logo-image-height: 64px;
+	-->	$logo-image-width: 180px !default;
+	-->	$logo-image-height: 64px !default;
 	$logo-padding: 20px; 
 	$logo-width: $logo-image-width;
 	$logo-height: $logo-image-height + ($logo-padding * 2);
@@ -304,10 +307,23 @@
 	}
 	// SELECTED STATE (.q-checked)
 	$answer-label-select-background: $primary-color;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
+		$answer-label-select-background-backup: darken($primary-color, 10%);
+		$answer-label-select-background: opacify($answer-label-background, 20%);
+	}
+=======
+>>>>>>> Stashed changes
 	// @if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds -- which we haven't perfected yet. 
 	// 	$answer-label-select-background-backup: darken($primary-color, 10%);
 	// 	$answer-label-select-background: opacify($answer-label-background, .2);
 	// }
+<<<<<<< Updated upstream
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> Stashed changes
 	$answer-label-select-color: $reverse-primary-text-color;
 	$answer-label-select-border: darken($answer-label-select-background, 20%);
 	// HOVER STATE
