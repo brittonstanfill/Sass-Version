@@ -178,7 +178,7 @@
 		}
 
 	}
-	$progress-bar-fill-color: $primary-color;
+	$progress-bar-fill-color: darken($body-background-color, 10%) !default;
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
