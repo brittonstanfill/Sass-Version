@@ -71,7 +71,7 @@
 	/////////////////////////////
 	// SURVEY ENGINE BODY
 	/////////////////////////////
-	--> $body-background-color: #FFF;
+	--> $body-background-color: lighten($primary-color, 10%) !default;
 	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
@@ -307,23 +307,17 @@
 	}
 	// SELECTED STATE (.q-checked)
 	$answer-label-select-background: $primary-color;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
 		$answer-label-select-background-backup: darken($primary-color, 10%);
 		$answer-label-select-background: opacify($answer-label-background, 20%);
 	}
-=======
->>>>>>> Stashed changes
+
 	// @if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds -- which we haven't perfected yet. 
 	// 	$answer-label-select-background-backup: darken($primary-color, 10%);
 	// 	$answer-label-select-background: opacify($answer-label-background, .2);
 	// }
-<<<<<<< Updated upstream
-=======
->>>>>>> FETCH_HEAD
->>>>>>> Stashed changes
+
 	$answer-label-select-color: $reverse-primary-text-color;
 	$answer-label-select-border: darken($answer-label-select-background, 20%);
 	// HOVER STATE
