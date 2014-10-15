@@ -2085,7 +2085,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 // }
 
 
-.reduced #TocSidebar{
+.reduced #TocSidebar, .closed #TocSidebar{
 	left: 0;
 }
 
@@ -2101,14 +2101,14 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 .reduced #TocSidebarIcons{
 	float: right;
 }
-.reduced.closed #TocSidebarIcons{
-	//float:left;
+.reduced.closed #TocSidebarIcons, .closed #TocSidebarIcons{
+	float: right;
 	transition: all .5s ease-in-out;
 }
 
-.IE #TocSidebarIcons{
-	float: right;
-}
+// .IE #TocSidebarIcons{
+// 	float: right;
+// }
 
 #TocIcon{
 	background-image: url(../../WRQualtricsControlPanel/CPGraphics/flowicons.png);
@@ -2216,26 +2216,6 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	line-height: 16px;
 }
 
-.closed #TocIcon {
-	background: $primary-color;
-}
-
-.closed #TocIcon:before {
-	top: 6px;
-	-webkit-transform-origin: 0.28571rem center;
-}
-.closed #TocIcon:after {
-
-	top: -6px;
-	transform-origin: 0.28571rem center;
-}
-.closed #TocIcon:before, .closed #TocIcon:after {
-	-webkit-transform-origin: 50% 50%;
-	transform-origin: 50% 50%;
-	-webkit-transform: rotate3d(0, 0, 1, 0deg);
-	width: $ToCButton-width;
-
-}
 
 #Toc li span.TocText{
 	display: block;
@@ -2295,27 +2275,32 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	transition: 0.3s;
 	position: relative;
 	top:8px;
-}
-#TocIcon:before, #TocIcon:after {
-	display: inline-block;
-	width: $ToCButton-width*.55;
-	height: $ToCButton-height;
-	background: $primary-color;
-	border-radius: $ToCButton-height/2;
-	transition: 0.3s;
-	position: absolute;
-	right: 0;
-	content: '';
-}
-#TocIcon:before {
+	&:before, &:after{
+		display: inline-block;
+		width: $ToCButton-width*.55;
+		height: $ToCButton-height;
+		background: $primary-color;
+		border-radius: $ToCButton-height/2;
+		transition: 0.3s;
+		position: absolute;
+		right: 0;
+		content: '';
+		width: $ToCButton-width \9; //added for older ie.
+	}
+	&:before {
 	-webkit-transform: rotate3d(0, 0, 1, -30deg);
 	transform: rotate3d(0, 0, 1, -30deg);
 	top:2px;
-}
-#TocIcon:after {
+	top: 6px \9; //added for older ie.
+	
+	}
+	&:after {
 	-webkit-transform: rotate3d(0, 0, 1, 30deg);
 	transform: rotate3d(0, 0, 1, 30deg);
 	top:-2px;
+	top: -6px \9; //added for older ie.
+	}
+
 }
 
 .reduced {
@@ -2334,26 +2319,27 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 }
 
 
-.closed #TocIcon {
-	background: $primary-color;
+.closed { 
+	#TocIcon {
+		&:before{
+			top: 6px;
+		  -webkit-transform-origin: 50% 50%;
+		  transform-origin: 50% 50%;
+		  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+		  transform: rotate3d(0, 0, 1, 0deg);
+		  width: $ToCButton-width;
+		}
+		&:after{
+			top: -6px;
+			-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+		  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+			transform: rotate3d(0, 0, 1, 0deg);
+			width: $ToCButton-width;
+		}
+	}
 }
 
-.closed #TocIcon:before {
-	top: 6px;
-	-webkit-transform-origin: 0.28571rem center;
-}
-.closed #TocIcon:after {
-
-	top: -6px;
-	transform-origin: 0.28571rem center;
-}
-.closed #TocIcon:before, .closed #TocIcon:after {
-	-webkit-transform-origin: 50% 50%;
-	transform-origin: 50% 50%;
-	-webkit-transform: rotate3d(0, 0, 1, 0deg);
-	width: $ToCButton-width;
-
-}
 //////////////END ToC Styles/////////////
 
 //Print styles
