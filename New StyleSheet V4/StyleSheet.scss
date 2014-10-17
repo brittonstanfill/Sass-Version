@@ -660,8 +660,8 @@ a {
 				min-width: $container-min-width;
 			}
 			// And this is because IE8 doesn't do media queries.  
-			display: table\9;
-			min-width: $container-min-width \9;
+			display : table \9;
+			min-width : $container-min-width \9;
 		}		
 	} 
 	#LogoContainer {
@@ -759,7 +759,7 @@ a {
 				min-width: $container-min-width;
 			}
 			// And this is because IE8 doesn't do media queries.  
-			display: table\9;
+			display: table \9;
 			min-width: $container-min-width \9;
 		}
 
@@ -1610,8 +1610,6 @@ a {
 		}
 		margin-top: 3px; //These align fine in the Preview file, but something about the difference between their being an extra span inside the label makes these not align that well in a real survey.  
 		
-		// IE8: HIDE ALL q-radio inputs (to bring back NATIVE radio buttons and checkboxes for IE8-)
-		display: none\9;
 		// FOCUS class - needed for accessibility, to tab through the survey.  
 		&.q-focused {
 			outline: thin dotted #aaa;
@@ -1663,12 +1661,6 @@ a {
 		height:0;
 		width:0;
 
-		// Bring back native radio buttons and checkboxes for IE8-
-		position:relative\9;
-		opacity:1\9;
-		z-index:1\9;
-		height:auto\9;
-		width:auto\9;	
 	}
 
 	// Sometimes this seems to help and sometimes it doesn't.  Can't figure out the alignment of the radio buttons consistently.  
@@ -1766,12 +1758,6 @@ a {
 		height:0;
 		width:0;
 
-		// Bring back native radio buttons and checkboxes for IE8-
-		position:relative\9;
-		opacity:1\9;
-		z-index:1\9;
-		height:auto\9;
-		width:auto\9;	
 	}
 
 	.Skin .MC input[type="radio"],
@@ -1787,6 +1773,10 @@ a {
 		z-index:-1;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking
 		height:0;
 		width:0;
+	}
+
+	.Skin input[type="radio"],
+	.Skin input[type="checkbox"] {
 		&:focus {
 			outline: none; // This was showing up in IE (even though the radio buttons are supposed to be hidden)
 		}
@@ -1801,18 +1791,11 @@ a {
 	.Skin .GAP .Why.Scale label.q-radio,
 	.Skin .GAP .Why.Scale label.q-checkbox {
 		display: inline-block; // unhide the styled radio button for the "Scale" part of GAP analysis -- inline-block is the display of other label.q-radio elements
-		display: none\9;
 	}
 	.Skin .GAP .Why.Scale input[type="radio"],
 	.Skin .GAP .Why.Scale input[type="checkbox"] {
-		// Bring back THESE native radio buttons and checkboxes for IE8-
-		position:relative\9;
-		opacity:1\9;
-		z-index:1\9;
-		height:auto\9;
-		width:auto\9;	
 		&:focus {
-			outline: 1px dotted #aaa\9; //Not sure why initial or inherit won't work here.  
+			outline: 1px dotted #aaa \9; //Not sure why initial or inherit won't work here.  
 		}
 	}
 	.Skin .GAP .ChoiceStructure .WhyText, .Skin .GAP .Why, .Skin .GAP .Scale {
