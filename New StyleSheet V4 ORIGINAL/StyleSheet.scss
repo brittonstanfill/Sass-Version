@@ -16,7 +16,7 @@
 	//LAYOUT
 	$interchangeable-logo: T;
 	$full-width-header: F;
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
@@ -33,10 +33,10 @@
 	//RADIO BUTTONS
 		// IMPORTANT: IF YOU CHANGE THIS. 
 		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
-			$radio-buttons: F; 
+			$radio-buttons: T; 
 
 	//LABEL STYLE
-	$label-style: 1; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 
 	//BUTTON STYLE
 	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
@@ -310,7 +310,7 @@
 
 	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
 		$answer-label-select-background-backup: darken($primary-color, 10%);
-		$answer-label-select-background: opacify($answer-label-background, 20%);
+		$answer-label-select-background: opacify($answer-label-background, .2);
 	}
 
 	// @if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds -- which we haven't perfected yet. 
@@ -352,7 +352,7 @@
 	// BUTTONS
 	/////////////////////////////
 	--> $button-primary-color: lighten($primary-color, 0%);
-	--> $button-padding: 10px 25px;
+	--> $button-padding: 8px 20px;
 	$button-font-size: $default-font-size;
 	$buttons-container-padding: $default-container-padding;
 	--> $button-gradient-percentage: 10%;
@@ -567,9 +567,10 @@ a {
 		// padding: 0; // Do we even need this? Don't think so. 
 		position:relative;
 		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
-			@media only screen and (min-width: 768px) {
+			padding-bottom: ($default-container-padding * 2); 
+			@media only screen and (max-width: 480px) {
 				// SOLUTION: Add padding-bottom to the #ProgressBar (even if there's no progress bar, the div is still there...) Nice.  Kind of weird place to put padding, but fine. 
-				padding-bottom: ($default-container-padding * 2); 
+				padding-bottom: 0; 
 			}
 		}
 	}
@@ -829,8 +830,9 @@ a {
 		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
 		}
-		@media only screen and (min-width: 481px) {
-			margin-top: 50px; // BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		margin-top: 50px; // I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		@media only screen and (max-width: 480px) {
+			margin-top: 0; // Don't want it on mobile 
 		}
 		&:empty {
 			// hide the button div if there's not buttons on the page. 
@@ -931,10 +933,15 @@ a {
 			-webkit-transition: background .3s;
 			text-align: center;
 			height: $calculated-sticky-footer-height;
-			@media only screen and (min-width: 768px) {
-				float: right;
+			
+			float: right;
+			@if $border-radius-on == T {
+				@include border-radius(5px 0 0 0);
+			}
+			@media only screen and (max-width: 767px) {
+				float: none;
 				@if $border-radius-on == T {
-					@include border-radius(5px 0 0 0);
+					@include border-radius(0);
 				}
 			}
 			&:focus {
@@ -1022,14 +1029,16 @@ a {
 		.MC .MAHR .TextEntryBox,
 		.MC .SAHR .TextEntryBox {
 			width: 100% !important; // Don't want these to be 100% width in the "Radio Buttons" option
-			@media only screen and (min-width: 481px) {
-				float: left; //This lets the lis (in Horizontal - Side label option) align to the top with lis that have a .TextEntryBox
+			float: left; //This lets the lis (in Horizontal - Side label option) align to the top with lis that have a .TextEntryBox
+			@media only screen and (max-width: 480px) {
+				float: none;
 			}
 		}
 		.MC .MAHR li .TextEntryBox,
 		.MC .SAHR li .TextEntryBox {
-			@media only screen and (min-width: 481px) { // don't want to float these on mobile, because we display:block these li's
-				float: left; //Only want this for the lis (side label option)
+			float: left; //Only want this for the lis (side label option)
+			@media only screen and (max-width: 480px) { // don't want to float these on mobile, because we display:block these li's
+				float: none; 
 			}
 		}
 	}
@@ -1060,7 +1069,7 @@ a {
 		}
 		background: $error-background-color;
 		color: $error-text-color;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			margin: $default-mobile-container-padding;
 		}
 		h1 {
@@ -1089,7 +1098,7 @@ a {
 		height: $separator-height;
 		background: $separator-color;
 		margin: $separator-margin $default-container-padding;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			margin: ($separator-margin / 2) $default-mobile-container-padding;
 		}
 	}
@@ -1121,7 +1130,7 @@ a {
 	// Table of Contents
 	.closed #TocSidebarIcons, .reduced #TocSidebarIcons{
 		padding-left: $default-container-padding;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 				padding-left: $default-mobile-container-padding;
 			}
 	}
@@ -1276,7 +1285,7 @@ a {
 	.RO .HR li {
 		margin-right: $default-container-padding; //Gives space between these horizontal list items
 	}	
-	@media all and (max-width: 768px) { 
+	@media all and (max-width: 767px) { 
 		.CS .HR li,
 		.RO .HR li {
 			float: none; // Don't want the text entry ones to be on the same line on mobile.
@@ -1465,7 +1474,7 @@ a {
 	.SBSMatrix th,
 	.Matrix th {
 		padding: $default-container-padding / 2;
-		@media all and (max-width: 768px) { 
+		@media all and (max-width: 767px) { 
 			padding: 5px;		
 		}
 	}
@@ -1709,8 +1718,9 @@ a {
 	.Skin .MC .SAHR label.SingleAnswer,
 	.Skin .MC .MAHR label.MultipleAnswer {
 		display: inline-block; //Allows the padding below to take effect (and put some space between the radio button).  Can't use "block" or it won't go on the same line as radio button in "side labels" option
-		@media only screen and (min-width: 481px) {
-			padding-bottom: 20px;
+		padding-bottom: 20px;
+		@media only screen and (max-width: 480px) {
+			padding-bottom: 0;
 		}
 	}
 
@@ -1726,7 +1736,7 @@ a {
 	.Skin .MC .QuestionBody {
 		padding: $default-container-padding ($default-container-padding + 10px);
 		padding-top: 0;
-		@media all and (max-width: 768px) {
+		@media all and (max-width: 767px) {
 			padding: $default-mobile-container-padding;
 			padding-top: 0;
 		}
@@ -1849,9 +1859,9 @@ a {
 		border: $answer-label-border;
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background .2s ease-in-out;
-		padding: $answer-label-padding-mobile;
-		@media all and (min-width: 481px) {
-			padding: $answer-label-padding;
+		padding: $answer-label-padding;
+		@media all and (max-width: 480px) {
+			padding: $answer-label-padding-mobile;
 		}
 		display: block;
 		text-align: center;
