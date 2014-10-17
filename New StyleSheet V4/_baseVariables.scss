@@ -1,0 +1,32 @@
+/////////////////////////////////////////////
+	//LAYOUT
+	$no-logo: T !default;
+	$full-width-header: F !default;
+	$boxed-skincontent: T !default;
+	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
+
+	//BACKGROUND
+	$body-background-image-on: F !default;
+	$overlay-dark: F !default;
+
+	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
+	$border-radius-on: T; //Do we ever want this False?
+
+	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
+	$question-container-box-shadow-on: F;
+	$question-container-border-on: F;
+
+	//RADIO BUTTONS
+		// IMPORTANT: IF YOU CHANGE THIS. 
+		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
+			$radio-buttons: F !default; 
+
+	//LABEL STYLE
+	$label-style: 1 !default; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+
+	//BUTTON STYLE
+	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
+	@if $label-style == 1 {
+		$button-style: 1;
+	}
+	$buttons-centered: F; // F pushes buttons to left and right
