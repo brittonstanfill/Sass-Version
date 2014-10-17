@@ -2052,8 +2052,9 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	left:-220px;
 	&.reduced{
 		top:0;
+		z-index: 0;
 		&.closed{
-			z-index:0;
+			z-index:-1;
 			transition: left 1s linear;
 			left:0;
 		}
@@ -2061,12 +2062,8 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	&.closed{
 		background:transparent !important; 
 		left:0;
-		z-index:0;
+		z-index:-1;
 	}
-}
-.Skin #Buttons{
-	position:relative;
-	z-index:1;
 }
 
 // .IE7 #TocSidebarContainer{
@@ -2098,14 +2095,13 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	padding: 15px;
 	overflow: hidden;
 	box-sizing: content-box;
-	float:left;
 }
 
-// .reduced #TocSidebarIcons{
-// 	float: right;
-// }
+.reduced #TocSidebarIcons{
+	float: right;
+}
 .reduced.closed #TocSidebarIcons, .closed #TocSidebarIcons{
-	//float: right;
+	float: right;
 	transition: all .5s ease-in-out;
 }
 
@@ -2280,7 +2276,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	top:8px;
 	&:before, &:after{
 		display: inline-block;
-		width: $ToCButton-width;
+		width: $ToCButton-width*.55;
 		height: $ToCButton-height;
 		background: $primary-color;
 		border-radius: $ToCButton-height/2;
@@ -2288,37 +2284,35 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 		position: absolute;
 		right: 0;
 		content: '';
-		//width: 18px\9; //added for older ie.
+		width: $ToCButton-width \9; //added for older ie.
 	}
 	&:before {
-	// -webkit-transform: rotate3d(0, 0, 1, -30deg);
-	// transform: rotate3d(0, 0, 1, -30deg);
-	top:6px;
-	//top: 6px \9; //added for older ie.
+	-webkit-transform: rotate3d(0, 0, 1, -30deg);
+	transform: rotate3d(0, 0, 1, -30deg);
+	top:2px;
+	top: 6px \9; //added for older ie.
 	
 	}
 	&:after {
-	// -webkit-transform: rotate3d(0, 0, 1, 30deg);
-	// transform: rotate3d(0, 0, 1, 30deg);
-	top:-6px;
-	//top: -6px \9; //added for older ie.
+	-webkit-transform: rotate3d(0, 0, 1, 30deg);
+	transform: rotate3d(0, 0, 1, 30deg);
+	top:-2px;
+	top: -6px \9; //added for older ie.
 	}
 
 }
 
 .reduced {
 		#TocIcon:before {
-		// -webkit-transform: rotate3d(0, 0, 1, 30deg);
-		// transform: rotate3d(0, 0, 1, 30deg);
-		//top:2px;
-		//top: 6px \9; //added for older ie.
+		-webkit-transform: rotate3d(0, 0, 1, 30deg);
+		transform: rotate3d(0, 0, 1, 30deg);
+		top:2px;
 		left:0;
 	}
 	#TocIcon:after {
-		// -webkit-transform: rotate3d(0, 0, 1, -30deg);
-		// transform: rotate3d(0, 0, 1, -30deg);
-		//top:-2px;
-		//top: -6px \9; //added for older ie.
+		-webkit-transform: rotate3d(0, 0, 1, -30deg);
+		transform: rotate3d(0, 0, 1, -30deg);
+		top:-2px;
 		left:0;
 	}
 }
@@ -2328,18 +2322,18 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	#TocIcon {
 		&:before{
 			top: 6px;
-		  // -webkit-transform-origin: 50% 50%;
-		  // transform-origin: 50% 50%;
-		  // -webkit-transform: rotate3d(0, 0, 1, 0deg);
-		  // transform: rotate3d(0, 0, 1, 0deg);
+		  -webkit-transform-origin: 50% 50%;
+		  transform-origin: 50% 50%;
+		  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+		  transform: rotate3d(0, 0, 1, 0deg);
 		  width: $ToCButton-width;
 		}
 		&:after{
 			top: -6px;
-			// -webkit-transform-origin: 50% 50%;
-			// transform-origin: 50% 50%;
-		 //  -webkit-transform: rotate3d(0, 0, 1, 0deg);
-			// transform: rotate3d(0, 0, 1, 0deg);
+			-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+		  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+			transform: rotate3d(0, 0, 1, 0deg);
 			width: $ToCButton-width;
 		}
 	}

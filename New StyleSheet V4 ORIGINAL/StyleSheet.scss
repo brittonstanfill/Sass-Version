@@ -10,80 +10,40 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$layout-style: "Photo";
-$background-image: url(bg.jpg);
-$interchangeable-logo: "False";
-$logo-image: url(logo.png);
-$logo-width: 160px;
-$logo-height: 49px;
-$primary-color: #FF5447;
-$logo-position: "Full-width Header";
-$survey-overlay-filter: "Light Filter";
-$label-style-options: "";
+	-->	$logo-image-width: 180px;
+	-->	$logo-image-height: 64px;
 
-
-@import "baseVariables";
-
-	/////// LAYOUT STYLE
-@if $layout-style == "Minimal" {
-	$boxed-skincontent: F;
-	$body-background-image-on: F;
-	$overlay-dark: F;
-
-} @elseif $layout-style == "Photo" {
-	$boxed-skincontent: F;
-	$body-background-image-on: T;
-
-} @elseif $layout-style == "Color" {
-	$boxed-skincontent: T;
-
-} @else {
-	$boxed-skincontent: F;
-	$body-background-image-on: F;
-	$overlay-dark: F;
-}
-
-//////// BG IMAGE
-@if $background-image == url(bg.jpg) {
-	$body-background-image-on: T;
-} @else {
-	$body-background-image-on: F;
-}
-
-//////// LOGO POSITION
-@if $interchangeable-logo == "True" {
-	$no-logo: T;
+	//LAYOUT
+	$interchangeable-logo: T;
 	$full-width-header: F;
-} @elseif $interchangeable-logo == "False" {
-	$no-logo: F;
-	$full-width-header: T;
-} @else {
-	$no-logo: T;
-	$full-width-header: F;
-}
+	$boxed-skincontent: F;
+	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
-//////// OVERLAY FILTER
-@if $survey-overlay-filter == "Dark Filter" {
-	$overlay-dark: T;
-} @elseif $survey-overlay-filter == "Light Filter" {
+	//BACKGROUND
+	$body-background-image-on: F;
 	$overlay-dark: F;
-} @else {
-	$overlay-dark: T;
-}
 
-//////// LABEL STYLES
-@if $label-style-options == "Flat" {
-	$label-style: 1;
-	$radio-buttons: F; 
-} @elseif $label-style-options == "3D" {
-	$label-style: 2;
-	$radio-buttons: F; 
-} @elseif $label-style-options == "Radio Buttons" {
-	$radio-buttons: T; 
-} @else {
-	$label-style: 1;
-	$radio-buttons: F; 
-}
+	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
+	$border-radius-on: T; //Do we ever want this False?
+
+	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
+	$question-container-box-shadow-on: F;
+	$question-container-border-on: F;
+
+	//RADIO BUTTONS
+		// IMPORTANT: IF YOU CHANGE THIS. 
+		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
+			$radio-buttons: T; 
+
+	//LABEL STYLE
+	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+
+	//BUTTON STYLE
+	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
+	@if $label-style == 1 {
+		$button-style: 1;
+	}
+	$buttons-centered: F; // F pushes buttons to left and right
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ALL VARIABLES
@@ -94,7 +54,7 @@ $label-style-options: "";
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #4b86ee !default; //4b86ee c32432 6fb9c4 59c974
+	-->	$primary-color: #4b86ee; //4b86ee c32432 6fb9c4 59c974
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -112,7 +72,7 @@ $label-style-options: "";
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: lighten($primary-color, 10%) !default;
-	--> $body-background-image: url(bg.jpg) !default;
+	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 	$body-background-position: center fixed;
@@ -233,7 +193,7 @@ $label-style-options: "";
 	/////////////////////////////
 	// LOGO
 	/////////////////////////////
-	-->	$logo-image: url("logo.png") !default;
+	-->	$logo-image: url("logo.png");
 	$logo-mobile-image: $logo-image; // Good idea to upload @2X image if exists (for retina displays)
 	$logo-background-color: transparent; // If colored, need to include the same border-radius (if applicable);
 	-->	$logo-image-width: 180px !default;
@@ -267,13 +227,13 @@ $label-style-options: "";
 	// 	$header-max-width: $container-max-width + ($default-container-padding * .5);
 	// }
 	$header-padding: 10px $default-container-padding; //&:empty {padding: 0}
-	@if $no-logo == F {
+	@if $interchangeable-logo == F {
 		@if $full-width-header == T {
 			//Pushes the header closer to the logo, gives it a more balanced look with the logo				
 			$header-padding: 0 $default-container-padding 20px $default-container-padding; //&:empty {padding: 0}
 		}
 	}
-	@if $no-logo == T { // the Header acts as the Logo
+	@if $interchangeable-logo == T { // the Header acts as the Logo
 		@if $full-width-header == T {
 			$header-padding: $logo-padding $default-container-padding;
 		}
@@ -350,7 +310,7 @@ $label-style-options: "";
 
 	@if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds
 		$answer-label-select-background-backup: darken($primary-color, 10%);
-		$answer-label-select-background: opacify($answer-label-background, 20%);
+		$answer-label-select-background: opacify($answer-label-background, .2);
 	}
 
 	// @if $body-background-image-on == F and $boxed-skincontent == F { // This is for full-color backgrounds -- which we haven't perfected yet. 
@@ -392,7 +352,7 @@ $label-style-options: "";
 	// BUTTONS
 	/////////////////////////////
 	--> $button-primary-color: lighten($primary-color, 0%);
-	--> $button-padding: 10px 25px;
+	--> $button-padding: 8px 20px;
 	$button-font-size: $default-font-size;
 	$buttons-container-padding: $default-container-padding;
 	--> $button-gradient-percentage: 10%;
@@ -607,9 +567,10 @@ a {
 		// padding: 0; // Do we even need this? Don't think so. 
 		position:relative;
 		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
-			@media only screen and (min-width: 768px) {
+			padding-bottom: ($default-container-padding * 2); 
+			@media only screen and (max-width: 480px) {
 				// SOLUTION: Add padding-bottom to the #ProgressBar (even if there's no progress bar, the div is still there...) Nice.  Kind of weird place to put padding, but fine. 
-				padding-bottom: ($default-container-padding * 2); 
+				padding-bottom: 0; 
 			}
 		}
 	}
@@ -719,7 +680,7 @@ a {
 		}
 	}
 
-	@if $no-logo == F { //Only style the #Logo div if we're including it.  
+	@if $interchangeable-logo == F { //Only style the #Logo div if we're including it.  
 		#Logo  {
 			background: $logo-background-color $logo-image no-repeat $logo-position;
 			background-size: $logo-image-width $logo-image-height;
@@ -734,7 +695,7 @@ a {
 				margin: 0 auto;
 			}
 		} 
-	} @elseif $no-logo == T {
+	} @elseif $interchangeable-logo == T {
 		#Logo {
 			display:none;
 		}
@@ -759,7 +720,7 @@ a {
 		margin: 0px auto;
 		max-width: $header-max-width;
 		padding: $header-padding;
-		@if $no-logo == F or $no-logo == T and $full-width-header == F { // If there's a Permanent Logo - OR - If there's no Permanent Logo, but the Header/Logo is inside the box
+		@if $interchangeable-logo == F or $interchangeable-logo == T and $full-width-header == F { // If there's a Permanent Logo - OR - If there's no Permanent Logo, but the Header/Logo is inside the box
 			&:empty { // Basically, we want this to hide when it would screw up the padding.  If it's a question of it disappearing completely or not, we'll leave it... so it doesn't look completely different from IE8. 
 				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
 			}
@@ -869,8 +830,9 @@ a {
 		@media only screen and (max-width: 768px) {
 			padding: $default-mobile-container-padding;
 		}
-		@media only screen and (min-width: 481px) {
-			margin-top: 50px; // BOOKMARK: I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		margin-top: 50px; // I think this margin helps make it not look stupid with just one question on the page.  Maybe not? 
+		@media only screen and (max-width: 480px) {
+			margin-top: 0; // Don't want it on mobile 
 		}
 		&:empty {
 			// hide the button div if there's not buttons on the page. 
@@ -971,10 +933,15 @@ a {
 			-webkit-transition: background .3s;
 			text-align: center;
 			height: $calculated-sticky-footer-height;
-			@media only screen and (min-width: 768px) {
-				float: right;
+			
+			float: right;
+			@if $border-radius-on == T {
+				@include border-radius(5px 0 0 0);
+			}
+			@media only screen and (max-width: 767px) {
+				float: none;
 				@if $border-radius-on == T {
-					@include border-radius(5px 0 0 0);
+					@include border-radius(0);
 				}
 			}
 			&:focus {
@@ -1062,14 +1029,16 @@ a {
 		.MC .MAHR .TextEntryBox,
 		.MC .SAHR .TextEntryBox {
 			width: 100% !important; // Don't want these to be 100% width in the "Radio Buttons" option
-			@media only screen and (min-width: 481px) {
-				float: left; //This lets the lis (in Horizontal - Side label option) align to the top with lis that have a .TextEntryBox
+			float: left; //This lets the lis (in Horizontal - Side label option) align to the top with lis that have a .TextEntryBox
+			@media only screen and (max-width: 480px) {
+				float: none;
 			}
 		}
 		.MC .MAHR li .TextEntryBox,
 		.MC .SAHR li .TextEntryBox {
-			@media only screen and (min-width: 481px) { // don't want to float these on mobile, because we display:block these li's
-				float: left; //Only want this for the lis (side label option)
+			float: left; //Only want this for the lis (side label option)
+			@media only screen and (max-width: 480px) { // don't want to float these on mobile, because we display:block these li's
+				float: none; 
 			}
 		}
 	}
@@ -1100,7 +1069,7 @@ a {
 		}
 		background: $error-background-color;
 		color: $error-text-color;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			margin: $default-mobile-container-padding;
 		}
 		h1 {
@@ -1129,7 +1098,7 @@ a {
 		height: $separator-height;
 		background: $separator-color;
 		margin: $separator-margin $default-container-padding;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 			margin: ($separator-margin / 2) $default-mobile-container-padding;
 		}
 	}
@@ -1161,7 +1130,7 @@ a {
 	// Table of Contents
 	.closed #TocSidebarIcons, .reduced #TocSidebarIcons{
 		padding-left: $default-container-padding;
-		@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 767px) {
 				padding-left: $default-mobile-container-padding;
 			}
 	}
@@ -1316,7 +1285,7 @@ a {
 	.RO .HR li {
 		margin-right: $default-container-padding; //Gives space between these horizontal list items
 	}	
-	@media all and (max-width: 768px) { 
+	@media all and (max-width: 767px) { 
 		.CS .HR li,
 		.RO .HR li {
 			float: none; // Don't want the text entry ones to be on the same line on mobile.
@@ -1505,7 +1474,7 @@ a {
 	.SBSMatrix th,
 	.Matrix th {
 		padding: $default-container-padding / 2;
-		@media all and (max-width: 768px) { 
+		@media all and (max-width: 767px) { 
 			padding: 5px;		
 		}
 	}
@@ -1749,8 +1718,9 @@ a {
 	.Skin .MC .SAHR label.SingleAnswer,
 	.Skin .MC .MAHR label.MultipleAnswer {
 		display: inline-block; //Allows the padding below to take effect (and put some space between the radio button).  Can't use "block" or it won't go on the same line as radio button in "side labels" option
-		@media only screen and (min-width: 481px) {
-			padding-bottom: 20px;
+		padding-bottom: 20px;
+		@media only screen and (max-width: 480px) {
+			padding-bottom: 0;
 		}
 	}
 
@@ -1766,7 +1736,7 @@ a {
 	.Skin .MC .QuestionBody {
 		padding: $default-container-padding ($default-container-padding + 10px);
 		padding-top: 0;
-		@media all and (max-width: 768px) {
+		@media all and (max-width: 767px) {
 			padding: $default-mobile-container-padding;
 			padding-top: 0;
 		}
@@ -1889,9 +1859,9 @@ a {
 		border: $answer-label-border;
 		// cursor: pointer; BOOKMARK: Do we want this or not?
 		transition: background .2s ease-in-out;
-		padding: $answer-label-padding-mobile;
-		@media all and (min-width: 481px) {
-			padding: $answer-label-padding;
+		padding: $answer-label-padding;
+		@media all and (max-width: 480px) {
+			padding: $answer-label-padding-mobile;
 		}
 		display: block;
 		text-align: center;
