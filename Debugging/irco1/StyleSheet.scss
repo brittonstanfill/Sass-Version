@@ -10,16 +10,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$layout-style: "Minimal"; // "Minimal" , "Photo" , "Color" 
-$background-image: url(bg.jpg);
-$interchangeable-logo: "False"; // "True", "False"
+$layout-style: "Color";
+$background-image: "";
+$interchangeable-logo: "False";
 $logo-image: url(logo.png);
-$logo-width: 450px;
-$logo-height: 90px;
-$primary-color: #C32432;
-$logo-position: "Full-width Header"; // "Full-width Header" , "Contained"
-$survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
-$label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
+$logo-image-width: 417px;
+$logo-image-height: 90px;
+$primary-color: #F06850;
+$logo-position: "Contained";
+$survey-overlay-filter: "";
+$label-style-options: "Flat";
 
 
 @import "baseVariables";
@@ -97,7 +97,6 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	$button-style: $label-style;
 	$radio-buttons: F; 
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ALL VARIABLES
@@ -614,9 +613,6 @@ a {
 		z-index: -9;
 		background: $overlay-background-backup;
 		background: $overlay-background;
-		@if $layout-style != "Photo" {
-			display: none;
-		}
 	}
 
 	#ProgressBar {

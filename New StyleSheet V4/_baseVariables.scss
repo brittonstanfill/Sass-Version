@@ -1,7 +1,7 @@
 /////////////////////////////////////////////
 	//LAYOUT
 	$no-logo: T !default;
-	$full-width-header: F !default;
+	$full-width-header: T !default;
 	$boxed-skincontent: T !default;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
@@ -22,10 +22,10 @@
 			$radio-buttons: F !default; 
 
 	//LABEL STYLE
-	$label-style: 1 !default; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+	$label-style: 2 !default; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 
 	//BUTTON STYLE
-	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
+	$button-style: 2 !default; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
 	@if $label-style == 1 {
 		$button-style: 1;
 	}
