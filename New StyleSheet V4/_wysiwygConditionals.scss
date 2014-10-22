@@ -4,7 +4,7 @@
 	$body-background-image-on: F;
 
 } @elseif $layout-style == "Photo" {
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$body-background-image-on: T;
 
 } @elseif $layout-style == "Color" {
