@@ -2438,14 +2438,6 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	text-align: center;
 	font-size: 80%;
 }
-.Skin .ProgressBarFill {
-	background: $primary-color;
-	height: 10px; // can remove, I guess.  Need a height for this to exist
-}
-.Skin .ProgressBarFillContainer {
-	width: 150px; // can remove, I guess.  Need a width for this to exist
-	background: $slider-bar-color; // $progress-bar-fill-container-color?
-}
 //Click here if you are not automatically directed.  Hard to style cause this page only lasts for a second.
 .Skin .Redirect a {
 	padding-top: 6pt;

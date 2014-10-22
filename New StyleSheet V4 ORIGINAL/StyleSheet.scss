@@ -16,11 +16,11 @@
 	//LAYOUT
 	$interchangeable-logo: T;
 	$full-width-header: F;
-	$boxed-skincontent: F;
+	$boxed-skincontent: T;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: F;
+	$body-background-image-on: T;
 	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
@@ -33,7 +33,7 @@
 	//RADIO BUTTONS
 		// IMPORTANT: IF YOU CHANGE THIS. 
 		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
-			$radio-buttons: T; 
+			$radio-buttons: F; 
 
 	//LABEL STYLE
 	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
@@ -54,7 +54,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #4b86ee; //4b86ee c32432 6fb9c4 59c974
+	-->	$primary-color: #53555f; //4b86ee c32432 6fb9c4 59c974 53555f
 	$primary-hue: hue($primary-color);
 	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 	$desaturated-primary-color: desaturate($primary-color, 20%);
@@ -71,7 +71,7 @@
 	/////////////////////////////
 	// SURVEY ENGINE BODY
 	/////////////////////////////
-	--> $body-background-color: lighten($primary-color, 10%) !default;
+	--> $body-background-color: #FFF;
 	--> $body-background-image: url(bg.jpg);
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
@@ -178,7 +178,7 @@
 		}
 
 	}
-	$progress-bar-fill-color: darken($body-background-color, 10%) !default;
+	$progress-bar-fill-color: $primary-color;
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
@@ -346,7 +346,7 @@
 	}	
 	// FOUCS STATE
 	$answer-label-focus-background-backup: $answer-label-hover-background-backup;
-	$answer-label-focus-background: $answer-label-hover-background;
+	$answer-label-focus-background: opacify($answer-label-hover-background, .1);
 	$answer-label-focus-border: $answer-label-hover-border;
 	/////////////////////////////
 	// BUTTONS
@@ -365,8 +365,8 @@
 	// STYLE 2
 	$button-background: $button-primary-color;
 		$button-background-hover: darken($button-background, 5%);
-		$button-background-active: darken($button-background, 10%);
-		$button-background-focus: $button-background-active; // Need to leave this for accessibility.  
+		$button-background-active: darken($button-background, 15%);
+		$button-background-focus: lighten($button-background, 10%); // Need to leave this for accessibility.  
 	$button-border: none;
 	$button-text-color: $reverse-primary-text-color;
 	$button-border-radius: $default-border-radius;
@@ -492,15 +492,6 @@
 // LAYOUT ELEMENTS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@if $pushed-to-bottom-plug == T {
-	@media only screen and (min-device-width: 1281px) { // BOOKMARK: Added this media query to fix scrolling QuestionBody on mobile issue.  Also needed for .RO .DND to properly rank // This media query still sketches me out a little--the problem is touch, not device width.  1281px should be good though. 
-		//Needed for Sticky Footer Plug - Do Not Remove
-		.JFE, .JFEContent,
-		html, body, #Page, .Skin {
-			height: 100%;
-		}
-	}
-}
 @media only screen and (max-width: 480px) { // Hide the Preview Banner on mobile (it's hidden anyway, but display: none makes it go away to prevent side scrolling issues.  
 	.PreviewBanner {
 		display: none;
@@ -708,6 +699,7 @@ a {
 		}
 		@if $full-width-header == T {
 			background: $logo-container-background;
+			margin-bottom: 30px;
 		}
 		@media only screen and (max-width: 767px) {
 			text-align: center;
@@ -794,8 +786,9 @@ a {
 		overflow-y:hidden;  // this allows the QuestionBody to scroll independently of the QuestionText
 		padding: $question-body-padding;
 		position:relative;//added for /*new radio position absolute z -1*/ so the quesiton doesn't jump when clicking - needs to be here for overflowing questions
+		z-index: 1; // Added for Table of Contents - so these aren't covered by TOC.  
 		@media all and (max-width: 768px) {
-			padding: $default-mobile-container-padding;
+			padding: 0 $default-mobile-container-padding $default-mobile-container-padding $default-mobile-container-padding;
 		}
 	}
 
@@ -912,51 +905,75 @@ a {
 		//Needed for Sticky Footer Plug - Do Not Remove
 		height: $calculated-sticky-footer-height;
 	}
-	
+
 	#Plug {
+		text-align: center;
 		a {
 			font-size: $plug-font-size;
-			color: $plug-link-color;
+			color: $footer-text-color;
 			text-decoration: none;
 			padding: $plug-padding;
-			// IE Backup backgrounds
-			@if $body-background-image-on == F { // IE Backup - for color backgrounds
-				background: darken($body-background-color, 10%); 
-			} @elseif $body-background-image-on == T { // IE Backup - for image backgrounds 
-				@if $overlay-dark == T {
-					background: #2A2C31;
-				} @elseif $overlay-dark == F {
-					background: #888;
-				}
-			}
-			background: $plug-background;
-			-webkit-transition: background .3s;
-			text-align: center;
-			height: $calculated-sticky-footer-height;
-			
-			float: right;
-			@if $border-radius-on == T {
-				@include border-radius(5px 0 0 0);
-			}
-			@media only screen and (max-width: 767px) {
-				float: none;
-				@if $border-radius-on == T {
-					@include border-radius(0);
-				}
-			}
-			&:focus {
-				background: $plug-background-hover;
-				outline: none;
-			}
-			@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
-				&:hover {
-					background: $plug-background-hover;
-				}
-			}
+
 		}
 	}
 
-	// (Still inside .Skin)
+} // /.Skin
+
+@if $pushed-to-bottom-plug == T {
+	@media only screen and (min-device-width: 1281px) { // BOOKMARK: Added this media query to fix scrolling QuestionBody on mobile issue.  Also needed for .RO .DND to properly rank // This media query still sketches me out a little--the problem is touch, not device width.  1281px should be good though. 
+		//Needed for Sticky Footer Plug - Do Not Remove
+		.JFE, .JFEContent,
+		html, body, #Page, .Skin {
+			height: 100%;
+		}
+	
+		.Skin #Plug {
+			a {
+				color: $plug-link-color;
+				height: $calculated-sticky-footer-height;
+				float: right;
+				// IE Backup backgrounds
+				@if $body-background-image-on == F { // IE Backup - for color backgrounds
+					background: darken($body-background-color, 10%); 
+				} @elseif $body-background-image-on == T { // IE Backup - for image backgrounds 
+					@if $overlay-dark == T {
+						background: #2A2C31;
+					} @elseif $overlay-dark == F {
+						background: #888;
+					}
+				}
+				background: $plug-background;
+				-webkit-transition: background .3s;
+				text-align: center;
+				&:focus {
+					background: $plug-background-hover;
+					outline: none;
+				}
+				
+				@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+					&:hover {
+						background: $plug-background-hover;
+					}
+				}
+				@if $border-radius-on == T {
+					@include border-radius(5px 0 0 0);
+				}
+				@media only screen and (max-width: 767px) {
+					float: none;
+					@if $border-radius-on == T {
+						@include border-radius(0);
+					}
+				}
+			}
+		} // /END #Plug
+
+
+	} // /END 1281px media query
+}
+
+
+
+.Skin {	
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // UNIVERSAL ELEMENTS
@@ -1631,6 +1648,9 @@ a {
 			background-color: $q-radio-background-checked;
 			// Added this so the focus class doesn't apply when you click on answer.  Cause I think it looks dumb.  
 			outline: none;
+			&.q-focused {
+				background-color: lighten($q-radio-background-checked, 10%);
+			}
 		}
 	}
 	// CHECK BOX
@@ -1648,6 +1668,15 @@ a {
 			background-repeat: no-repeat;	
 			// Added this so the focus class doesn't apply when you click on answer.  Cause I think it looks dumb.  
 			outline: none;
+			&.q-focused {
+				background-color: lighten($q-radio-background-checked, 10%);
+			}
+		}
+	}
+	.Skin input[type="radio"],
+	.Skin input[type="checkbox"] {
+		&:focus {
+			outline: none; //removes the outline from the hidden input on IE.  
 		}
 	}
 	////////////////////////////////////////////////////////////////////
@@ -1802,12 +1831,6 @@ a {
 	.Skin .GAP .Why.Scale label.q-checkbox {
 		display: inline-block; // unhide the styled radio button for the "Scale" part of GAP analysis -- inline-block is the display of other label.q-radio elements
 	}
-	.Skin .GAP .Why.Scale input[type="radio"],
-	.Skin .GAP .Why.Scale input[type="checkbox"] {
-		&:focus {
-			outline: 1px dotted #aaa \9; //Not sure why initial or inherit won't work here.  
-		}
-	}
 	.Skin .GAP .ChoiceStructure .WhyText, .Skin .GAP .Why, .Skin .GAP .Scale {
 		padding: 4px; // give some space between the WHY elements in GAP analysis questions.  
 	}
@@ -1854,6 +1877,7 @@ a {
 	// /* General label styles */
 	.Skin label.SingleAnswer,
 	.Skin label.MultipleAnswer {
+		cursor: pointer;
 		background: $answer-label-background-backup;
 		background: $answer-label-background;
 		border: $answer-label-border;
@@ -1887,6 +1911,9 @@ a {
 			background: $answer-label-select-background;
 			border-color: $answer-label-select-border;
 			color: $answer-label-select-color;			
+			&.q-focused {
+				background: lighten($answer-label-select-background, 7%);
+			}
 		}
 	}
 
