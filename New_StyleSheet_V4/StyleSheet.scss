@@ -10,13 +10,22 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	-->	$logo-image-width: 180px;
-	-->	$logo-image-height: 64px;
+$layout-style: "Minimal"; // "Minimal" , "Photo" , "Color" 
+$background-image: url(bg.jpg);
+$interchangeable-logo: "False"; // "True", "False"
+$logo-image: url(logo.png);
+$logo-image-width: 450px;
+$logo-image-height: 90px;
+$primary-color: #C32432;
+$logo-position: "Full-width Header"; // "Full-width Header" , "Contained"
+$survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
+$label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
-	//LAYOUT
-	$interchangeable-logo: T;
+
+//LAYOUT
+	$no-logo: T;
 	$full-width-header: F;
-	$boxed-skincontent: T;
+	$boxed-skincontent: F;
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
@@ -36,14 +45,15 @@
 			$radio-buttons: F; 
 
 	//LABEL STYLE
-	$label-style: 1; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 
 	//BUTTON STYLE
-	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
-	@if $label-style == 1 {
-		$button-style: 1;
-	}
+	$button-style: $label-style; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
+	
 	$buttons-centered: F; // F pushes buttons to left and right
+
+
+@import "wysiwygConditionals";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ALL VARIABLES
@@ -54,7 +64,7 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #6fb9c4; //4b86ee c32432 6fb9c4 59c974 53555f
+	-->	$primary-color: #6fb9c4 !default; //4b86ee c32432 6fb9c4 59c974 53555f
 	$primary-hue: hue($primary-color);
 	// $primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 
@@ -240,13 +250,13 @@
 	// 	$header-max-width: $container-max-width + ($default-container-padding * .5);
 	// }
 	$header-padding: 10px $default-container-padding; //&:empty {padding: 0}
-	@if $interchangeable-logo == F {
+	@if $no-logo == F {
 		@if $full-width-header == T {
 			//Pushes the header closer to the logo, gives it a more balanced look with the logo				
 			$header-padding: 0 $default-container-padding 20px $default-container-padding; //&:empty {padding: 0}
 		}
 	}
-	@if $interchangeable-logo == T { // the Header acts as the Logo
+	@if $no-logo == T { // the Header acts as the Logo
 		@if $full-width-header == T {
 			$header-padding: $logo-padding $default-container-padding;
 		}
@@ -684,7 +694,7 @@ a {
 		}
 	}
 
-	@if $interchangeable-logo == F { //Only style the #Logo div if we're including it.  
+	@if $no-logo == F { //Only style the #Logo div if we're including it.  
 		#Logo  {
 			background: $logo-background-color $logo-image no-repeat $logo-position;
 			background-size: $logo-image-width $logo-image-height;
@@ -699,7 +709,7 @@ a {
 				margin: 0 auto;
 			}
 		} 
-	} @elseif $interchangeable-logo == T {
+	} @elseif $no-logo == T {
 		#Logo {
 			display:none;
 		}
@@ -725,7 +735,7 @@ a {
 		margin: 0px auto;
 		max-width: $header-max-width;
 		padding: $header-padding;
-		@if $interchangeable-logo == F or $interchangeable-logo == T and $full-width-header == F { // If there's a Permanent Logo - OR - If there's no Permanent Logo, but the Header/Logo is inside the box
+		@if $no-logo == F or $no-logo == T and $full-width-header == F { // If there's a Permanent Logo - OR - If there's no Permanent Logo, but the Header/Logo is inside the box
 			&:empty { // Basically, we want this to hide when it would screw up the padding.  If it's a question of it disappearing completely or not, we'll leave it... so it doesn't look completely different from IE8. 
 				padding: 0; // wahoo!  This makes the padding go away if there's no text.  Not for IE8-.  
 			}

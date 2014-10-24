@@ -1,6 +1,6 @@
 /////// LAYOUT STYLE
 @if $layout-style == "Minimal" {
-	$boxed-skincontent: F;
+	$boxed-skincontent: T;
 	$body-background-image-on: F;
 
 } @elseif $layout-style == "Photo" {
