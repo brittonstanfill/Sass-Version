@@ -20,7 +20,7 @@
 	$pushed-to-bottom-plug: T; // -- BOOKMARK: Don't want to change, probably.  Unless something breaks. 
 
 	//BACKGROUND
-	$body-background-image-on: T;
+	$body-background-image-on: F;
 	$overlay-dark: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
@@ -36,7 +36,7 @@
 			$radio-buttons: F; 
 
 	//LABEL STYLE
-	$label-style: 2; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
+	$label-style: 1; // 1 or 2	// BOOKMARK: Style 1 only used for "Minimal" layout - plain white/gray background
 
 	//BUTTON STYLE
 	$button-style: 2; // 1 or 2 // 1: To match 1px style of label style 1... 2: flat, solid color...
@@ -54,13 +54,23 @@
 	/////////////////////////////
 	// COLORS
 	/////////////////////////////
-	-->	$primary-color: #53555f; //4b86ee c32432 6fb9c4 59c974 53555f
+	-->	$primary-color: #6fb9c4; //4b86ee c32432 6fb9c4 59c974 53555f
 	$primary-hue: hue($primary-color);
-	$primary-hue-color-light: hsl($primary-hue, 100%, 95%);
+	// $primary-hue-color-light: hsl($primary-hue, 100%, 95%);
+
+	@function set-primary-hue-color-light($primary-color) {	// Function to change hue color
+	  @if (saturation($primary-color) < 5%) or (lightness($primary-color) < 10%) { // for colors that are almost black or gray, they should go to light gray
+	    @return #eee; 
+	  } @else {
+	  	@return hsl($primary-hue, 100%, 95%);
+	  }
+	}	
+	$primary-hue-color-light: set-primary-hue-color-light($primary-color); 
+
 	$desaturated-primary-color: desaturate($primary-color, 20%);
 	@function set-reverse-text-color($primary-color) {	// Function to change text color based on background color
-	  @if (lightness($primary-color) > 70%) or (lightness($primary-color) > 30%) and (hue($primary-color) > 45) and (hue($primary-color) < 80) {
-	    @return darken($primary-color, 70%); 
+	  @if (lightness($primary-color) > 80%) or (hue($primary-color) > 45) and (hue($primary-color) < 180) {
+	    @return darken($primary-color, 80%); 
 	  } @else {
 	    @return white; 
 	  }
@@ -131,7 +141,10 @@
 		$default-border-width: 2px;
 	}
 	$default-border-style: solid;	
-	$default-border-color: #D2D2D6;
+	$default-border-color: #d2d2d6;
+	@if $label-style == 1 {
+		$default-border-color: #c2c2c6;
+	}
 	@if $boxed-skincontent == F and $body-background-image-on == T { // = background image
 		@if $overlay-dark == F {
 			$default-border-color: lighten($default-text-color, 10%);
@@ -145,7 +158,7 @@
 	//SEPARATOR
 	$separator-height: $default-border-width;
 	$separator-margin: 5px;
-	$separator-color: $default-border-color;
+	$separator-color: lighten($default-border-color, 8%);
 	@if $boxed-skincontent == F and $body-background-image-on == T {
 		$separator-color: transparentize($default-border-color, 0.7);
 	}
@@ -260,7 +273,7 @@
 	/////////////////////////////
 	// Q RADIO BUTTONS
 	/////////////////////////////
-	$q-radio-size: 20px;
+	$q-radio-size: 1.1em; // set this to em and then it will adjust to be same size as answer font.  
 	$q-radio-background: transparent;
 	$q-radio-background-checked: $primary-color;
 	$q-radio-border: 1px solid $primary-color;
@@ -986,6 +999,10 @@ a {
 		color: $default-text-color;
 	} 
 
+	select {
+		min-width: 3em; // To prevent dropdown lists from being too small when only one character is added
+	}
+
 	// Text inputs and select menus
 	input.TextEntryBox, 
 	.TE textarea, 
@@ -1104,11 +1121,11 @@ a {
 	}
 	.QuestionOuter.Highlight .Inner {
 		@if $boxed-skincontent == F {
-			border-color: $error-border-color;
+			border-color: $primary-color;
 			@include border-radius($default-border-radius);
 		}
 		@if $boxed-skincontent == T {
-			background: $error-background-color;
+			background: $primary-hue-color-light;
 		}
 	}
 	.Separator {
@@ -1630,12 +1647,7 @@ a {
 		height: $q-radio-size;
 		display: inline-block;
 		background: $q-radio-background;
-		@if $default-font-size < 14px { // BOOKMARK: // could do something like this... to make radio button match font size more??
-			width: 16px;
-			height: 16px;
-		}
-		margin-top: 3px; //These align fine in the Preview file, but something about the difference between their being an extra span inside the label makes these not align that well in a real survey.  
-		
+
 		// FOCUS class - needed for accessibility, to tab through the survey.  
 		&.q-focused {
 			outline: thin dotted #aaa;
@@ -1732,7 +1744,7 @@ a {
 	}
 
 	.Skin .ChoiceStructure li {
-		padding: 10px 0;
+		padding: .4em 0; //This adds space between MC vertical questions
 	}
 
 	.Skin .MC .SAVR label.q-radio,
@@ -1757,7 +1769,7 @@ a {
 	.Skin .MC .SACOL .QuestionBody td.ControlContainer,
 	.Skin .MC .MACOL .QuestionBody td.LabelContatiner,
 	.Skin .MC .SACOL .QuestionBody td.LabelContatiner {
-		padding: 10px 10px 10px 0;
+		padding: .4em .4em .4em 0; //This adds space between MC column questions
 		vertical-align: top;
 	}
 
