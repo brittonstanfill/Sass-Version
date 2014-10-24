@@ -79,7 +79,8 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 	$desaturated-primary-color: desaturate($primary-color, 20%);
 	@function set-reverse-text-color($primary-color) {	// Function to change text color based on background color
-	  @if (lightness($primary-color) > 80%) or (hue($primary-color) > 45) and (hue($primary-color) < 180) {
+		$LUMA : ((red($primary-color)*.2126) + (green($primary-color)*.7152) + (blue($primary-color)*.0722)); //https://lnikki.la/articles/sass-better-colour-based-on-brightness/
+	  @if ($LUMA > 190) {
 	    @return darken($primary-color, 80%); 
 	  } @else {
 	    @return white; 
