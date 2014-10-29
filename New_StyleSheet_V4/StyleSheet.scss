@@ -10,15 +10,15 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$layout-style: "Minimal"; // "Minimal" , "Photo" , "Color" 
+$layout-style: "Photo"; // "Minimal" , "Photo" , "Color" 
 $background-image: url(bg.jpg);
 $interchangeable-logo: "False"; // "True", "False"
 $logo-image: url(logo.png);
 $logo-image-width: 450px;
 $logo-image-height: 90px;
-$primary-color: #C32432;
+$primary-color: #c32432;// 4b86ee c32432 6fb9c4 59c974 53555f
 $logo-position: "Full-width Header"; // "Full-width Header" , "Contained"
-$survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
+$survey-overlay-filter: "Light Filter"; // "Dark Filter" , "Light Filter"
 $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 
@@ -2004,4 +2004,112 @@ a {
 
 
 // End LABEL STYLES
+/*Start YUI Calendar CSS */
+//YUI CALENDAR
+$Calendar-Header-Color: $primary-color;
+$Calendar-Background-Color: $answer-label-background;
+$Calendar-Today-Background: $answer-label-hover-background;
+$Calendar-Text-Color: $default-text-color;
+$Calendar-Select-Background-Color: $answer-label-select-background;
+$Calendar-Select-Color: $answer-label-select-color;
+$CalendarHover: $answer-label-hover-background; 
+$Calendar-Inactive-Color: #999;
+$Calendar-Weekdays-Color: $primary-color;
 
+.Skin{
+	.yui-skin-sam{
+		.yui-calcontainer{
+			border-radius: 4px;
+			background-color: $Calendar-Background-Color;
+			font-family: $font-stack;
+			border:none;
+			overflow:hidden;
+			padding:0; //test no padding
+		}
+		.yui-calendar{
+				.calheader{
+					padding:.6em;
+					background:$Calendar-Header-Color;
+					color:#FFF;
+					font-weight: 100;
+					a.calnavleft, a.calnavright{
+						position:relative;
+						color:#FFF;
+						margin:0;
+						right:0;
+						left:0;
+						width:18px;
+						height: 17px;
+						//border-radius: 10px;
+						background-image:none;
+						text-indent:0;
+					}
+					a.calnavleft{
+						float:left;
+						// background-position: 9px -900px;
+						&:before{
+							content:'\2190';
+						}
+					}
+					a.calnavright{
+						float:right;
+						// background-position: 9px -900px;
+						&:before{
+							content:'\2192';
+						}
+					}
+				}
+			.calweekdayrow{
+				background-color:$Calendar-Background-Color;
+			}
+			.calweekdaycell{
+				color:$Calendar-Weekdays-Color;
+				font-weight: 100;
+			}
+			td.calcell{
+				background: $Calendar-Background-Color;
+				border:0px;
+			}
+			 td.calcell a{
+				color: $Calendar-Text-Color;
+				font-weight:100;
+			}
+			td.calcell.today{
+				background-color: $Calendar-Today-Background;
+				border-radius:2px;
+			}
+			td.calcell.today a{
+				background-color: transparent;
+				border-radius: 2px;
+			}
+			 td.calcell.selected a{
+				background-color: $Calendar-Select-Background-Color;
+				border-radius: 3px;
+				color:$Calendar-Select-Color;
+			}
+			td.calcell.selected{
+				background-color: $Calendar-Background-Color;
+			}
+			 td.calcell.calcellhover{
+				background-color: $CalendarHover;
+				border-radius: 3px;
+			}
+			td.calcell.calcellhover a{
+				background-color: $CalendarHover;
+				border:none;
+				border-radius:3px;
+				color: $Calendar-Text-Color;
+			}
+			td.calcell.oom{
+				color: $Calendar-Inactive-Color;
+				background-color: $Calendar-Background-Color;
+				font-weight: 100;
+			}
+			td.calcell.previous{
+				color:$Calendar-Inactive-Color;
+				font-weight: 100;
+			}
+		}
+	}
+}
+/*End YUI Calendar CSS */
