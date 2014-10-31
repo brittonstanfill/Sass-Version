@@ -19,6 +19,24 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 	margin: 0;
 	padding: 0;
 }
+//So users can add normal HTML uls and ols into their questions, header, and footer. 
+.Skin .QuestionText dl, 
+.Skin .QuestionText ol, 
+.Skin .QuestionText ul, 
+.Skin .QuestionText ul li, 
+.Skin .QuestionBody .ChoiceStructure .LabelWrapper ul li, 
+.Skin #Header dl, .Skin #Header ol, .Skin #Header ul, 
+.Skin #Header li, .Skin #Footer dl, .Skin #Footer ol, 
+.Skin #Footer ul, .Skin #Footer li, .Skin .EndOfSurvey ul li { 
+	list-style-type: disc;
+	margin-left: 14pt;
+}
+.Skin .QuestionText ol > li, 
+.Skin #Header ol > li, 
+.Skin #Footer ol > li {
+	list-style-type: decimal;
+}
+
 legend {
 	font-size: 100%;
 }
@@ -254,7 +272,6 @@ h2.noStyle {
 // * Dynamic Matrix
 .Skin .DynamicMatrix .TE input{
 	width:auto;
-	background: red;
 }
 .Skin .DynamicMatrix .LogicEditor .ExpressionSet .Expression {
 	border:none;
@@ -1150,6 +1167,30 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
  	//This is for all the uls except the Non-column GROUP containers*/
 	width:187px; /////// Magic 187 width
 }
+@media all and (max-width: 480px) {
+	.Skin .PGR .DragAndDrop .stack div ul li.stack span label,
+	.Skin .PGR .DragAndDrop .stack div ul li.stack span label img,
+	.Skin .PGR .DragAndDrop .Group ul,
+	.Skin .PGR .DragAndDrop .Group h2,
+	.Skin .PGR .DragAndDrop .Items ul,
+	.Skin .PGR .DragAndDrop .Items h2 {
+		width: 140px; /////// Magic 187 width changes to 140 width for mobile.  
+	}
+	.Skin .PGR .DragAndDrop .Group div ul li.stack span label {
+		width: 80px; 
+	}
+	.Skin .PGR .DragAndDrop .Group .stack li {
+		width: 80px;
+		padding: 8px 0;
+	}
+	html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack {
+		margin-left: 10px; //don't want 20px on mobile.
+	}
+}
+//BOOKMARK
+.Skin .PGR .QuestionBody {overflow: hidden} //added styles above to make this fit in mobile, but it scrolls around sometimes when it doesn't need to.    
+
+
 .Skin .PGR .DragAndDrop .Items ul li .rank{
 	//Hides this until it is dragged into the group (where you're supposed to rank it)
 	display:none;
@@ -1178,6 +1219,13 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 }
 .Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
 	width: 337px;
+}
+@media all and (max-width: 480px) {
+	.Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div ul,
+	.Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div h2, 
+	.Skin .PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
+		width: 107px; 
+	}
 }
 // Do we want these on the right or left?
 // Might make sense to be on the right here, where it's not very wide.. Maybe not
@@ -3229,6 +3277,15 @@ a {
 		}
 	}
 
+	@media only screen and (max-width: 480px) { //Added so this doesn't make these items too long on mobile.  
+		.HSLIDER, .Slider, .Matrix, .PGR {
+			input[type="text"] {
+				width: 6em;
+				max-width: 100%;				
+			}
+		}
+	}
+
 	@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T or $default-text-color == #FFFFFF {
 		select {
 			color: #ccc; //Can't be white, or it won't show up in some Firefox or IE select menus.			
@@ -3500,11 +3557,14 @@ a {
 	}
 	.RO .DND .Group ul li,
 	.PGR .DragAndDrop ul li {
-		padding: 8px 40px;
+		padding: 8px 2em;
 		text-align: center;
 		&:hover {
 			background: $readable-hover-backup; //backup for IE8
 			background: $readable-hover-color;
+		}
+		@media only screen and (max-width: 767px) {
+			padding: 8px 0 8px 2em; // don't want the padding on the right on mobile. 
 		}
 	}
 	.PGR .DragAndDrop ul li.stack {
@@ -3515,6 +3575,19 @@ a {
 	.PGR .DragAndDrop .NoColumns td.groupsContainerTd div > div {
 		margin: 0 auto 10px auto; //Not sure we need this... seems like we want the group boxes close to the items 
 	}
+
+	// .RO .DND .Group ul li, .Skin .PGR .DragAndDrop ul li {
+	// 	padding: 8px 0 8px 40px; //change the padding for these. 
+	// }
+
+	// .PGR .DragAndDrop .QuestionBody .Group label { // makes these not spill over.  gracefully gets cut off. 
+	// 	text-overflow: ellipsis;
+	// 	white-space: nowrap;
+	// 	overflow: hidden;
+	// }
+
+
+
 	.CS .HR li,
 	.RO .HR li {
 		margin-right: $default-container-padding; //Gives space between these horizontal list items
@@ -3607,7 +3680,6 @@ a {
 	@media all and (max-width: 480px) {  // Because we don't want this WidthStrut eating up all the space on mobile. 
 		.horizontalbar .LabelDescriptions .WidthStrut {
 			width: 0px !important;
-			background: blue;
 			height: 4px;
 		}
 		//This reduces the size of the font in the descript to the left of the slider. 
