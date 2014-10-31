@@ -69,7 +69,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	// $primary-hue-color-light: hsl($primary-hue, 100%, 95%);
 
 	@function set-primary-hue-color-light($primary-color) {	// Function to change hue color
-	  @if (saturation($primary-color) < 5%) or (lightness($primary-color) < 10%) { // for colors that are almost black or gray, they should go to light gray
+	  @if (saturation($primary-color) < 10%) or (lightness($primary-color) < 10%) { // for colors that are almost black or gray, they should go to light gray
 	    @return #eee; 
 	  } @else {
 	  	@return hsl($primary-hue, 100%, 95%);
