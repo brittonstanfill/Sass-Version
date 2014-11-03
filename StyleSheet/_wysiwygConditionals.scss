@@ -45,14 +45,18 @@
 //////// LABEL STYLES
 @if $label-style-options == "Flat" {
 	$label-style: 2;
+	$button-style: $label-style;
 	$radio-buttons: F; 
 } @elseif $label-style-options == "3D" {
 	$label-style: 1;
+	$button-style: $label-style;
 	$radio-buttons: F; 
 } @elseif $label-style-options == "Radio Buttons" {
 	$radio-buttons: T; 
 	$label-style: 2;
+	$button-style: $label-style;
 } @else {
 	$label-style: 2;
+	$button-style: $label-style;
 	$radio-buttons: F; 
 }
