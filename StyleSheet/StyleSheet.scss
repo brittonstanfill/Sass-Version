@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASIC CONDITIONALS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$layout-style: "Minimal"; // "Minimal" , "Photo" , "Color" 
+$layout-style: "Color"; // "Minimal" , "Photo" , "Color" 
 $background-image: url(bg.jpg);
 $interchangeable-logo: "True"; // "True", "False"
 $logo-image: url(logo.png);
@@ -18,7 +18,7 @@ $logo-image-width: 450px;
 $logo-image-height: 90px;
 $primary-color: #c32432;// 4b86ee c32432 6fb9c4 59c974 53555f
 $logo-position: "Contained"; // "Full-width Header" , "Contained"
-$survey-overlay-filter: "Light Filter"; // "Dark Filter" , "Light Filter"
+$survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
 $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 
@@ -31,6 +31,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	//BACKGROUND
 	$body-background-image-on: F;
 	$overlay-dark: F;
+	$color-background: F;
 
 	//BORDER RADIUS - Labels, TextEntry, Buttons, Survey Container
 	$border-radius-on: T; //Do we ever want this False?
@@ -93,7 +94,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	// SURVEY ENGINE BODY
 	/////////////////////////////
 	--> $body-background-color: #FFF;
-	--> $body-background-image: url(bg.jpg);
+	--> $body-background-image: url(bg.jpg) !default;
 	$body-background-size: cover; 	// Change to "auto" and "repeat" for repeating background images
 	$body-background-repeat: no-repeat; 
 	$body-background-position: center fixed;
@@ -108,6 +109,10 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 				$body-background: #FFF $body-background-image $body-background-repeat $body-background-position; // Light background color for light image
 			}			
 		}
+	}
+
+	@if $color-background == T {
+		$body-background: $primary-color;
 	}
 
 	/////////////////////////////
@@ -203,6 +208,18 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 	}
 	$progress-bar-fill-color: $primary-color;
+	@function set-progress-bar-fill-color($primary-color) {	// Function to change text color based on background color
+		$LUMA : ((red($primary-color)*.2126) + (green($primary-color)*.7152) + (blue($primary-color)*.0722)); //https://lnikki.la/articles/sass-better-colour-based-on-brightness/
+	  @if ($LUMA > 190) {
+	    @return darken($primary-color, 10%); 
+	  } @else {
+	    @return lighten($primary-color, 10%); 
+	  }
+	}
+	@if $color-background == T {
+		$progress-bar-fill-color: set-progress-bar-fill-color($primary-color);
+	}
+
 	$progress-bar-font-size: 14px;
 	$progress-bar-fill-height: $progress-bar-font-size + 2px;
 
