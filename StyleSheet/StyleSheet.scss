@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $layout-style: "Color"; // "Minimal" , "Photo" , "Color" 
 $background-image: url(bg.jpg);
-$interchangeable-logo: "True"; // "True", "False"
+$interchangeable-logo: "False"; // "True", "False"
 $logo-image: url(logo.png);
 $logo-image-width: 450px;
 $logo-image-height: 90px;
@@ -234,7 +234,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	/////////////////////////////
 	// LOGO
 	/////////////////////////////
-	-->	$logo-image: url("logo.png");
+	-->	$logo-image: url("logo.png") !default;
 	$logo-mobile-image: $logo-image; // Good idea to upload @2X image if exists (for retina displays)
 	$logo-background-color: transparent; // If colored, need to include the same border-radius (if applicable);
 	-->	$logo-image-width: 180px !default;

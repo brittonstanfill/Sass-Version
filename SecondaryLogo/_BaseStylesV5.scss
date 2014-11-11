@@ -2970,12 +2970,15 @@ a {
 			width: ($secondary-logo-image-width + $secondary-logo-padding);
 			display: inline-block;
 			float: right;
+			margin-right: 10px;
+			
 			@media only screen and (max-width: 767px) {
 				background: $secondary-logo-background-color $secondary-logo-mobile-image no-repeat $secondary-logo-mobile-position;
 				background-size: $secondary-logo-mobile-width $secondary-logo-mobile-height;
 				height: ($secondary-logo-mobile-height + $secondary-logo-mobile-padding);
 				float: none;
 				width: 100%;
+				margin: 0;
 
 			}
 
