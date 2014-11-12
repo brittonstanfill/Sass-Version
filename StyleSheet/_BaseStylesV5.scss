@@ -4032,8 +4032,6 @@ a {
 	}
 
 	.Skin .MC .SAVR label.q-radio,
-	.Skin .MC .SAVR label.q-checkbox,
-	.Skin .MC .MAVR label.q-radio,
 	.Skin .MC .MAVR label.q-checkbox {
 		float: left;
 		margin-right: 10px;
@@ -4307,6 +4305,17 @@ html > body.RTL .Skin .PGR .DragAndDrop .stack ul.stack {
 }
 .RTL .Skin .PGR td.itemsContainerTd {
 	padding: 0;
+}
+.RTL .Skin .MC .SAVR label.q-radio,
+.RTL .Skin .MC .MAVR label.q-checkbox {
+	float: right;
+	margin-right: 0;
+	margin-left: 10px;
+}
+.RTL .Skin .CS .VRTL .SumInput, 
+.RTL .Skin .CS .VRTL .SumTotal {
+	right: auto;
+	left: 10px;
 }
 
 // End LABEL STYLES
