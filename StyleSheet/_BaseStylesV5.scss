@@ -4299,7 +4299,12 @@ a {
 .RTL .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.Last label {
 	left: 0; //This removes the "centered" aspect, but at least they don't overlap. 
 }
-
+html > body.RTL .Skin .PGR .DragAndDrop .stack ul.stack {
+	margin: 0;
+}
+.Skin .PGR .DragAndDrop .Items h2 {
+	margin-bottom: 20px;
+}
 
 // End LABEL STYLES
 /*Start YUI Calendar CSS */
