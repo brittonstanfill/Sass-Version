@@ -3557,7 +3557,7 @@ a {
 		}
 	}
 	.RO .DND .Group ul li,
-	.PGR .DragAndDrop .QuestionBody ul li {
+	.PGR .DragAndDrop .QuestionBody .Group ul li {
 		padding: 8px 2em;
 		text-align: center;
 		&:hover {
@@ -3568,6 +3568,13 @@ a {
 			padding: 8px 0 8px 2em; // don't want the padding on the right on mobile. 
 		}
 	}
+	.PGR .DragAndDrop .QuestionBody .Group ul li.stack {
+		padding: 8px 0; // remove the padding for the number - since they're just stacked and not ranked with a number
+		&:hover {
+			background: #FFF; 
+		}
+	}
+
 	.PGR .DragAndDrop ul li.stack {
 		&:hover {
 			background: #fff; // Change the hover state for the white "stacked" ones
@@ -4285,6 +4292,12 @@ a {
 .RTL .Skin .QuestionBody .TextEntryBox {
 	margin: 0;
 	margin-top: 8px;
+}
+.RTL .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount3 td.First label, 
+.RTL .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.First label,
+.RTL .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount3 td.Last label, 
+.RTL .Skin .horizontalbar table.LabelDescriptions.CenterLabels .LabelCount2 td.Last label {
+	left: 0; //This removes the "centered" aspect, but at least they don't overlap. 
 }
 
 
