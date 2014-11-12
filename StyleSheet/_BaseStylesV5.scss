@@ -4302,8 +4302,11 @@ a {
 html > body.RTL .Skin .PGR .DragAndDrop .stack ul.stack {
 	margin: 0;
 }
-.Skin .PGR .DragAndDrop .Items h2 {
+.RTL .Skin .PGR .DragAndDrop .Items h2 {
 	margin-bottom: 20px;
+}
+.RTL .Skin .PGR td.itemsContainerTd {
+	padding: 0;
 }
 
 // End LABEL STYLES
