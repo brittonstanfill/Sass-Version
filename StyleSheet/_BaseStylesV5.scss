@@ -2167,7 +2167,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 // }
 
 #TocIcon{
-	background-image: url(../../WRQualtricsControlPanel/CPGraphics/flowicons.png);
+	background-image: url(../../../../../WRQualtricsControlPanel/CPGraphics/flowicons.png);
 	background-position:-246px -1px;
     width:16px;
     height:16px;
@@ -2175,7 +2175,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 }
 
 #TocArrow{
-	background-image: url(../../WRQualtricsControlPanel/CPGraphics/editwidgets.png);
+	background-image: url(../../../../../WRQualtricsControlPanel/CPGraphics/editwidgets.png);
 	background-position:-1px -60px;
   width:10px;
   height:10px;
@@ -2279,24 +2279,25 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 }
 
 #Toc li.Complete span.TocIcon, #TocHeader td.Complete span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -224px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -224px transparent;
 }
 #Toc li.Complete.Current span.TocIcon, #TocHeader td.Complete.Current span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -240px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -112px -240px transparent;
 }
 
 #Toc li.Authenticator span.TocIcon, #TocHeader td.Authenticator span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -225px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -225px transparent;
 }
 #Toc li.Authenticator.Current span.TocIcon, #TocHeader td.Authenticator.Current span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -241px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -269px -241px transparent;
 }
 
 #Toc li.Alert span.TocIcon, #TocHeader td.Alert span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -224px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -224px transparent;
 }
 #Toc li.Alert.Current span.TocIcon, #TocHeader td.Alert.Current span.TocIcon{
-	background: url(../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -240px transparent;
+	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -240px transparent;
+	
 }
 
 #Toc li.Disabled{
@@ -4203,7 +4204,7 @@ a {
 
 	.Skin .SAVR label.SingleAnswer,
 	.Skin .MAVR label.MultipleAnswer {
-		text-align: left;
+		text-align: initial; //resets this to left.  Don't use left so it won't override the RTL styles. 
 	}
 
 	//Makes these wider. Not sure what's going on here exactly, or if it's needed -- Decided to take it out: //This is making them drop to a new line below radio button, on small window widths. 
@@ -4262,6 +4263,25 @@ a {
 
 } // end if $radio-buttons == F
 /* End Label Styles */
+
+
+//RTL Styles.
+/* RTL CSS */
+.RTL .Skin #Buttons {
+	text-align: left;
+}
+.RTL .Skin #Buttons #PreviousButton {
+	float: right;
+}
+
+.RTL .Skin .CS .VRTL .ChoiceStructure li {
+	padding-right: 10px;
+}
+
+.RTL .Skin .QuestionBody .TextEntryBox {
+	margin: 0;
+	margin-top: 8px;
+}
 
 
 // End LABEL STYLES
