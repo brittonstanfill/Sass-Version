@@ -2297,7 +2297,7 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 }
 #Toc li.Alert.Current span.TocIcon, #TocHeader td.Alert.Current span.TocIcon{
 	background: url(../../../../../WRQualtricsControlPanel/CPGraphics/widgets.png) no-repeat scroll -255px -240px transparent;
-	
+
 }
 
 #Toc li.Disabled{
@@ -3677,6 +3677,10 @@ a {
 		width: 4em;
 		border: $default-border; // This is so the focus class can apply a color border
 		border-color: transparent;
+	}
+	.Skin .horizontalbar tr.Stars td.value, 
+	.Skin .horizontalbar table.sliderGrid tr td.value {
+		min-width: 4em;
 	}
 	@media all and (max-width: 480px) {  // Because we don't want this WidthStrut eating up all the space on mobile. 
 		.horizontalbar .LabelDescriptions .WidthStrut {
