@@ -1067,13 +1067,13 @@ h2.noStyle {
 	border-collapse: collapse;
 	min-height:150px; // Needs a min-height or it collapses.  Or does it?  The ul inside also has a min-height.
 }
-.Skin .PGR .DragAndDrop ul{
+.Skin .PGR .DragAndDrop .QuestionBody ul{
 	list-style: none;
 	height: 150px; // /* min height for ie < 7 */
 	width: 150px; // needs to be a set width, or it expands/contracts to li elements
 	border-collapse:collapse;
 }
-html > body .Skin .PGR .DragAndDrop ul{
+html > body .Skin .PGR .DragAndDrop .QuestionBody ul{
 	height:auto;
 	min-height:150px;
 }
@@ -1085,7 +1085,7 @@ html > body .Skin .PGR .DragAndDrop .stack ul.stack{
 html > body .Skin .PGR .DragAndDrop .stack div.Group ul.stack{
 	margin-left: 20px;	// Do we need this margin?
 }
-.Skin .PGR .DragAndDrop ul li.stack{
+.Skin .PGR .DragAndDrop .QuestionBody ul li.stack{
 	position: absolute;
 }
 .Skin .PGR .DragAndDrop div ul li span label img {
@@ -1233,7 +1233,7 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	position:absolute;
 	top:0;
 }
-.Skin .PGR .DragAndDrop ul li{
+.Skin .PGR .DragAndDrop .QuestionBody ul li{
 	position:relative; 
 	cursor: move;
 }
@@ -3557,7 +3557,7 @@ a {
 		}
 	}
 	.RO .DND .Group ul li,
-	.PGR .DragAndDrop ul li {
+	.PGR .DragAndDrop .QuestionBody ul li {
 		padding: 8px 2em;
 		text-align: center;
 		&:hover {
