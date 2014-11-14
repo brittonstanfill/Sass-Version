@@ -4037,6 +4037,11 @@ a {
 		margin-right: 10px;
 		padding: 0;
 	}
+	.Skin .MC .SAVR .QuestionBody label.SingleAnswer, 
+	.Skin .MC .MAVR .QuestionBody label.MultipleAnswer {
+		display: inline-block; 
+		width: 85%; //makes the text on these questions wrap like the old themes.  protects the indent around the radio button. 
+	}
 
 	.Skin .MC .SAHR label.SingleAnswer,
 	.Skin .MC .MAHR label.MultipleAnswer {
@@ -4213,7 +4218,7 @@ a {
 
 	.Skin .SAVR label.SingleAnswer,
 	.Skin .MAVR label.MultipleAnswer {
-		text-align: initial; //resets this to left.  Don't use left so it won't override the RTL styles. 
+		text-align: left; //overrides the text-align: center.  "initial" does not work in any IE version. 
 	}
 
 	//Makes these wider. Not sure what's going on here exactly, or if it's needed -- Decided to take it out: //This is making them drop to a new line below radio button, on small window widths. 
@@ -4316,6 +4321,10 @@ html > body.RTL .Skin .PGR .DragAndDrop .stack ul.stack {
 .RTL .Skin .CS .VRTL .SumTotal {
 	right: auto;
 	left: 10px;
+}
+.RTL .Skin .SAVR label.SingleAnswer,
+.RTL .Skin .MAVR label.MultipleAnswer {
+	text-align: right; //overrides the text-align: left
 }
 
 // End LABEL STYLES
