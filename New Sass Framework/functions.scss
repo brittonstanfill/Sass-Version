@@ -1,0 +1,28 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Functions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	@function set-primary-hue-color-light($primary-color) {	// Function to change hue color
+	  @if (saturation($primary-color) < 10%) or (lightness($primary-color) < 10%) { // for colors that are almost black or gray, they should go to light gray
+	    @return #eee; 
+	  } @else {
+	  	@return hsl($primary-hue, 100%, 95%);
+	  }
+	}	
+
+	@function set-reverse-text-color($primary-color) {	// Function to change text color based on background color
+		$LUMA : ((red($primary-color)*.2126) + (green($primary-color)*.7152) + (blue($primary-color)*.0722)); //https://lnikki.la/articles/sass-better-colour-based-on-brightness/
+	  @if ($LUMA > 190) {
+	    @return darken($primary-color, 80%); 
+	  } @else {
+	    @return white; 
+	  }
+	}
+
+	@function set-progress-bar-fill-color($primary-color) {	// Function to change text color based on background color
+		$LUMA : ((red($primary-color)*.2126) + (green($primary-color)*.7152) + (blue($primary-color)*.0722)); //https://lnikki.la/articles/sass-better-colour-based-on-brightness/
+	  @if ($LUMA > 190) {
+	    @return darken($primary-color, 10%); 
+	  } @else {
+	    @return lighten($primary-color, 10%); 
+	  }
+	}

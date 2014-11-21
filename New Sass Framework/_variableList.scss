@@ -1,0 +1,230 @@
+	/////////////////////////////
+	// COLORS
+	/////////////////////////////
+	$primary-hue: "" !default;
+	$primary-hue-color-light: "" !default; 
+	$reverse-primary-text-color: "" !default;
+	$link-color: "" !default;
+
+	$no-logo: "" !default;
+	$full-width-header: "" !default;
+	$boxed-skincontent: "" !default;
+
+	//BOX SHADOW (SkinContent or SkinInner and Full-width LogoContainer)
+	$question-container-box-shadow-on: "" !default;
+	$question-container-border-on: "" !default;
+
+	//RADIO BUTTONS
+		// IMPORTANT: IF YOU CHANGE THIS. 
+		// REMEMBER TO REMOVE THE SCRIPT FROM SKIN.HTML (only to be used for $radio-buttons == F)
+			$radio-buttons: F !default;
+
+	$button-style: "" !default;
+	$body-background-image-on: "";
+
+	/////////////////////////////
+	// SURVEY ENGINE BODY
+	/////////////////////////////
+	$body-background-color: "" !default;
+	$body-background-image: "" !default;
+	$body-background-size: "" !default;
+	$body-background-repeat: "" !default;
+	$body-background-position: "" !default;
+	$body-background: "" !default;
+	/////////////////////////////
+	// OVERLAY
+	/////////////////////////////
+	//This backup image (Data URI) is for IE8
+	//rgba works for every browser but IE8-
+	//Using rgba rather than an image, we can more easily change the filter darkness/lightness/opacity
+	$overlay-background-backup: "" !default;
+	$overlay-background: "" !default;
+	$overlay-dark: "" !default;
+	/////////////////////////////
+	// DEFAULTS
+	/////////////////////////////
+	// WIDTH & PADDING
+	$container-max-width: "" !default;
+	$container-min-width: "" !default;
+	$default-container-padding: "" !default;
+	$default-mobile-container-padding: "" !default;
+	//FONT
+	$font-stack: "" !default;
+	$default-font-size: "" !default;
+	$default-text-color: "" !default;
+	//BORDER
+	$default-border-width: "" !default;
+	$default-border-style: "" !default;
+	$default-border-color: "" !default;
+	$default-border-radius: "" !default;
+	$default-border: "" !default;
+	$border-radius-on: T !default;
+	//SEPARATOR
+	$separator-height: "" !default;
+	$separator-margin: "" !default;
+	$separator-color: "" !default;
+
+
+	/////////////////////////////
+	// QUESTION CONTAINER
+	/////////////////////////////
+	$question-container-background-color: "" !default;
+	$container-box-shadow-x: "" !default;
+	$container-box-shadow-y: "" !default;
+	$container-box-shadow-spread: "" !default;
+	$container-box-shadow-color: "" !default;
+	$question-container-border-radius: "" !default;
+	$question-container-box-shadow: "" !default;
+	$question-container-border: "" !default;
+	//SKININNER
+	$boxed-skincontent: "" !default;
+	$skin-inner-max-width: "" !default;
+	$skin-inner-background: "" !default;
+	
+	/////////////////////////////
+	// PROGRESS BAR
+	/////////////////////////////
+	$progress-bar-background-color: "" !default;
+	$progress-bar-fill-color: "" !default;
+	$progress-bar-font-size: "" !default;
+	$progress-bar-font-size: "" !default;
+	$progress-bar-fill-height: "" !default;
+
+	/////////////////////////////
+	// LOGO CONTAINER
+	/////////////////////////////
+	$logo-container-background: "" !default;
+
+	/////////////////////////////
+	// LOGO
+	/////////////////////////////
+	$logo-image: "" !default;
+	$logo-mobile-image: "" !default;
+	$logo-background-color: "" !default;
+	$logo-image-width: "" !default;
+	$logo-image-height: "" !default;
+	$logo-padding: "" !default;
+	$logo-width: "" !default;
+	$logo-height: "" !default;
+	$logo-mobile-scale: "" !default;
+	$logo-mobile-width: "" !default;
+	$logo-mobile-height: "" !default;
+	$logo-max-width: "" !default;
+	$logo-position: "" !default;
+	$logo-mobile-position: "" !default;
+	$logo-mobile-padding: "" !default;
+
+	/////////////////////////////
+	// HEADER
+	/////////////////////////////
+	$header-font-size: "" !default;
+	$header-max-width: "" !default;
+	$header-padding: "" !default;
+
+	$header-text-color: "" !default;
+
+	/////////////////////////////
+	// QUESTIONTEXT / QUESTIONBODY
+	/////////////////////////////
+	$question-text-font-size: "" !default;
+	$question-text-color: "" !default;
+	$question-body-font-size: "" !default;
+	$question-body-text-color: "" !default;
+	$question-body-padding: "" !default;
+
+	/////////////////////////////
+	$q-radio-size: "" !default;
+	$q-radio-background: "" !default;
+	$q-radio-background-checked: "" !default;
+	$q-radio-border: "" !default;
+
+	/////////////////////////////
+	// LABELS
+	/////////////////////////////
+	$label-style: "" !default;
+	$answer-label-spacing: "" !default;
+	$answer-label-padding: "" !default;
+	$answer-label-padding-mobile: "" !default;
+
+	//BACKGROUND
+	$answer-label-background-backup: "" !default;
+	$answer-label-background: "" !default;
+	// BORDER
+	$answer-label-border: "" !default;
+	// SELECTED STATE (.q-checked)
+	$answer-label-select-background: "" !default;
+	$answer-label-select-color: "" !default;
+	$answer-label-select-border: "" !default;
+	// HOVER STATE
+	$answer-label-hover-background-backup: "" !default;
+	$answer-label-hover-background: "" !default;
+	$answer-label-hover-border: "" !default;
+	
+	//FOCUS STATE
+	$answer-label-focus-background-backup: "" !default;
+	$answer-label-focus-background: "" !default;
+	$answer-label-focus-border: "" !default;
+	/////////////////////////////
+	// BUTTONS
+	/////////////////////////////
+	$button-primary-color: "" !default;
+	$button-padding: "" !default;
+	$button-font-size: "" !default;
+	$buttons-container-padding: "" !default;
+	$button-gradient-percentage: "" !default;
+	// ALIGNMENT
+	$buttons-text-align: "" !default;
+	$button-background: "" !default;
+		$button-background-hover: "" !default;
+		$button-background-active: "" !default;
+		$button-background-focus: "" !default;
+	$button-border: "" !default;
+	$button-text-color: "" !default;
+	$button-border-radius: "" !default;
+	$buttons-centered: F !default;
+	/////////////////////////////
+	// FOOTER
+	/////////////////////////////
+	$footer-font-size: "" !default;
+	$footer-padding: "" !default;
+	$footer-text-color: "" !default;
+	$plug-font-size: "" !default;
+	$plug-padding: "" !default;
+	$plug-link-color: "" !default;
+	$plug-background: "" !default;
+	$plug-background-hover: "" !default;
+	$pushed-to-bottom-plug: "" !default;
+	// $calculated-sticky-footer-height: "" !default;
+	$calculated-sticky-footer-height: "" !default;
+
+	/////////////////////////////
+	// QUESTION TYPES / UNIVERSAL ELEMENTS
+	/////////////////////////////
+	//SLIDER
+	$slider-handle-color: "" !default;
+	$slider-bar-color: "" !default;
+	// VALIDATION ERROR
+	// == R
+	$error-red-background: "" !default;
+	$error-red-color: "" !default;
+	// == O
+	$error-orange-background: "" !default;
+	$error-orange-color: "" !default;
+	// == B
+	$error-blue-background: "" !default;
+	$error-blue-color: "" !default;
+	$error-color: "" !default;
+	$error-background-color: "" !default;
+	$error-border-color: "" !default;
+	$error-text-color: "" !default;
+	$readable-hover-backup: "" !default;
+	$readable-hover-color: "" !default;
+
+
+	// PLACEHOLDERS
+
+
+	
+
+
+

@@ -1,40 +1,23 @@
-
-
-// BaseStylesV4.1
-
+/* 
+ * BaseStyles Version: 4.1.1 
+ * Last Updated: 11-14-14
+ */
 
 //////////////////////////////
 //////////////////////////////
 //		HTML elements		//
 //////////////////////////////
 //////////////////////////////
-ul, li {
+ul.ChoiceStructure, li.Selection { //classes for specificity, we still want formating if someone ads formatting via rich content editor
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
-	margin:0pt;
-	padding:0pt;
+	margin:0;
+	padding:0;
 }
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, textarea, p, blockquote, th, td {
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, textarea, p, blockquote, th, td { //removed ul, ol, li, 
 	margin: 0;
 	padding: 0;
-}
-//So users can add normal HTML uls and ols into their questions, header, and footer. 
-.Skin .QuestionText dl, 
-.Skin .QuestionText ol, 
-.Skin .QuestionText ul, 
-.Skin .QuestionText ul li, 
-.Skin .QuestionBody .ChoiceStructure .LabelWrapper ul li, 
-.Skin #Header dl, .Skin #Header ol, .Skin #Header ul, 
-.Skin #Header li, .Skin #Footer dl, .Skin #Footer ol, 
-.Skin #Footer ul, .Skin #Footer li, .Skin .EndOfSurvey ul li { 
-	list-style-type: disc;
-	margin-left: 14pt;
-}
-.Skin .QuestionText ol > li, 
-.Skin #Header ol > li, 
-.Skin #Footer ol > li {
-	list-style-type: decimal;
 }
 
 legend {
@@ -1031,11 +1014,18 @@ h2.noStyle {
 //Doesn't seem to change anything
 .Skin .RO .DND ul{
 	width: 100%;
+	margin:0;
+	padding:0;
 }
 .Skin .RO .DND ul li{
 	cursor:move;
 	position:relative;
 	zoom:1;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding:0;
 }
 .Skin .RO .DND ul.NotEdited .rank{
 	visibility:hidden;
@@ -1072,6 +1062,8 @@ h2.noStyle {
 	height: 150px; // /* min height for ie < 7 */
 	width: 150px; // needs to be a set width, or it expands/contracts to li elements
 	border-collapse:collapse;
+	margin:0;
+	padding:0;
 }
 html > body .Skin .PGR .DragAndDrop .QuestionBody ul{
 	height:auto;
@@ -2227,10 +2219,13 @@ padding-top: 48px; //added so that the menu icon doesn't cover the first questio
 	padding-top: 5px;
 	min-height: 5px;
 }
-
+#Toc ul{
+	margin:0;
+	padding:0;
+}
 #Toc ul li{
-	margin: 2px 0 !important;
-	list-style-type: none !important;
+	margin: 2px 0;
+	list-style-type: none;
 }
 
 #Toc a, #Toc strong, #TocHeader a{
@@ -3783,6 +3778,7 @@ a {
 		border: $default-border;
 		border-color: $button-primary-color;
 		-webkit-appaerance: none;
+		margin-bottom:5px;
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -4042,7 +4038,7 @@ a {
 		display: inline-block; 
 		width: 85%; //makes the text on these questions wrap like the old themes.  protects the indent around the radio button. 
 	}
-
+	
 	.Skin .MC .SAHR label.SingleAnswer,
 	.Skin .MC .MAHR label.MultipleAnswer {
 		display: inline-block; //Allows the padding below to take effect (and put some space between the radio button).  Can't use "block" or it won't go on the same line as radio button in "side labels" option
@@ -4218,7 +4214,7 @@ a {
 
 	.Skin .SAVR label.SingleAnswer,
 	.Skin .MAVR label.MultipleAnswer {
-		text-align: left; //overrides the text-align: center.  "initial" does not work in any IE version. 
+		text-align: left; //overrides the text-align: center.  "initial" does not work in any IE version
 	}
 
 	//Makes these wider. Not sure what's going on here exactly, or if it's needed -- Decided to take it out: //This is making them drop to a new line below radio button, on small window widths. 
@@ -4330,7 +4326,7 @@ html > body.RTL .Skin .PGR .DragAndDrop .stack ul.stack {
 // End LABEL STYLES
 /*Start YUI Calendar CSS */
 //YUI CALENDAR
-$Calendar-Header-Color: $primary-color;
+$Calendar-Header-Color: $primary-color!default;
 $Calendar-Background-Color: $answer-label-background;
 $Calendar-Today-Background: $answer-label-hover-background;
 $Calendar-Text-Color: $default-text-color;
