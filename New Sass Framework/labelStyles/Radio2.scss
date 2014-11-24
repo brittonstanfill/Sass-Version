@@ -1,0 +1,68 @@
+@if $label-style-options == "Radio" {
+	
+	//BORDER
+	$default-border-width: 1px; // IMPORTANT: If this is 0, need some other way to indicate focus class (for accessibility)
+	
+
+	/////////////////////////////
+	// Q RADIO BUTTONS
+	/////////////////////////////
+	$q-radio-size: 1.1em; // set this to em and then it will adjust to be same size as answer font.  
+	$q-radio-background: transparent;
+	$q-radio-background-checked: $primary-color;
+	$q-radio-border: 1px solid $primary-color;
+
+	/////////////////////////////
+	// LABELS
+	/////////////////////////////
+	$answer-label-spacing: 10px;
+	$answer-label-padding: 20px;
+	$answer-label-padding-mobile: 10px 4%;
+
+	//BACKGROUND
+	$answer-label-background-backup: #f1f1f1;
+	$answer-label-background: rgba(0,0,0,.06);
+
+
+	// BORDER
+	$answer-label-border: none;
+
+	// SELECTED STATE (.q-checked)
+	$answer-label-select-background: $primary-color;
+
+	$answer-label-select-color: $reverse-primary-text-color;
+	$answer-label-select-border: darken($answer-label-select-background, 20%);
+	// HOVER STATE
+	$answer-label-hover-background-backup: #DDD;
+	$answer-label-hover-background: opacify($answer-label-background, .05);
+
+	$answer-label-hover-border: lighten($primary-color, 15%);
+
+	// FOUCS STATE
+	$answer-label-focus-background-backup: $answer-label-hover-background-backup;
+	$answer-label-focus-background: opacify($answer-label-hover-background, .1);
+	$answer-label-focus-border: $answer-label-hover-border;
+	/////////////////////////////
+	// BUTTONS
+	/////////////////////////////
+	 $button-primary-color: lighten($primary-color, 0%);
+	 $button-padding: 8px 20px;
+	$button-font-size: $default-font-size;
+	$buttons-container-padding: $default-container-padding;
+	 $button-gradient-percentage: 10%;
+	// ALIGNMENT
+	$buttons-text-align: right !default;
+
+	// STYLE 2
+	$button-background: $button-primary-color;
+		$button-background-hover: darken($button-background, 5%);
+		$button-background-active: darken($button-background, 15%);
+		$button-background-focus: lighten($button-background, 10%); // Need to leave this for accessibility.  
+	$button-border: none;
+	$button-text-color: $reverse-primary-text-color;
+	$button-border-radius: $default-border-radius;
+
+}
+
+
+

@@ -1,0 +1,28 @@
+@if $label-style-options == "Radio Buttons" {
+	
+	$q-radio-size: 1.1em; // set this to em and then it will adjust to be same size as answer font.  
+	$q-radio-background: transparent;
+	$q-radio-background-checked: $primary-color;
+	$q-radio-border: 2px solid $primary-color;
+
+	%button-background {
+		background-color: $button-background; 
+			&:focus {
+				background: $button-background-focus;
+				outline: none;
+			}
+			@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+				&:hover {
+					background: $button-background-hover;
+					border-color: $button-primary-color;
+				}
+				&:active {
+					background: $button-background-active;
+					border-color: $button-background-active;
+				}
+			}			
+	}
+} 
+
+
+

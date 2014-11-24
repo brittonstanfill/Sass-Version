@@ -1,0 +1,79 @@
+@if $label-style-options == "3D" {
+
+	//BORDER
+	$default-border-color: #c2c2c6;
+
+	//BACKGROUND
+	$answer-label-background: rgba(0,0,0,.01);
+	$answer-label-border: 1px solid rgba(0,0,0,.1);
+	$answer-label-hover-background: $primary-hue-color-light;
+
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-background-backup: #555; // IE Backup
+			$answer-label-background: rgba(255,255,255,.07); //For dark image/color backgrounds
+		} @elseif $overlay-dark == F {
+			$answer-label-background-backup: #EEE; // IE Backup
+			$answer-label-background: rgba(0,0,0,.05); //For light image/color backgrounds
+
+		}
+	}
+
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			// $answer-label-border: 1px solid rgba(255,255,255,.2); // -- Leigh didn't like this.  I don't know if I do either. 
+			$answer-label-border: none;
+		} @elseif $overlay-dark == F {
+			$answer-label-border: 1px solid rgba(0,0,0,.1);
+		}
+	}	
+
+	// HOVER STATE
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-hover-background-backup: #555; // IE Backup
+			$answer-label-hover-background: opacify($answer-label-background, .1); //For dark image/color backgrounds
+		} @elseif $overlay-dark == F {
+			$answer-label-hover-background-backup: #EEE; // IE Backup
+			$answer-label-hover-background: opacify($answer-label-background, .1); //For light image/color backgrounds
+
+		}
+	}
+
+	@if $body-background-image-on == T and $boxed-skincontent == F {
+		@if $overlay-dark == T {
+			$answer-label-hover-border: 1px solid rgba(0,0,0,.03);
+		} @elseif $overlay-dark == F {
+			$answer-label-hover-border: 1px solid rgba(0,0,0,.1);
+		}
+	}		
+	
+	$button-background: $button-primary-color;
+		$button-background-hover: darken($button-background, 5%);
+		$button-background-active: darken($button-background, 10%);
+		$button-background-focus: $button-background-active; // Need to leave this for accessibility.  
+	$button-border: 1px $default-border-style darken($button-background, 25%);
+	$button-text-color: $reverse-primary-text-color;
+	$button-border-radius: 4px;
+
+	%button-background {
+		@include linear-gradient($button-background, darken($button-background, $button-gradient-percentage));
+			
+		&:focus {
+			@include linear-gradient($button-background-hover, darken($button-background, $button-gradient-percentage));
+			outline: none;
+		}
+		
+		@media only screen and (min-device-width: 1025px) { // Don't want hover state to apply to touch devices <= iPad landscape (1024px) //BOOKMARK: apply this to all or most hover states (including Answer labels)
+			&:hover {
+				@include linear-gradient($button-background-hover, darken($button-background-hover, $button-gradient-percentage));
+			}
+			&:active {
+				@include linear-gradient($button-background-active, darken($button-background-active, ($button-gradient-percentage / 2)));
+			}
+		}		
+	}
+}
+
+
+
