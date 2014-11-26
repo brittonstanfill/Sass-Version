@@ -1,6 +1,6 @@
 /* 
- * BaseStyles Version: 4.1.1 
- * Last Updated: 11-14-14
+ * BaseStyles Version: 4.1.2 
+ * Last Updated: 11-26-14
  */
 
 //////////////////////////////
@@ -126,10 +126,13 @@ h2.noStyle {
 }
 // /* choice groups */
 .Skin .ChoiceGroup{
-	color:#888;
+	color: lighten($default-text-color, 20%);
+	padding-bottom: 10px;
+
 }
 .Skin .ChoiceGroupStructure{
 	margin-left:10px;
+	padding: 0; // reset this to 0 (overwrite normal ul style)
 }
 .Skin .ChoiceGroupStructure.HiddenTitle{
 	margin-left:0px;
@@ -1653,10 +1656,15 @@ html > body .Skin .PGR .DragAndDrop .Items ul{
 	padding: 0px !important;
 }
 
-//Conjoint -- NOT REVISED
+//Conjoint -- BARELY REVISED
 
 .Skin .Conjoint .Table {
 	width: 100%;
+
+	//* Added these styles so the table doesn't touch the sides.  
+	margin-left: auto;
+	margin-right: auto; 
+	max-width: 95%;
 }
 
 // /* Mixed */
@@ -3798,11 +3806,14 @@ a {
 	.Matrix .TE td input {
 		margin: 2px; // This keeps the long .TE inputs from touching each other.
 	}
+	.horizontalbar thead table.LabelDescriptions tr td, .horizontalbar thead tr td.NotApplicable,
+	.Matrix table thead th, .Matrix table thead td {
+		vertical-align: bottom; // Vertical align the matrix Headers to bottom (looks better, mimics old skins behavior)
+	}
 	//BIPOLAR
 	.Matrix .Bipolar tr.ChoiceRow td {
 		padding: 0 7px;
 	}
-
 	// // BOOKMARK: TEST STYLES
 	// .Matrix .Profile .MultipleAnswer table th.c1 {
 	// 	background: $primary-color;
