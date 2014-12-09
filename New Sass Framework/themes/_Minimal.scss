@@ -109,7 +109,7 @@
 	/////////////////////////////
 	$header-font-size: $default-font-size;
 	$header-max-width: $container-max-width + ($default-container-padding * 2);
-	@if $logo-position == "Full-width Header" {
+	@if $header-position == "Full-width Header" {
 		$header-max-width: none; //Not sure if this is best, but it needs to align with the Content Box, or at least be wider
 	}
 	// @if $boxed-skincontent == F and $logo-position == "Full-width Header" {

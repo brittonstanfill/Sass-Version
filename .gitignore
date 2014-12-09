@@ -1,4 +1,11 @@
 
 *.css
+<<<<<<< HEAD
 *.codekit
 *.scssc
+=======
+
+*.scssc
+
+*.codekit
+>>>>>>> Jon-Sass-Branch

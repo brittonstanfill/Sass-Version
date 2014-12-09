@@ -17,9 +17,9 @@ $logo-image: url(logo.png);
 $logo-image-width: 450px;
 $logo-image-height: 90px;
 $primary-color: #c32432;// 4b86ee c32432 6fb9c4 59c974 53555f
-$logo-position: "Contained"; // "Full-width Header" , "Contained"
+$header-position: "Contained"; // "Full-width Header" , "Contained"
 $survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
-$label-style-options: "Radio Buttons"; // "Flat" , "3D" , "Radio Buttons"
+$label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 
 //LAYOUT
@@ -523,6 +523,16 @@ $label-style-options: "Radio Buttons"; // "Flat" , "3D" , "Radio Buttons"
 	}
 
 
+<<<<<<< HEAD
+=======
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// IMPORT any Custom variables
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//@import "customVariables";
+
+>>>>>>> Jon-Sass-Branch
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IMPORT latest BaseStyles.css
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

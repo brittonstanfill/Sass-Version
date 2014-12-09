@@ -26,9 +26,9 @@
 	$no-logo: F;
 }
 
-@if $logo-position == "Full-width Header" {
+@if $header-position == "Full-width Header" {
 	$full-width-header: T;
-} @else if $logo-position == "Contained" {
+} @else if $header-position == "Contained" {
 	$full-width-header: F;
 } @else {
 	$full-width-header: F;
