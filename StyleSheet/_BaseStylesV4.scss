@@ -4161,7 +4161,8 @@ a {
 
 	// /* Centers text entry boxes in spans*/
 	.Skin .LabelWrapper {
-		text-align: center;
+		// Why did we want this in the first place?  It centers the new "large" TextEntryBox elements, which we don't want.  
+		// text-align: center;
 		width: 100%;
 	}
 	@media only screen and (max-width: 480px) { // Only want this margin on mobile, when they "stack" on each other. 
