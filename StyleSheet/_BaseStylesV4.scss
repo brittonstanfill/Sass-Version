@@ -4260,7 +4260,9 @@ a {
 
 	//BOOKMARK: is this a good idea?
 	.Skin label.SingleAnswer.q-checked + input,
-	.Skin label.MultipleAnswer.q-checked + input {
+	.Skin label.SingleAnswer.q-checked + textarea,
+	.Skin label.MultipleAnswer.q-checked + input,
+	.Skin label.MultipleAnswer.q-checked + textarea  {
 		border-color: $primary-color;
 	}
 
