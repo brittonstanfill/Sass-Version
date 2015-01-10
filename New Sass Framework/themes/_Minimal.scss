@@ -78,7 +78,7 @@
 	// LOGO CONTAINER 
 	/////////////////////////////
 	$logo-container-background: #FFF;
-	@if $logo-position == "Contained" {
+	@if $header-position == "Contained" {
 		$logo-container-background: transparent;
 	}
 
@@ -94,10 +94,10 @@
 	$logo-mobile-width: ($logo-image-width * $logo-mobile-scale);
 	$logo-mobile-height: ($logo-image-height * $logo-mobile-scale);
 	$logo-max-width: $container-max-width + ($default-container-padding * 2.5); //2.5? There's almost always some padding around the logo in the image file.  Good idea or not?
-	@if $logo-position == "Full-width Header" {
+	@if $header-position == "Full-width Header" {
 		$logo-max-width: none; //Not sure if this is best, but it needs to align with the Content Box, or at least be wider
 	}
-	// @if $boxed-skincontent == F and $logo-position == "Full-width Header" {
+	// @if $boxed-skincontent == F and $header-position == "Full-width Header" {
 	// 	$logo-max-width: $container-max-width + ($default-container-padding); //Better to have it too far out than too far in.  In my opinion.
 	// }
 	$logo-position: $default-container-padding center; // So it doesn't touch the edge
@@ -112,28 +112,28 @@
 	@if $header-position == "Full-width Header" {
 		$header-max-width: none; //Not sure if this is best, but it needs to align with the Content Box, or at least be wider
 	}
-	// @if $boxed-skincontent == F and $logo-position == "Full-width Header" {
+	// @if $boxed-skincontent == F and $header-position == "Full-width Header" {
 	// 	$header-max-width: $container-max-width + ($default-container-padding * .5);
 	// }
 	$header-padding: 10px $default-container-padding; //&:empty {padding: 0}
 	@if $interchangeable-logo == "True" {
-		@if $logo-position == "Full-width Header" {
+		@if $header-position == "Full-width Header" {
 			//Pushes the header closer to the logo, gives it a more balanced look with the logo				
 			$header-padding: 0 $default-container-padding 20px $default-container-padding; //&:empty {padding: 0}
 		}
 	}
 	@if $interchangeable-logo == "False" { // the Header acts as the Logo
-		@if $logo-position == "Full-width Header" {
+		@if $header-position == "Full-width Header" {
 			$header-padding: $logo-padding $default-container-padding;
 		}
-		@if $logo-position == "Contained" {
+		@if $header-position == "Contained" {
 			$header-padding: $default-container-padding $default-container-padding ($default-container-padding / 2) $default-container-padding;
 		}
 	}
 
 
 	$header-text-color: $default-text-color;
-	@if $logo-position == "Full-width Header" and $boxed-skincontent == F { // Because the default-text-color is often white in this case
+	@if $header-position == "Full-width Header" and $boxed-skincontent == F { // Because the default-text-color is often white in this case
 		$header-text-color: $primary-color; 
 	}
 

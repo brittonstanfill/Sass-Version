@@ -1,0 +1,46 @@
+.Skin {
+
+	#LogoContainer {
+		position: relative;
+	}
+
+	#Logo {
+
+		&:after {
+			content: '';
+			display: block;
+			height: ($logo-height - 40px);
+			width: $logo-image-width;
+			background: url(logo2.png) right center no-repeat;
+			background-size: contain;
+			position: absolute;
+			top: 20px;
+			right: 0;
+			margin-right: 20px;
+
+
+			@include breakpoints(tablet) {
+				height: ($logo-image-height / 2);
+				width: ($logo-image-width / 2);
+				margin-right: 25px;
+			}
+
+			@include breakpoints(mobile) {
+				width: 100%;
+				height: $logo-mobile-height;
+				position: relative;
+				margin: auto;
+				top: $logo-mobile-height + 30px;
+				right: auto;
+				background-position: center center;
+			}
+		}
+	}
+
+	#HeaderContainer {
+
+		@include breakpoints(mobile) {
+			margin-top: ($logo-mobile-height + 30px);
+		}
+	}
+}
