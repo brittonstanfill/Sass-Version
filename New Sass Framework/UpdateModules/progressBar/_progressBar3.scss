@@ -1,17 +1,18 @@
-$progress-bar-fill-height: 20px;
+
+$progress-bar-fill-height: 24px;
 
 .Skin {
 
-	// IE can't use nth-child -- this is a cross-browser workaround
 	#ProgressBar {
 		font-size: $progress-bar-font-size;
-		max-width: $container-max-width + 20px;
-		margin: auto;
-		// padding: 0; // Do we even need this? Don't think so. 
 		position:relative;
-		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
-			padding: 20px 0; 
+
+		@if $full-width-header == F {
+			margin: auto;
+			max-width: $container-max-width + 20px;
+			padding: $default-container-padding 0px;
 		}
+
 
 		tr td:first-child {
 		  position: relative;
@@ -20,41 +21,70 @@ $progress-bar-fill-height: 20px;
 		  color: set-reverse-text-color($body-background-color);
 		  line-height: $progress-bar-fill-height - 4;
 		  width: auto;
-		  background: transparent;
 
-		  @if $layout-style == "Photo" {
-		  		@if $survey-overlay-filter == "Dark Filter" {
-		  			color: #FFF;	
-		  		}
-			}
-
-			// Normalizing styles
-		  	border-left: none;
-
-			& + td {
+		    & + td {
 				width:100%;
 				padding: 0;
 
 				& + td {
-					position: relative;
 					padding: 2px 5px;
 					right: 0;
-					line-height: $progress-bar-fill-height;
-					color: set-reverse-text-color($body-background-color);
+					line-height: $progress-bar-fill-height - 4;
+				}
+			}
 
-					@if $layout-style == "Photo" {
-				  		@if $survey-overlay-filter == "Dark Filter" {
-				  			color: #FFF;	
-				  		}
+			///// Conditionals /////
+
+		  	@if $full-width-header == F {
+			  background: transparent;
+
+				& + td {
+					& + td {
+						position: relative;
+						color: set-reverse-text-color($body-background-color);
+
+						@if $layout-style == "Photo" {
+					  		@if $survey-overlay-filter == "Dark Filter" {
+					  			color: #FFF;	
+					  		}
+						}
+					}
+				}
+			} @else if $full-width-header == T {
+				background: $progress-bar-fill-color;
+				color: set-reverse-text-color($progress-bar-fill-color);
+
+				@if $label-style-options == "3D" {
+					@include linear-gradient($progress-bar-fill-color, darken($progress-bar-fill-color, 10%));
+				}
+
+				& + td {
+
+					& + td {
+						color: $progress-bar-fill-color;
+						position: relative;	
+						background: $progress-bar-background-color;
 					}
 				}
 			}
+
+			// Normalizing styles
+		  	border-left: none;
+		  	border-right: none;
 		}
 	}
 	
 	.ProgressBarContainer{
 		width:100%;
 		border-collapse:collapse;
+
+		@if $full-width-header == T {
+			border-bottom: 1px solid darken($progress-bar-background-color, 20%);
+
+			@if $layout-style == "Color" {
+				border-bottom: 1px solid darken($progress-bar-fill-color, 20%);
+			}
+		}
 
 		// Normalizing styles
 		border-right: none;
@@ -66,30 +96,36 @@ $progress-bar-fill-height: 20px;
 		overflow:hidden;
 		background:$progress-bar-background-color;
 		width:100%;
-		border-radius: 20px;
-		padding: 8px;
 
-		@if $label-style-options == "3D" {
+		@if $full-width-header == F {
 
-			border: 1px solid darken($progress-bar-background-color, 10%);
-			
-			 @if $layout-style == "Color" {
+			border-radius: 20px;
+			padding: 8px;
 
-				border: 1px solid darken($progress-bar-fill-color, 20%);
+			@if $label-style-options == "3D" {
+
+				border: 1px solid darken($progress-bar-background-color, 10%);
+				
+				 @if $layout-style == "Color" {
+					border: 1px solid darken($progress-bar-fill-color, 20%);
+				}
 			}
 		}
-
 	}
 
 	.ProgressBarFill {
 		background-color: $progress-bar-fill-color;
-		height: 5px;
-		border-radius: 5px;
 
-		@if $label-style-options == "3D" {
-			
+		@if $full-width-header == F {
+			height: 5px;
+			border-radius: 5px;
+
+		} @else if $full-width-header == T {
+			height: $progress-bar-fill-height;
+		}
+
+		@if $label-style-options == "3D" {		
 			@include linear-gradient($progress-bar-fill-color, darken($progress-bar-fill-color, 10%));
 		}
 	}
 }
-

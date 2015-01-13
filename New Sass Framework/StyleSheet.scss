@@ -14,8 +14,8 @@ $layout-style: "Minimal"; // "Minimal" , "Photo" , "Color"
 $background-image: url(bg.jpg);
 $interchangeable-logo: "False"; // "True", "False"
 $logo-image: url(logo.png);
-$logo-image-width: 240px;
-$logo-image-height: 80px;
+$logo-image-width: 250px;
+$logo-image-height: 97px;
 $primary-color: #c32432;// 4b86ee c32432 6fb9c4 59c974 53555f
 $header-position: "Contained"; // "Full-width Header" , "Contained"
 $survey-overlay-filter: "Dark Filter"; // "Dark Filter" , "Light Filter"
@@ -55,8 +55,10 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 // BASE STYLES
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @import "BaseStylesV4";
-@import "UpdateModules/progressBar/progressBar1";
+@import "UpdateModules/progressBar/progressBar3";
 @import "UpdateModules/labelStyles/radioButtons/radioButtons2";
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Custom SCSS/CSS
