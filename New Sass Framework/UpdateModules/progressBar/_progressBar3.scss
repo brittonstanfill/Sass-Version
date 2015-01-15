@@ -22,6 +22,12 @@ $progress-bar-fill-height: 24px;
 		  line-height: $progress-bar-fill-height - 4;
 		  width: auto;
 
+		  @if $layout-style == "Photo" {
+		  		@if $survey-overlay-filter == "Dark Filter" {
+		  			color: #FFF;	
+		  		}
+			}
+
 		    & + td {
 				width:100%;
 				padding: 0;
@@ -82,7 +88,7 @@ $progress-bar-fill-height: 24px;
 			border-bottom: 1px solid darken($progress-bar-background-color, 20%);
 
 			@if $layout-style == "Color" {
-				border-bottom: 1px solid darken($progress-bar-fill-color, 20%);
+				border-bottom: none; // 1px solid darken($progress-bar-fill-color, 20%);
 			}
 		}
 
