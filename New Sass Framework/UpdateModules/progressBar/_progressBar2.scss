@@ -1,0 +1,93 @@
+$progress-bar-fill-height: 20px;
+
+.Skin {
+
+	// IE can't use nth-child -- this is a cross-browser workaround
+	#ProgressBar {
+		font-size: $progress-bar-font-size;
+		max-width: $container-max-width + 20px;
+		margin: auto;
+		// padding: 0; // Do we even need this? Don't think so. 
+		position:relative;
+		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
+			padding: 20px 0; 
+		}
+
+		tr td:first-child {
+		  position: relative;
+		  padding: 2px 5px;
+		  left: 0;
+		  color: set-reverse-text-color($body-background-color);
+		  line-height: $progress-bar-fill-height - 4;
+		  width: auto;
+		  background: transparent;
+
+		  @if $layout-style == "Photo" {
+		  		@if $survey-overlay-filter == "Dark Filter" {
+		  			color: #FFF;	
+		  		}
+			}
+
+			// Normalizing styles
+		  	border-left: none;
+
+			& + td {
+				width:100%;
+				padding: 0;
+
+				& + td {
+					position: relative;
+					padding: 2px 5px;
+					right: 0;
+					line-height: $progress-bar-fill-height;
+					color: set-reverse-text-color($body-background-color);
+
+					@if $layout-style == "Photo" {
+				  		@if $survey-overlay-filter == "Dark Filter" {
+				  			color: #FFF;	
+				  		}
+					}
+				}
+			}
+		}
+	}
+	
+	.ProgressBarContainer{
+		width:100%;
+		border-collapse:collapse;
+
+		// Normalizing styles
+		border-right: none;
+		border-left: none;
+	}
+
+	.ProgressBarFillContainer {
+		border: none;
+		overflow:hidden;
+		background:$progress-bar-background-color;
+		width:100%;
+		border-radius: 20px;
+
+		@if $label-style-options == "3D" {
+
+			border: 1px solid darken($progress-bar-background-color, 20%);
+			
+			 @if $layout-style == "Color" {
+
+				border: 1px solid darken($progress-bar-fill-color, 20%);
+			}
+		}
+
+	}
+
+	.ProgressBarFill {
+		background-color: $progress-bar-fill-color;
+		height: $progress-bar-fill-height;
+
+		@if $label-style-options == "3D" {
+			
+			@include linear-gradient($progress-bar-fill-color, darken($progress-bar-fill-color, 10%));
+		}
+	}
+}
+

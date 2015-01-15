@@ -1,0 +1,81 @@
+$progress-bar-fill-height: 20px;
+
+.Skin {
+
+	// IE can't use nth-child -- this is a cross-browser workaround
+	#ProgressBar {
+		font-size: $progress-bar-font-size;
+		// padding: 0; // Do we even need this? Don't think so. 
+		position:relative;
+		@if $full-width-header == F { // This is here to add space between top of window and SkinInner... Can't add margin to SkinInner because it pushes the plug off the page.  
+			padding-bottom: ($default-container-padding * 2); 
+			@media only screen and (max-width: 480px) {
+				// SOLUTION: Add padding-bottom to the #ProgressBar (even if there's no progress bar, the div is still there...) Nice.  Kind of weird place to put padding, but fine. 
+				padding-bottom: 0; 
+			}
+		}
+
+		tr td:first-child {
+		  position: relative;
+		  padding: 2px 5px;
+		  left: 0;
+		  color: set-reverse-text-color($progress-bar-fill-color);
+		  line-height: $progress-bar-fill-height - 4;
+		  width: auto;
+		  background: $progress-bar-fill-color;
+
+		  @if $label-style-options == "3D" {
+				
+				@include linear-gradient($progress-bar-fill-color, darken($progress-bar-fill-color, 10%));
+			}
+
+			// Normalizing styles
+		  	border-left: none;
+
+			& + td {
+				width:100%;
+				padding: 0;
+
+				& + td {
+					position: absolute;
+					padding: 2px 5px;
+					right: 0;
+					line-height: $progress-bar-fill-height;
+					color: $progress-bar-fill-color;
+				}
+			}
+		}
+	}
+	
+	.ProgressBarContainer{
+		width:100%;
+		border-collapse:collapse;
+		border-bottom: 1px solid darken($progress-bar-background-color, 20%);
+		
+		@if $layout-style == "Color" {
+			border-bottom: 1px solid darken($progress-bar-fill-color, 20%);
+		}
+
+		// Normalizing styles
+		border-right: none;
+		border-left: none;
+	}
+
+	.ProgressBarFillContainer {
+		border: none;
+		overflow:hidden;
+		background:$progress-bar-background-color;
+		width:100%;
+	}
+
+	.ProgressBarFill {
+		background-color: $progress-bar-fill-color;
+		height: $progress-bar-fill-height;
+
+		@if $label-style-options == "3D" {
+			
+			@include linear-gradient($progress-bar-fill-color, darken($progress-bar-fill-color, 10%));
+		}
+	}
+}
+
