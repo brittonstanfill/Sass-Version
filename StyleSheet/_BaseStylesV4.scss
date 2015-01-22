@@ -1,6 +1,6 @@
 /* 
- * BaseStyles Version: 4.1.2 
- * Last Updated: 11-26-14
+ * BaseStyles Version: 4.1.3 
+ * Last Updated: 1-22-15
  */
 
 //////////////////////////////
@@ -2916,6 +2916,10 @@ a {
 				display: table;
 				min-width: $container-min-width;
 			}
+			@media print {
+              display: table; //these lines for @media print is added for when the content pushes the skininner wider than 770px
+      		  min-width: $container-min-width; 
+      		} 
 			// And this is because IE8 doesn't do media queries.  
 			display : table \9;
 			min-width : $container-min-width \9;
@@ -3016,6 +3020,11 @@ a {
 				display: table;
 				min-width: $container-min-width;
 			}
+			@media print {
+              display: table; //these lines for @media print is added for when the content pushes the skincontent wider than 770px
+      		  min-width: $container-min-width; 
+      		} 
+
 			// And this is because IE8 doesn't do media queries.  
 			display: table \9;
 			min-width: $container-min-width \9;
