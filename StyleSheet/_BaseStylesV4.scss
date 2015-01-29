@@ -1,6 +1,6 @@
 /* 
- * BaseStyles Version: 4.1.2 
- * Last Updated: 11-26-14
+ * BaseStyles Version: 4.1.3 
+ * Last Updated: 1-22-15
  */
 
 //////////////////////////////
@@ -997,11 +997,13 @@ h2.noStyle {
 	padding-right: 100px; // /* Gives space at right, so text doesn't overlap into text entry box */
 }
 //Positions these text entry boxes to the right
+$text-input-padding: 2px;
 .Skin .CS .VRTL .SumInput,
 .Skin .CS .VRTL .SumTotal {
 	position:absolute;
 	right: ($default-container-padding / 2) + $default-font-size; // This gives enough space for there to be a symbol to the left or right (e.g., % or $)
-	top: 0px; // 
+	top: 50%; //
+	margin-top: -(($text-input-padding + $default-border-width)* 2 + $default-font-size + 3)/2; //this is the height of the input box plus borders 
 }
 //Makes it so they are HORIZONTAL .HR (could do display: inline-block instead?)
 .Skin .CS .HR li {
@@ -2916,6 +2918,10 @@ a {
 				display: table;
 				min-width: $container-min-width;
 			}
+			@media print {
+              display: table; //these lines for @media print is added for when the content pushes the skininner wider than 770px
+      		  min-width: $container-min-width; 
+      		} 
 			// And this is because IE8 doesn't do media queries.  
 			display : table \9;
 			min-width : $container-min-width \9;
@@ -3016,6 +3022,11 @@ a {
 				display: table;
 				min-width: $container-min-width;
 			}
+			@media print {
+              display: table; //these lines for @media print is added for when the content pushes the skincontent wider than 770px
+      		  min-width: $container-min-width; 
+      		} 
+
 			// And this is because IE8 doesn't do media queries.  
 			display: table \9;
 			min-width: $container-min-width \9;
@@ -3267,7 +3278,7 @@ a {
 		@if $border-radius-on == T {
 			@include border-radius(2px);
 		}
-		padding: 2px; // If we add too much padding, it cuts off the text (with box-sizing: border-box). Probably stick with 4px or less.
+		padding: $text-input-padding; // If we add too much padding, it cuts off the text (with box-sizing: border-box). Probably stick with 4px or less.
 		// max-width: 100%;	//BOOKMARK: max-width: 100% causes problems in IE8 (the text inputs shrink down to "100%" of the td they are in)
 
 		@if $body-background-image-on == T and $boxed-skincontent == F and $overlay-dark == T or $default-text-color == #FFFFFF {
@@ -3642,10 +3653,6 @@ a {
 	////////////////////////////////////////////////////////////////////
 	.CS .ChoiceStructure li {
 		padding: $default-container-padding / 2;
-	}
-	.CS .VRTL .SumInput input,
-	.CS .VRTL .SumTotal input {
-		margin-top: $default-container-padding / 3;	//This is to vertically center the inputs in Constan Sum.  Not always perfect.  
 	}
 	.CS .CSTotal,
 	.CS .Total {
