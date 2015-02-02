@@ -1,0 +1,36 @@
+$NPS-Colors: (
+	zero: #880000,
+	one: #960A0E,
+	two: #E33D33,
+	three: #E55526,
+	four: #EA8C1C,
+	five: #EEA73C,
+	six: #ECE12F,
+	seven: #CCD421,
+	eight: #86BC3B,
+	nine: #439914,
+	ten: #317F07
+);
+
+
+.NPS {
+
+	td {color: #FFF;}
+
+	@each $number, $color in $NPS-Colors {
+		td:nth-child(#{index(map-keys($NPS-Colors),$number)}) {
+			.SingleAnswer {
+				background: lighten(desaturate($color, 50%), 30%);
+				&:hover { background: lighten(desaturate($color, 40%), 20%); }
+				&.q-checked {
+					background: $color;
+					&.q-focused {
+						&.q-focused {
+							background: $color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
