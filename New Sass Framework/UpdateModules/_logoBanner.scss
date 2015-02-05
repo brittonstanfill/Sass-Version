@@ -1,8 +1,12 @@
 .Skin {
 	#Logo {
 		max-width: 95%;
-		margin: 0 auto;
+		margin: 10px auto;
 		background-position: center center;
 		background-size: contain;
+
+		@include breakpoints(mobile) {
+			margin: 0 auto;
+		}
 	}
 }

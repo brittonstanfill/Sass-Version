@@ -23,10 +23,10 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 
 // Primary Imports
 
-@import "variableList",
-		"wysiwygConditionals",
-		"functions",
-		"mixins";
+@import "BasePartials/variableList",
+		"BasePartials/wysiwygConditionals",
+		"BasePartials/functions",
+		"BasePartials/mixins";
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Themes
@@ -47,7 +47,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BASE STYLES
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@import "BaseStylesV4",
+@import "BasePartials/BaseStylesV4",
 		"UpdateModules/progressBar/progressBar3",
 		"UpdateModules/labelStyles/radioButtons/radioButtons2";
 

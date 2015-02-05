@@ -24,4 +24,22 @@
 			}		
 		}
 	}
+
+	.MC {
+		.SAVR {
+			label {
+				&.q-radio {
+					padding: 2px;
+				}
+			}
+		}
+
+		.MAVR {
+			label {
+				&.q-checkbox {
+					padding: 2px;
+				}
+			}
+		}
+	}
 }

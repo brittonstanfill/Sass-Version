@@ -1,0 +1,44 @@
+.Skin {
+
+	label {
+		&.q-radio {
+			display: none;
+		}
+
+		&.q-checkbox {
+			display: none;
+		}
+	}
+
+	input[type="radio"] {
+		position: static;
+		opacity: 1;
+		z-index: 1;
+		height: 20px;
+		width: 20px;
+
+		&:focus {
+			outline: inherit;
+		}
+	}
+
+	input[type="checkbox"] {
+		@extend input[type="radio"];
+
+		&:focus {
+			outline: inherit;
+		}
+	}
+
+	.MC {
+ 		.MAHR, .SAHR {
+			@media all and (max-width: 480px) {
+				td, li { // td is for horizontal "above label" option, and li is for horizontal "side label" option
+					display: table-cell;
+ 					width: inherit;
+ 				}
+ 			}
+ 		}
+ 	}
+}
+
