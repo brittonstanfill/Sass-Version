@@ -1,0 +1,44 @@
+// Interchangeable Secondary Logo OR Same-line Header
+.Skin {
+
+	#LogoContainer {
+
+		&:after {
+			content:'';
+			width: 100%;
+			clear:both;
+			display: block;
+		}
+	}
+
+	#Logo {
+		width:50%;
+		float: left;
+
+		@include breakpoints(tablet) {
+			background-position: 20px center;
+		}
+
+		@include breakpoints(mobile) {
+			background-position: center center;
+			width: 100%;
+			float: none;
+		}
+	}
+
+	#HeaderContainer {
+		width:50%;
+		float: left;
+		text-align: right;
+
+		@include breakpoints(mobile) {
+			width: 100%;
+			float: none;
+			text-align: center;
+		}
+
+		#Header {
+			display: inline-block;
+		}
+	}
+}
