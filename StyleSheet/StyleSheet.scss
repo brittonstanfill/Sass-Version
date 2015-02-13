@@ -1,7 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //IMPORT FONT
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	@import url(https://fonts.googleapis.com/css?family=Roboto:700,300italic,700italic,300);
+	// Removing Google Fonts for now because it adds 200ms - 600ms to load.  
+	// Will look into hosting certain Google Fonts on our server so we could reference them. 
+	// @import url(https://fonts.googleapis.com/css?family=Roboto:700,300italic,700italic,300);
 	
 	// * {
 	// 	-webkit-font-smoothing: antialiased;
@@ -141,7 +143,7 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 	--> $default-container-padding: 20px;
 	$default-mobile-container-padding: 15px;
 	//FONT
-	--> $font-stack: "Roboto", "Helvetica Neue", Arial, sans-serif;
+	--> $font-stack: "Helvetica Neue", Arial, sans-serif;
 	$default-font-size: 16px;
 	$default-text-color: #43464D;
 	@if $boxed-skincontent == F and $body-background-image-on == T {
@@ -542,7 +544,6 @@ $label-style-options: "Flat"; // "Flat" , "3D" , "Radio Buttons"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Add Custom CSS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 
