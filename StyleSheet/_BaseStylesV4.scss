@@ -1,6 +1,6 @@
 /* 
- * BaseStyles Version: 4.1.3 
- * Last Updated: 1-22-15
+ * BaseStyles Version: 4.1.4 
+ * Last Updated: 2-20-15
  */
 
 //////////////////////////////
@@ -2923,8 +2923,12 @@ a {
       		  min-width: $container-min-width; 
       		} 
 			// And this is because IE8 doesn't do media queries.  
-			display : table \9;
-			min-width : $container-min-width \9;
+			@media (max-width: 979px){
+				.Skin .SkinInner {
+					display: block;
+					min-width: 0;
+				}
+			}
 		}		
 	} 
 	#LogoContainer {
@@ -3028,8 +3032,12 @@ a {
       		} 
 
 			// And this is because IE8 doesn't do media queries.  
-			display: table \9;
-			min-width: $container-min-width \9;
+			@media (max-width: 979px){
+				.Skin .SkinInner {
+					display: block;
+					min-width: 0;
+				}
+			}
 		}
 
 	}
